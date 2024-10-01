@@ -1,0 +1,54 @@
+---
+import { Image } from "astro:assets";
+import Ignacio from '../img/Ignacio.webp';
+import Andrea from '../img/Andrea.webp';
+import Jesus from '../img/Jesus.webp';
+import Juan from '../img/Juan.webp'
+---
+
+<section id="team" class="border border-black p-4">
+    <h2 class="text-2xl font-bold mb-4">Organización</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <!-- Tarjetas de miembros del equipo -->
+        <div class="border border-black p-4 text-center">
+            <Image
+                src={Andrea}
+                alt="Miembro del equipo"
+                class="mx-auto mb-2"
+                style={{ width: '200px', height: '200px' }}
+            />
+            <h3 class="font-bold">Andrea Magan</h3>
+            <p>Presentadora</p>
+        </div>
+        <div class="border border-black p-4 text-center">
+            <Image
+                src={Ignacio}
+                alt="Miembro del equipo"
+                class="mx-auto mb-2"
+                style={{ width: '200px', height: '200px' }}
+            />
+            <h3 class="font-bold">Ignacio Espósito</h3>
+            <p>Organización</p>
+        </div>
+        <div class="border border-black p-4 text-center">
+            <Image
+                src={Jesus}
+                alt="Miembro del equipo"
+                class="mx-auto mb-2"
+                style={{ width: '200px', height: '200px' }}
+            />
+            <h3 class="font-bold">Jesus</h3>
+            <p>Organización</p>
+        </div>
+        <div class="border border-black p-4 text-center">
+            <Image
+                src={Juan}
+                alt="Miembro del equipo"
+                class="mx-auto mb-2"
+                style={{ width: '200px', height: '200px' }}
+            />
+            <h3 class="font-bold">Juan Romero</h3>
+            <p>Organización</p>
+        </div>
+    </div>
+</section>
