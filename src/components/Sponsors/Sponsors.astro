@@ -1,0 +1,126 @@
+---
+import SponsorTier from "@components/Sponsors/SponsorsTier.astro";
+
+const sponsors = [
+  {
+    name: "Raiola Networks",
+    logo: "https://raiolanetworks.com/build/assets/horizontal-BPk1h-Qt.svg",
+    url: "https://sponsor2.com",
+    tier: "lume",
+  },
+  {
+    name: "Dinahosting",
+    logo: "https://www.domini.barcelona/wp-content/uploads/2019/05/Dinahosting-1.png",
+    url: "https://sponsor1.com",
+    tier: "lume",
+  },
+  {
+    name: "NextGen Solutions",
+    logo: "https://1000logos.net/wp-content/uploads/2018/02/Timberland-Logo.png",
+    url: "https://nextgensolutions.com",
+    tier: "brasa",
+  },
+  {
+    name: "FutureTech",
+    logo: "https://1000logos.net/wp-content/uploads/2016/10/Adidas-Logo.png",
+    url: "https://futuretech.com",
+    tier: "brasa",
+  },
+  {
+    name: "brasaEdge",
+    logo: "https://1000logos.net/wp-content/uploads/2018/04/Mercedes-Benz-Logo.png",
+    url: "https://brasaedge.com",
+    tier: "brasa",
+  },
+  {
+    name: "brasaWave",
+    logo: "https://1000logos.net/wp-content/uploads/2021/05/Intel-logo.png",
+    url: "https://brasawave.com",
+    tier: "brasa",
+  },
+  {
+    name: "AlphaTech",
+    logo: "https://1000logos.net/wp-content/uploads/2016/11/google_logo.png",
+    url: "https://alphatech.com",
+    tier: "faisca",
+  },
+  {
+    name: "Beta Innovations",
+    logo: "https://1000logos.net/wp-content/uploads/2021/11/logo-Amazon.png",
+    url: "https://betainnovations.com",
+    tier: "faisca",
+  },
+  {
+    name: "Gamma Systems",
+    logo: "https://1000logos.net/wp-content/uploads/2017/04/Microsoft-Logo.png",
+    url: "https://gammasystems.com",
+    tier: "faisca",
+  },
+  {
+    name: "Delta Technologies",
+    logo: "https://1000logos.net/wp-content/uploads/2016/10/Apple-Logo.png",
+    url: "https://deltatechnologies.com",
+    tier: "faisca",
+  },
+  {
+    name: "BronzeWorks",
+    logo: "https://1000logos.net/wp-content/uploads/2022/06/Logo-Adobe.png",
+    url: "https://bronzeworks.com",
+    tier: "faisca",
+  },
+];
+---
+
+<section
+  class="w-full h-full grid border-8 border-black p-4 relative dotted-bg"
+>
+  <div
+    class="grid grid-cols-1 gap-8 place-content-center border-8 border-black p-10 -left-6 -top-6 w-full h-full bg-white move-container"
+  >
+    <div
+      class="sponsors-container col-span-1 place-content-center text-center space-y-10"
+    >
+      <h2 class="text-5xl font-bold mb-4">Sponsors</h2>
+      <p class="mb-10">
+        La LareiraConf, no sería posible sin el apoyo de las empresas que han
+        apostado por lo que estamos construyendo. Gracias a su ayuda, podemos
+        organizar un evento que reúna a la comunidad tecnológica gallega con el
+        nivel que merece y con un precio ajustado.
+      </p>
+      <div class="flex flex-col space-y-8">
+        <SponsorTier
+          title="Lume"
+          tier="lume"
+          sponsors={sponsors}
+          class="lume-tier"
+          gap="gap-16"
+        />
+        <SponsorTier
+          title="Brasa"
+          tier="brasa"
+          sponsors={sponsors}
+          class="brasa-tier"
+          gap="gap-8"
+        />
+        <SponsorTier
+          title="Faisca"
+          tier="faisca"
+          sponsors={sponsors}
+          class="faisca-tier"
+          gap="gap-8"
+        />
+      </div>
+      <p class="mb-10 flex flex-col item-center">
+        <span class="mb-2">
+          Si quieres que tu empresa aparezca en esta lista</span
+        >
+        <button
+          class="p-2 text-accent btn-3d w-fit place-self-center"
+          onclick="window.location.href='mailto:administracion@sysarmygalicia.com?subject=Patrocinio LareiraConf 2025'"
+        >
+          Escríbenos un email
+        </button>
+      </p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,105 @@
+<section class="w-full h-full grid border-8 border-black relative dotted-bg">
+  <div
+    class="gap-4 border-8 border-black p-10 relative -left-6 -top-6 w-full h-full bg-white move-container"
+  >
+    <h1 class="font-title text-5xl font-bold mb-8">
+      <div id="check" class="cursor-blink">
+        <span id="typewriter"> </span>
+      </div>
+    </h1>
+    <div class="grid grid-cols-2 gap-12">
+      <div
+        class="grid p-10 gap-4 border-8 border-black shadow bg-white"
+        style="box-shadow: 16px 16px 0px 0px rgba(0, 0, 0, 1);"
+      >
+        <h1 class="font-title text-5xl font-bold">LareiraConf</h1>
+        <p>
+          Es un punto de encuentro para todos los apasionados por la tecnología,
+          cuyo objetivo es reunir los miembros de las distintas comunidades
+          técnicas y a otros desarrolladores, estudiantes y profesionales IT en
+          un espacio donde puedan aprender, compartir experiencias y conectar
+          con otros lareireiros.
+        </p>
+        <p>Únete y sé parte del comienzo de esta aventura.</p>
+      </div>
+
+      <div
+        class="grid p-10 gap-4 border-8 border-black shadow bg-white"
+        style="box-shadow: 16px 16px 0px 0px rgba(0, 0, 0, 1);"
+      >
+        <h1 class="font-title text-5xl font-bold">El formato</h1>
+        <p>
+          Un solo track para que todos los asistentes compartan la misma
+          experiencia.
+        </p>
+        <p>
+          Durante la jornada, habrá charlas, actividades de networking y alguna
+          que otra sorpresa. Queremos que descubras gente con la que puedas
+          compartir conocimientos e inspiración, para seguir impulsando el
+          sector IT.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cursor-blink::after {
+    content: "|";
+    display: inline;
+    animation: blink 1s infinite;
+  }
+
+  @keyframes blink {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  #check {
+    margin: 2px auto;
+    width: fit-content;
+  }
+</style>
+
+<script>
+  const data = ["Comunidad", "Charlas", "Networking", "Ofertas"];
+  const speed = 150;
+  const pause = 6000; // Pause duration in milliseconds
+
+  function type() {
+    let p = 0;
+    data.forEach((word) => {
+      for (let x = 0; x <= word.length; x++) {
+        setTimeout(() => {
+          document.getElementById("typewriter").innerHTML = word.substring(
+            0,
+            x
+          );
+        }, p * speed);
+        p++;
+      }
+      p += pause / speed; // Add pause after writing the word
+      for (let x = word.length - 1; x >= 0; x--) {
+        setTimeout(() => {
+          document.getElementById("typewriter").innerHTML = word.substring(
+            0,
+            x
+          );
+        }, p * speed);
+        p++;
+      }
+      p += 2; // Add delay between words
+    });
+
+    setTimeout(type, p * speed);
+  }
+
+  type();
+</script>

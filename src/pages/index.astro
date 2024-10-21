@@ -1,50 +1,60 @@
 ---
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import Lareira from "../components/Lareira.astro"
-import Equipo from "../components/Equipo.astro";
+import Header from "@components/Others/Header.astro";
+import Footer from "@components/Others/Footer.astro";
+import Intro from "@components/Intro/Intro.astro";
+import Dates from "@components/Intro/Dates.astro";
+import About from "@components/About/About.astro";
+import Team from "@components/Team/Team.astro";
+import Speakers from "@components/Speakers/Speakers.astro";
+import Sponsors from "@components/Sponsors/Sponsors.astro";
+import Agenda from "@components/Agenda/Agenda.astro";
+import Contact from "@components/Contact/Contact.astro";
+import Place from "@components/Intro/Place.astro";
+
 import "../styles/global.css";
 ---
 
 <html lang="es">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link
-			href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-			rel="stylesheet"
-		/>
-		<title>LareiraConf 2025</title>
-	</head>
-	<body class="bg-white text-black font-mono">
-		<Header />
-		<main class="p-8 space-y-10">
-			<!-- Sección de introducción -->
-			<section id="intro" class="border border-black p-4">
-				<h1 class="text-3xl font-bold mb-4 text-center">
-					LareiraConf 2025
-				</h1>
-				<p class="text-lg text-center">
-					Bienvenidos a LareiraConf. Este es el primer evento de la comunidad de Sysarmy Galicia.
-				</p>
-			</section>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://raw.githubusercontent.com/brandonmcconnell/typed.css/master/typed.scss"
+    />
 
-			<!-- Sección "Sobre la conferencia" -->
-			<Lareira />
+    <title>LareiraConf 2025</title>
+  </head>
+  <body class="bg-white text-black font-mono">
+    <Header />
+    <main class="grid grid-rows-auto p-16 gap-24 max-w-screen-xl mx-auto">
+      <section
+        class="grid grid-cols-3 grid-rows-4 gap-16 min-h-[40rem]"
+        id="intro"
+      >
+        <div class="col-span-2 row-span-4"><Intro /></div>
+        <div class="row-span-2 col-span-1"><Dates /></div>
+        <div class="row-span-2 row-start-3 col-start-3"><Place /></div>
+      </section>
+      <section class="row-span-1 scroll-mt-32" id="about">
+        <About />
+      </section>
 
-			<!-- Sección "Equipo" -->
-			<Equipo />
-
-			<!-- Sección de contacto -->
-			<section id="contact" class="border border-black p-4">
-				<h2 class="text-2xl font-bold mb-4">Contacto</h2>
-				<address class="not-italic">
-					A coruña, Galicia<br />
-					Teléfono: 638-685-457<br />
-					Email: administracion@sysarmygalicia.com
-				</address>
-			</section>
-		</main>
-		<Footer />
-	</body>
+      <section class="row-span-1 scroll-mt-32" id="agenda">
+        <Agenda />
+      </section>
+      <section class="row-span-1 scroll-mt-32" id="team">
+        <Team />
+      </section>
+      <section class="row-span-1 scroll-mt-32" id="sponsors">
+        <Sponsors />
+      </section>
+      <!-- <section class="row-span-1" id="speakers"><Speakers /></section> -->
+    </main>
+    <Footer />
+  </body>
 </html>

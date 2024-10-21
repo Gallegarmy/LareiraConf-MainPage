@@ -1,0 +1,179 @@
+---
+import Image from "astro/components/Image.astro";
+import Social from "@components/Others/Social.astro";
+
+import Ignacio from "@img/crew/Ignacio_pixel.webp";
+import Andrea from "@img/crew/Andrea_pixel.webp";
+import Jesus from "@img/crew/Jesus_pixel.webp";
+import Juan from "@img/crew/Juan_pixel.webp";
+import LareiraLogo from "@public/lareira-isotipo.svg";
+
+const crew = [
+  {
+    name: "Nacho Espósito",
+    src: Ignacio,
+    alt: "Miembro del equipo",
+    role: "Founder",
+    job: "Software developer",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    redes: [
+      { icon: "Linkedin", url: "https://www.linkedin.com/in/ignacio.../" },
+    ],
+    groups: [{ icon: "Sysarmy", url: "" }],
+  },
+  {
+    name: "Andrea Magán",
+    src: Andrea,
+    alt: "Miembro del equipo",
+    role: "Presentadora",
+    job: "Front developer",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    redes: [
+      { icon: "Linkedin", url: "https://www.linkedin.com/in/andreamaganrey/" },
+    ],
+    groups: [
+      { icon: "Coruña WTF", url: "" },
+      { icon: "Sysarmy", url: "" },
+    ],
+  },
+  {
+    name: "Jesús Pérez Roca",
+    src: Jesus,
+    alt: "Miembro del equipo",
+    role: "Relaciones públicas",
+    job: "Profesor",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    redes: [{ icon: "Linkedin", url: "https://www.linkedin.com/in/jesus../" }],
+    groups: [
+      { icon: "Python", url: "" },
+      { icon: "Coruña WTF", url: "" },
+    ],
+  },
+  {
+    name: "Juan Romero",
+    src: Juan,
+    alt: "Miembro del equipo",
+    role: "Organización",
+    job: "?",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    redes: [{ icon: "Linkedin", url: "https://www.linkedin.com/in/juan.../" }],
+    groups: [{ icon: "Sysarmy", url: "" }],
+  },
+];
+---
+
+<section class="w-full h-full grid border-8 border-black relative dotted-bg">
+  <div
+    class="w-full h-full grid grid-cols-2 gap-16 border-8 border-black p-10 relative -left-6 -top-6 bg-white move-container"
+  >
+    <div class="crew-container md:col-span-1 place-content-center">
+      <h2 class="text-5xl font-bold mb-8">The crew</h2>
+      <p class="text-l mb-8">
+        Somos un grupo de apasionados por la tecnología, cada uno en su área,
+        pero unidos por un objetivo común: crear espacios donde las comunidades
+        locales puedan conectarse y compartir ideas. Así nació Lareiraconf, un
+        proyecto que comenzó de una chispa en unas admincañas (como no podía ser
+        de otra manera) y que nos ha llevado hasta aquí.
+      </p>
+      <p class="text-l mb-8">
+        Queremos que este evento sea ese punto de encuentro donde surjan ideas y
+        conexiones que inspiren a todos. Detrás de cada charla, de cada detalle,
+        está nuestro compromiso por hacer de Lareiraconf un evento memorable
+        para la comunidad.
+      </p>
+    </div>
+    <div class="grid grid-cols-2 gap-8 md:col-span-1 w-full h-full">
+      {
+        crew.map((crewMate) => {
+          return (
+            <div id="card-crew-animate" class="flip-container pointer">
+              <div class="flipper">
+                <div class="front h-full">
+                  <div class="border border-8 border-black p-4 text-center h-full">
+                    <Image
+                      src={crewMate.src}
+                      alt={crewMate.alt}
+                      class="border border-8 border-black "
+                      style={{ width: "100%" }}
+                    />
+                    <footer class="flex flex-col justify-between p-2">
+                      <h3 class="text-xl bold tracking-widest">
+                        {crewMate.name}
+                      </h3>
+
+                      <p class="text-xs tracking-widest mb-4">{crewMate.job}</p>
+                      <p class="text-xs tracking-widest mb-4">
+                        {crewMate.role}
+                      </p>
+                    </footer>
+                  </div>
+                </div>
+                <div class="flex flex-col gap-4 items-center back border border-8 border-black p-4 dotted-bg">
+                  <div class="flex items-center">
+                    <div class="logo flex bg-black text-white p-4 relative">
+                      LAREIRA CONF
+                      <Image
+                        src={LareiraLogo}
+                        alt="lareira isotipo"
+                        style={{
+                          height: "22px",
+                          width: "22px",
+                          position: "absolute",
+                          left: "40px",
+                          bottom: "18px",
+                        }}
+                      />
+                    </div>
+                  </div>
+                  <section class="flex flex-col p-2 bg-white w-full">
+                    <p class="text-xs">Comunidades:</p>
+                    <div class="flex flex-wrap gap-2 items-center whitespace-nowrap">
+                      {crewMate.groups.map((item) => {
+                        return (
+                          <>
+                            {item.icon === "Sysarmy" && (
+                              <span class="text-xs bg-black text-white p-1 ">
+                                {item.icon}
+                              </span>
+                            )}
+                            {item.icon === "Coruña WTF" && (
+                              <span class="text-xs bg-black text-white p-1 ">
+                                {item.icon}
+                              </span>
+                            )}
+                            {item.icon === "Python" && (
+                              <span class="text-xs bg-black text-white p-1 ">
+                                {item.icon}
+                              </span>
+                            )}
+                          </>
+                        );
+                      })}
+                    </div>
+                  </section>
+
+                  <div class="p-4 text-center flex flex-col flex-grow justify-around items-center bg-white">
+                    <p class="text-xs">{crewMate.description}</p>
+                    {crewMate.redes.map((item) => {
+                      return (
+                        <div>
+                          {item.icon === "Linkedin" && (
+                            <Social
+                              href={item.url}
+                              platform="linkedin"
+                              class="text-blue-500 hover:underline mr-2"
+                            />
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>

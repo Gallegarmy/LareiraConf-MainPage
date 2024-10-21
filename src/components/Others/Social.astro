@@ -1,0 +1,42 @@
+---
+import Image from "astro/components/Image.astro";
+import Linkedin from "@img/rrss/linkedin.png";
+import X from "@img/rrss/x.jpg";
+
+const { platform, username } = Astro.props;
+
+function getIcon(platform) {
+  switch (platform) {
+    case "x":
+      return X;
+    case "linkedin":
+      return Linkedin;
+
+    default:
+      return null;
+  }
+}
+---
+
+<a
+  href={`https://www.${platform}.com/${username}`}
+  target="_blank"
+  class="social-link"
+>
+  {
+    getIcon(platform) && (
+      <Image src={getIcon(platform)} alt={platform} class="h-4 w-4" />
+    )
+  }
+</a>
+
+<style>
+  .social-link img {
+    transition: filter 0.3s ease;
+  }
+
+  .social-link:hover img {
+    filter: brightness(0) saturate(100%) invert(44%) sepia(12%) saturate(5979%)
+      hue-rotate(336deg) brightness(98%) contrast(87%);
+  }
+</style>

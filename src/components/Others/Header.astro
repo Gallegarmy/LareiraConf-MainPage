@@ -1,0 +1,64 @@
+---
+
+---
+
+<header
+  class="sticky flex items-center justify-between border-black border-b-8 p-4 sticky top-0 bg-white z-50"
+>
+  <div class="flex items-center">
+    <span class="logo isotipo">LAREIRA CONF</span>
+  </div>
+  <nav class="flex justify-center space-x-4">
+    <a href="#about" class="btn-3d" id="about-link">El evento</a>
+    <a href="#agenda" class="btn-3d" id="agenda-link">Agenda</a>
+    <a href="#team" class="btn-3d" id="team-link">Equipo</a>
+    <a href="#sponsors" class="btn-3d" id="sponsors-link">Patrocinadores</a>
+    <a href="#tickets" class="btn-3d main" id="tickets-link">Entradas</a>
+  </nav>
+
+  <script>
+    window.addEventListener("scroll", () => {
+      const sections = Array.from(document.querySelectorAll("section")).filter(
+        (section) => section.id
+      );
+      const links = document.querySelectorAll("nav a");
+      let currentSection = null;
+
+      sections.forEach((section, index) => {
+        const rect = section.getBoundingClientRect();
+        const sectionHeight = rect.height;
+        const visibleHeight =
+          Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
+
+        if (visibleHeight > sectionHeight / 2) {
+          currentSection = section;
+        } else if (index === sections.length - 1 && visibleHeight > 0) {
+          currentSection = section;
+        }
+      });
+
+      if (currentSection) {
+        links.forEach((link) => {
+          link.classList.remove("active");
+          if (link.getAttribute("href").substring(1) === currentSection.id) {
+            link.classList.add("active");
+          }
+        });
+      }
+    });
+  </script>
+</header>
+
+<style>
+  .isotipo::after {
+    display: inline-block;
+    content: "";
+    background-image: url("/lareira-isotipo.svg");
+    background-size: 22px 22px;
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    top: 7px;
+    left: 184px;
+  }
+</style>

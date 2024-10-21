@@ -1,0 +1,21 @@
+---
+const speakers = [
+  { name: "Speaker 1", bio: "Bio of Speaker 1", image: "/images/speaker1.jpg" },
+  { name: "Speaker 2", bio: "Bio of Speaker 2", image: "/images/speaker2.jpg" },
+  // Add more speakers as needed
+];
+---
+
+<div class="flex flex-wrap gap-5 justify-center">
+  {
+    speakers.map((speaker) => (
+      <div class="bg-white rounded-lg shadow-md overflow-hidden w-72 text-center">
+        <img src={speaker.image} alt={speaker.name} class="w-full h-auto" />
+        <div class="p-5">
+          <h3 class="text-xl m-0">{speaker.name}</h3>
+          <p class="text-base text-gray-600">{speaker.bio}</p>
+        </div>
+      </div>
+    ))
+  }
+</div>
