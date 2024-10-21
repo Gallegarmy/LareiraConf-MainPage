@@ -1,68 +1,123 @@
+@import url(scrollbar.css);
+@import url(fonts.css);
+@import url(animations.css);
+
+:root {
+  --primary: white;
+  --secondary: black;
+  --accent: #e95c3c;
+
+  --logo-font: "square", sans-serif;
+  --text-font: "system-ui", sans-serif;
+  --heading-font: "Nine-By-Five", sans-serif;
+  --custom-letter-spacing: 0.4rem;
+
+  --custom-scrollbar-background: linear-gradient(
+      45deg,
+      var(--secondary) 25%,
+      transparent 25%,
+      transparent 75%,
+      var(--secondary) 75%,
+      var(--secondary)
+    ),
+    linear-gradient(
+      45deg,
+      var(--secondary) 25%,
+      transparent 25%,
+      transparent 75%,
+      var(--secondary) 75%,
+      var(--secondary)
+    );
+  --custom-scrollbar-background-color: var(--primary);
+  --custom-scrollbar-background-size: 4px 4px;
+  --custom-scrollbar-background-position: 0 0, 2px 2px;
+}
+
+html {
+  font-family: var(--text-font);
+  box-sizing: border-box;
+  cursor: url(/img/assets/cursor.svg) 16 0, auto;
+}
+
+html > * {
+  box-sizing: border-box;
+}
+
+a,
+button,
+.pointer {
+  cursor: url("/img/assets/cursor-pointer.svg") 16 0, pointer;
+}
 
 header {
-    padding: 20px;
-    border-bottom: 2px solid black;
-    text-align: center;
-  }
-  
-  nav {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-  }
-  
-  .btn-3d {
-    font-family: Arial, sans-serif;
-    font-weight: bold;
-    text-decoration: none;
-    color: black;
-    background-color: white;
-    border: 2px solid black;
-    padding: 10px 20px;
-    display: inline-block;
-    position: relative;
-    transition: transform 0.1s ease, box-shadow 0.1s ease;
-    box-shadow: 4px 4px 0 0 black;
-  }
-  
-  .btn-3d:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0 0 black;
-  }
-  
-  .btn-3d:active {
-    transform: translate(4px, 4px);
-    box-shadow: 0px 0px 0 0 black;
-  }
-  
-  .flame-container {
-    text-align: center;
-    margin-top: 50px;
-    font-family: monospace;
-  }
-  
-  .flame {
-    display: inline-block;
-    font-size: 20px;
-    color: #ff9900;
-    white-space: pre;
-    animation: flicker 0.2s infinite alternate-reverse;
-  }
-  
-  @keyframes flicker {
-    0% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    50% {
-      opacity: 0.8;
-      transform: translateY(-5px);
-      color: #ff6600;
-    }
-    100% {
-      opacity: 0.6;
-      transform: translateY(10px);
-      color: #ff3300;
-    }
-  }
-  
+  padding: 20px;
+  border-bottom: 2px solid black;
+  text-align: center;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--heading-font), sans-serif;
+  letter-spacing: 0.4rem;
+  text-transform: uppercase;
+}
+
+.logo {
+  font-family: var(--logo-font), sans-serif;
+  font-size: 2rem;
+  line-height: 1;
+  display: block;
+  position: relative;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.btn-3d {
+  font-family: var(--heading-font), sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: var(--custom-letter-spacing);
+  text-transform: uppercase;
+  font-weight: bold;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: white;
+  border: 4px solid black;
+  padding: 10px 20px;
+  display: inline-block;
+  position: relative;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  box-shadow: 4px 4px 0 0 black;
+}
+
+.btn-3d:hover {
+  color: var(--accent);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 0 black;
+}
+
+.btn-3d.active,
+.btn-3d:active {
+  color: var(--accent);
+  transform: translate(4px, 4px);
+  box-shadow: 0px 0px 0 0 black;
+}
+
+.btn-3d.main {
+  background-color: var(--accent);
+  color: var(--primary);
+}
+
+.dotted-bg {
+  background: var(--custom-scrollbar-background);
+  background-color: var(--custom-scrollbar-background-color);
+  background-size: var(--custom-scrollbar-background-size);
+  background-position: var(--custom-scrollbar-background-position);
+}

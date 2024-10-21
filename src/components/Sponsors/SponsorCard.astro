@@ -1,0 +1,37 @@
+---
+export interface Props {
+  url: string;
+  logo: string;
+  name: string;
+  class?: string;
+}
+
+const { url, logo, name, class: customClass } = Astro.props;
+---
+
+<a
+  href={url}
+  target="_blank"
+  rel="noopener noreferrer"
+  class={`no-underline flex justify-center ${customClass ? customClass : ""}`}
+>
+  <img
+    src={logo}
+    alt={name}
+    class="max-w-xs w-full filter brightness-0 hover:filter-none transition-all duration-300"
+  />
+</a>
+
+<style>
+  .lume-tier {
+    width: 35%;
+  }
+
+  .brasa-tier {
+    width: 15%;
+  }
+
+  .faisca-tier {
+    width: 10%;
+  }
+</style>

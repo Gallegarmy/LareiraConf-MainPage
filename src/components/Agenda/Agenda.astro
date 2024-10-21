@@ -1,0 +1,221 @@
+---
+import Social from "@components/Others/Social.astro";
+import Ignacio from "@img/speakers/Ignacio.webp";
+import Andrea from "@img/speakers/Andrea.webp";
+import Jesus from "@img/speakers/Jesus.webp";
+import Juan from "@img/speakers/Juan.webp";
+import { Image } from "astro:assets";
+
+//TODO: Add real data
+const agenda = [
+  {
+    time: "09:00 AM",
+    title: "Registro y Bienvenida",
+    description: "Recepción de los asistentes y entrega de acreditaciones.",
+    speaker: null,
+    image: null,
+    linkedin: null,
+    x: null,
+  },
+  {
+    time: "10:00 AM",
+    title: "Charla Inaugural",
+    description: "Introducción al evento y objetivos.",
+    speaker: "Dr. Juan Pérez",
+    image: Ignacio,
+    linkedin: "juanperez",
+    x: "juanperez",
+  },
+  {
+    time: "11:00 AM",
+    title: "Break",
+    description: "Descanso para café y networking.",
+    speaker: null,
+    image: null,
+    linkedin: null,
+    x: null,
+  },
+  {
+    time: "11:30 AM",
+    title: "Desarrollo Web Moderno",
+    description: "Tendencias y mejores prácticas en desarrollo web.",
+    speaker: "Ana García",
+    image: Andrea,
+    linkedin: "anagarcia",
+    x: "anagarcia",
+  },
+  {
+    time: "01:00 PM",
+    title: "Almuerzo",
+    description: "Tiempo para almorzar y socializar.",
+    speaker: null,
+    image: null,
+    linkedin: null,
+    x: null,
+  },
+  {
+    time: "02:00 PM",
+    title: "Inteligencia Artificial",
+    description: "Aplicaciones de la IA en la industria.",
+    speaker: "Carlos López",
+    image: Jesus,
+    linkedin: "https://www.linkedin.com/in/carloslopez",
+    x: "https://x.com/carloslopez",
+  },
+  {
+    time: "03:30 PM",
+    title: "Break",
+    description: "Descanso para café y networking.",
+    speaker: null,
+    image: null,
+    linkedin: null,
+    x: null,
+  },
+  {
+    time: "04:00 PM",
+    title: "Ciberseguridad",
+    description: "Cómo proteger tus aplicaciones web.",
+    speaker: "María Fernández",
+    image: Juan,
+    linkedin: "mariafernandez",
+    x: "mariafernandez",
+  },
+  {
+    time: "05:30 PM",
+    title: "Cierre del Evento",
+    description: "Conclusiones y despedida.",
+    speaker: null,
+    image: null,
+    linkedin: null,
+    x: null,
+  },
+];
+---
+
+<section
+  class="w-full h-full grid border-8 border-black p-4 relative dotted-bg min-h-16"
+>
+  <header
+    class="bg-white w-full mb-6 p-6 border-8 absolute -left-6 -top-6 border-black flex align-center justify-between move-container"
+  >
+    <h1 class="text-3xl font-bold">Agenda</h1>
+    <button class="toggle-agenda bg-white">
+      <svg
+        class="w-8 h-8"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+  </header>
+
+  <ul class="mt-24 space-y-4 agenda-list">
+    {
+      agenda.map((item) => (
+        <li class="agenda-item bg-white border-4 border-black p-4 grid grid-cols-[auto,1fr] gap-16 items-start">
+          <div class="text-xl font-semibold mb-2">{item.time}</div>
+          <div>
+            <h2 class="text-xl font-semibold mb-2">{item.title}</h2>
+            <div class="flex items-center">
+              {item.image && (
+                <Image
+                  class="rounded-full w-10 h-10 object-cover filter grayscale mr-4"
+                  src={item.image}
+                  alt={item.speaker}
+                />
+              )}
+              <div>
+                <p class="text-gray-700">{item.description}</p>
+                <div class="flex items-center gap-4">
+                  {item.speaker && (
+                    <p class="text-gray-900">
+                      <strong>Speaker:</strong> {item.speaker}
+                    </p>
+                  )}
+                  {item.linkedin && (
+                    <Social
+                      href={item.linkedin}
+                      platform="linkedin"
+                      class="text-blue-500 hover:underline mr-2"
+                    />
+                  )}
+                  {item.x && (
+                    <Social
+                      href={item.x}
+                      platform="x"
+                      class="text-blue-500 hover:underline"
+                    />
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<script>
+  const agendaList = document.querySelector(".agenda-list");
+  const chevron = document.querySelector(".toggle-agenda svg") as HTMLElement;
+  const button = document.querySelector(".toggle-agenda");
+
+  let rotation = 0;
+
+  const toggleAgenda = () => {
+    agendaList.classList.toggle("open");
+    rotation += 225;
+    chevron.style.transform = `rotate(${rotation}deg)`;
+  };
+
+  button.addEventListener("click", toggleAgenda);
+</script>
+
+<style>
+  .agenda-list {
+    transition:
+      max-height 0.6s ease-in-out,
+      opacity 0.6s ease-in-out;
+    overflow: hidden;
+    max-height: 100%;
+    max-height: 0;
+    opacity: 0;
+  }
+
+  .agenda-list.open {
+    max-height: fit-content;
+    opacity: 1;
+  }
+
+  .agenda-list.open .agenda-item {
+    opacity: 0;
+    animation: slideUp 0.6s ease-in-out forwards;
+  }
+
+  .agenda-list.open .agenda-item:nth-child(n) {
+    animation-delay: calc(0.1s * n);
+  }
+
+  @keyframes slideUp {
+    from {
+      transform: translateY(40px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .toggle-agenda svg {
+    transition: transform 0.6s ease-in-out;
+  }
+</style>

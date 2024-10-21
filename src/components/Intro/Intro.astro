@@ -1,0 +1,21 @@
+---
+import Image from "astro/components/Image.astro";
+import LareiraIMG from "@img/assets/lareira-animated.gif";
+---
+
+<section
+  class="w-full h-full grid border-8 border-black p-4 relative dotted-bg"
+>
+  <div
+    class="grid place-content-center border-8 border-black p-10 absolute -left-6 -top-6 w-full h-full bg-white move-container"
+  >
+    <div class="flex align-center justify-center h-40 w-full">
+      <Image src={LareiraIMG} alt={"animacion lareira"} class="max-h-full" />
+    </div>
+    <h1 class="text-5xl font-bold text-center">Bienvenidos a LareiraConf.</h1>
+    <h2 class="text-3xl font-bold text-center">
+      El encuentro tech que enciende ideas y conecta comunidades
+    </h2>
+    <img src="" />
+  </div>
+</section>
