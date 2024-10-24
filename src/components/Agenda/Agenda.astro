@@ -5,6 +5,7 @@ import Andrea from "@img/speakers/Andrea.webp";
 import Jesus from "@img/speakers/Jesus.webp";
 import Juan from "@img/speakers/Juan.webp";
 import { Image } from "astro:assets";
+import Wrapper from "@components/Others/Wrapper.astro";
 
 //TODO: Add real data
 const agenda = [
@@ -92,11 +93,9 @@ const agenda = [
 ];
 ---
 
-<section
-  class="w-full h-full grid border-8 border-black p-4 relative dotted-bg min-h-16"
->
+<Wrapper>
   <header
-    class="bg-white w-full mb-6 p-6 border-8 absolute -left-6 -top-6 border-black flex align-center justify-between move-container"
+    class="bg-white w-full mb-6 p-6 border-8 border-black flex align-center justify-between move-container"
   >
     <h1 class="text-3xl font-bold">Agenda</h1>
     <button class="toggle-agenda bg-white">
@@ -116,13 +115,14 @@ const agenda = [
     </button>
   </header>
 
-  <ul class="mt-24 space-y-4 agenda-list">
+  <ul class="space-y-4 agenda-list open">
     {
       agenda.map((item) => (
-        <li class="agenda-item bg-white border-4 border-black p-4 grid grid-cols-[auto,1fr] gap-16 items-start">
+        <li class="agenda-item bg-white border-4 border-black p-4 gap: grid grid-cols-1 sm:grid-cols-[auto,1fr] sm:p-4 sm:gap-16 items-start">
           <div class="text-xl font-semibold mb-2">{item.time}</div>
           <div>
-            <h2 class="text-xl font-semibold mb-2">{item.title}</h2>
+            <h2 class="text-xl font-semibold ">{item.title}</h2>
+            <p class="text-gray-700 mb-2">{item.description}</p>
             <div class="flex items-center">
               {item.image && (
                 <Image
@@ -131,14 +131,10 @@ const agenda = [
                   alt={item.speaker}
                 />
               )}
-              <div>
-                <p class="text-gray-700">{item.description}</p>
-                <div class="flex items-center gap-4">
-                  {item.speaker && (
-                    <p class="text-gray-900">
-                      <strong>Speaker:</strong> {item.speaker}
-                    </p>
-                  )}
+
+              <div class="flex flex-col gap-1 sm:flex-row">
+                {item.speaker && <p class="text-gray-900">{item.speaker}</p>}
+                <div class="flex flex-row gap-4 ">
                   {item.linkedin && (
                     <Social
                       href={item.linkedin}
@@ -161,7 +157,7 @@ const agenda = [
       ))
     }
   </ul>
-</section>
+</Wrapper>
 
 <script>
   const agendaList = document.querySelector(".agenda-list");
@@ -191,6 +187,7 @@ const agenda = [
   }
 
   .agenda-list.open {
+    margin-top: 2rem;
     max-height: fit-content;
     opacity: 1;
   }

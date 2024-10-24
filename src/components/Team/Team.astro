@@ -7,13 +7,14 @@ import Andrea from "@img/crew/Andrea_pixel.webp";
 import Jesus from "@img/crew/Jesus_pixel.webp";
 import Juan from "@img/crew/Juan_pixel.webp";
 import LareiraLogo from "@public/lareira-isotipo.svg";
+import Wrapper from "@components/Others/Wrapper.astro";
 
 const crew = [
   {
     name: "Nacho Espósito",
     src: Ignacio,
     alt: "Miembro del equipo",
-    role: "Founder",
+    role: "El Founder",
     job: "Software developer",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     redes: [
@@ -25,7 +26,7 @@ const crew = [
     name: "Andrea Magán",
     src: Andrea,
     alt: "Miembro del equipo",
-    role: "Presentadora",
+    role: "La Presentadora",
     job: "Front developer",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     redes: [
@@ -40,7 +41,7 @@ const crew = [
     name: "Jesús Pérez Roca",
     src: Jesus,
     alt: "Miembro del equipo",
-    role: "Relaciones públicas",
+    role: "Beerworking",
     job: "Profesor",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     redes: [{ icon: "Linkedin", url: "https://www.linkedin.com/in/jesus../" }],
@@ -50,11 +51,11 @@ const crew = [
     ],
   },
   {
-    name: "Juan Romero",
+    name: "Jorge Teixeira",
     src: Juan,
     alt: "Miembro del equipo",
-    role: "Organización",
-    job: "?",
+    role: "Tesorero",
+    job: "Software developer",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     redes: [{ icon: "Linkedin", url: "https://www.linkedin.com/in/juan.../" }],
     groups: [{ icon: "Sysarmy", url: "" }],
@@ -62,11 +63,9 @@ const crew = [
 ];
 ---
 
-<section class="w-full h-full grid border-8 border-black relative dotted-bg">
-  <div
-    class="w-full h-full grid grid-cols-2 gap-16 border-8 border-black p-10 relative -left-6 -top-6 bg-white move-container"
-  >
-    <div class="crew-container md:col-span-1 place-content-center">
+<Wrapper>
+  <div class="flex flex-col xl:flex-row justify-between gap-4">
+    <div class="crew-container place-content-center basis-1/2">
       <h2 class="text-5xl font-bold mb-8">The crew</h2>
       <p class="text-l mb-8">
         Somos un grupo de apasionados por la tecnología, cada uno en su área,
@@ -78,11 +77,13 @@ const crew = [
       <p class="text-l mb-8">
         Queremos que este evento sea ese punto de encuentro donde surjan ideas y
         conexiones que inspiren a todos. Detrás de cada charla, de cada detalle,
-        está nuestro compromiso por hacer de Lareiraconf un evento memorable
+        está nuestro compromiso por hacer de LareiraConf un evento memorable
         para la comunidad.
       </p>
     </div>
-    <div class="grid grid-cols-2 gap-8 md:col-span-1 w-full h-full">
+    <div
+      class="flex flex-wrap gap-2 w-full h-full basis-1/2 place-content-center"
+    >
       {
         crew.map((crewMate) => {
           return (
@@ -101,10 +102,8 @@ const crew = [
                         {crewMate.name}
                       </h3>
 
-                      <p class="text-xs tracking-widest mb-4">{crewMate.job}</p>
-                      <p class="text-xs tracking-widest mb-4">
-                        {crewMate.role}
-                      </p>
+                      <p class="text-s tracking-widest mb-4">{crewMate.job}</p>
+                      <p class="text-s tracking-widest mb-4">{crewMate.role}</p>
                     </footer>
                   </div>
                 </div>
@@ -176,4 +175,4 @@ const crew = [
       }
     </div>
   </div>
-</section>
+</Wrapper>

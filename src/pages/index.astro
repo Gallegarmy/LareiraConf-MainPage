@@ -31,29 +31,36 @@ import "../styles/global.css";
   </head>
   <body class="bg-white text-black font-mono">
     <Header />
-    <main class="grid grid-rows-auto p-16 gap-24 max-w-screen-xl mx-auto">
-      <section
-        class="grid grid-cols-3 grid-rows-4 gap-16 min-h-[40rem]"
+    <main>
+      <div
+        class="grid grid-rows-auto mt-32 p-6 lg:p-12 gap-24 max-w-screen-xl mx-auto scroll-mt-32"
         id="intro"
       >
-        <div class="col-span-2 row-span-4"><Intro /></div>
-        <div class="row-span-2 col-span-1"><Dates /></div>
-        <div class="row-span-2 row-start-3 col-start-3"><Place /></div>
-      </section>
-      <section class="row-span-1 scroll-mt-32" id="about">
-        <About />
-      </section>
+        <section
+          class="grid xl:grid-cols-3 xl:grid-rows-4 xl:gap-20 min-h-[40rem] grid-cols-1 gap-16"
+          style="grid-auto-rows: minmax(240px, auto);"
+        >
+          <div class="xl:col-span-2 xl:row-span-4 row-span-2"><Intro /></div>
+          <div class="xl:col-span-1 xl:row-span-2"><Dates /></div>
+          <div class="xl:row-start-3 xl:col-start-3 xl:row-span-2">
+            <Place />
+          </div>
+        </section>
+        <section class="row-span-1 scroll-mt-32" id="about">
+          <About />
+        </section>
 
-      <section class="row-span-1 scroll-mt-32" id="agenda">
-        <Agenda />
-      </section>
-      <section class="row-span-1 scroll-mt-32" id="team">
-        <Team />
-      </section>
-      <section class="row-span-1 scroll-mt-32" id="sponsors">
-        <Sponsors />
-      </section>
-      <!-- <section class="row-span-1" id="speakers"><Speakers /></section> -->
+        <section class="row-span-1 scroll-mt-32" id="agenda">
+          <Agenda />
+        </section>
+        <section class="row-span-1 scroll-mt-32" id="team">
+          <Team />
+        </section>
+        <section class="row-span-1 scroll-mt-32" id="sponsors">
+          <Sponsors />
+        </section>
+        <!-- <section class="row-span-1" id="speakers"><Speakers /></section> -->
+      </div>
     </main>
     <Footer />
   </body>

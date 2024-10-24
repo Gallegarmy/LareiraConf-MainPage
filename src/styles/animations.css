@@ -3,14 +3,9 @@
   transform: translateX(0) translateY(0);
 }
 
-.move-container:hover {
+.move-container:hover,
+.move-container:focus {
   transform: translateX(0.5rem) translateY(0.5rem);
-}
-
-.flip-container {
-  width: 100%;
-  height: 100%;
-  perspective: 1000;
 }
 
 .flip-container:hover .flipper {
@@ -19,7 +14,7 @@
 }
 
 .flipper {
-  width: 100%;
+  width: 256px;
   height: 340px;
   transition: 0.6s;
   transform-style: preserve-3d;
