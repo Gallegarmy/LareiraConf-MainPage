@@ -1,0 +1,104 @@
+<div class="floating-switch">
+  <label class="switch">
+    <input type="checkbox" id="checkBox">
+    <span class="slider"></span>
+  </label>
+  
+</div>
+
+<style>
+:root {
+  --switch-width: 40px; /* Ajusta este valor para cambiar el tamaño del switch */
+  --switch-height: 20px; /* Ajusta este valor para cambiar el tamaño del switch */
+}
+
+.dark {
+  background: var(--primary);
+  color: var(--text-secondary);
+}
+
+.light {
+  background: var(--secondary);
+  color: var(--text-primary);
+}
+
+.floating-switch{
+  z-index: 2;
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: var(--switch-width);
+  height: var(--switch-height);
+  align-self: center;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--secondary);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: calc(var(--switch-height) - 8px);
+  width: calc(var(--switch-height) - 8px);
+  left: 4px;
+  bottom: 4px;
+  background-color: var(--primary);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: var(--accent);
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(calc(var(--switch-width) - var(--switch-height)));
+  -ms-transform: translateX(calc(var(--switch-width) - var(--switch-height)));
+  transform: translateX(calc(var(--switch-width) - var(--switch-height)));
+}
+
+.slider {
+  border-radius: 30px;
+}
+
+.slider:before {
+  border-radius: 50%;
+}
+</style>
+
+<script>
+  const body = document.body;
+  const checkBox = document.getElementById('checkBox') as HTMLInputElement;
+
+  checkBox.addEventListener('change', () => {
+    if ((checkBox as HTMLInputElement).checked) {
+      body.classList.add('dark');
+      body.classList.remove('light');
+      body.setAttribute('data-theme', 'dark');
+    } else {
+      body.classList.add('light');
+      body.classList.remove('dark');
+      body.setAttribute('data-theme', 'light');
+    }
+  });
+</script>

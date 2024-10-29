@@ -1,16 +1,21 @@
 ---
+import { Image } from "astro:assets";
+import Speaker1 from "@img/speakers/speaker1.jpg";
+import Speaker2 from "@img/speakers/speaker2.jpg";
+
 const speakers = [
-  { name: "Speaker 1", bio: "Bio of Speaker 1", image: "/images/speaker1.jpg" },
-  { name: "Speaker 2", bio: "Bio of Speaker 2", image: "/images/speaker2.jpg" },
+  { name: "Speaker 1", bio: "Bio of Speaker 1", image: Speaker1 },
+  { name: "Speaker 2", bio: "Bio of Speaker 2", image: Speaker2 },
   // Add more speakers as needed
 ];
 ---
 
 <div class="flex flex-wrap gap-5 justify-center">
+  <h1>Speakers</h1>
   {
     speakers.map((speaker) => (
-      <div class="bg-white rounded-lg shadow-md overflow-hidden w-72 text-center">
-        <img src={speaker.image} alt={speaker.name} class="w-full h-auto" />
+      <div class="rounded-lg shadow-md overflow-hidden w-72 text-center">
+        <Image src={speaker.image} alt={speaker.name} class="w-full h-auto" />
         <div class="p-5">
           <h3 class="text-xl m-0">{speaker.name}</h3>
           <p class="text-base text-gray-600">{speaker.bio}</p>

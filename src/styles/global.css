@@ -1,11 +1,17 @@
 @import url(scrollbar.css);
 @import url(fonts.css);
 @import url(animations.css);
+@import url(lareira.css);
 
 :root {
   --primary: white;
   --secondary: black;
+  --terciary:  black;
+  --color-5: #ff8906;
   --accent: #e95c3c;
+
+  --text-primary: var(--primary);
+  --text-secondary: var(--secondary);
 
   --logo-font: "square", sans-serif;
   --text-font: "system-ui", sans-serif;
@@ -33,17 +39,45 @@
   --custom-scrollbar-background-position: 0 0, 2px 2px;
 }
 
-html {
-  font-family: var(--text-font);
-  box-sizing: border-box;
-  cursor: url(/img/assets/cursor.svg) 16 0, auto;
+[data-theme="dark"] {
+  --primary: #1e1e1e;
+  --secondary: #584e46;
+  --terciary: #1c1c1c;
+  --color-5: #ff8906;
+  --accent: #e95c3c;
+
+  --text-primary: #1e1e1e;
+  --text-secondary: #e18b49;
+
+  --custom-scrollbar-background: linear-gradient(
+      45deg,
+      var(--secondary) 25%,
+      transparent 25%,
+      transparent 75%,
+      var(--secondary) 75%,
+      var(--secondary)
+    ),
+    linear-gradient(
+      45deg,
+      var(--secondary) 25%,
+      transparent 25%,
+      transparent 75%,
+      var(--secondary) 75%,
+      var(--secondary)
+    );
+  --custom-scrollbar-background-color: var(--primary);
+
+  .border-black {
+    border-color: var(--secondary);
+  }
 }
 
 html {
   font-family: var(--text-font);
   box-sizing: border-box;
-  cursor: url(/img/assets/cursor.svg) 16 0, auto;
+  cursor: url(/src/img/assets/cursor.svg) 16 0, auto;
   font-size: 16px;
+  color: var(--text-secondary);
 }
 
 @media (max-width: 768px) {
@@ -56,15 +90,20 @@ html > * {
   box-sizing: border-box;
 }
 
+body {
+  background-color: var(--primary);
+  color: var(--text-secondary);
+}
+
 a,
 button,
 .pointer {
-  cursor: url("/img/assets/cursor-pointer.svg") 16 0, pointer;
+  cursor: url("/src/img/assets/cursor-pointer.svg") 16 0, pointer;
 }
 
 header {
   padding: 20px;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid var(--secondary);
   text-align: center;
 }
 
@@ -105,32 +144,37 @@ nav {
   font-weight: bold;
   text-decoration: none;
   white-space: nowrap;
-  background-color: white;
-  border: 4px solid black;
+  background-color: var(--primary);
+  border: 4px solid var(--secondary);
   padding: 10px 20px;
   display: inline-block;
   position: relative;
   transition: transform 0.1s ease, box-shadow 0.1s ease;
-  box-shadow: 4px 4px 0 0 black;
+  box-shadow: 4px 4px 0 0 var(--secondary);
 }
 
 .btn-3d:hover {
   color: var(--accent);
   transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0 0 black;
+  box-shadow: 6px 6px 0 0 var(--secondary);
 }
 
 .btn-3d.active,
 .btn-3d:active {
   color: var(--accent);
   transform: translate(4px, 4px);
-  box-shadow: 0px 0px 0 0 black;
+  box-shadow: 0px 0px 0 0 var(--secondary);
 }
 
-.btn-3d.main {
+.main-btn {
   background-color: var(--accent);
-  color: var(--primary);
+  color: var(--text-primary);
 }
+
+.dark .main-btn {
+  background-color: transparent;
+}
+
 
 .dotted-bg {
   background: var(--custom-scrollbar-background);

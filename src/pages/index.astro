@@ -10,8 +10,8 @@ import Sponsors from "@components/Sponsors/Sponsors.astro";
 import Agenda from "@components/Agenda/Agenda.astro";
 import Contact from "@components/Contact/Contact.astro";
 import Place from "@components/Intro/Place.astro";
-
 import "../styles/global.css";
+import Toggle from "@components/Others/Toggle.astro";
 ---
 
 <html lang="es">
@@ -29,13 +29,14 @@ import "../styles/global.css";
 
     <title>LareiraConf 2025</title>
   </head>
-  <body class="bg-white text-black font-mono">
+  <body class="font-mono">
     <Header />
     <main>
       <div
         class="grid grid-rows-auto mt-32 p-6 lg:p-12 gap-24 max-w-screen-xl mx-auto scroll-mt-32"
         id="intro"
       >
+      <Toggle />
         <section
           class="grid xl:grid-cols-3 xl:grid-rows-4 xl:gap-20 min-h-[40rem] grid-cols-1 gap-16"
           style="grid-auto-rows: minmax(240px, auto);"
@@ -62,6 +63,7 @@ import "../styles/global.css";
         <!-- <section class="row-span-1" id="speakers"><Speakers /></section> -->
       </div>
     </main>
+
     <Footer />
   </body>
 </html>

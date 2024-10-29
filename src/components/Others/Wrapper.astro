@@ -11,8 +11,14 @@ const { sectionClasses, contentClasses } = Astro.props;
   class={`${sectionClasses} w-full h-full grid border-8 border-black relative dotted-bg`}
 >
   <div
-    class={`${contentClasses} gap-4 sm:p10 border-8 border-black p-6 lg:p-12 relative -left-6 -top-6 w-full h-full bg-white move-container place-content-center `}
+    class={`${contentClasses} wrapper gap-4 sm:p10 border-8 border-black p-6 lg:p-12 relative -left-6 -top-6 w-full h-full move-container place-content-center `}
   >
     <slot />
   </div>
 </section>
+
+<style>
+  .wrapper {
+    background-color: var(--primary);
+  }
+</style>

@@ -95,10 +95,10 @@ const agenda = [
 
 <Wrapper>
   <header
-    class="bg-white w-full mb-6 p-6 border-8 border-black flex align-center justify-between move-container"
+    class="w-full mb-6 p-6 border-8 border-black flex align-center justify-between move-container"
   >
     <h1 class="text-3xl font-bold">Agenda</h1>
-    <button class="toggle-agenda bg-white">
+    <button class="toggle-agenda">
       <svg
         class="w-8 h-8"
         fill="none"
@@ -118,11 +118,11 @@ const agenda = [
   <ul class="space-y-4 agenda-list open">
     {
       agenda.map((item) => (
-        <li class="agenda-item bg-white border-4 border-black p-4 gap: grid grid-cols-1 sm:grid-cols-[auto,1fr] sm:p-4 sm:gap-16 items-start">
+        <li class="agenda-item border-4 border-black p-4 gap: grid grid-cols-1 sm:grid-cols-[auto,1fr] sm:p-4 sm:gap-16 items-start">
           <div class="text-xl font-semibold mb-2">{item.time}</div>
           <div>
             <h2 class="text-xl font-semibold ">{item.title}</h2>
-            <p class="text-gray-700 mb-2">{item.description}</p>
+            <p class="font-light mb-2">{item.description}</p>
             <div class="flex items-center">
               {item.image && (
                 <Image
@@ -132,23 +132,13 @@ const agenda = [
                 />
               )}
 
-              <div class="flex flex-col gap-1 sm:flex-row">
-                {item.speaker && <p class="text-gray-900">{item.speaker}</p>}
-                <div class="flex flex-row gap-4 ">
+              <div class="flex gap-4 items-center flex-row">
+                {item.speaker && <p>{item.speaker}</p>}
+                <div class="flex flex-row gap-2">
                   {item.linkedin && (
-                    <Social
-                      href={item.linkedin}
-                      platform="linkedin"
-                      class="text-blue-500 hover:underline mr-2"
-                    />
+                    <Social href={item.linkedin} platform="linkedin" />
                   )}
-                  {item.x && (
-                    <Social
-                      href={item.x}
-                      platform="x"
-                      class="text-blue-500 hover:underline"
-                    />
-                  )}
+                  {item.x && <Social href={item.x} platform="x" class="" />}
                 </div>
               </div>
             </div>

@@ -1,22 +1,20 @@
----
-
----
 
 <header
-  class="fixed w-full flex items-center justify-between border-black border-b-8 p-4 top-0 bg-white z-10"
+  class="header fixed w-full flex items-center justify-between border-black border-b-8 p-4 top-0 z-10"
 >
   <div class="flex items-center">
     <a href="#intro" class="logo isotipo">LAREIRA CONF</a>
   </div>
+  <!-- <Toggle /> -->
   <nav class="hidden xl:flex justify-center space-x-4">
     <a href="#about" class="btn-3d" id="about-link">El evento</a>
     <a href="#agenda" class="btn-3d" id="agenda-link">Agenda</a>
     <a href="#team" class="btn-3d" id="team-link">Equipo</a>
     <a href="#sponsors" class="btn-3d" id="sponsors-link">Patrocinadores</a>
-    <a href="#tickets" class="btn-3d main" id="tickets-link">Entradas</a>
+    <a href="#tickets" class="btn-3d main-btn fire" id="tickets-link">Entradas</a>
   </nav>
   <button
-    class="xl:hidden flex items-center px-3 py-2 text-black"
+    class="xl:hidden flex items-center px-3 py-2"
     id="menu-toggle"
   >
     <svg
@@ -29,7 +27,7 @@
     </svg>
   </button>
   <div
-    class="xl:hidden hidden flex flex-col place-content-center gap-8 border border-8 border-black p-8 fixed top-[71px] right-0 w-full bg-white z-40"
+    class="menu xl:hidden hidden flex flex-col place-content-center gap-8 border border-8 border-black p-8 fixed top-[71px] right-0 w-full z-40"
     id="mobile-menu"
   >
     <a href="#about" class="btn-3d" id="about-link-mobile">El evento</a>
@@ -97,6 +95,9 @@
 </script>
 
 <style>
+  .menu, .header {
+    background-color: var(--primary);
+  }
   .isotipo::after {
     display: inline-block;
     content: "";

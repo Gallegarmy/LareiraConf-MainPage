@@ -66,7 +66,7 @@ const crew = [
 <Wrapper>
   <div class="flex flex-col xl:flex-row justify-between gap-4">
     <div class="crew-container place-content-center basis-1/2">
-      <h2 class="text-5xl font-bold mb-8">The crew</h2>
+      <h1 class="text-5xl font-bold mb-8">The crew</h1>
       <p class="text-l mb-8">
         Somos un grupo de apasionados por la tecnología, cada uno en su área,
         pero unidos por un objetivo común: crear espacios donde las comunidades
@@ -94,8 +94,7 @@ const crew = [
                     <Image
                       src={crewMate.src}
                       alt={crewMate.alt}
-                      class="border border-8 border-black "
-                      style={{ width: "100%" }}
+                      class="crew-img border border-8 border-black"
                     />
                     <footer class="flex flex-col justify-between p-2">
                       <h3 class="text-xl  tracking-widest">{crewMate.name}</h3>
@@ -107,49 +106,27 @@ const crew = [
                 </div>
                 <div class="flex flex-col gap-4 items-center back border border-8 border-black p-4 dotted-bg">
                   <div class="flex items-center">
-                    <div class="logo flex bg-black text-white p-4 relative">
+                    <div class="logo flex p-4 relative">
                       LAREIRA CONF
                       <Image
                         src={LareiraLogo}
                         alt="lareira isotipo"
-                        style={{
-                          height: "22px",
-                          width: "22px",
-                          position: "absolute",
-                          left: "40px",
-                          bottom: "18px",
-                        }}
+                        class="isotipo"
                       />
                     </div>
                   </div>
-                  <section class="flex flex-col p-2 bg-white w-full">
+                  <section class="groups flex flex-col p-2 w-full">
                     <p class="text-xs">Comunidades:</p>
                     <div class="flex flex-wrap gap-2 items-center whitespace-nowrap">
                       {crewMate.groups.map((item) => {
                         return (
-                          <>
-                            {item.icon === "Sysarmy" && (
-                              <span class="text-xs bg-black text-white p-1 ">
-                                {item.icon}
-                              </span>
-                            )}
-                            {item.icon === "Coruña WTF" && (
-                              <span class="text-xs bg-black text-white p-1 ">
-                                {item.icon}
-                              </span>
-                            )}
-                            {item.icon === "Python" && (
-                              <span class="text-xs bg-black text-white p-1 ">
-                                {item.icon}
-                              </span>
-                            )}
-                          </>
+                          <span class="tag">{item.icon} </span>
                         );
                       })}
                     </div>
                   </section>
 
-                  <div class="p-4 text-center flex flex-col flex-grow justify-around items-center bg-white">
+                  <div class="description p-4 text-center flex flex-col flex-grow justify-around items-center">
                     <p class="text-xs">{crewMate.description}</p>
                     {crewMate.redes.map((item) => {
                       return (
@@ -174,3 +151,34 @@ const crew = [
     </div>
   </div>
 </Wrapper>
+
+<style>
+  .logo {
+    background-color: var(--secondary);
+    color: var(--text-primary);
+  }
+
+  .groups, .description {
+    background-color: var(--primary);
+    color: var(--text-secondary);
+  }
+
+  .tag {
+    background-color: var(--secondary);
+    color: var(--text-primary);
+    padding: 0.2rem 0.5rem;
+    font-size: 0.7rem;
+  }
+
+  .isotipo {
+    height: 22px;
+    width: 22px;
+    position: absolute;
+    left: 40px;
+    bottom: 18px;
+  }
+
+.crew-img {
+  width: 100%;
+}
+</style>
