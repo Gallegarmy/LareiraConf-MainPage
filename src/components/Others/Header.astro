@@ -1,4 +1,3 @@
-
 <header
   class="header fixed w-full flex items-center justify-between border-black border-b-8 p-4 top-0 z-10"
 >
@@ -11,12 +10,11 @@
     <a href="#agenda" class="btn-3d" id="agenda-link">Agenda</a>
     <a href="#team" class="btn-3d" id="team-link">Equipo</a>
     <a href="#sponsors" class="btn-3d" id="sponsors-link">Patrocinadores</a>
-    <a href="#tickets" class="btn-3d main-btn fire" id="tickets-link">Entradas</a>
+    <a href="#tickets" class="btn-3d main-btn fire" id="tickets-link"
+      >Entradas</a
+    >
   </nav>
-  <button
-    class="xl:hidden flex items-center px-3 py-2"
-    id="menu-toggle"
-  >
+  <button class="xl:hidden flex items-center px-3 py-2" id="menu-toggle">
     <svg
       class="fill-current h-6 w-6"
       viewBox="0 0 20 20"
@@ -36,7 +34,9 @@
     <a href="#sponsors" class="btn-3d" id="sponsors-link-mobile"
       >Patrocinadores</a
     >
-    <a href="#tickets" class="btn-3d main" id="tickets-link-mobile">Entradas</a>
+    <a href="#tickets" class="btn-3d main-btn fire" id="tickets-link-mobile"
+      >Entradas</a
+    >
   </div>
 </header>
 
@@ -95,7 +95,8 @@
 </script>
 
 <style>
-  .menu, .header {
+  .menu,
+  .header {
     background-color: var(--primary);
   }
   .isotipo::after {

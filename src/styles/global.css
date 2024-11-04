@@ -6,7 +6,7 @@
 :root {
   --primary: white;
   --secondary: black;
-  --terciary:  black;
+  --terciary: black;
   --color-5: #ff8906;
   --accent: #e95c3c;
 
@@ -171,10 +171,22 @@ nav {
   color: var(--text-primary);
 }
 
+.main-btn.btn-3d:hover {
+  color: var(--text-secondary);
+}
+.main-btn::before {
+  content: "Coming soon";
+  font-size: 0.7rem;
+  letter-spacing: 0.1rem;
+  color: var(--text-primary);
+  position: absolute;
+  top: 2px;
+  text-align: center;
+}
+
 .dark .main-btn {
   background-color: transparent;
 }
-
 
 .dotted-bg {
   background: var(--custom-scrollbar-background);
