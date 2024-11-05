@@ -1,27 +1,33 @@
 ---
+import Social from "@components/Others/Social.astro";
 
+const linkedin = "lareiconf";
+const x = "lareiraconf";
 ---
 
 <footer
-  class="flex border-t text-xs text-white p-4 gap-2 text-center flex-col"
+  class="flex text-xs text-white p-4 gap-2 text-center flex-row justify-between"
 >
-  <div class="flex flex-col lg:flex-row justify-between">
-    <p>Made with ♥ by LAREIRACONF CREW</p>
-    <p>Hosted by Raiola Networks</p>
-  </div>
-  <div class="flex flex-col">
-    <p>administracion@sysarmygalicia.com</p>
-    <p>© 2024 LareiraConf. Todos los derechos reservados.</p>
-  </div>
+  <!-- <div class="flex flex-col lg:flex-row justify-between h-full"> -->
+  <p class="flex gap-2">
+    Síguenos: <Social username={linkedin} platform="linkedin" />
+    <Social username={x} platform="x" />
+  </p>
+  <p>Hosted by Raiola Networks</p>
+  <p>Made with ♥ by LAREIRACONF CREW</p>
 </footer>
+<!-- <div class="flex flex-col"> -->
+<!-- <p>administracion@sysarmygalicia.com</p> -->
+<!-- <p>© 2024 LareiraConf. Todos los derechos reservados.</p> -->
 
 <style>
   footer {
     position: -webkit-sticky;
     position: sticky;
-    bottom: 1px;
-    z-index: -1;
-    background-color: var(--secondary);
-    color: var(--text-primary);
+    bottom: 0px;
+    z-index: 1;
+    border-top: 8px solid var(--secondary);
+    background-color: var(--primary);
+    color: var(--text-secondary);
   }
 </style>
