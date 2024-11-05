@@ -1,0 +1,288 @@
+<script>
+  const dialogs = [
+    {
+      key: "about",
+      text: "¡Hola! Yo soy Lumi, de la Coru neno. E ti, de quén ves sendo?",
+    },
+    {
+      key: "about",
+      text: "Aquí en Galicia, tenemos buen humor, buen pulpo... ¡y ahora unha pedazo conferencia!",
+    },
+    {
+      key: "about",
+      text: "Las llamas no solo calientan fogatas, ¡también eventos tech! ¿Listo para el calorcito de LareiraConf?",
+    },
+    {
+      key: "about",
+      text: "¿Primera vez por aquí? No te preocupes, ¡soy experto en orientar llamas perdidas!",
+    },
+    {
+      key: "about",
+      text: "¿Andas buscando inspiración? Pois aquí temos máis chispas que en San Xoán!",
+    },
+    {
+      key: "about",
+      text: "¡Prepara las brasas, que aquí las ideas saltan las cacharelas!",
+    },
+    {
+      key: "about",
+      text: "¿Un consejo? Mantente encendido… pero sin quemarte.",
+    },
+    {
+      key: "about",
+      text: "Dicen que soy una llama, pero no hago firewalls...",
+    },
+    {
+      key: "about",
+      text: "¡Enciende tu red! Aquí se crean amistades y, quién sabe, ¡quizás futuros proyectos!",
+    },
+    { key: "team", text: "Este es mi equipo. A que son riquiños?" },
+    {
+      key: "team",
+      text: "Estos del equipo… ¡más majos imposible! Le meten cariño, horas, y un poquillo de 'retranca', para que esto salga a lo grande.",
+    },
+    {
+      key: "team",
+      text: "Aquí cada uno pone su granito… o mejor dicho, ¡su brasita para que este evento sea puro lume!",
+    },
+    {
+      key: "team",
+      text: "El equipo y yo tenemos una misión: que vengas, te lo pases de lujo, y quieras repetir",
+    },
+    {
+      key: "team",
+      text: "Estos del equipo tienen arte… No sé qué harían sin mí, pero oye, se lo curran un montón.",
+    },
+    {
+      key: "agenda",
+      text: "La agenda estará pronto, por ahora tienes que aguantarme",
+    },
+    {
+      key: "agenda",
+      text: "¿La agenda? ¡Ya casi está al rojo vivo! Dame un pelín de tiempo, que lo bueno se hace esperar…",
+    },
+
+    {
+      key: "agenda",
+      text: "¡Tranquilidad, amiguiño! Estoy puliendo la agenda para que sea épica. ¡Pronto más detalles!",
+    },
+
+    {
+      key: "agenda",
+      text: "Que no cunda el pánico… la agenda está casi lista. ¡Será una parrillada de buen contenido!",
+    },
+
+    {
+      key: "agenda",
+      text: "¡Prometo que la agenda va a prender fuerte! Un poco más de paciencia y verás…",
+    },
+
+    {
+      key: "agenda",
+      text: "Aún estoy afinando los detalles… ¡quiero que cada charla prenda algo en ti!",
+    },
+
+    {
+      key: "agenda",
+      text: "Tú espera… que cuando veas la agenda, ¡te van a subir los calores de la emoción!",
+    },
+
+    {
+      key: "agenda",
+      text: "Estamos preparando la agenda más riquiña que verás… ¡Pronto estará lista!",
+    },
+
+    {
+      key: "ticket",
+      text: "Quieres conocerme, pues no te lo pienses más y compra tu entrada!",
+    },
+    {
+      key: "ticket",
+      text: "Non te olvides de la fecha: 22 de marzo en A Coruña, apunta que esto está que arde… pero de emoción, claro!",
+    },
+    {
+      key: "ticket",
+      text: "Non hai mal tiempo para un buen evento",
+    },
+    {
+      key: "sponsors",
+      text: "Gracias a nuestros sponsors, LareiraConf está que arde.",
+    },
+    {
+      key: "sponsors",
+      text: "No es por presumir, pero nuestros patrocinadores son puro fuego.",
+    },
+    {
+      key: "sponsors",
+      text: "Sin nuestros patrocinadores, ¡esto no sería más que cenizas! Gracias por el apoyo.",
+    },
+    {
+      key: "sponsors",
+      text: "Nuestros patrocinadores le echan la leña buena a LareiraConf. ¡Así da gusto!",
+    },
+    {
+      key: "sponsors",
+      text: "Nuestros patrocinadores… ¡son brasas de las buenas! Gracias por mantener vivo el fuego de LareiraConf.",
+    },
+  ];
+
+  let previousSection = "";
+
+  function getDialogText(section) {
+    const sectionDialogs = dialogs.filter((d) => d.key === section);
+    const availableDialogs =
+      sectionDialogs.length > 0 ? sectionDialogs : dialogs;
+    const randomDialog =
+      availableDialogs[Math.floor(Math.random() * availableDialogs.length)];
+    return randomDialog.text;
+  }
+
+  function getCurrentSection() {
+    const sections = Array.from(document.querySelectorAll("section")).filter(
+      (section) => section.id
+    );
+
+    let currentSection = "";
+
+    sections.forEach((section) => {
+      const rect = section.getBoundingClientRect();
+      if (rect.top >= 0 && rect.top <= window.innerHeight / 2) {
+        currentSection = section.id;
+      }
+    });
+    return currentSection;
+  }
+
+  const dialog = document.getElementById("lumi-message");
+
+  function updateDialogText() {
+    const section = getCurrentSection();
+    if (section === previousSection) {
+      return;
+    }
+
+    console.log(section);
+    previousSection = section;
+
+    dialog.classList.remove("fade-in");
+    dialog.classList.add("fade-out");
+
+    setTimeout(() => {
+      dialog.innerText = getDialogText(section);
+      dialog.classList.remove("fade-out");
+      dialog.classList.add("bubble");
+      dialog.classList.add("fade-in");
+    }, 500); // Duration of the fade-out animation
+  }
+
+  window.addEventListener("scroll", updateDialogText);
+  window.addEventListener("resize", updateDialogText);
+
+  updateDialogText();
+</script>
+
+<div class="lumi-helper">
+  <div id="lumi-message" class="text-xs right"></div>
+
+  <div class="lumi-container">
+    <div class="lumi-animated"></div>
+  </div>
+</div>
+
+<style>
+  .bubble {
+    --shadow: rgba(0, 0, 0, 0.1);
+    --px: 4px;
+
+    --bubble-border: 0 calc(-1 * var(--px)) var(--primary),
+      0 calc(-2 * var(--px)) var(--secondary), var(--px) 0 var(--primary),
+      var(--px) calc(-1 * var(--px)) var(--secondary),
+      calc(2 * var(--px)) 0 var(--secondary), 0 var(--px) var(--primary),
+      0 calc(2 * var(--px)) var(--secondary),
+      calc(-1 * var(--px)) 0 var(--primary),
+      calc(-1 * var(--px)) var(--px) var(--secondary),
+      calc(-2 * var(--px)) 0 var(--secondary),
+      calc(-1 * var(--px)) calc(-1 * var(--px)) var(--secondary),
+      var(--px) var(--px) var(--secondary);
+
+    position: absolute;
+    bottom: 20px;
+    right: 110px;
+    display: inline-block;
+    margin: calc(5 * var(--px));
+    text-align: center;
+    background-color: var(--primary);
+    color: var(--text-secondary);
+    padding: calc(3 * var(--px));
+    box-shadow: var(--bubble-border);
+    box-sizing: border-box;
+    width: 150px;
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      box-sizing: border-box;
+    }
+
+    &.shadow {
+      box-shadow:
+        var(--bubble-border),
+        calc(var(--px) * 3) calc(var(--px) * 3) var(--shadow),
+        calc(var(--px) * 3) var(--px) var(--shadow),
+        calc(var(--px) * 2) calc(var(--px) * 2) var(--shadow);
+    }
+
+    &.right::after {
+      height: var(--px);
+      width: var(--px);
+      right: calc(var(--px) * -2);
+      box-shadow:
+        calc(var(--px) * 1) calc(var(--px) * -1) var(--primary),
+        calc(var(--px) * 1) 0 var(--primary),
+        calc(var(--px) * 2) 0 var(--primary),
+        0 calc(var(--px) * -2) var(--primary),
+        calc(var(--px) * 1) calc(var(--px) * 1) var(--secondary),
+        calc(var(--px) * 2) calc(var(--px) * 1) var(--secondary),
+        calc(var(--px) * 3) calc(var(--px) * 1) var(--secondary),
+        calc(var(--px) * 4) calc(var(--px) * 1) var(--secondary),
+        calc(var(--px) * 3) 0 var(--secondary),
+        calc(var(--px) * 2) calc(var(--px) * -1) var(--secondary),
+        calc(var(--px) * 1) calc(var(--px) * -2) var(--secondary),
+        0 calc(var(--px) * -1) var(--primary);
+    }
+  }
+
+  .fade-in {
+    animation: fadeIn 0.5s forwards;
+  }
+
+  .fade-out {
+    animation: fadeOut 0.5s forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
+  .lumi-container {
+    z-index: 2;
+    width: 120px;
+    height: 120px;
+    filter: drop-shadow(0px 0px 60px var(--accent));
+  }
+</style>

@@ -2,6 +2,7 @@
 @import url(fonts.css);
 @import url(animations.css);
 @import url(lareira.css);
+@import url(lumi.css);
 
 :root {
   --primary: white;
@@ -16,7 +17,7 @@
   --logo-font: "square", sans-serif;
   --text-font: "system-ui", sans-serif;
   --heading-font: "Nine-By-Five", sans-serif;
-  --custom-letter-spacing: 0.4rem;
+  --custom-letter-spacing: 0.2rem;
 
   --custom-scrollbar-background: linear-gradient(
       45deg,
@@ -114,7 +115,7 @@ h4,
 h5,
 h6 {
   font-family: var(--heading-font), sans-serif;
-  letter-spacing: 0.4rem;
+  letter-spacing: var(--custom-letter-spacing);
   text-transform: uppercase;
 }
 
@@ -177,7 +178,7 @@ nav {
 .main-btn::before {
   content: "Coming soon";
   font-size: 0.7rem;
-  letter-spacing: 0.1rem;
+  letter-spacing: var(--custom-letter-spacing);
   color: var(--text-primary);
   position: absolute;
   top: 2px;
