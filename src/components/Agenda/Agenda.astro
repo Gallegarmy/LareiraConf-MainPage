@@ -97,7 +97,11 @@ const agenda = [
   <header
     class="w-full mb-6 p-6 border-8 border-black flex align-center justify-between move-container"
   >
-    <h1 class="text-3xl font-bold">Agenda</h1>
+    <div class="flex flex-col align-start justify-start">
+      <h1 class="text-3xl font-bold">Agenda</h1>
+      <h4 class="text-xs font-bold tracking-normal">Coming soon</h4>
+    </div>
+
     <button class="toggle-agenda">
       <svg
         class="w-8 h-8"
@@ -110,12 +114,12 @@ const agenda = [
           stroke-linecap="round"
           stroke-linejoin="round"
           stroke-width="2"
-          d="M6 18L18 6M6 6l12 12"></path>
+          d="M12 4v16m8-8H4"></path>
       </svg>
     </button>
   </header>
 
-  <ul class="space-y-4 agenda-list open">
+  <ul class="space-y-4 agenda-list">
     {
       agenda.map((item) => (
         <li class="agenda-item border-4 border-black p-4 gap: grid grid-cols-1 sm:grid-cols-[auto,1fr] sm:p-4 sm:gap-16 items-start">
@@ -157,7 +161,7 @@ const agenda = [
   let rotation = 0;
 
   const toggleAgenda = () => {
-    agendaList.classList.toggle("open");
+    // agendaList.classList.toggle("open");
     rotation += 225;
     chevron.style.transform = `rotate(${rotation}deg)`;
   };
