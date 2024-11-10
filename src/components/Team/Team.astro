@@ -15,12 +15,11 @@ const crew = [
     src: Ignacio,
     alt: "Miembro del equipo",
     role: "Founder",
-    job: "Software developer",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    redes: [
-      { icon: "Linkedin", url: "https://www.linkedin.com/in/ignacio.../" },
-    ],
-    groups: [{ icon: "Sysarmy", url: "" }],
+    job: "DevOps",
+    description:
+      "Apasionado por la tecnología y el desarrollo de soluciones digitales. He ayudado a traer Sysarmy a Galicia para seguir conectando a la comunidad IT",
+    redes: [{ icon: "Linkedin", username: "ignacioespositobusto" }],
+    groups: [{ icon: "Sysarmy", url: "https://sysarmygalicia.com/" }],
   },
   {
     name: "Andrea Magán",
@@ -28,13 +27,15 @@ const crew = [
     alt: "Andrea Magán",
     role: "Presentadora",
     job: "Front developer",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    redes: [
-      { icon: "Linkedin", url: "https://www.linkedin.com/in/andreamaganrey/" },
-    ],
+    description:
+      "Dev by day, designer by night. Me encata crear productos con buena UX, y construir comunidades y equipos.",
+    redes: [{ icon: "Linkedin", username: "andreamaganrey" }],
     groups: [
-      { icon: "Coruña WTF", url: "" },
-      { icon: "Sysarmy", url: "" },
+      {
+        icon: "CoruñaWTF",
+        url: "https://www.eventbrite.es/o/corunawtf-58544773663",
+      },
+      { icon: "Sysarmy", url: "https://sysarmygalicia.com/" },
     ],
   },
   {
@@ -43,11 +44,16 @@ const crew = [
     alt: "Jesús Pérez Roca",
     role: "Beerworking",
     job: "Profesor",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    redes: [{ icon: "Linkedin", url: "https://www.linkedin.com/in/jesus../" }],
+    description:
+      "Profesor experimentado con un historial demostrado de trabajo en la industria de la educación superior.",
+    redes: [{ icon: "Linkedin", username: "jesusperezrocafernandez" }],
     groups: [
-      { icon: "Python", url: "" },
-      { icon: "Coruña WTF", url: "" },
+      {
+        icon: "CoruñaWTF",
+        url: "https://www.eventbrite.es/o/corunawtf-58544773663",
+      },
+      { icon: "Sysarmy", url: "https://sysarmygalicia.com/" },
+      { icon: "Python", url: "https://pythoncoruna.github.io/es/" },
     ],
   },
   {
@@ -55,10 +61,10 @@ const crew = [
     src: Jorge,
     alt: "Jorge Teixeira",
     role: "Tesorero",
-    job: "Software developer",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    redes: [{ icon: "Linkedin", url: "https://www.linkedin.com/in/juan.../" }],
-    groups: [{ icon: "Sysarmy", url: "" }],
+    job: "Full Stack Engineer",
+    description: "Mi pasión radica en la comunidad y empoderar a los demás.",
+    redes: [{ icon: "Linkedin", username: "jorge-teixeira-crespo" }],
+    groups: [{ icon: "Gpul", url: "https://gpul.org/" }],
   },
 ];
 ---
@@ -116,7 +122,7 @@ const crew = [
                     </div>
                   </div>
                   <section class="groups flex flex-col p-2 w-full">
-                    <p class="text-xs">Comunidades:</p>
+                    <p class="text-xs md:text-xxs">Comunidades:</p>
                     <div class="flex flex-wrap gap-2 items-center whitespace-nowrap">
                       {crewMate.groups.map((item) => {
                         return <span class="tag">{item.icon} </span>;
@@ -124,21 +130,25 @@ const crew = [
                     </div>
                   </section>
 
-                  <div class="description p-4 text-center flex flex-col flex-grow justify-around items-center">
-                    <p class="text-xs">{crewMate.description}</p>
-                    {crewMate.redes.map((item) => {
-                      return (
-                        <div>
-                          {item.icon === "Linkedin" && (
-                            <Social
-                              href={item.url}
-                              platform="linkedin"
-                              class="text-blue-500 hover:underline mr-2"
-                            />
-                          )}
-                        </div>
-                      );
-                    })}
+                  <div class="description p-2 text-center flex flex-col flex-grow justify-around items-center">
+                    <p class="text-xs md:text-xxs">
+                      {crewMate.description}
+                      <div class="flex justify-center">
+                        {crewMate.redes.map((item) => {
+                          return (
+                            <>
+                              {item.icon === "Linkedin" && (
+                                <Social
+                                  username={item.username}
+                                  platform="linkedin"
+                                  class="text-blue-500 hover:underline mr-2"
+                                />
+                              )}
+                            </>
+                          );
+                        })}
+                      </div>
+                    </p>
                   </div>
                 </div>
               </div>
@@ -165,7 +175,7 @@ const crew = [
   .tag {
     background-color: var(--secondary);
     color: var(--text-primary);
-    padding: 0.2rem 0.5rem;
+    padding: 0.1rem 0.2rem;
     font-size: 0.7rem;
   }
 
