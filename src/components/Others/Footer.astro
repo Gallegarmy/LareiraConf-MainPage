@@ -1,5 +1,8 @@
 ---
 import Social from "@components/Others/Social.astro";
+import { Content as CodeOfConduct } from "@components/CodeOfConduct/CodeOfConduct.md";
+import { Content as PrivacyPolicy } from "@components/PrivacyPolicy/PrivacyPolicy.md";
+import Modal from "./Modal.astro";
 
 const linkedin = "lareira-conf-coruña-20313a337";
 const x = "LareiraConf";
@@ -8,14 +11,14 @@ const instagram = "lareiraconf";
 
 <footer class="grid grid-cols-1 md:grid-cols-3 text-white p-4 gap-2">
   <div
-    class="order-2 md:order-1 flex justify-between h-full flex-row md:flex-col"
+    class="order-2 md:order-1 flex justify-between h-full flex-row md:flex-col items-start"
   >
-    <p>
-      <a href="/codigo-de-conducta">Código de conducta</a>
-    </p>
-    <p>
-      <a href="/politica-de-privacidad">Política de privacidad</a>
-    </p>
+    <Modal id="codeOfConduct" title="Código de conducta">
+      <CodeOfConduct slot="main" />
+    </Modal>
+    <Modal id="privacyPolicy" title="Política de privacidad">
+      <PrivacyPolicy slot="main" />
+    </Modal>
   </div>
   <div class="order-1 md:order-2 flex flex-col align-center h-full">
     <p class="social flex gap-2 justify-center">

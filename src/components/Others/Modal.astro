@@ -1,0 +1,85 @@
+---
+const { id, title } = Astro.props;
+---
+
+<style>
+  dialog {
+    overflow: hidden;
+    border: 8px solid var(--secondary);
+    width: 60%;
+    height: 60%;
+    &::backdrop {
+      position: fixed;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .dialog-content {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    header {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.2rem 0.2rem 0.2rem 1rem;
+      background-color: var(--secondary);
+      color: var(--text-primary);
+    }
+
+    .content {
+      display: flex;
+      gap: 16px;
+      flex-direction: column;
+      overflow: auto;
+      height: 100%;
+      padding: 2rem;
+      gap: 1rem;
+    }
+  }
+
+  .link:hover {
+    color: var(--accent);
+  }
+</style>
+
+<button class="link" onclick={`window.${id}.showModal()`}>{title}</button>
+
+<dialog id=`${id}`>
+  <div class="dialog-content">
+    <header>
+      <h2>{title}</h2>
+      <form method="dialog">
+        <button>
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </form>
+    </header>
+    <div class="content">
+      <slot name="main" />
+    </div>
+  </div>
+</dialog>
