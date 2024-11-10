@@ -17,6 +17,9 @@ module.exports = {
         lg: "16px 16px 0px 0px var(--secondary)",
         sm: "8px 8px 0px 0px var(--secondary)",
       },
+      fontSize: {
+        xxs: "0.65rem",
+      },
     },
   },
   plugins: [],

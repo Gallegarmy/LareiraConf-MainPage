@@ -5,6 +5,7 @@ import Raiola from "@img/sponsors/raiola.svg";
 import Dinahosting from "@img/sponsors/dinahosting.svg";
 import Tecdesoft from "@img/sponsors/tecdesoft.svg";
 import Captology from "@img/sponsors/captology.svg";
+import SponsorCard from "./SponsorCard.astro";
 
 const sponsors = [
   {
@@ -45,28 +46,8 @@ const sponsors = [
       organizar un evento que reúna a la comunidad tecnológica gallega con el
       nivel que merece y con un precio ajustado.
     </p>
-    <div class="flex flex-col space-y-8">
-      <SponsorTier
-        title="Lume"
-        tier="lume"
-        sponsors={sponsors}
-        class="lume-tier"
-        gap="gap-16"
-      />
-      <SponsorTier
-        title="Brasa"
-        tier="brasa"
-        sponsors={sponsors}
-        class="brasa-tier"
-        gap="gap-8"
-      />
-      <SponsorTier
-        title="Faisca"
-        tier="faisca"
-        sponsors={sponsors}
-        class="faisca-tier"
-        gap="gap-8"
-      />
+    <div class="flex flex-row gap-2">
+      {sponsors.map((sponsor) => <SponsorCard {...sponsor} />)}
     </div>
     <p class="mb-10 flex flex-col item-center">
       <span class="mb-2">
