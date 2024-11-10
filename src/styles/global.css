@@ -102,6 +102,10 @@ button,
   cursor: url("/src/img/assets/cursor-pointer.svg") 16 0, pointer;
 }
 
+a:hover {
+  color: var(--accent);
+}
+
 header {
   padding: 20px;
   border-bottom: 2px solid var(--secondary);
