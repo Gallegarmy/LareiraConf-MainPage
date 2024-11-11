@@ -1,12 +1,12 @@
 @font-face {
   font-family: Square;
-  src: url(/fonts/square.otf);
+  src: url(LareiraConf-MainPage/fonts/square.otf);
 }
 
 @font-face {
   font-family: "Nine-By-Five";
-  src: url(/fonts/Nine-By-Five-NBP.ttf.woff) format("woff"),
-    url(/fonts/Nine-By-Five-NBP.ttf.eot);
+  src: url(LareiraConf-MainPage/fonts/Nine-By-Five-NBP.ttf.woff) format("woff"),
+    url(LareiraConf-MainPage/fonts/Nine-By-Five-NBP.ttf.eot);
   font-weight: normal;
   font-style: normal;
 }

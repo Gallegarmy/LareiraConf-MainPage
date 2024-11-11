@@ -76,7 +76,7 @@
 html {
   font-family: var(--text-font);
   box-sizing: border-box;
-  cursor: url(/src/img/assets/cursor.svg) 16 0, auto;
+  cursor: url("/LareiraConf-MainPage/src/img/assets/cursor.svg") 16 0, auto;
   font-size: 16px;
   color: var(--text-secondary);
 }
