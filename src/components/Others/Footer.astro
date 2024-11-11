@@ -3,6 +3,7 @@ import Social from "@components/Others/Social.astro";
 import { Content as CodeOfConduct } from "@components/CodeOfConduct/CodeOfConduct.md";
 import { Content as PrivacyPolicy } from "@components/PrivacyPolicy/PrivacyPolicy.md";
 import Modal from "./Modal.astro";
+import LareiraSocials from "./LareiraSocials.astro";
 
 const linkedin = "lareira-conf-coruña-20313a337";
 const x = "LareiraConf";
@@ -22,9 +23,7 @@ const instagram = "lareiraconf";
   </div>
   <div class="order-1 md:order-2 flex flex-col align-center h-full">
     <p class="social flex gap-2 justify-center">
-      <Social username={linkedin} platform="linkedin" />
-      <Social username={x} platform="x" />
-      <Social username={instagram} platform="instagram" />
+      <LareiraSocials customClass={"text-lg"} />
     </p>
   </div>
   <div
@@ -51,9 +50,5 @@ const instagram = "lareiraconf";
     background-color: var(--primary);
     color: var(--text-secondary);
     font-size: 0.7rem;
-  }
-
-  .social {
-    font-size: 1rem;
   }
 </style>
