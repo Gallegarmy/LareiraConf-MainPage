@@ -2,7 +2,11 @@
   const dialogs = [
     {
       key: "about",
-      text: "¡Hola! Yo soy Lumi, de la Coru neno. E ti, de quén ves sendo?",
+      text: "¡Hola! Soy Lumi, de la Coru neno. E ti, de quén ves sendo?",
+    },
+    {
+      key: "about",
+      text: "Ten cuidado si me tocas, puedo prender fuego a la web",
     },
     {
       key: "about",
@@ -22,7 +26,7 @@
     },
     {
       key: "about",
-      text: "¡Prepara las brasas, que aquí las ideas saltan las cacharelas!",
+      text: "¡Prepara las brasas, que aquí as ideas saltan as cacharelas!",
     },
     {
       key: "about",
@@ -43,7 +47,7 @@
     },
     {
       key: "team",
-      text: "Aquí cada uno pone su granito… o mejor dicho, ¡su brasita para que este evento sea puro lume!",
+      text: "Aquí cada uno pone su granito… o mejor dicho, ¡su brasita para que este evento sexa puro lume!",
     },
     {
       key: "team",
@@ -51,7 +55,7 @@
     },
     {
       key: "team",
-      text: "Estos del equipo tienen arte… No sé qué harían sin mí, pero oye, se lo curran un montón.",
+      text: "Estos del equipo son unos currantes… No sé qué harían sin mí, pero oe, fano con xeito.",
     },
     {
       key: "agenda",
@@ -126,9 +130,11 @@
     },
   ];
 
-  let previousSection = "";
+  let currentSection = "about";
 
   function getDialogText(section) {
+    console.log(section);
+
     const sectionDialogs = dialogs.filter((d) => d.key === section);
     const availableDialogs =
       sectionDialogs.length > 0 ? sectionDialogs : dialogs;
@@ -142,7 +148,7 @@
       (section) => section.id
     );
 
-    let currentSection = "";
+    let currentSection = "about";
 
     sections.forEach((section) => {
       const rect = section.getBoundingClientRect();
@@ -154,31 +160,48 @@
   }
 
   const dialog = document.getElementById("lumi-message");
+  const lumi = document.getElementById("lumi-container");
 
-  function updateDialogText() {
+  function updateSection() {
     const section = getCurrentSection();
-    if (section === previousSection) {
+    if (section === currentSection) {
       return;
     }
 
     console.log(section);
-    previousSection = section;
+    currentSection = section;
+  }
 
-    dialog.classList.remove("fade-in");
-    dialog.classList.add("fade-out");
-
+  function updateDialogText() {
     setTimeout(() => {
-      dialog.innerText = getDialogText(section);
       dialog.classList.remove("fade-out");
-      dialog.classList.add("bubble");
       dialog.classList.add("fade-in");
+      dialog.classList.add("bubble");
+      dialog.innerText = getDialogText(currentSection);
+
+      setTimeout(() => {
+        dialog.classList.remove("fade-in");
+        dialog.classList.add("fade-out");
+      }, 10000);
     }, 500); // Duration of the fade-out animation
   }
 
-  window.addEventListener("scroll", updateDialogText);
-  window.addEventListener("resize", updateDialogText);
+  function showLumi() {
+    setTimeout(() => {
+      lumi.classList.remove("fade-out");
+      lumi.classList.add("fade-in");
+    }, 500); // Duration of the fade-out animation
+  }
 
-  updateDialogText();
+  setTimeout(() => {
+    updateDialogText();
+    setInterval(updateDialogText, 15000); // Call updateDialogText every 5 seconds
+  }, 1000); // Call updateDialogText 1 second after rendering the page
+
+  window.addEventListener("scroll", updateSection);
+  window.addEventListener("resize", updateSection);
+  showLumi();
+  // updateDialogText();
 </script>
 
 <div class="lumi-helper">
