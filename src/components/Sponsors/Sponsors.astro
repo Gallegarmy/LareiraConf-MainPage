@@ -8,12 +8,12 @@ import Captology from "@img/sponsors/captology.svg";
 import SponsorCard from "./SponsorCard.astro";
 
 const sponsors = [
-  {
-    name: "Raiola Networks",
-    logo: Raiola,
-    url: "https://raiolanetworks.com/",
-    tier: "lume",
-  },
+  // {
+  //   name: "Raiola Networks",
+  //   logo: Raiola,
+  //   url: "https://raiolanetworks.com/",
+  //   tier: "lume",
+  // },
   {
     name: "dinahosting",
     logo: Dinahosting,
@@ -46,7 +46,7 @@ const sponsors = [
       organizar un evento que reúna a la comunidad tecnológica gallega con el
       nivel que merece y con un precio ajustado.
     </p>
-    <div class="flex flex-row gap-2">
+    <div class="flex flex-row gap-2 flex-wrap justify-around">
       {sponsors.map((sponsor) => <SponsorCard {...sponsor} />)}
     </div>
     <p class="mb-10 flex flex-col item-center">
