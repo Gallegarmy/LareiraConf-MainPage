@@ -38,15 +38,25 @@ import Lumi from "./Lumi.astro";
   const body = document.body;
   const checkBox = document.getElementById("checkBox") as HTMLInputElement;
 
+  const currentTheme = localStorage.getItem("theme");
+  if (currentTheme) {
+    body.classList.add(currentTheme);
+    body.classList.remove(currentTheme === "dark" ? "light" : "dark");
+    body.setAttribute("data-theme", currentTheme);
+    checkBox.checked = currentTheme === "dark";
+  }
+
   checkBox.addEventListener("change", () => {
-    if ((checkBox as HTMLInputElement).checked) {
+    if (checkBox.checked) {
       body.classList.add("dark");
       body.classList.remove("light");
       body.setAttribute("data-theme", "dark");
+      localStorage.setItem("theme", "dark");
     } else {
       body.classList.add("light");
       body.classList.remove("dark");
       body.setAttribute("data-theme", "light");
+      localStorage.setItem("theme", "light");
     }
   });
 </script>

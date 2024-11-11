@@ -192,7 +192,7 @@
 <style>
   .bubble {
     --shadow: rgba(0, 0, 0, 0.1);
-    --px: 4px;
+    --px: 0.25rem;
 
     --bubble-border: 0 calc(-1 * var(--px)) var(--primary),
       0 calc(-2 * var(--px)) var(--secondary), var(--px) 0 var(--primary),
@@ -206,8 +206,8 @@
       var(--px) var(--px) var(--secondary);
 
     position: absolute;
-    bottom: 20px;
-    right: 110px;
+    bottom: 1.25rem;
+    right: 6.875rem;
     display: inline-block;
     margin: calc(5 * var(--px));
     text-align: center;
@@ -216,7 +216,7 @@
     padding: calc(3 * var(--px));
     box-shadow: var(--bubble-border);
     box-sizing: border-box;
-    width: 150px;
+    width: 13rem;
 
     &::after {
       content: "";
@@ -281,8 +281,8 @@
 
   .lumi-container {
     z-index: 2;
-    width: 120px;
-    height: 120px;
+    width: 80px;
+    height: 80px;
     filter: drop-shadow(0px 0px 60px var(--accent));
   }
 </style>
