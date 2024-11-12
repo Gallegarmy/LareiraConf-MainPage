@@ -172,6 +172,7 @@ nav {
 }
 
 .main-btn {
+  position: relative;
   background-color: var(--accent);
   color: var(--text-primary);
 }
@@ -182,10 +183,14 @@ nav {
 .main-btn::before {
   content: "Coming soon";
   font-size: 0.7rem;
-  letter-spacing: var(--custom-letter-spacing);
+  letter-spacing: 0.1em;
   color: var(--text-primary);
   position: absolute;
-  top: 2px;
+  bottom: 2px;
+  left: 50%;
+  text-align: center;
+  transform: translateX(-50%);
+  width: 100%;
   text-align: center;
 }
 

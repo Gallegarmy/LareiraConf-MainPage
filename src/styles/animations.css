@@ -39,6 +39,7 @@
 .front,
 .back {
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   position: absolute;
   top: 0;
   left: 0;
@@ -68,44 +69,25 @@
 }
 
 @keyframes burning {
-  0%, 100% {
-    text-shadow:
-      0 0 0 var(--color-5),
-      0 0 0 var(--accent),
-      -1px -1px 0 #cd4606,
-      0 -2px 0 #973716,
-      1px -2px 0 #ffca32;
+  0%,
+  100% {
+    text-shadow: 0 0 0 var(--color-5), 0 0 0 var(--accent), -1px -1px 0 #cd4606,
+      0 -2px 0 #973716, 1px -2px 0 #ffca32;
   }
   20% {
-    text-shadow:
-      1px 1px 0 var(--color-5),
-      -1px 0 0 var(--accent),
-      0 -1px 0 #cd4606,
-      -1px -2px 0 #973716,
-      0 -1px 0 #ffca32;
+    text-shadow: 1px 1px 0 var(--color-5), -1px 0 0 var(--accent),
+      0 -1px 0 #cd4606, -1px -2px 0 #973716, 0 -1px 0 #ffca32;
   }
   40% {
-    text-shadow:
-      -1px 0 0 var(--color-5),
-      1px -1px 0 var(--accent),
-      0 1px 0 #cd4606,
-      1px 0 0 #973716,
-      -1px -1px 0 #ffca32;
+    text-shadow: -1px 0 0 var(--color-5), 1px -1px 0 var(--accent),
+      0 1px 0 #cd4606, 1px 0 0 #973716, -1px -1px 0 #ffca32;
   }
   60% {
-    text-shadow:
-      0 1px 0 var(--color-5),
-      -1px 1px 0 var(--accent),
-      1px 0 0 #cd4606,
-      0 -1px 0 #973716,
-      1px -1px 0 #ffca32;
+    text-shadow: 0 1px 0 var(--color-5), -1px 1px 0 var(--accent),
+      1px 0 0 #cd4606, 0 -1px 0 #973716, 1px -1px 0 #ffca32;
   }
   80% {
-    text-shadow:
-      1px -1px 0 var(--color-5),
-      0 0 0 var(--accent),
-      -1px 1px 0 #cd4606,
-      1px 1px 0 #973716,
-      0 -2px 0 #ffca32;
+    text-shadow: 1px -1px 0 var(--color-5), 0 0 0 var(--accent),
+      -1px 1px 0 #cd4606, 1px 1px 0 #973716, 0 -2px 0 #ffca32;
   }
 }

@@ -196,18 +196,33 @@
   setTimeout(() => {
     updateDialogText();
     setInterval(updateDialogText, 15000); // Call updateDialogText every 5 seconds
-  }, 1000); // Call updateDialogText 1 second after rendering the page
+  }, 1000);
 
   window.addEventListener("scroll", updateSection);
   window.addEventListener("resize", updateSection);
   showLumi();
-  // updateDialogText();
+  function getRandomInterval(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
+  function applyBounceAnimation() {
+    const element = document.getElementById("lumi");
+    element.classList.add("bounce");
+    setTimeout(() => {
+      element.classList.remove("bounce");
+    }, 1000);
+
+    const nextInterval = getRandomInterval(2000, 15000);
+    setTimeout(applyBounceAnimation, nextInterval);
+  }
+
+  applyBounceAnimation();
 </script>
 
 <div class="lumi-helper">
   <div id="lumi-message" class="text-xs right"></div>
 
-  <div class="lumi-container">
+  <div id="lumi" class="lumi-container">
     <div class="lumi-animated"></div>
   </div>
 </div>
@@ -307,5 +322,26 @@
     width: 80px;
     height: 80px;
     filter: drop-shadow(0px 0px 60px var(--accent));
+    /* animation: bounce 1s ease; */
+  }
+
+  @keyframes bounce {
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(calc(-10px / 2));
+    }
+    60% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .bounce {
+    animation: bounce 1s ease;
   }
 </style>
