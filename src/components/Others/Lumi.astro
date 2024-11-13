@@ -2,7 +2,7 @@
   const dialogs = [
     {
       key: "about",
-      text: "¡Hola! Soy Lumi, de la Coru neno. E ti, de quén ves sendo?",
+      text: "¡Hola! Soy Lumi, de la Coru neno. <i>E ti, de quén ves sendo?<i>",
     },
     {
       key: "about",
@@ -10,11 +10,11 @@
     },
     {
       key: "about",
-      text: "Aquí en Galicia, tenemos buen humor, buen pulpo... ¡y ahora unha pedazo conferencia!",
+      text: "Aquí en Galicia, tenemos buen humor, buen pulpo... ¡y ahora... <i>unha pedazo conferencia<i>!",
     },
     {
       key: "about",
-      text: "Las llamas no solo calientan fogatas, ¡también eventos tech! ¿Listo para el calorcito de LareiraConf?",
+      text: "Las llamas no solo calientan fogatas, ¡también eventos tech! ¿Listo para <i>o calorciño<i> de LareiraConf?",
     },
     {
       key: "about",
@@ -22,11 +22,11 @@
     },
     {
       key: "about",
-      text: "¿Andas buscando inspiración? Pois aquí temos máis chispas que en San Xoán!",
+      text: "¿Andas buscando inspiración? <i>Pois aquí temos máis chispas que en San Xoán<i>!",
     },
     {
       key: "about",
-      text: "¡Prepara las brasas, que aquí as ideas saltan as cacharelas!",
+      text: "¡Prepara las brasas, que aquí <i>as ideas saltan as cacharelas<i>!",
     },
     {
       key: "about",
@@ -34,20 +34,20 @@
     },
     {
       key: "about",
-      text: "Dicen que soy una llama, pero no hago firewalls...",
+      text: "Dicen que soy una llama, pero no hago <i>firewalls<i>...",
     },
     {
       key: "about",
       text: "¡Enciende tu red! Aquí se crean amistades y, quién sabe, ¡quizás futuros proyectos!",
     },
-    { key: "team", text: "Este es mi equipo. A que son riquiños?" },
+    { key: "team", text: "Este es mi equipo. A que son <i>riquiños<i>?" },
     {
       key: "team",
-      text: "Estos del equipo… ¡más majos imposible! Le meten cariño, horas, y un poquillo de 'retranca', para que esto salga a lo grande.",
+      text: "Estos del equipo… ¡más majos imposible! Le meten cariño, horas, <i>e un poquiño de retranca<i>, para que esto salga a lo grande.",
     },
     {
       key: "team",
-      text: "Aquí cada uno pone su granito… o mejor dicho, ¡su brasita para que este evento sexa puro lume!",
+      text: "Aquí cada uno pone su granito… o mejor dicho, ¡su brasita para que este evento <i>sexa puro lume<i>!",
     },
     {
       key: "team",
@@ -55,7 +55,7 @@
     },
     {
       key: "team",
-      text: "Estos del equipo son unos currantes… No sé qué harían sin mí, pero oe, fano con xeito.",
+      text: "Estos del equipo son unos currantes… No sé qué harían sin mí, <i>pero oe, fano con xeito.<i>",
     },
     {
       key: "agenda",
@@ -65,37 +65,30 @@
       key: "agenda",
       text: "¿La agenda? ¡Ya casi está al rojo vivo! Dame un pelín de tiempo, que lo bueno se hace esperar…",
     },
-
     {
       key: "agenda",
-      text: "¡Tranquilidad, amiguiño! Estoy puliendo la agenda para que sea épica. ¡Pronto más detalles!",
+      text: "<i>¡Tranquilidade, amiguiño!<i> Estoy puliendo la agenda para que sea épica. ¡Pronto más detalles!",
     },
-
     {
       key: "agenda",
       text: "Que no cunda el pánico… la agenda está casi lista. ¡Será una parrillada de buen contenido!",
     },
-
     {
       key: "agenda",
       text: "¡Prometo que la agenda va a prender fuerte! Un poco más de paciencia y verás…",
     },
-
     {
       key: "agenda",
       text: "Aún estoy afinando los detalles… ¡quiero que cada charla prenda algo en ti!",
     },
-
     {
       key: "agenda",
       text: "Tú espera… que cuando veas la agenda, ¡te van a subir los calores de la emoción!",
     },
-
     {
       key: "agenda",
-      text: "Estamos preparando la agenda más riquiña que verás… ¡Pronto estará lista!",
+      text: "Estamos preparando la agenda más <i>riquiña que verás…<i> ¡Pronto estará lista!",
     },
-
     {
       key: "ticket",
       text: "Quieres conocerme, pues no te lo pienses más y compra tu entrada!",
@@ -118,11 +111,11 @@
     },
     {
       key: "sponsors",
-      text: "Sin nuestros patrocinadores, ¡esto no sería más que cenizas! Gracias por el apoyo.",
+      text: "Sin nuestros patrocinadores, ¡esto no sería más que cenizas! <i>Graciñas<i>.",
     },
     {
       key: "sponsors",
-      text: "Nuestros patrocinadores le echan la leña buena a LareiraConf. ¡Así da gusto!",
+      text: "Nuestros patrocinadores le echan leña de la buena a LareiraConf. ¡Así da gusto!",
     },
     {
       key: "sponsors",
@@ -177,7 +170,7 @@
       dialog.classList.remove("fade-out");
       dialog.classList.add("fade-in");
       dialog.classList.add("bubble");
-      dialog.innerText = getDialogText(currentSection);
+      dialog.innerHTML = getDialogText(currentSection);
 
       setTimeout(() => {
         dialog.classList.remove("fade-in");

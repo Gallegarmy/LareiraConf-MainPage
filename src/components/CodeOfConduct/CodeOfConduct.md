@@ -31,7 +31,7 @@ Si necesitas contactar directamente a un miembro del equipo, por favor contacta 
 - **Ignacio Espósito**: [@Qrow01 en Telegram](https://t.me/Qrow01)
 - **Andrea Magán**: [@Andrea_MR en Telegram](https://t.me/Andrea_MR)
 - **Jesús Perez-Roca**: [@Yisus1982 en Telegram](https://t.me/Yisus1982)
-- **Bruno Cabado**: [@jorgeteixe en Telegram](https://t.me/jorgeteixe)
+- **Jorge Teixeira**: [@jorgeteixe en Telegram](https://t.me/jorgeteixe)
 
 ## Cambios
 

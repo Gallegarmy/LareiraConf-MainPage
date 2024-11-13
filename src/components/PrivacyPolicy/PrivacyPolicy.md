@@ -1,5 +1,5 @@
 ---
-title: "Código de Conducta"
+title: "Política de privacidad"
 ---
 
 En cumplimiento con la normativa vigente sobre protección de datos personales, se le informa de los siguientes aspectos:
