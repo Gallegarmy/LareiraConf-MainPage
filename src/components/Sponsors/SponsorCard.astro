@@ -46,6 +46,11 @@ const { url, logo, name, tier, class: customClass } = Astro.props;
   .sponsor-card {
     height: 100%;
     max-width: 240px;
+    width: fit-content;
+  }
+
+  .sponsor-card:hover {
+    background-color: var(--bg-light);
   }
 
   .sponsor-header {
@@ -53,8 +58,8 @@ const { url, logo, name, tier, class: customClass } = Astro.props;
     color: var(--text-primary);
   }
 
-  /* .lume-tier {
-    width: 18rem;
+  .lume-tier {
+    width: 15rem;
   }
 
   .brasa-tier {
@@ -62,6 +67,6 @@ const { url, logo, name, tier, class: customClass } = Astro.props;
   }
 
   .faisca-tier {
-    width: 8rem;
-  } */
+    width: 7rem;
+  }
 </style>

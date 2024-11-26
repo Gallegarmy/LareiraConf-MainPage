@@ -10,6 +10,7 @@
   --terciary: black;
   --color-5: #ff8906;
   --accent: #e95c3c;
+  --bg-light: #f8f8f8;
 
   --text-primary: var(--primary);
   --text-secondary: var(--secondary);
@@ -46,6 +47,7 @@
   --terciary: #1c1c1c;
   --color-5: #ff8906;
   --accent: #e95c3c;
+  --bg-light: #f8f8f8;
 
   --text-primary: #1e1e1e;
   --text-secondary: #e18b49;
@@ -177,8 +179,9 @@ nav {
   color: var(--text-primary);
 }
 
-.main-btn.btn-3d:hover {
-  color: var(--text-secondary);
+.main-btn.btn-3d:hover,
+.main-btn.btn-3d.active {
+  color: var(--text-primary);
 }
 .main-btn::before {
   content: "Coming soon";
