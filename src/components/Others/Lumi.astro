@@ -126,8 +126,6 @@
   let currentSection = "about";
 
   function getDialogText(section) {
-    console.log(section);
-
     const sectionDialogs = dialogs.filter((d) => d.key === section);
     const availableDialogs =
       sectionDialogs.length > 0 ? sectionDialogs : dialogs;
@@ -161,7 +159,6 @@
       return;
     }
 
-    console.log(section);
     currentSection = section;
   }
 
