@@ -1,23 +1,66 @@
 ---
-import LareiraSocials from "@components/Others/LareiraSocials.astro";
 import Wrapper from "@components/Others/Wrapper.astro";
+import Ticket from "@img/assets/ticket.webp";
+import { Image } from "astro:assets";
 ---
 
 <Wrapper>
-  <h1 class="font-title text-5xl xl:text-5xl text-3xl font-bold mb-8"></h1>
-  <div class="grid grid-cols-1 xl:grid-cols-2 gap-12 text-center">
-    <div>
-      <h1 class="font-title text-3xl xl:text-5xl font-bold">
-        ¡Las entradas estarán pronto a la venta!
-      </h1>
-      <h4 class="soon text-xl font-bold tracking-widest">Coming soon</h4>
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 text-center center">
+    <div class="flex justify-center">
+      <Image
+        class="ticket"
+        src={Ticket}
+        alt={"imagen de una entrada"}
+        id="ticket-front"
+      />
+      <Image
+        class="ticket"
+        src={Ticket}
+        alt={"imagen de una entrada"}
+        id="ticket-back"
+      />
     </div>
-
-    <section class="flex flex-col gap-4">
-      <p>Síguenos en redes para ser el primero en enterarte.</p>
-      <LareiraSocials customClass={"text-2xl mb-4"} />
-    </section>
+    <div class="flex align-center justify-evenly flex-col">
+      <h1 class="font-title text-3xl xl:text-5xl font-bold pb-6">
+        ¡Entradas a la venta!
+      </h1>
+      <div class="flex justify-center">
+        <a
+          class="btn-3d main-btn fire"
+          target="_blank"
+          href="https://lareiraconf.eventbrite.es">Cómprala ya</a
+        >
+      </div>
+    </div>
   </div>
 </Wrapper>
 
-<script></script>
+<style>
+  .ticket {
+    width: 350px;
+    height: auto;
+    filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
+    transition: transform 0.3s ease-in-out;
+  }
+
+  @keyframes rotateAnimation {
+    0% {
+      transform: rotate(5deg);
+    }
+    50% {
+      transform: rotate(2deg);
+    }
+    100% {
+      transform: rotate(5deg);
+    }
+  }
+
+  #ticket-front {
+    position: relative;
+    rotate: 10deg;
+  }
+  #ticket-back {
+    position: absolute;
+    animation: rotateAnimation 5s infinite;
+  }
+</style>
