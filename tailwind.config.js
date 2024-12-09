@@ -1,7 +1,5 @@
 module.exports = {
-  content: [
-    "./src/**/*.{astro,html,js,jsx,ts,tsx}", // Asegúrate de incluir Astro y otros formatos relevantes.
-  ],
+  content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   darkMode: "class",
   theme: {
     extend: {
