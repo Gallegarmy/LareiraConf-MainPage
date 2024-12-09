@@ -184,7 +184,7 @@ nav {
   color: var(--text-primary);
 }
 .main-btn::before {
-  content: "Coming soon";
+  /* content: "Coming soon"; */
   font-size: 0.7rem;
   letter-spacing: 0.1em;
   color: var(--text-primary);
