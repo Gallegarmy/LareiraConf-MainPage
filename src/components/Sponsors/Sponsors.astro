@@ -6,6 +6,8 @@ import Dinahosting from "@img/sponsors/dinahosting.svg";
 import Tecdesoft from "@img/sponsors/tecdesoft.svg";
 import Captology from "@img/sponsors/captology.svg";
 import SponsorCard from "./SponsorCard.astro";
+import Teimas from "@img/sponsors/teimas.svg";
+import SmartClick from "@img/sponsors/smartclick.svg";
 
 const sponsors = [
   {
@@ -27,9 +29,21 @@ const sponsors = [
     tier: "lume",
   },
   {
+    name: "Smartclick",
+    logo: SmartClick,
+    url: "https://smartclick.es/",
+    tier: "lume",
+  },
+  {
     name: "Tecdesoft",
     logo: Tecdesoft,
     url: "https://tecdesoft.es/",
+    tier: "brasa",
+  },
+  {
+    name: "Teimas",
+    logo: Teimas,
+    url: "https://www.teimas.com/",
     tier: "brasa",
   },
   {
@@ -53,7 +67,7 @@ const sponsors = [
       nivel que merece y con un precio ajustado.
     </p>
     <div
-      class="flex flex-col items-center gap-2 flex-wrap sm:flex-row sm:items-start"
+      class="flex flex-col items-center justify-center gap-2 flex-wrap sm:flex-row sm:items-start"
     >
       {sponsors.map((sponsor) => <SponsorCard {...sponsor} />)}
     </div>
