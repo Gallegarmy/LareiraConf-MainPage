@@ -51,3 +51,13 @@ const { title } = Astro.props;
     <Footer />
   </body>
 </html>
+
+<script>
+  const body = document.body;
+  const currentTheme = localStorage.getItem("theme");
+  if (currentTheme) {
+    body.classList.add(currentTheme);
+    body.classList.remove(currentTheme === "dark" ? "light" : "dark");
+    body.setAttribute("data-theme", currentTheme);
+  }
+</script>

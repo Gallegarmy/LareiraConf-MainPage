@@ -1,0 +1,72 @@
+---
+import Layout from "src/layouts/Layout.astro";
+import Wrapper from "@components/Others/Wrapper.astro";
+import "../styles/global.css";
+import BrickGame from "@components/Games/BrickGame.astro";
+import { Content as Regulations } from "@components/Regulations/Regulations.md";
+import Modal from "@components/Others/Modal.astro";
+---
+
+<Layout title="Lareira Conf 2025">
+  <div class="grid grid-rows-auto p-6 lg:p-12 gap-24 scroll-mt-32" id="game">
+    <Wrapper>
+      <div class="flex flex-col justify-center items-center gap-8">
+        <div>
+          <h1
+            class="font-title text-3xl xl:text-5xl font-bold text-left text-center"
+          >
+            ¡Juega y gana una entrada!
+          </h1>
+          <p>
+            ¡Demuestra tus habilidades y gana tu entrada para LareiraConf 2025!
+            🚀🔥
+          </p>
+        </div>
+
+        <ol class="flex flex-row gap-16 text-xs">
+          <li class="grow basis-0">
+            <h3 class="text-xl">1 Juega</h3>
+            <p>
+              Diviértete jugando a LareiraGame y consigue la mejor puntuación
+              posible. ¿Serás capaz de superar a otros lareireiros?
+            </p>
+          </li>
+          <li class="grow basis-0">
+            <h3 class="text-xl">2 Comparte tu puntuación:</h3>
+            <p>
+              Compárte tu puntuación en <strong>Twitter</strong> usando el hashtag
+              <strong>#LumiBrickBreaker</strong>, mencionando a <strong
+                >@LareiraConf</strong
+              > y a un amigo.
+            </p>
+          </li>
+          <li class="grow basis-0">
+            <h3 class="text-xl">3 Entra en el sorteo:</h3>
+            <p>
+              Automáticamente formarás parte del sorteo que se hará el <strong
+                >[fecha de sorteo]</strong
+              > y podrás ganar <strong>una entrada para LareiraConf 2025</strong
+              >.
+            </p>
+          </li>
+        </ol>
+
+        <div class="flex justify-center">
+          <BrickGame />
+        </div>
+
+        <div class="bases">
+          <Modal id="regulations" title="Bases del sorteo">
+            <Regulations slot="main" />
+          </Modal>
+        </div>
+      </div>
+    </Wrapper>
+  </div>
+</Layout>
+
+<style>
+  .bases {
+    font-size: 0.7rem;
+  }
+</style>

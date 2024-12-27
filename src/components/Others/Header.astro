@@ -46,6 +46,34 @@
 </header>
 
 <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const links = document.querySelectorAll("header a");
+    const currentPath = window.location.pathname;
+    console.log(currentPath);
+    links.forEach((link) => {
+      const href = link.getAttribute("href");
+      if (href.startsWith("#")) {
+        if (currentPath !== "/") {
+          link.setAttribute("href", `${href}`);
+        }
+      }
+    });
+  });
+
+  // Agregar animación al navegar a un ancla
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault();
+      const targetId = this.getAttribute("href").substring(1);
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: "smooth" });
+      } else {
+        window.location.href = `/${this.getAttribute("href")}`;
+      }
+    });
+  });
+
   document.getElementById("menu-toggle").addEventListener("click", () => {
     const mobileMenu = document.getElementById("mobile-menu");
     mobileMenu.classList.toggle("hidden");
@@ -86,16 +114,6 @@
         }
       });
     }
-  });
-
-  // Agregar animación al navegar a un ancla
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener("click", function (e) {
-      e.preventDefault();
-      const targetId = this.getAttribute("href").substring(1);
-      const targetElement = document.getElementById(targetId);
-      targetElement.scrollIntoView({ behavior: "smooth" });
-    });
   });
 </script>
 

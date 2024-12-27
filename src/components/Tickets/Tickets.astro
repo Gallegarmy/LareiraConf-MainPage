@@ -5,50 +5,70 @@ import { Image } from "astro:assets";
 ---
 
 <Wrapper>
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 text-center center">
-    <div class="flex justify-center items-center">
-      <Image
-        class="ticket"
-        src={Ticket}
-        alt={"imagen de una entrada"}
-        id="ticket-front"
-      />
-      <Image
-        class="ticket"
-        src={Ticket}
-        alt={"imagen de una entrada"}
-        id="ticket-back"
-      />
-    </div>
-    <div class="flex gap-6 items-center justify-evenly flex-col lg:w-fit">
-      <h1 class="font-title text-3xl xl:text-5xl font-bold text-left">
+  <div class="flex flex-col md:flex-row justify-center items-center gap-8">
+    <div
+      class="flex flex-col justify-center items-center gap-8 w-full md:w-2/3"
+    >
+      <h1
+        class="font-title text-3xl xl:text-5xl font-bold text-left text-center"
+      >
         ¡Entradas a la venta!
       </h1>
-      <ul class="text-left">
-        <li>🎟️ Acceso al evento completo.</li>
-        <li>🎁 Welcome pack.</li>
-        <li>🗣️ Más de 10 charlas con ponentes top.</li>
-        <li>⏰ 12h de evento non stop.</li>
-        <li>☕ Coffee breaks y comida.</li>
-        <li>🎉 Sorteos y merchan.</li>
-        <li>💼 Conexión con empresas del sector.</li>
-        <li>🎊 ¡Y muchas sorpresas más!</li>
-      </ul>
-      <div class="flex justify-left lg:w-full">
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 text-center center">
+        <ul class="text-left">
+          <li>🎟️ Acceso al evento completo.</li>
+          <li>🎁 Welcome pack.</li>
+          <li>🗣️ Más de 10 charlas con ponentes top.</li>
+          <li>⏰ 12h de evento non stop.</li>
+        </ul>
+        <ul class="text-left">
+          <li>☕ Coffee breaks y comida.</li>
+          <li>🎉 Sorteos y merchan.</li>
+          <li>💼 Conexión con empresas del sector.</li>
+          <li>🎊 ¡Y muchas sorpresas más!</li>
+        </ul>
+      </div>
+      <div class="flex justify-center">
         <a
-          class="btn-3d main-btn fire w-full"
+          class="btn-3d main-btn fire"
           target="_blank"
           href="https://lareiraconf.eventbrite.es">Cómprala ya</a
         >
       </div>
     </div>
+    <div class="game-advice w-full md:w-1/3 border-8 text-center">
+      <div class="tickets flex justify-center items-center border-8">
+        <Image
+          class="ticket"
+          src={Ticket}
+          alt={"imagen de una entrada"}
+          id="ticket-front"
+        />
+        <Image
+          class="ticket"
+          src={Ticket}
+          alt={"imagen de una entrada"}
+          id="ticket-back"
+        />
+      </div>
+      <h2 class="text-xl">¿Quieres ganar una entrada?</h2>
+      <a class="underline" href="/game">Participa en el sorteo</a>
+    </div>
   </div>
 </Wrapper>
 
 <style>
+  .tickets {
+    border-color: var(--secondary);
+    position: relative;
+    padding: 1rem;
+    width: 100%;
+  }
   .ticket {
-    width: 350px;
-    height: fit-content;
+    /* max-width: 200px; */
+    width: auto;
+    height: auto;
     filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
     transition: transform 0.3s ease-in-out;
   }
@@ -66,11 +86,23 @@ import { Image } from "astro:assets";
   }
 
   #ticket-front {
-    position: relative;
+    position: absolute;
     rotate: 10deg;
+    padding: 1rem;
   }
   #ticket-back {
-    position: absolute;
+    position: relative;
     animation: rotateAnimation 5s infinite;
+  }
+
+  .game-advice {
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-color: var(--secondary);
+    padding: 1rem;
+    max-width: 400px;
   }
 </style>

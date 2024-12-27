@@ -1,0 +1,486 @@
+<div class="game-container">
+  <div class="flex flex-col gap-2 justify-center m-2 toolbar">
+    <span id="message"></span>
+    <div class="buttons">
+      <button id="startButton" class="button">Empezar a jugar</button>
+      <button id="shareButton" class="button">Compartir puntuación en X</button>
+      <button id="resetButton" class="button">Volver a jugar</button>
+    </div>
+  </div>
+  <canvas id="canvas"></canvas>
+</div>
+
+<script>
+  const POWER_UP_TYPES = {
+    EXPAND_PADDLE: "expand_paddle",
+    EXTRA_BALL: "extra_ball",
+    SLOW_BALL: "slow_ball",
+    SPEED_UP_BALL: "speed_up_ball",
+  };
+
+  const powerUpImages = {
+    [POWER_UP_TYPES.EXPAND_PADDLE]: "/src/img/game/powerup1.png",
+    [POWER_UP_TYPES.EXTRA_BALL]: "/src/img/game/powerup2.png",
+    [POWER_UP_TYPES.SLOW_BALL]: "/src/img/game/powerup3.png",
+    [POWER_UP_TYPES.SPEED_UP_BALL]: "/src/img/game/powerup4.png",
+  };
+
+  let powerUps: { x: number; y: number; type: string; active: boolean }[] = [];
+  let slowBallTimeout: number;
+  let ctx: CanvasRenderingContext2D | null,
+    intervalId: number,
+    balls: {
+      x: number;
+      y: number;
+      dx: number;
+      dy: number;
+      active: number;
+      angle: number;
+    }[] = [],
+    bricks: { active: number; color: number }[][] = [],
+    paddleX: number,
+    rightDown = false,
+    leftDown = false,
+    cballs: number,
+    cbricks: number,
+    startTime: number;
+  let paddleW: number,
+    paddleH: number,
+    ballr: number,
+    NROWS: number,
+    NCOLS: number,
+    BRICKWIDTH: number,
+    BRICKHEIGHT: number,
+    ballColor: string,
+    backColor: string,
+    blockColor: string;
+  let points: number = 0;
+  const ballImage = new Image();
+  const paddleImg = new Image();
+  const ballImageScale = 4;
+  const paddleImgScale = 1;
+
+  const startButton = document.getElementById("startButton");
+  const restartButton = document.getElementById("resetButton");
+  const shareButton = document.getElementById("shareButton");
+  const message = document.getElementById("message");
+  const canvas = document.getElementById("canvas") as HTMLCanvasElement;
+
+  restartButton.classList.add("hidden");
+  shareButton.classList.add("hidden");
+
+  function initializeConstants() {
+    const WIDTH = window.innerWidth;
+    const HEIGHT = window.innerHeight * 0.8;
+    canvas.width = WIDTH;
+    canvas.height = HEIGHT;
+
+    paddleW = WIDTH / 10;
+    paddleH = HEIGHT / 50;
+    ballr = 10;
+    NROWS = 5;
+    NCOLS = 5;
+    BRICKWIDTH = WIDTH / NCOLS;
+    BRICKHEIGHT = Math.floor(HEIGHT / 3 / NCOLS);
+
+    // paddleColor = getComputedStyle(document.documentElement)
+    //   .getPropertyValue("--accent")
+    //   .trim();
+    // ballColor = getComputedStyle(document.documentElement)
+    //   .getPropertyValue("--accent")
+    //   .trim();
+    backColor = getComputedStyle(document.documentElement)
+      .getPropertyValue("--primary")
+      .trim();
+    blockColor = getComputedStyle(document.documentElement)
+      .getPropertyValue("--accent")
+      .trim();
+
+    ballImage.src = "/src/img/game/ball.png";
+    paddleImg.src = "/src/img/game/paddle.png";
+  }
+
+  function generatePowerUp(x: number, y: number, type: string) {
+    powerUps.push({ x, y, type, active: true });
+  }
+
+  function drawPowerUp(powerUp: {
+    x: number;
+    y: number;
+    type: string;
+    active: boolean;
+  }) {
+    const img = new Image();
+    img.src = powerUpImages[powerUp.type];
+    if (img.complete) {
+      ctx.drawImage(img, powerUp.x, powerUp.y, 30, 30);
+    } else {
+      img.onload = () => {
+        ctx.drawImage(img, powerUp.x, powerUp.y, 30, 30);
+      };
+    }
+  }
+
+  function applyPowerUp(powerUp: {
+    x: number;
+    y: number;
+    type: string;
+    active: boolean;
+  }) {
+    switch (powerUp.type) {
+      case POWER_UP_TYPES.EXPAND_PADDLE:
+        paddleW *= 1.15; // Reduce the expansion factor further
+        break;
+      case POWER_UP_TYPES.EXTRA_BALL:
+        balls.push({
+          x: canvas.width / 2,
+          y: canvas.height / 2,
+          dx: 1.5,
+          dy: -4,
+          active: 1,
+          angle: 0,
+        });
+        cballs++;
+        break;
+      case POWER_UP_TYPES.SLOW_BALL:
+        balls.forEach((ball) => {
+          ball.dx *= 0.5; // Increase the slow factor
+          ball.dy *= 0.5;
+        });
+        clearTimeout(slowBallTimeout);
+        slowBallTimeout = setTimeout(() => {
+          balls.forEach((ball) => {
+            ball.dx *= 2; // Adjust to return to original speed
+            ball.dy *= 2;
+          });
+        }, 2000); // Reduce the duration further
+        break;
+      case POWER_UP_TYPES.SPEED_UP_BALL:
+        balls.forEach((ball) => {
+          ball.dx *= 1.5; // Increase the speed up factor
+          ball.dy *= 1.5;
+        });
+        break;
+    }
+  }
+
+  function updatePowerUps() {
+    powerUps.forEach((powerUp) => {
+      if (powerUp.active) {
+        powerUp.y += 2;
+        drawPowerUp(powerUp);
+        if (
+          powerUp.y + 30 > canvas.height - paddleH &&
+          powerUp.x > paddleX &&
+          powerUp.x < paddleX + paddleW
+        ) {
+          applyPowerUp(powerUp);
+          powerUp.active = false;
+        } else if (powerUp.y > canvas.height) {
+          powerUp.active = false;
+        }
+      }
+    });
+    powerUps = powerUps.filter((powerUp) => powerUp.active);
+  }
+
+  function calculatePoints() {
+    const timeTaken = (Date.now() - startTime) / 1000;
+    const basePoints = (NROWS * NCOLS - cbricks) * 100;
+    const timePenalty = timeTaken * 2;
+    points = Math.max(0, Math.round(basePoints - timePenalty));
+
+    // Añadir puntos extra si se gana
+    if (cbricks === 0) {
+      points += 1000; // Puntos extra por ganar
+    }
+  }
+
+  function draw() {
+    clear();
+    calculatePoints();
+
+    if (cballs === 0 || cbricks === 0) {
+      clearInterval(intervalId);
+      message.classList.remove("hidden");
+      message.innerHTML =
+        cballs === 0
+          ? `Oooohh, has perdido. <br> Puedes volver a intentarlo o compartirlo en redes <br> Puntuación: ${points}`
+          : `Lo has completado. <br> Compartelo en redes <br> Puntuación: ${points}`;
+
+      startButton.classList.add("hidden");
+      restartButton.classList.remove("hidden");
+      shareButton.classList.remove("hidden");
+    }
+
+    drawPaddle(paddleX, canvas.height - paddleH, paddleW, paddleH);
+
+    if (rightDown) paddleX += 10;
+    else if (leftDown) paddleX -= 10;
+
+    drawBricks();
+    updatePowerUps();
+
+    balls.forEach((ball) => {
+      if (ball.active) {
+        ctx.fillStyle = ballColor;
+        drawBall(ball.x, ball.y, ballr, ball.angle);
+
+        const row = Math.floor(ball.y / BRICKHEIGHT);
+        const col = Math.floor(ball.x / BRICKWIDTH);
+
+        if (
+          ball.y < NROWS * BRICKHEIGHT &&
+          row >= 0 &&
+          col >= 0 &&
+          bricks[row][col].active
+        ) {
+          ball.dy = -ball.dy;
+          ball.angle += Math.PI;
+          bricks[row][col].active = 0;
+          cbricks--;
+
+          // Generar power-up de forma aleatoria al romper un ladrillo
+          if (Math.random() < 0.3) {
+            const type =
+              Object.values(POWER_UP_TYPES)[Math.floor(Math.random() * 4)];
+            generatePowerUp(col * BRICKWIDTH, row * BRICKHEIGHT, type);
+          }
+        }
+
+        if (
+          ball.x + ball.dx + ballr > canvas.width ||
+          ball.x + ball.dx - ballr < 0
+        )
+          ball.dx = -ball.dx;
+        if (ball.y + ball.dy - ballr < 0) ball.dy = -ball.dy;
+        else if (ball.y + ball.dy + ballr > canvas.height - paddleH) {
+          if (ball.x > paddleX && ball.x < paddleX + paddleW) {
+            ball.dx = 8 * ((ball.x - (paddleX + paddleW / 2)) / paddleW);
+            ball.dy = -ball.dy;
+            ball.angle += Math.PI;
+          } else if (ball.y + ball.dy + ballr > canvas.height) {
+            ball.active = 0;
+            cballs--;
+          }
+        }
+
+        ball.x += ball.dx;
+        ball.y += ball.dy;
+      }
+    });
+  }
+
+  function init() {
+    ctx = canvas.getContext("2d");
+    paddleX = canvas.width / 2 - paddleW / 2;
+    cballs = 1;
+    cbricks = NROWS * NCOLS;
+    startTime = Date.now();
+
+    bricks = Array.from({ length: NROWS }, () =>
+      Array.from({ length: NCOLS }, () => {
+        return { active: 1, color: Math.floor(Math.random() * 5) + 5 };
+      })
+    );
+    balls = [
+      {
+        x: canvas.width / 2,
+        y: canvas.height / 2,
+        dx: 1.5,
+        dy: -4,
+        active: 1,
+        angle: 50,
+      },
+    ];
+
+    intervalId = setInterval(draw, 10);
+  }
+
+  function clear() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawBackground(0, 0, canvas.width, canvas.height);
+  }
+
+  function drawBall(x: number, y: number, r: number, angle: number) {
+    const scaledR = r * ballImageScale;
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(angle);
+    if (ballImage.complete) {
+      ctx.drawImage(ballImage, -scaledR / 2, -scaledR / 2, scaledR, scaledR);
+    } else {
+      ballImage.onload = () =>
+        ctx.drawImage(ballImage, -scaledR / 2, -scaledR / 2, scaledR, scaledR);
+    }
+    ctx.restore();
+  }
+
+  function drawPaddle(x: number, y: number, w: number, h: number) {
+    const scaledW = w * paddleImgScale;
+    const scaledH = h * paddleImgScale;
+    if (paddleImg.complete) {
+      ctx.drawImage(paddleImg, x, y, scaledW, scaledH);
+    } else {
+      paddleImg.onload = () => ctx.drawImage(paddleImg, x, y, scaledW, scaledH);
+    }
+  }
+
+  function drawBrick(x: number, y: number, w: number, h: number) {
+    ctx.fillRect(x, y, w, h);
+  }
+
+  function drawBackground(x: number, y: number, w: number, h: number) {
+    ctx.fillStyle = backColor;
+    ctx.fillRect(x, y, w, h);
+  }
+
+  function drawBricks() {
+    bricks.forEach((row, i) => {
+      row.forEach((brick: { active: number; color: number }, j: number) => {
+        if (brick.active) {
+          const alpha = brick.color / 10;
+          ctx.fillStyle = hexToRgba(blockColor, alpha);
+          drawBrick(j * BRICKWIDTH, i * BRICKHEIGHT, BRICKWIDTH, BRICKHEIGHT);
+        }
+      });
+    });
+  }
+
+  function hexToRgba(hex: string, alpha = 1) {
+    hex = hex.replace(/^#/, "");
+    const r = parseInt(hex.substring(0, 2), 16);
+    const g = parseInt(hex.substring(2, 4), 16);
+    const b = parseInt(hex.substring(4, 6), 16);
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+  }
+
+  function startGame() {
+    if (!canvas) return;
+    init();
+  }
+
+  function restartGame() {
+    // Reset all game variables
+    powerUps = [];
+    paddleW = canvas.width / 10;
+    points = 0;
+    rightDown = false;
+    leftDown = false;
+
+    // Hide buttons and message
+    shareButton.classList.add("hidden");
+    restartButton.classList.add("hidden");
+    message.classList.add("hidden");
+
+    // Restart the game
+    startGame();
+  }
+
+  function setupEventListeners() {
+    shareButton.addEventListener("click", async () => {
+      const text = `¡He conseguido ${points} puntos en el juego #LumiBrickBreaker de @LareiraConf! ¿Podrás superarme? \n🎮 lareiraconf.es/game`;
+      const url = `https://x.com/intent/tweet?text=${encodeURIComponent(text)}`;
+
+      window.open(url, "_blank");
+    });
+
+    startButton.addEventListener("click", () => {
+      startGame();
+      startButton.classList.add("hidden");
+    });
+
+    restartButton.addEventListener("click", restartGame);
+
+    document.addEventListener("keydown", (evt) => {
+      if (evt.key === "ArrowRight") rightDown = true;
+      else if (evt.key === "ArrowLeft") leftDown = true;
+    });
+
+    document.addEventListener("keyup", (evt) => {
+      if (evt.key === "ArrowRight") rightDown = false;
+      else if (evt.key === "ArrowLeft") leftDown = false;
+    });
+
+    document.addEventListener("mousemove", (evt) => {
+      if (
+        evt.pageX > canvas.offsetLeft &&
+        evt.pageX < canvas.offsetLeft + canvas.width
+      ) {
+        paddleX = Math.max(evt.pageX - canvas.offsetLeft - paddleW / 2, 0);
+        paddleX = Math.min(canvas.width - paddleW, paddleX);
+      }
+    });
+
+    // Add touch event listeners for mobile
+    canvas.addEventListener("touchstart", (evt) => {
+      evt.preventDefault();
+      const touch = evt.touches[0];
+      if (
+        touch.pageX > canvas.offsetLeft &&
+        touch.pageX < canvas.offsetLeft + canvas.width
+      ) {
+        paddleX = Math.max(touch.pageX - canvas.offsetLeft - paddleW / 2, 0);
+        paddleX = Math.min(canvas.width - paddleW, paddleX);
+      }
+    });
+
+    canvas.addEventListener("touchmove", (evt) => {
+      evt.preventDefault();
+      const touch = evt.touches[0];
+      if (
+        touch.pageX > canvas.offsetLeft &&
+        touch.pageX < canvas.offsetLeft + canvas.width
+      ) {
+        paddleX = Math.max(touch.pageX - canvas.offsetLeft - paddleW / 2, 0);
+        paddleX = Math.min(canvas.width - paddleW, paddleX);
+      }
+    });
+  }
+
+  initializeConstants();
+  setupEventListeners();
+</script>
+
+<style>
+  #canvas {
+    background-color: var(--secondary);
+    width: 100%;
+    border: 0.5rem solid var(--secondary);
+  }
+
+  button {
+    padding: 10px 20px;
+    background-color: var(--accent);
+    color: var(--text-primary);
+    border: none;
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  .toolbar {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .game-container {
+    position: relative;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  #message {
+    text-align: center;
+  }
+</style>
