@@ -13,30 +13,13 @@ const { url, logo, name, tier, class: customClass } = Astro.props;
 ---
 
 <a
-  class=`sponsor-card ${tier} filter grayscale transition-all duration-300 hover:filter-none hover:invert-none dark:filter dark:sepia dark:hover:filter-none dark:hover:sepia-0`
+  class=`sponsor-card ${tier}-tier filter grayscale transition-all duration-300 hover:filter-none hover:invert-none dark:filter dark:invert dark:hover:filter-none dark:hover:sepia-0`
   href={url}
   target="_blank"
   rel="noopener noreferrer flex flex-row justify-between p-2"
 >
-  <div class="sponsor-header flex flex-row justify-between p-2">
-    <div class="uppercase">{tier}</div>
-
-    <svg
-      class="w-6 h-6"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="M5 19l14-14M5 5h14v14"></path>
-    </svg>
-  </div>
   <div
-    class={`${tier}-tier sponsor-card border-4 border-t-0 border-black no-underline flex justify-center w-full h-full ${customClass ? customClass : ""}`}
+    class={`sponsor-card no-underline flex justify-center w-full h-full ${customClass ? customClass : ""}`}
   >
     <Image src={logo} alt={name || ""} class="max-w-xs w-full" />
   </div>
@@ -44,29 +27,30 @@ const { url, logo, name, tier, class: customClass } = Astro.props;
 
 <style>
   .sponsor-card {
-    height: 100%;
-    max-width: 240px;
-    width: fit-content;
+    max-width: 400px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .sponsor-card:hover {
     background-color: var(--bg-light);
   }
 
-  .sponsor-header {
-    background-color: var(--secondary);
-    color: var(--text-primary);
-  }
-
   .lume-tier {
-    width: 15rem;
+    max-width: 400px;
   }
 
   .brasa-tier {
-    width: 10rem;
+    max-width: 250px;
   }
 
   .faisca-tier {
-    width: 7rem;
+    max-width: 125px;
+  }
+
+  .vagalume-tier {
+    max-width: 175px;
   }
 </style>

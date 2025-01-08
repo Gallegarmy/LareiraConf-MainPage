@@ -2,7 +2,6 @@
 import SponsorCard from "@components/Sponsors/SponsorCard.astro";
 
 export interface Props {
-  title: string;
   tier: string;
   sponsors: Array<{
     url: string;
@@ -11,32 +10,57 @@ export interface Props {
     tier: string;
   }>;
   class: string;
-  gap: string;
 }
 
-const { title, tier, sponsors, class: className, gap } = Astro.props;
+const { tier, sponsors, class: className } = Astro.props;
 ---
 
-<div class={`border-black border-4 p-4 ${className}`}>
-  <div class="flex flex-col md:flex-row">
-    <div class="md:w-1/5 p-4">
-      <h3 class="text-4xl font-bold mb-8">{title}</h3>
-    </div>
-    <div
-      class={`flex justify-center items-center flex-wrap w-full md:w-4/5 ${gap}`}
+<div class={`sponsor-tier  ${tier} ${className} border-4 border-black flex-col md:flex-row`}>
+  <div class="sponsor-header flex flex-row justify-between p-2 ">
+    <div class="uppercase">{tier}</div>
+
+    <svg
+      class="w-6 h-6"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
     >
-      {
-        sponsors
-          .filter((sponsor) => sponsor.tier === tier)
-          .map((sponsor) => (
-            <SponsorCard
-              url={sponsor.url}
-              logo={sponsor.logo}
-              name={sponsor.name}
-              class={`${tier}-tier`}
-            />
-          ))
-      }
-    </div>
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M5 19l14-14M5 5h14v14"></path>
+    </svg>
+  </div>
+  <div class={`flex flex-wrap w-full gap-6 p-2 justify-around`}>
+    {
+      sponsors
+        .filter((sponsor) => sponsor.tier === tier)
+        .map((sponsor) => (
+          <SponsorCard
+            url={sponsor.url}
+            logo={sponsor.logo}
+            name={sponsor.name}
+            class={`${tier}-tier`}
+            tier={sponsor.tier}
+          />
+        ))
+    }
   </div>
 </div>
+
+<style>
+  .sponsor-tier {
+    /* background-color: white; */
+    height: auto;
+    width: 100%;
+    display: flex; 
+    justify-content: space-around; 
+  }
+  .sponsor-header {
+    background-color: var(--secondary);
+    color: var(--text-primary);
+    min-width: 7.5rem;
+  }
+</style>
