@@ -126,8 +126,6 @@
   let currentSection = "about";
 
   function getDialogText(section) {
-    console.log(section);
-
     const sectionDialogs = dialogs.filter((d) => d.key === section);
     const availableDialogs =
       sectionDialogs.length > 0 ? sectionDialogs : dialogs;
@@ -153,7 +151,7 @@
   }
 
   const dialog = document.getElementById("lumi-message");
-  const lumi = document.getElementById("lumi-container");
+  const lumi = document.getElementById("lumi");
 
   function updateSection() {
     const section = getCurrentSection();
@@ -161,7 +159,6 @@
       return;
     }
 
-    console.log(section);
     currentSection = section;
   }
 
