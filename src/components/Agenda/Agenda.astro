@@ -70,7 +70,7 @@ const agenda: AgendaItem[] = [
     linkedin: "andreamaganrey/",
     x: "AndreaMaganRey",
     role: "Senior Frontend Developer | Sngular",
-    bio: `Soy Andrea, programadora por vocación y diseñadora por pasión. Aunque mi formación es en ingeniería en diseño industrial, exploré el marketing y el diseño antes de descubrir el mundo de la programación. Desde entonces, combino estas habilidades para crear aplicaciones web con una excelente UX. Actualmente, lidero un equipo de frontend especializado en aplicaciones de visualización de datos. /n
+    bio: `Soy Andrea, programadora por vocación y diseñadora por pasión. Aunque mi formación es en ingeniería en diseño industrial, exploré el marketing y el diseño antes de descubrir el mundo de la programación. Desde entonces, combino estas habilidades para crear aplicaciones web con una excelente UX. Actualmente, lidero un equipo de frontend especializado en aplicaciones de visualización de datos.
     Además, disfruto participando en comunidades y organizando eventos, por eso soy co-organizadora de la LareiraConf, donde tendré el honor de ser vuestra maestra de ceremonias.`,
   },
   {
@@ -223,15 +223,16 @@ const agenda: AgendaItem[] = [
       {
         id: "talknestor",
         time: null,
-        title: "**********",
+        title: "Rompiendo los Límites de SQLite",
         subtitle: null,
-        description: null,
+        description: `¿Imaginas poder dar a cada usuario de tu aplicación su propia base de datos SQLite? ¿Una base de datos que se replique automáticamente, que funcione de forma asíncrona y que escale sin esfuerzo?
+        En esta charla, descubriremos cómo libSQL está transformando SQLite para la era moderna. Veremos cómo una comunidad de desarrolladores está llevando la base de datos más utilizada del mundo al siguiente nivel, añadiendo características que parecían imposibles: replicación nativa, búsqueda vectorial para IA, funciones WebAssembly, y mucho más.`,
         speaker: "Nestor López",
         image: Nestor,
         avatar: NestorAvatar,
         linkedin: "nstlopez",
         x: "nstlopez",
-        role: "Software Architect",
+        role: "Software Architect | Zephyr Cloud",
         bio: `Llevo desarrollando software como mi pasión durante 8 años y contribuyendo a proyectos de código abierto.Me defino como arquitecto de software porque disfruto creando procesos que permitan a mis clientes escalar sus empresas de la mano de sus tecnologías.
         Siempre estoy en búsqueda de nuevas herramientas y metodologías para optimizar el desarrollo y la colaboración en los equipos.`,
       },
@@ -241,7 +242,7 @@ const agenda: AgendaItem[] = [
         title: "CI/CD: Pipelines Sólidas en un Mundo Caótico",
         subtitle: "DevOps",
         description:
-         "En un mundo donde cada día escuchas sobre incendios en los despliegues a producción, es momento de buscar la calma y hacer pipelines legibles, entendibles y que no añadan dolores de cabeza a los equipos en cada release.",
+          "En un mundo donde cada día escuchas sobre incendios en los despliegues a producción, es momento de buscar la calma y hacer pipelines legibles, entendibles y que no añadan dolores de cabeza a los equipos en cada release.",
         speaker: "Pablo Pan (PanDevOps)",
         image: Pablo,
         avatar: PabloAvatar,
@@ -341,111 +342,113 @@ const agenda: AgendaItem[] = [
           stroke-linecap="round"
           stroke-linejoin="round"
           stroke-width="2"
-          d="M12 4v16m8-8H4"></path>
+          d="M6 18L18 6M6 6l12 12"></path>
       </svg>
     </button>
   </header>
-  <div class="mb-4 text-center text-sm extended">
-    La agenda de la #LareiraConf25 ya está aquí: 12 horas non stop de charlas
-    que prenderán tu curiosidad y sorpresas para hacerte disfrutar. ¡No te
-    pierdas nada!
-  </div>
+  <div class="agenda-list open">
+    <div class="mb-4 text-center text-sm extended">
+      La agenda de la #LareiraConf25 ya está aquí: 12 horas non stop de charlas
+      que prenderán tu curiosidad y sorpresas para hacerte disfrutar. ¡No te
+      pierdas nada!
+    </div>
 
-  <ul class="space-y-2 agenda-list open">
-    {
-      agenda.map((item, index) => (
-        <li
-          class="agenda-item border-4 border-black p-4 gap: grid grid-cols-1 sm:grid-cols-[auto,1fr] sm:p-4 sm:gap-16 items-start"
-          style={`--speaker-index: ${index};`}
-        >
-          {item.description && (
-            <button class="toggle-talk">
-              <svg
-                class="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </button>
-          )}
-          <div class="text-xl font-semibold mb-2 min-w-[60px] items-center flex gap-2 ">
-            {item.time}
-          </div>
-          <div class="flex flex-col gap-4">
-            <div class="flex flex-col gap-1 ">
-              <h2 class="text-xl font-semibold">{item.title}</h2>
-              {item.subtitle && <i class="text-sm mb-2">{item.subtitle}</i>}
-              {item.description &&
-                item.description
-                  .split("\n")
-                  .map((text) => (
-                    <p class="hide-on-compact agenda-description text-sm mb-3">
-                      {text}
-                    </p>
-                  ))}
-            </div>
-
-            {item.speaker && <Speaker item={item} class="hide-on-compact" />}
-
-            {item.subItems && (
-              <ul class="flex flex-col gap-2">
-                {item.subItems.map((subItem, subIndex) => (
-                  <li
-                    class="agenda-item border-2 border-black p-4 sm:grid-cols-[auto,1fr] sm:p-4 sm:gap-16 items-start"
-                    style={`--speaker-index: ${index}.${subIndex};`}
-                  >
-                    {subItem.description && (
-                      <button class="toggle-talk">
-                        <svg
-                          class="w-6 h-6"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M19 9l-7 7-7-7"
-                          />
-                        </svg>
-                      </button>
-                    )}
-                    <div class="flex flex-col gap-4">
-                      <div class="flex flex-col gap-1">
-                        <h2 class="text-xl font-semibold">{subItem.title}</h2>
-                        {subItem.subtitle && (
-                          <i class="text-sm">{subItem.subtitle}</i>
-                        )}
-                        {subItem.description && (
-                          <p class="hide-on-compact agenda-description text-sm mb-3">
-                            {subItem.description}
-                          </p>
-                        )}
-                      </div>
-                      <Speaker item={subItem} />
-                    </div>
-                  </li>
-                ))}
-              </ul>
+    <ul class="space-y-2">
+      {
+        agenda.map((item, index) => (
+          <li
+            class="agenda-item border-4 border-black p-4 gap: grid grid-cols-1 sm:grid-cols-[auto,1fr] sm:p-4 sm:gap-16 items-start"
+            style={`--speaker-index: ${index};`}
+          >
+            {item.description && (
+              <button class="toggle-talk">
+                <svg
+                  class="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
             )}
-          </div>
-        </li>
-      ))
-    }
-  </ul>
+            <div class="text-xl font-semibold mb-2 min-w-[60px] items-center flex gap-2 ">
+              {item.time}
+            </div>
+            <div class="flex flex-col gap-4">
+              <div class="flex flex-col gap-1 ">
+                <h2 class="text-xl font-semibold">{item.title}</h2>
+                {item.subtitle && <i class="text-sm mb-2">{item.subtitle}</i>}
+                {item.description &&
+                  item.description
+                    .split("\n")
+                    .map((text) => (
+                      <p class="hide-on-compact agenda-description text-sm mb-3">
+                        {text}
+                      </p>
+                    ))}
+              </div>
 
-  <div class="my-4 text-center text-sm extended">
-    Los horarios son orientativos y podrían sufrir modificaciones.
+              {item.speaker && <Speaker item={item} class="hide-on-compact" />}
+
+              {item.subItems && (
+                <ul class="flex flex-col gap-2">
+                  {item.subItems.map((subItem, subIndex) => (
+                    <li
+                      class="agenda-item border-2 border-black p-4 sm:grid-cols-[auto,1fr] sm:p-4 sm:gap-16 items-start"
+                      style={`--speaker-index: ${index}.${subIndex};`}
+                    >
+                      {subItem.description && (
+                        <button class="toggle-talk">
+                          <svg
+                            class="w-6 h-6"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M19 9l-7 7-7-7"
+                            />
+                          </svg>
+                        </button>
+                      )}
+                      <div class="flex flex-col gap-4">
+                        <div class="flex flex-col gap-1">
+                          <h2 class="text-xl font-semibold">{subItem.title}</h2>
+                          {subItem.subtitle && (
+                            <i class="text-sm">{subItem.subtitle}</i>
+                          )}
+                          {subItem.description && (
+                            <p class="hide-on-compact agenda-description text-sm mb-3">
+                              {subItem.description}
+                            </p>
+                          )}
+                        </div>
+                        <Speaker item={subItem} />
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="my-4 text-center text-sm extended">
+      Los horarios son orientativos y podrían sufrir modificaciones.
+    </div>
   </div>
 </Wrapper>
 
