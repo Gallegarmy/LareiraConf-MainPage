@@ -11,10 +11,15 @@ import SmartClick from "@img/sponsors/smartclick.svg";
 import UDC from "@img/sponsors/udc.svg";
 import Codely from "@img/sponsors/codely.svg";
 import Lucus from "@img/sponsors/lucus.svg";
-import Automattic from "@img/sponsors/automattic.svg";
 import Barkibu from "@img/sponsors/barkibu.svg";
 import Docuten from "@img/sponsors/docuten.svg";
 import NextDigital from "@img/sponsors/nextdigital.svg";
+import Sweepend from "@img/sponsors/sweepend.svg";
+import AdanEvents from "@img/sponsors/adanevents.svg";
+import Malte from "@img/sponsors/malte.svg";
+import SirviendoCodigo from "@img/sponsors/sirviendocodigo.svg";
+import GrupoBillingham  from  '@img/sponsors/grupobillingham.svg';
+import WordPress from "@img/sponsors/wordpress.svg";
 
 enum SponsorTier {
   Lume = "lume",
@@ -60,18 +65,18 @@ const sponsors = [
     url: "https://www.barkibu.com/",
     tier: SponsorTier.Lume,
   },
-  // {
-  //   name: "Docuten",
-  //   logo: Docuten,
-  //   url: "https://docuten.com/",
-  //   tier: SponsorTier.Lume,
-  // },
-  // {
-  //   name: "Automattic",
-  //   logo: Automattic,
-  //   url: "https://automattic.com/",
-  //   tier: SponsorTier.Lume,
-  // },
+  {
+    name: "Docuten",
+    logo: Docuten,
+    url: "https://docuten.com/",
+    tier: SponsorTier.Lume,
+  },
+  {
+    name: "WordPress",
+    logo: WordPress,
+    url: "https://wordpress.com/es/wordcamp",
+    tier: SponsorTier.Lume,
+  },
   {
     name: "Teimas",
     logo: Teimas,
@@ -91,10 +96,10 @@ const sponsors = [
     tier: SponsorTier.Faisca,
   },
   {
-    name: "Codely",
-    logo: Codely,
-    url: "https://codely.com/",
-    tier: SponsorTier.Vagalume,
+    name: "Sweepend",
+    logo: Sweepend,
+    url: "https://www.sweepend.com",
+    tier: SponsorTier.Faisca,
   },
   {
     name: "Next Digital",
@@ -103,14 +108,44 @@ const sponsors = [
     tier: SponsorTier.Vagalume,
   },
   {
+    name: "Sirviendo código",
+    logo: SirviendoCodigo,
+    url: "https://sirviendocodigo.com/",
+    tier: SponsorTier.Vagalume,
+  },
+  {
+    name: "Codely",
+    logo: Codely,
+    url: "https://codely.com/",
+    tier: SponsorTier.Vagalume,
+  },
+  {
     name: "Universidade da Coruña",
     logo: UDC,
     url: "https://www.udc.es/",
     tier: SponsorTier.Vagalume,
   },
+  {
+    name: "Adan Events",
+    logo: AdanEvents,
+    url: "mailto:javiayude@gmail.com",
+    tier: SponsorTier.Vagalume,
+  },
+  {
+    name: "Malte",
+    logo: Malte,
+    url: "https://www.somosmalte.com",
+    tier: SponsorTier.Vagalume,
+  },
+  {
+    name: "Grupo Billingam",
+    logo: GrupoBillingham,
+    url: "https://www.grupobillingham.com",
+    tier: SponsorTier.Vagalume,
+  },
 ];
 
-const tiers = [SponsorTier.Lume, SponsorTier.Brasa, SponsorTier.Faisca];
+const tiers = [SponsorTier.Lume, SponsorTier.Brasa, SponsorTier.Faisca, SponsorTier.Vagalume];
 ---
 
 <Wrapper>
@@ -119,10 +154,7 @@ const tiers = [SponsorTier.Lume, SponsorTier.Brasa, SponsorTier.Faisca];
   >
     <h1 class="text-5xl font-bold mb-4">Sponsors</h1>
     <p class="mb-10">
-      La LareiraConf, no sería posible sin el apoyo de las empresas que han
-      apostado por lo que estamos construyendo. Gracias a su ayuda, podemos
-      organizar un evento que reúna a la comunidad tecnológica gallega con el
-      nivel que merece y con un precio ajustado.
+      La LareiraConf no sería posible sin el apoyo de las empresas y organizaciones que han apostado por lo que estamos construyendo, contribuyendo con recursos, servicios y espacios para ofrecer un evento a la altura de la comunidad y una experiencia única a un precio accesible.
     </p>
     <div class="flex items-center justify-between gap-2 flex-wrap">
       {
@@ -133,25 +165,6 @@ const tiers = [SponsorTier.Lume, SponsorTier.Brasa, SponsorTier.Faisca];
             tier={tier}
           />
         ))
-      }
-    </div>
-    <p class="mb-10">
-      Además de nuestros sponsors, contamos con el apoyo de otras organizaciones
-      que han contribuido con servicios, productos o espacios para hacer
-      realidad este evento. Ellos hacen posible que os traigamos sorpresas,
-      sorteos y una experiencia única con unas vistas increíbles.
-    </p>
-    <div class="flex items-center justify-between gap-2 flex-wrap">
-      {
-        (
-          <SponsorsTier
-            sponsors={sponsors.filter(
-              (sponsor) => sponsor.tier === SponsorTier.Vagalume
-            )}
-            class={SponsorTier.Vagalume}
-            tier={SponsorTier.Vagalume}
-          />
-        )
       }
     </div>
     <p class="mb-10 flex flex-col item-center">
