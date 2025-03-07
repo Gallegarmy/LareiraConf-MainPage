@@ -6,7 +6,7 @@ import { Image } from "astro:assets";
 
 <Wrapper>
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 text-center center">
-    <div class="flex justify-center">
+    <div class="flex justify-center items-center">
       <Image
         class="ticket"
         src={Ticket}
@@ -20,13 +20,23 @@ import { Image } from "astro:assets";
         id="ticket-back"
       />
     </div>
-    <div class="flex align-center justify-evenly flex-col">
-      <h1 class="font-title text-3xl xl:text-5xl font-bold pb-6">
+    <div class="flex gap-6 items-center justify-evenly flex-col lg:w-fit">
+      <h1 class="font-title text-3xl xl:text-5xl font-bold text-left">
         ¡Entradas a la venta!
       </h1>
-      <div class="flex justify-center">
+      <ul class="text-left">
+        <li>🎟️ Acceso al evento completo.</li>
+        <li>🎁 Welcome pack.</li>
+        <li>🗣️ Más de 10 charlas con ponentes top.</li>
+        <li>⏰ 12h de evento non stop.</li>
+        <li>☕ Coffee breaks y comida.</li>
+        <li>🎉 Sorteos y merchan.</li>
+        <li>💼 Conexión con empresas del sector.</li>
+        <li>🎊 ¡Y muchas sorpresas más!</li>
+      </ul>
+      <div class="flex justify-left lg:w-full">
         <a
-          class="btn-3d main-btn fire"
+          class="btn-3d main-btn fire w-full"
           target="_blank"
           href="https://lareiraconf.eventbrite.es">Cómprala ya</a
         >
@@ -38,7 +48,7 @@ import { Image } from "astro:assets";
 <style>
   .ticket {
     width: 350px;
-    height: auto;
+    height: fit-content;
     filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
     transition: transform 0.3s ease-in-out;
   }

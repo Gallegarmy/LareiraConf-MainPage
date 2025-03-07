@@ -207,3 +207,8 @@ nav {
   background-size: var(--custom-scrollbar-background-size);
   background-position: var(--custom-scrollbar-background-position);
 }
+
+.label {
+  font-family: var(--heading-font), sans-serif;
+  font-size: 1rem;
+}

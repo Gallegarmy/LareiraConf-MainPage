@@ -1,17 +1,15 @@
 ---
-import Image from "astro/components/Image.astro";
-import Linkedin from "@img/rrss/linkedin.svg";
-import X from "@img/rrss/x.svg";
-
 const { platform, username } = Astro.props;
 const baseUrlIn = "https://www.linkedin.com/in/";
 const baseUrlX = "https://x.com/";
 const baseUrlInstagram = "https://www.instagram.com/";
+const baseUrlBlueSky = "https://bsky.app/profile/";
 
 const platformUrl = {
   linkedin: baseUrlIn,
   x: baseUrlX,
   instagram: baseUrlInstagram,
+  bluesky: baseUrlBlueSky,
 };
 
 const baseUrl = platformUrl[platform];
@@ -69,10 +67,45 @@ const baseUrl = platformUrl[platform];
       </svg>
     )
   }
+  {
+    platform === "bluesky" && (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        version="1.1"
+        width="1.2em"
+        height="1.2em"
+        viewBox="0 0 256 256"
+        xml:space="preserve"
+      >
+        <defs />
+        <g
+          style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;"
+          transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)"
+        >
+          <path
+            d="M 81.18 90 H 8.82 C 3.949 90 0 86.051 0 81.18 V 8.82 C 0 3.949 3.949 0 8.82 0 h 72.36 C 86.051 0 90 3.949 90 8.82 v 72.36 C 90 86.051 86.051 90 81.18 90 z"
+            style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill:currentColor; fill-rule: nonzero; opacity: 1;"
+            transform=" matrix(1 0 0 1 0 0) "
+            stroke-linecap="round"
+          />
+          <path
+            d="M 27.156 20.999 C 34.379 26.421 42.148 37.416 45 43.316 c 2.853 -5.9 10.621 -16.895 17.844 -22.317 c 5.212 -3.913 13.656 -6.94 13.656 2.693 c 0 1.924 -1.103 16.162 -1.75 18.473 c -2.249 8.036 -10.443 10.086 -17.732 8.845 C 69.759 53.179 73 60.362 66 67.544 c -13.294 13.642 -19.107 -3.423 -20.598 -7.795 c -0.273 -0.802 -0.401 -1.177 -0.403 -0.858 c -0.002 -0.319 -0.13 0.056 -0.403 0.858 c -1.49 4.373 -7.303 21.437 -20.598 7.795 c -7 -7.183 -3.759 -14.366 8.983 -16.534 c -7.289 1.241 -15.484 -0.809 -17.732 -8.845 c -0.647 -2.312 -1.75 -16.549 -1.75 -18.473 C 13.5 14.059 21.944 17.086 27.156 20.999 L 27.156 20.999 z"
+            style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;"
+            transform=" matrix(1 0 0 1 0 0) "
+            stroke-linecap="round"
+          />
+        </g>
+      </svg>
+    )
+  }
 </a>
 
 <style>
   .social-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: var(--text-secondary);
     transition: fill 0.3s ease;
   }

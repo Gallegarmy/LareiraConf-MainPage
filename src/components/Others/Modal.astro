@@ -1,13 +1,11 @@
 ---
-const { id, title } = Astro.props;
+const { id, title, class: className } = Astro.props;
 ---
 
 <style>
   dialog {
     overflow: hidden;
     border: 8px solid var(--secondary);
-    width: 60%;
-    height: 60%;
     background-color: var(--primary);
     color: var(--text-secondary);
     &::backdrop {
@@ -51,14 +49,19 @@ const { id, title } = Astro.props;
     }
   }
 
+  dialog.full {
+    height: 100%;
+  }
   .link:hover {
     color: var(--accent);
   }
 </style>
 
-<button class="link" onclick={`window.${id}.showModal()`}>{title}</button>
+<button class="link text-left" onclick={`window.${id}.showModal()`}
+  >{title}</button
+>
 
-<dialog id=`${id}`>
+<dialog id=`${id}` class=`${className} w-5/5 max-h-4/5 lg:w-4/5 sm:max-h-3/5`>
   <div class="dialog-content">
     <header>
       <h2>{title}</h2>
