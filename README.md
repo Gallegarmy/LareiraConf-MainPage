@@ -5,7 +5,6 @@ Welcome to the LareiraConf Main Page repository. This project contains the sourc
 ## Table of Contents
 
 - [About](#about)
-- [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
@@ -47,7 +46,7 @@ We welcome contributions to improve the LareiraConf Main Page. To contribute, pl
 
 1. Fork the repository.
 2. Create a new branch: `git checkout -b feature/your-feature-name`
-3. Make your changes and commit them: `git commit -m "Add your message here`
+3. Make your changes and commit them: `git commit -m "Add your message here"`
 4. Push to the branch: `git push origin feature/your-feature-name`
 5. Open a pull request on GitHub.
 
