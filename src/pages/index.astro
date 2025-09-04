@@ -1,14 +1,10 @@
 ---
 import Intro from "@components/Intro/Intro.astro";
 import Dates from "@components/Intro/Dates.astro";
-import About from "@components/About/About.astro";
-import Team from "@components/Team/Team.astro";
-import Sponsors from "@components/Sponsors/Sponsors.astro";
-import Agenda from "@components/Agenda/Agenda.astro";
+
 import Place from "@components/Intro/Place.astro";
 import Toggle from "@components/Others/Toggle.astro";
 import Layout from "src/layouts/Layout.astro";
-import Tickets from "@components/Tickets/Tickets.astro";
 ---
 
 <Layout title="Lareira Conf 2025">
@@ -25,22 +21,6 @@ import Tickets from "@components/Tickets/Tickets.astro";
       </div>
     </section>
 
-    <section class="row-span-1 scroll-mt-32" id="about">
-      <About />
-    </section>
-
-    <section class="row-span-1 scroll-mt-52" id="agenda">
-      <Agenda />
-    </section>
-    <section class="row-span-1 scroll-mt-32" id="team">
-      <Team />
-    </section>
-    <section class="row-span-1 scroll-mt-32" id="sponsors">
-      <Sponsors />
-    </section>
-    <section class="row-span-1 scroll-mt-32" id="tickets">
-      <Tickets />
-    </section>
     <!-- <section class="row-span-1" id="speakers"><Speakers /></section> -->
   </div>
 </Layout>

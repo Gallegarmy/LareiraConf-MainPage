@@ -1,0 +1,337 @@
+<script>
+  const dialogs = [
+    {
+      key: "about",
+      text: "¡Hola! Soy Lumi, de la Coru neno. <i>E ti, de quén ves sendo?<i>",
+    },
+    {
+      key: "about",
+      text: "Ten cuidado si me tocas, puedo prender fuego a la web",
+    },
+    {
+      key: "about",
+      text: "Aquí en Galicia, tenemos buen humor, buen pulpo... ¡y ahora... <i>unha pedazo conferencia<i>!",
+    },
+    {
+      key: "about",
+      text: "Las llamas no solo calientan fogatas, ¡también eventos tech! ¿Listo para <i>o calorciño<i> de LareiraConf?",
+    },
+    {
+      key: "about",
+      text: "¿Primera vez por aquí? No te preocupes, ¡soy experto en orientar llamas perdidas!",
+    },
+    {
+      key: "about",
+      text: "¿Andas buscando inspiración? <i>Pois aquí temos máis chispas que en San Xoán<i>!",
+    },
+    {
+      key: "about",
+      text: "¡Prepara las brasas, que aquí <i>as ideas saltan as cacharelas<i>!",
+    },
+    {
+      key: "about",
+      text: "¿Un consejo? Mantente encendido… pero sin quemarte.",
+    },
+    {
+      key: "about",
+      text: "Dicen que soy una llama, pero no hago <i>firewalls<i>...",
+    },
+    {
+      key: "about",
+      text: "¡Enciende tu red! Aquí se crean amistades y, quién sabe, ¡quizás futuros proyectos!",
+    },
+    { key: "team", text: "Este es mi equipo. A que son <i>riquiños<i>?" },
+    {
+      key: "team",
+      text: "Estos del equipo… ¡más majos imposible! Le meten cariño, horas, <i>e un poquiño de retranca<i>, para que esto salga a lo grande.",
+    },
+    {
+      key: "team",
+      text: "Aquí cada uno pone su granito… o mejor dicho, ¡su brasita para que este evento <i>sexa puro lume<i>!",
+    },
+    {
+      key: "team",
+      text: "El equipo y yo tenemos una misión: que vengas, te lo pases de lujo, y quieras repetir",
+    },
+    {
+      key: "team",
+      text: "Estos del equipo son unos currantes… No sé qué harían sin mí, <i>pero oe, fano con xeito.<i>",
+    },
+    {
+      key: "agenda",
+      text: "<i>¡Boas novas!</i> La agenda ya está disponible, ¡no te lo pierdas!",
+    },
+    {
+      key: "agenda",
+      text: "¡Ya puedes ver la agenda! Hemos preparado una parrillada de charlas épicas. ¿Estás listo?",
+    },
+    {
+      key: "agenda",
+      text: "¡La agenda ya está al completo! ¿Te atreves a descubrir los ponentes que van a *iluminar* la Lareira?",
+    },
+    {
+      key: "agenda",
+      text: "Ya puedes ver lo que tenemos preparado. La agenda está lista, solo faltas <i>ti</i>.",
+    },
+    {
+      key: "agenda",
+      text: "¿Estás listo para lo que viene? La agenda ya está publicada, ¡flipa!",
+    },
+    {
+      key: "agenda",
+      text: "¡Ya la tenemos aquí! Prepárate para conocer a nuestros Portadores de la llama",
+    },
+    {
+      key: "agenda",
+      text: "¿La agenda? ¡Ya está al rojo vivo!",
+    },
+    {
+      key: "agenda",
+      text: "Hemos preparado la agenda más <i>riquiña que verás…<i>",
+    },
+    {
+      key: "ticket",
+      text: "Quieres conocerme, pues no te lo pienses más y compra tu entrada!",
+    },
+    {
+      key: "ticket",
+      text: "Non te olvides de la fecha: 22 de marzo en A Coruña, apunta que esto está que arde… pero de emoción, claro!",
+    },
+    {
+      key: "ticket",
+      text: "Non hai mal tiempo para un buen evento",
+    },
+    {
+      key: "sponsors",
+      text: "Gracias a nuestros sponsors, LareiraConf está que arde.",
+    },
+    {
+      key: "sponsors",
+      text: "No es por presumir, pero nuestros patrocinadores son puro fuego.",
+    },
+    {
+      key: "sponsors",
+      text: "Sin nuestros patrocinadores, ¡esto no sería más que cenizas! <i>Graciñas<i>.",
+    },
+    {
+      key: "sponsors",
+      text: "Nuestros patrocinadores le echan leña de la buena a LareiraConf. ¡Así da gusto!",
+    },
+    {
+      key: "sponsors",
+      text: "Nuestros patrocinadores… ¡son brasas de las buenas! Gracias por mantener vivo el fuego de LareiraConf.",
+    },
+  ];
+
+  let currentSection = "about";
+
+  function getDialogText(section) {
+    const sectionDialogs = dialogs.filter((d) => d.key === section);
+    const availableDialogs =
+      sectionDialogs.length > 0 ? sectionDialogs : dialogs;
+    const randomDialog =
+      availableDialogs[Math.floor(Math.random() * availableDialogs.length)];
+    return randomDialog.text;
+  }
+
+  function getCurrentSection() {
+    const sections = Array.from(document.querySelectorAll("section")).filter(
+      (section) => section.id
+    );
+
+    let currentSection = "about";
+
+    sections.forEach((section) => {
+      const rect = section.getBoundingClientRect();
+      if (rect.top >= 0 && rect.top <= window.innerHeight / 2) {
+        currentSection = section.id;
+      }
+    });
+    return currentSection;
+  }
+
+  const dialog = document.getElementById("lumi-message");
+  const lumi = document.getElementById("lumi");
+
+  function updateSection() {
+    const section = getCurrentSection();
+    if (section === currentSection) {
+      return;
+    }
+
+    currentSection = section;
+  }
+
+  function updateDialogText() {
+    setTimeout(() => {
+      dialog.classList.remove("fade-out");
+      dialog.classList.add("fade-in");
+      dialog.classList.add("bubble");
+      dialog.innerHTML = getDialogText(currentSection);
+
+      setTimeout(() => {
+        dialog.classList.remove("fade-in");
+        dialog.classList.add("fade-out");
+      }, 10000);
+    }, 500); // Duration of the fade-out animation
+  }
+
+  function showLumi() {
+    setTimeout(() => {
+      lumi.classList.remove("fade-out");
+      lumi.classList.add("fade-in");
+    }, 500); // Duration of the fade-out animation
+  }
+
+  setTimeout(() => {
+    updateDialogText();
+    setInterval(updateDialogText, 15000); // Call updateDialogText every 5 seconds
+  }, 1000);
+
+  window.addEventListener("scroll", updateSection);
+  window.addEventListener("resize", updateSection);
+  showLumi();
+  function getRandomInterval(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
+  function applyBounceAnimation() {
+    const element = document.getElementById("lumi");
+    element.classList.add("bounce");
+    setTimeout(() => {
+      element.classList.remove("bounce");
+    }, 1000);
+
+    const nextInterval = getRandomInterval(2000, 15000);
+    setTimeout(applyBounceAnimation, nextInterval);
+  }
+
+  applyBounceAnimation();
+</script>
+
+<div class="lumi-helper">
+  <div id="lumi-message" class="text-xs right"></div>
+
+  <div id="lumi" class="lumi-container">
+    <div class="lumi-animated"></div>
+  </div>
+</div>
+
+<style>
+  .bubble {
+    --shadow: rgba(0, 0, 0, 0.1);
+    --px: 0.25rem;
+
+    --bubble-border: 0 calc(-1 * var(--px)) var(--primary),
+      0 calc(-2 * var(--px)) var(--secondary), var(--px) 0 var(--primary),
+      var(--px) calc(-1 * var(--px)) var(--secondary),
+      calc(2 * var(--px)) 0 var(--secondary), 0 var(--px) var(--primary),
+      0 calc(2 * var(--px)) var(--secondary),
+      calc(-1 * var(--px)) 0 var(--primary),
+      calc(-1 * var(--px)) var(--px) var(--secondary),
+      calc(-2 * var(--px)) 0 var(--secondary),
+      calc(-1 * var(--px)) calc(-1 * var(--px)) var(--secondary),
+      var(--px) var(--px) var(--secondary);
+
+    position: absolute;
+    bottom: 1.25rem;
+    right: 6.875rem;
+    display: inline-block;
+    margin: calc(5 * var(--px));
+    text-align: center;
+    background-color: var(--primary);
+    color: var(--text-secondary);
+    padding: calc(3 * var(--px));
+    box-shadow: var(--bubble-border);
+    box-sizing: border-box;
+    width: 13rem;
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      box-sizing: border-box;
+    }
+
+    &.shadow {
+      box-shadow:
+        var(--bubble-border),
+        calc(var(--px) * 3) calc(var(--px) * 3) var(--shadow),
+        calc(var(--px) * 3) var(--px) var(--shadow),
+        calc(var(--px) * 2) calc(var(--px) * 2) var(--shadow);
+    }
+
+    &.right::after {
+      height: var(--px);
+      width: var(--px);
+      right: calc(var(--px) * -2);
+      box-shadow:
+        calc(var(--px) * 1) calc(var(--px) * -1) var(--primary),
+        calc(var(--px) * 1) 0 var(--primary),
+        calc(var(--px) * 2) 0 var(--primary),
+        0 calc(var(--px) * -2) var(--primary),
+        calc(var(--px) * 1) calc(var(--px) * 1) var(--secondary),
+        calc(var(--px) * 2) calc(var(--px) * 1) var(--secondary),
+        calc(var(--px) * 3) calc(var(--px) * 1) var(--secondary),
+        calc(var(--px) * 4) calc(var(--px) * 1) var(--secondary),
+        calc(var(--px) * 3) 0 var(--secondary),
+        calc(var(--px) * 2) calc(var(--px) * -1) var(--secondary),
+        calc(var(--px) * 1) calc(var(--px) * -2) var(--secondary),
+        0 calc(var(--px) * -1) var(--primary);
+    }
+  }
+
+  .fade-in {
+    animation: fadeIn 0.5s forwards;
+  }
+
+  .fade-out {
+    animation: fadeOut 0.5s forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
+  .lumi-container {
+    z-index: 2;
+    width: 80px;
+    height: 80px;
+    filter: drop-shadow(0px 0px 60px var(--accent));
+    /* animation: bounce 1s ease; */
+  }
+
+  @keyframes bounce {
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(calc(-10px / 2));
+    }
+    60% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .bounce {
+    animation: bounce 1s ease;
+  }
+</style>

@@ -1,0 +1,78 @@
+---
+import Wrapper from "../Others/Wrapper.astro";
+---
+
+<Wrapper>
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 text-center center">
+    <div class="flex justify-center items-center">
+      <img
+        class="ticket"
+        src="/archived-editions/2025/assets/ticket.webp"
+        alt={"imagen de una entrada"}
+        id="ticket-front"
+      />
+      <img
+        class="ticket"
+        src="/archived-editions/2025/assets/ticket.webp"
+        alt={"imagen de una entrada"}
+        id="ticket-back"
+      />
+    </div>
+    <div class="flex gap-6 items-center justify-evenly flex-col lg:w-fit">
+      <h1 class="font-title text-3xl xl:text-5xl font-bold text-left">
+        ¡Entradas agotadas!
+      </h1>
+      <div>
+        Gracias a todos, por hacerlo posible. Nos vemos junto al fuego 🔥
+      </div>
+      <!-- <ul class="text-left">
+        <li>🎟️ Acceso al evento completo.</li>
+        <li>🎁 Welcome pack.</li>
+        <li>🗣️ Más de 10 charlas con ponentes top.</li>
+        <li>⏰ 12h de evento non stop.</li>
+        <li>☕ Coffee breaks y comida.</li>
+        <li>🎉 Sorteos y merchan.</li>
+        <li>💼 Conexión con empresas del sector.</li>
+        <li>🎊 ¡Y muchas sorpresas más!</li>
+      </ul> -->
+      <!-- <div class="flex justify-left lg:w-full">
+        <a
+          class="btn-3d main-btn fire w-full"
+          target="_blank"
+          href="https://lareiraconf.eventbrite.es">Cómprala ya</a
+        >
+      </div>
+    </div> -->
+    </div>
+  </div>
+
+  <style>
+    .ticket {
+      width: 350px;
+      height: fit-content;
+      filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
+      transition: transform 0.3s ease-in-out;
+    }
+
+    @keyframes rotateAnimation {
+      0% {
+        transform: rotate(5deg);
+      }
+      50% {
+        transform: rotate(2deg);
+      }
+      100% {
+        transform: rotate(5deg);
+      }
+    }
+
+    #ticket-front {
+      position: relative;
+      rotate: 10deg;
+    }
+    #ticket-back {
+      position: absolute;
+      animation: rotateAnimation 5s infinite;
+    }
+  </style>
+</Wrapper>

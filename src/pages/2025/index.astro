@@ -1,0 +1,46 @@
+---
+import Intro from "../../components-2025/Intro/Intro.astro";
+import Dates from "../../components-2025/Intro/Dates.astro";
+import About from "../../components-2025/About/About.astro";
+import Team from "../../components-2025/Team/Team.astro";
+import Sponsors from "../../components-2025/Sponsors/Sponsors.astro";
+import Agenda from "../../components-2025/Agenda/Agenda.astro";
+import Place from "../../components-2025/Intro/Place.astro";
+import Toggle from "../../components-2025/Others/Toggle.astro";
+import Layout from "../../layouts-2025/Layout.astro";
+import Tickets from "../../components-2025/Tickets/Tickets.astro";
+---
+
+<Layout title="Lareira Conf 2025 - Edición Archivada">
+  <div class="grid grid-rows-auto p-6 lg:p-12 gap-24 scroll-mt-32" id="intro">
+    <Toggle />
+    <section
+      class="grid xl:grid-cols-3 xl:grid-rows-4 xl:gap-20 min-h-[40rem] grid-cols-1 gap-16"
+      style="grid-auto-rows: minmax(240px, auto);"
+    >
+      <div class="xl:col-span-2 xl:row-span-4 row-span-2"><Intro /></div>
+      <div class="xl:col-span-1 xl:row-span-2"><Dates /></div>
+      <div class="xl:row-start-3 xl:col-start-3 xl:row-span-2">
+        <Place />
+      </div>
+    </section>
+
+    <section class="row-span-1 scroll-mt-32" id="about">
+      <About />
+    </section>
+
+    <section class="row-span-1 scroll-mt-52" id="agenda">
+      <Agenda />
+    </section>
+    <section class="row-span-1 scroll-mt-32" id="team">
+      <Team />
+    </section>
+    <section class="row-span-1 scroll-mt-32" id="sponsors">
+      <Sponsors />
+    </section>
+    <section class="row-span-1 scroll-mt-32" id="tickets">
+      <Tickets />
+    </section>
+    <!-- <section class="row-span-1" id="speakers"><Speakers /></section> -->
+  </div>
+</Layout>

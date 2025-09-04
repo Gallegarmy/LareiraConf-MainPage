@@ -1,0 +1,57 @@
+---
+import Header from "../components-2025/Others/Header.astro";
+import Footer from "../components-2025/Others/Footer.astro";
+import "../styles/global.css";
+
+const { title } = Astro.props;
+---
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      property="og:title"
+      content="LareiraConf 2025 - Edición Archivada"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/archived-editions/2025/images/1500x500.jpg" />
+    <meta property="og:url" content="https://lareiraconf.com/2025" />
+    <meta
+      property="og:description"
+      content="Edición archivada de LareiraConf 2025 - El evento tech en A Coruña donde la comunidad se reunió para aprender, inspirarse y conectar."
+    />
+    <meta property="og:site_name" content="LareiraConf 2025 (Archivada)" />
+    <meta property="og:logo" content="/archived-editions/2025/images/L-2O7YyK_400x400.jpg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <title>{title}</title>
+  </head>
+  <body class="font-mono">
+    <!-- Banner de edición archivada -->
+    <div class="archive-banner border-b-4 border-black p-2 text-center mb-4">
+      <span class="text-sm font-bold">📚 Edición 2025</span>
+      <a href="/" class="ml-4 text-sm underline hover:no-underline">→ Ir a la edición actual</a>
+    </div>
+    <Header />
+    <main>
+      <div class="mt-32 max-w-screen-xl mx-auto scroll-mt-32">
+        <slot />
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  .archive-banner {
+    background-color: var(--color-5);
+    color: var(--text-primary);
+    border-bottom: 4px solid #000;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+</style>

@@ -1,0 +1,40 @@
+---
+import PartnerItem from "./PartnerItem.astro";
+
+const organization = [
+  {
+    name: "Sysarmy Galicia",
+    logo: "/archived-editions/2025/crew/sysarmy.svg",
+    url: "https://sysarmygalicia.com",
+    tier: "coorganizador",
+  },
+  {
+    name: "Gpul",
+    logo: "/archived-editions/2025/crew/gpul.svg",
+    url: "https://gpul.org/",
+    tier: "coorganizador",
+  },
+];
+
+const colaborators = [
+  {
+    name: "Coruña WTF",
+    logo: "/archived-editions/2025/crew/corunawtf.svg",
+    url: "https://corunawtf.github.io/page",
+    tier: "colaborador",
+  },
+  {
+    name: "Python Coruña",
+    logo: "/archived-editions/2025/crew/python.svg",
+    url: "https://pythoncoruna.github.io/es/",
+    tier: "colaborador",
+  },
+];
+---
+
+<div class="flex flex-col sm:flex-row gap-8 p-8 items-end justify-center">
+  <PartnerItem title="Organizan" items={organization} />
+  <PartnerItem title="Colaboran" items={colaborators} />
+</div>
+
+<style></style>
