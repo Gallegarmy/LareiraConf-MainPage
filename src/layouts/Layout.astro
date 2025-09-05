@@ -1,7 +1,9 @@
 ---
 import Header from "@components/Others/Header.astro";
 import Footer from "@components/Others/Footer.astro";
+import Toggle from "@components/Others/Toggle.astro";
 import "../styles/global.css";
+import "../styles/torch-effect.css";
 
 const { title } = Astro.props;
 ---
@@ -27,12 +29,62 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
   <body class="font-mono">
-    <Header />
-    <main>
-      <div class="mt-32 max-w-screen-xl mx-auto scroll-mt-32">
+    <Toggle />
+    <div class="torch-cursor dark-cave">
+      <div class="torch-light"></div>
+      <main class="content-mask">
         <slot />
-      </div>
-    </main>
-    <Footer />
+        <Footer />
+      </main>
+    </div>
   </body>
 </html>
+
+<script is:inline>
+  document.addEventListener("mousemove", function (e) {
+    const torchLight = document.querySelector(".torch-light");
+    const contentToMask = document.querySelector(".content-mask");
+
+    if (torchLight && contentToMask) {
+      torchLight.style.left = e.clientX + "px";
+      torchLight.style.top = e.clientY + "px";
+      torchLight.style.opacity = 1;
+
+      const maskX = (e.clientX / window.innerWidth) * 100;
+      const maskY = (e.clientY / window.innerHeight) * 100;
+      const lightRadius = Math.min(window.innerWidth, window.innerHeight) * 0.3;
+
+      const maskStyle = `radial-gradient(circle ${lightRadius}px at ${maskX}% ${maskY}%,
+        black 10%,
+        rgba(0,0,0,0.95) 20%,
+        rgba(0,0,0,0.7) 40%,
+        rgba(0,0,0,0.3) 60%,
+        transparent 80%)`;
+
+      contentToMask.style.mask = maskStyle;
+      contentToMask.style.webkitMask = maskStyle;
+    }
+  });
+
+  document.addEventListener("mouseleave", function () {
+    const torchLight = document.querySelector(".torch-light");
+    const contentToMask = document.querySelector(".content-mask");
+
+    if (torchLight) torchLight.style.opacity = 0;
+
+    const hideMask = "radial-gradient(circle 0px at 50% 50%, transparent 0%, transparent 100%)";
+    if (contentToMask) {
+      contentToMask.style.mask = hideMask;
+      contentToMask.style.webkitMask = hideMask;
+    }
+  });
+</script>
+
+<style>
+  main {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+</style>

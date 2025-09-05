@@ -1,26 +1,22 @@
 ---
-import Intro from "@components/Intro/Intro.astro";
-import Dates from "@components/Intro/Dates.astro";
-
-import Place from "@components/Intro/Place.astro";
-import Toggle from "@components/Others/Toggle.astro";
 import Layout from "src/layouts/Layout.astro";
 ---
 
-<Layout title="Lareira Conf 2025">
-  <div class="grid grid-rows-auto p-6 lg:p-12 gap-24 scroll-mt-32" id="intro">
-    <Toggle />
-    <section
-      class="grid xl:grid-cols-3 xl:grid-rows-4 xl:gap-20 min-h-[40rem] grid-cols-1 gap-16"
-      style="grid-auto-rows: minmax(240px, auto);"
-    >
-      <div class="xl:col-span-2 xl:row-span-4 row-span-2"><Intro /></div>
-      <div class="xl:col-span-1 xl:row-span-2"><Dates /></div>
-      <div class="xl:row-start-3 xl:col-start-3 xl:row-span-2">
-        <Place />
-      </div>
-    </section>
-
-    <!-- <section class="row-span-1" id="speakers"><Speakers /></section> -->
+<Layout title="Lareira Conf 2026">
+  <div class="flex grow items-center justify-center text-center">
+    <div>
+      <h1
+        class="logo-style text-4xl font-bold md:text-6xl lg:text-7xl"
+        data-text="LAREIRACONF'26"
+      >
+        LAREIRACONF'26
+      </h1>
+      <span
+        class="date-text mt-4 block text-lg md:text-2xl lg:text-3xl"
+        data-text="21.03.26 A CORUÑA"
+      >
+        21.03.26 A CORUÑA
+      </span>
+    </div>
   </div>
 </Layout>

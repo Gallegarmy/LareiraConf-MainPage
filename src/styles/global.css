@@ -7,9 +7,9 @@
 :root {
   --primary: white;
   --secondary: black;
-  --terciary: black;
-  --color-5: #ff8906;
-  --accent: #e95c3c;
+  --terciary: #ff6b35;
+  --color-5: #fff8dc;
+  --accent: #ffd700;
   --bg-light: #f8f8f8;
 
   --text-primary: var(--primary);
@@ -78,7 +78,9 @@
 html {
   font-family: var(--text-font);
   box-sizing: border-box;
-  cursor: url("/src/img/assets/cursor.svg") 16 0, auto;
+  cursor:
+    url("/src/img/assets/cursor.svg") 16 0,
+    auto;
   font-size: 16px;
   color: var(--text-secondary);
 }
@@ -101,7 +103,9 @@ body {
 a,
 button,
 .pointer {
-  cursor: url("/src/img/assets/cursor-pointer.svg") 16 0, pointer;
+  cursor:
+    url("/src/img/assets/cursor-pointer.svg") 16 0,
+    pointer;
 }
 
 a:hover {
@@ -156,7 +160,9 @@ nav {
   padding: 10px 20px;
   display: inline-block;
   position: relative;
-  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  transition:
+    transform 0.1s ease,
+    box-shadow 0.1s ease;
   box-shadow: 4px 4px 0 0 var(--secondary);
 }
 
