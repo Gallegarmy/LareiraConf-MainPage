@@ -32,6 +32,7 @@ const { title } = Astro.props;
     <Toggle />
     <div class="torch-cursor dark-cave">
       <div class="torch-light"></div>
+      <div class="unlit-torch"></div>
       <main class="content-mask">
         <slot />
         <Footer />
@@ -41,43 +42,75 @@ const { title } = Astro.props;
 </html>
 
 <script is:inline>
-  document.addEventListener("mousemove", function (e) {
-    const torchLight = document.querySelector(".torch-light");
-    const contentToMask = document.querySelector(".content-mask");
+  const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+  const torchContainer = document.querySelector(".dark-cave");
+  const torchLight = document.querySelector(".torch-light");
+  const contentToMask = document.querySelector(".content-mask");
+  const unlitTorch = document.querySelector(".unlit-torch");
+  let isTorchLit = false;
 
+  function updateTorch(x, y) {
     if (torchLight && contentToMask) {
-      torchLight.style.left = e.clientX + "px";
-      torchLight.style.top = e.clientY + "px";
+      torchLight.style.left = x + "px";
+      torchLight.style.top = y + "px";
       torchLight.style.opacity = 1;
+      torchLight.classList.add("is-lit");
 
-      const maskX = (e.clientX / window.innerWidth) * 100;
-      const maskY = (e.clientY / window.innerHeight) * 100;
+      const maskX = (x / window.innerWidth) * 100;
+      const maskY = (y / window.innerHeight) * 100;
       const lightRadius = Math.min(window.innerWidth, window.innerHeight) * 0.3;
 
       const maskStyle = `radial-gradient(circle ${lightRadius}px at ${maskX}% ${maskY}%,
-        black 10%,
-        rgba(0,0,0,0.95) 20%,
-        rgba(0,0,0,0.7) 40%,
-        rgba(0,0,0,0.3) 60%,
-        transparent 80%)`;
+        black 10%, rgba(0,0,0,0.95) 20%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0.3) 60%, transparent 80%)`;
 
       contentToMask.style.mask = maskStyle;
       contentToMask.style.webkitMask = maskStyle;
     }
-  });
+  }
 
-  document.addEventListener("mouseleave", function () {
-    const torchLight = document.querySelector(".torch-light");
-    const contentToMask = document.querySelector(".content-mask");
-
-    if (torchLight) torchLight.style.opacity = 0;
-
+  function hideTorch() {
+    if (torchLight) {
+      torchLight.style.opacity = 0;
+      torchLight.classList.remove("is-lit");
+    }
     const hideMask = "radial-gradient(circle 0px at 50% 50%, transparent 0%, transparent 100%)";
     if (contentToMask) {
       contentToMask.style.mask = hideMask;
       contentToMask.style.webkitMask = hideMask;
     }
-  });
+  }
+
+  if (isTouchDevice) {
+    if (unlitTorch) unlitTorch.style.display = 'block';
+    hideTorch(); // Oculta el contenido al cargar en móvil
+
+    torchContainer.addEventListener('touchstart', function(e) {
+      if (!isTorchLit) {
+        if (unlitTorch) unlitTorch.style.display = 'none';
+        isTorchLit = true;
+      }
+      const touch = e.touches[0];
+      updateTorch(touch.clientX, touch.clientY);
+    }, { passive: true });
+
+    torchContainer.addEventListener('touchmove', function(e) {
+      if (isTorchLit) {
+        const touch = e.touches[0];
+        updateTorch(touch.clientX, touch.clientY);
+      }
+    }, { passive: true });
+
+  } else {
+    if (unlitTorch) unlitTorch.style.display = 'none';
+
+    document.addEventListener("mousemove", function (e) {
+      updateTorch(e.clientX, e.clientY);
+    });
+
+    document.addEventListener("mouseleave", function () {
+      hideTorch();
+    });
+  }
 </script>
 
 <style>
