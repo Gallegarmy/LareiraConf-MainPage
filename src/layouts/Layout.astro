@@ -1,7 +1,6 @@
 ---
 import Header from "@components/Others/Header.astro";
 import Footer from "@components/Others/Footer.astro";
-import Toggle from "@components/Others/Toggle.astro";
 import "../styles/global.css";
 import "../styles/torch-effect.css";
 
@@ -28,8 +27,7 @@ const { title } = Astro.props;
     <link rel="sitemap" href="/sitemap-index.xml" />
     <title>{title}</title>
   </head>
-  <body class="font-mono">
-    <Toggle />
+  <body class="font-mono dark" data-theme="dark">
     <div class="torch-cursor dark-cave">
       <div class="torch-light"></div>
       <div class="unlit-torch"></div>
@@ -114,10 +112,15 @@ const { title } = Astro.props;
 </script>
 
 <style>
+  body {
+    position: relative; /* Ensure it's a positioning context for children */
+  }
+  .dark-cave {
+    width: 100%;
+  }
   main {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
   }
-
 </style>
