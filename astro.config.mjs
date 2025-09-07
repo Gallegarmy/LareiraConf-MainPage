@@ -3,6 +3,6 @@ import tailwind from "@astrojs/tailwind";
 
 export default defineConfig({
   site: "https://Gallegarmy.github.io",
-  base: ".",
+  base: "/",
   integrations: [tailwind()],
 });
