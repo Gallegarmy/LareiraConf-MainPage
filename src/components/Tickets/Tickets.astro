@@ -5,40 +5,49 @@ import { Image } from "astro:assets";
 ---
 
 <Wrapper>
-  <div class="flex flex-col md:flex-row justify-center items-center gap-8">
-    <div
-      class="flex flex-col justify-center items-center gap-8 w-full md:w-2/3"
-    >
-      <h1
-        class="font-title text-3xl xl:text-5xl font-bold text-left text-center"
-      >
-        ¡Entradas a la venta!
+  <div class="center grid grid-cols-1 gap-12 text-center lg:grid-cols-2">
+    <div class="flex items-center justify-center">
+      <Image
+        class="ticket"
+        src={Ticket}
+        alt={"imagen de una entrada"}
+        id="ticket-front"
+      />
+      <Image
+        class="ticket"
+        src={Ticket}
+        alt={"imagen de una entrada"}
+        id="ticket-back"
+      />
+    </div>
+    <div class="flex flex-col items-center justify-evenly gap-6 lg:w-fit">
+      <h1 class="text-left font-title text-3xl font-bold xl:text-5xl">
+        ¡Entradas agotadas!
       </h1>
-
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 text-center center">
-        <ul class="text-left">
-          <li>🎟️ Acceso al evento completo.</li>
-          <li>🎁 Welcome pack.</li>
-          <li>🗣️ Más de 10 charlas con ponentes top.</li>
-          <li>⏰ 12h de evento non stop.</li>
-        </ul>
-        <ul class="text-left">
-          <li>☕ Coffee breaks y comida.</li>
-          <li>🎉 Sorteos y merchan.</li>
-          <li>💼 Conexión con empresas del sector.</li>
-          <li>🎊 ¡Y muchas sorpresas más!</li>
-        </ul>
+      <div>
+        Gracias a todos, por hacerlo posible. Nos vemos junto al fuego 🔥
       </div>
-      <div class="flex justify-center">
+      <!-- <ul class="text-left">
+        <li>🎟️ Acceso al evento completo.</li>
+        <li>🎁 Welcome pack.</li>
+        <li>🗣️ Más de 10 charlas con ponentes top.</li>
+        <li>⏰ 12h de evento non stop.</li>
+        <li>☕ Coffee breaks y comida.</li>
+        <li>🎉 Sorteos y merchan.</li>
+        <li>💼 Conexión con empresas del sector.</li>
+        <li>🎊 ¡Y muchas sorpresas más!</li>
+      </ul> -->
+      <!-- <div class="flex justify-left lg:w-full">
         <a
           class="btn-3d main-btn fire"
           target="_blank"
           href="https://lareiraconf.eventbrite.es">Cómprala ya</a
         >
       </div>
+    </div> -->
     </div>
-    <div class="game-advice w-full md:w-1/3 border-8 text-center">
-      <div class="tickets flex justify-center items-center border-8">
+    <div class="game-advice w-full border-8 text-center md:w-1/3">
+      <div class="tickets flex items-center justify-center border-8">
         <Image
           class="ticket"
           src={Ticket}
@@ -56,53 +65,34 @@ import { Image } from "astro:assets";
       <a class="underline" href="/game">Participa en el sorteo</a>
     </div>
   </div>
+
+  <style>
+    .ticket {
+      width: 350px;
+      height: fit-content;
+      filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
+      transition: transform 0.3s ease-in-out;
+    }
+
+    @keyframes rotateAnimation {
+      0% {
+        transform: rotate(5deg);
+      }
+      50% {
+        transform: rotate(2deg);
+      }
+      100% {
+        transform: rotate(5deg);
+      }
+    }
+
+    #ticket-front {
+      position: relative;
+      rotate: 10deg;
+    }
+    #ticket-back {
+      position: absolute;
+      animation: rotateAnimation 5s infinite;
+    }
+  </style>
 </Wrapper>
-
-<style>
-  .tickets {
-    border-color: var(--secondary);
-    position: relative;
-    padding: 1rem;
-    width: 100%;
-  }
-  .ticket {
-    /* max-width: 200px; */
-    width: auto;
-    height: auto;
-    filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
-    transition: transform 0.3s ease-in-out;
-  }
-
-  @keyframes rotateAnimation {
-    0% {
-      transform: rotate(5deg);
-    }
-    50% {
-      transform: rotate(2deg);
-    }
-    100% {
-      transform: rotate(5deg);
-    }
-  }
-
-  #ticket-front {
-    position: absolute;
-    rotate: 10deg;
-    padding: 1rem;
-  }
-  #ticket-back {
-    position: relative;
-    animation: rotateAnimation 5s infinite;
-  }
-
-  .game-advice {
-    gap: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-color: var(--secondary);
-    padding: 1rem;
-    max-width: 400px;
-  }
-</style>

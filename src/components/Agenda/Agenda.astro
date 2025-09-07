@@ -1,94 +1,324 @@
 ---
-import Social from "@components/Others/Social.astro";
-import Ignacio from "@img/speakers/Ignacio.webp";
+import AndreaAvatar from "@img/crew/Andrea_pixel.webp";
+import GodlikeAvatar from "@img/speakers/Godlike.webp";
+import ManriqueAvatar from "@img/speakers/Manrique.webp";
+import CristinaAvatar from "@img/speakers/Cristina.webp";
+import CarlaAvatar from "@img/speakers/Carla.webp";
+import BreaAvatar from "@img/speakers/Brea.webp";
+import PabloAvatar from "@img/speakers/Pablo.webp";
+import NestorAvatar from "@img/speakers/Nestor.webp";
+import SergioAvatar from "@img/speakers/Sergio.webp";
+import DavidAvatar from "@img/speakers/David.webp";
+import MoureAvatar from "@img/speakers/Moure.webp";
+import KuartilloAvatar from "@img/speakers/Kuartillo.webp";
 import Andrea from "@img/speakers/Andrea.webp";
-import Jesus from "@img/speakers/Jesus.webp";
-import Juan from "@img/speakers/Juan.webp";
-import { Image } from "astro:assets";
-import Wrapper from "@components/Others/Wrapper.astro";
+import Godlike from "@img/speakers/Godlike.jpg";
+import Manrique from "@img/speakers/Manrique.jpg";
+import Cristina from "@img/speakers/Cristina.jpg";
+import Carla from "@img/speakers/Carla.jpg";
+import Brea from "@img/speakers/Brea.jpg";
+import Pablo from "@img/speakers/Pablo.jpg";
+import Nestor from "@img/speakers/Nestor.jpg";
+import Moure from "@img/speakers/Moure.jpg";
+import David from "@img/speakers/David.jpg";
+import Sergio from "@img/speakers/Sergio.jpg";
+import Kuartillo from "@img/speakers/Kuartillo.jpg";
 
-//TODO: Add real data
-const agenda = [
+import Wrapper from "@components/Others/Wrapper.astro";
+import Speaker from "./Speaker.astro";
+
+type AgendaItem = {
+  id: string;
+  time: string;
+  title: string;
+  subtitle: string | null;
+  description?: string;
+  speaker: string | null;
+  image: ImageMetadata | null;
+  avatar?: ImageMetadata | null;
+  linkedin?: string | null;
+  x?: string | null;
+  blueSky?: string | null;
+  instagram?: string | null;
+  role?: string | null;
+  bio?: string | null;
+  subItems?: AgendaItem[];
+};
+
+const agenda: AgendaItem[] = [
   {
-    time: "09:00 AM",
-    title: "Registro y Bienvenida",
-    description: "Recepción de los asistentes y entrega de acreditaciones.",
+    id: "register",
+    time: "09:00",
+    title: "Registro",
+    subtitle: "Recepción de los asistentes y entrega de acreditaciones.",
     speaker: null,
     image: null,
+    avatar: null,
     linkedin: null,
     x: null,
+    role: null,
+    bio: null,
   },
   {
-    time: "10:00 AM",
-    title: "Charla Inaugural",
-    description: "Introducción al evento y objetivos.",
-    speaker: "Dr. Juan Pérez",
-    image: Ignacio,
-    linkedin: "juanperez",
-    x: "juanperez",
-  },
-  {
-    time: "11:00 AM",
-    title: "Break",
-    description: "Descanso para café y networking.",
-    speaker: null,
-    image: null,
-    linkedin: null,
-    x: null,
-  },
-  {
-    time: "11:30 AM",
-    title: "Desarrollo Web Moderno",
-    description: "Tendencias y mejores prácticas en desarrollo web.",
-    speaker: "Ana García",
+    id: "welcome",
+    time: "9:30",
+    title: "Bienvenida",
+    subtitle: null,
+    speaker: "Andrea Magán",
     image: Andrea,
-    linkedin: "anagarcia",
-    x: "anagarcia",
+    avatar: AndreaAvatar,
+    linkedin: "andreamaganrey/",
+    x: "AndreaMaganRey",
+    role: "Senior Frontend Developer | Sngular",
+    bio: `Soy Andrea, programadora por vocación y diseñadora por pasión. Aunque mi formación es en ingeniería en diseño industrial, exploré el marketing y el diseño antes de descubrir el mundo de la programación. Desde entonces, combino estas habilidades para crear aplicaciones web con una excelente UX. Actualmente, lidero un equipo de frontend especializado en aplicaciones de visualización de datos.
+    Además, disfruto participando en comunidades y organizando eventos, por eso soy co-organizadora de la LareiraConf, donde tendré el honor de ser vuestra maestra de ceremonias.`,
   },
   {
-    time: "01:00 PM",
-    title: "Almuerzo",
-    description: "Tiempo para almorzar y socializar.",
-    speaker: null,
-    image: null,
-    linkedin: null,
-    x: null,
+    id: "keynote1",
+    time: "9:45",
+    title: "15 consejos de senior que le daría a mi yo junior ",
+    subtitle: "Crecimiento profesional",
+    description: `Tras 15 años trabajando como desarrollador de software... ¿Qué he aprendido?
+    Ojalá poder retroceder en el tiempo para facilitarle las cosas a mi yo imberbe.
+    Espera... ¿Y si lo comparto con la gente que está comenzando?
+    Básicamente hago un repaso por 15 creencias erróneas que solemos tener con el sector, y cómo un enfoque diferente nos puede ayudar a marcar la diferencia.`,
+    speaker: "Brais Moure",
+    image: Moure,
+    avatar: MoureAvatar,
+    linkedin: "braismoure",
+    instagram: "mouredev",
+    x: "mouredev",
+    blueSky: "mouredev.com",
+    role: "Ingeniero de software freelance y divulgador | mouredev",
+    bio: `Brais Moure, conocido como MoureDev, es ingeniero de software desde 2010. En 2015 creó su empresa como freelance, desarrollando más de 150 aplicaciones y trabajando diferentes proyectos nacionales e internacionales, así como lanzando sus propios proyectos personales.
+    Desde 2018, aparte de su labor como desarrollador, divulga y comparte contenido sobre programación y desarrollo de software, con una comunidad de más de dos millones de seguidores en distintas redes. Su principal objetivo es democratizar el estudio dentro de la comunidad de habla hispana.
+    Brais es Microsoft MVP, GitHub Star y su libro ha llegado a alcanzar el número 1 en Amazon España.`,
   },
   {
-    time: "02:00 PM",
-    title: "Inteligencia Artificial",
-    description: "Aplicaciones de la IA en la industria.",
-    speaker: "Carlos López",
-    image: Jesus,
-    linkedin: "https://www.linkedin.com/in/carloslopez",
-    x: "https://x.com/carloslopez",
+    id: "talkmanrique",
+    time: "11:00",
+    title:
+      "Nuestros primeros pasos poniendo en marcha una OSPO (Open Source Program Office)",
+    subtitle: "Software libre",
+    description:
+      "Queremos compartir nuestros humildes pasos iniciales para establecer una Oficina de Programas de Open Source (OSPO) dentro de la corporación. Desde la creación de las políticas fundamentales hasta la supervisión del cumplimiento de las licencias de software libre a profundizar en nuestros enfoques para hacer un seguimiento de las contribuciones de las personas de nuestros equipos tech a proyectos de código abierto y en las complejidades de publicar nuestros primeros proyectos open source. \n En nuestro caso, la adopción de prácticas de software libre va más allá de mejorar la innovación y la eficiencia en el desarrollo de software. Es fundamental la alineación con los valores de nuestra empresa, enfocando este trabajo a la creación de un ecosistema tecnológico sostenible.",
+    speaker: "José Manrique",
+    image: Manrique,
+    avatar: ManriqueAvatar,
+    linkedin: "jsmanrique",
+    x: "jsmanrique",
+    blueSky: "jsmanrique.bsky.social",
+    role: "Open Source Program Office (OSPO) Manager | Inditex Tech",
+    bio: `Manrique trabaja en la Open Source Office (OSO) de Inditex Tech y es un apasionado del software libre y las comunidades de desarrollo.
+    Ingeniero industrial, cuenta con experiencia previa en I+D en CTIC, W3C, Ándago Engineering y Continua Health Alliance. Fue director ejecutivo de ASOLIF, consultor experto de CENATIC y es socio en Bitergia donde estuvo trabajando como director ejecutivo.`,
   },
   {
-    time: "03:30 PM",
+    id: "breakmorning",
+    time: "11:45",
     title: "Break",
-    description: "Descanso para café y networking.",
-    speaker: null,
+    subtitle: "Descanso para café y networking.",
+    description: null,
     image: null,
-    linkedin: null,
-    x: null,
+    avatar: null,
+    speaker: null,
   },
   {
-    time: "04:00 PM",
-    title: "Ciberseguridad",
-    description: "Cómo proteger tus aplicaciones web.",
-    speaker: "María Fernández",
-    image: Juan,
-    linkedin: "mariafernandez",
-    x: "mariafernandez",
+    id: "talkcristina",
+    time: "13:00",
+    title: "De la idea al boceto: visualizando escenarios con Rainbow",
+    subtitle: "Videojuegos",
+    description:
+      "Junto a la creadora de Rainbow conoceremos y pondremos a prueba la tecnología de Nvidia Studio para crear imágenes de environments a través de formas básicas usando el plugin para Unreal Engine 5. Analizaremos sus usos y explicaremos cómo crear un boceto en apenas unos minutos para ayudar a los concepts.",
+    speaker: "Cristina Barreiro (Saiku)",
+    image: Cristina,
+    avatar: CristinaAvatar,
+    linkedin: "cristina-barreiro",
+    blueSky: "cristinasaiku.bsky.social",
+    role: "Programadora de videojuegos",
+    bio: `Soy desarrolladora de videojuegos, he trabajado para títulos como Tamagotchi Adventure Kingdom o The Mageseeker: A League of Legends story.
+    Mi rol, por el momento, es de programadora generalista por lo que sé de lo que hablo cuando digo que crear un videojuego se asemeja al trabajo artesanal. Por eso mi lema es: Crafting with essence for games with presence.`,
   },
   {
-    time: "05:30 PM",
-    title: "Cierre del Evento",
-    description: "Conclusiones y despedida.",
+    id: "lunch",
+    time: "14:00",
+    title: "Comida",
+    subtitle: "Catering, networking y actividades.",
+    description: "",
     speaker: null,
     image: null,
+    avatar: null,
+  },
+  {
+    id: "surprise",
+    time: "16:00",
+    title: "Sorpresa",
+    subtitle: "Tenemos algo preparado para sorprenderos ;)",
+    description: null,
+    speaker: null,
+    image: null,
+    avatar: null,
     linkedin: null,
     x: null,
+    role: null,
+    bio: null,
+  },
+  {
+    id: "talks",
+    time: "17:00",
+    title: "Charlas relámpago",
+    subtitle: "Un formato diferente que no te dejará indiferente",
+    description: null,
+    speaker: null,
+    image: null,
+    avatar: null,
+    subItems: [
+      {
+        id: "talkalejandro",
+        time: null,
+        title: "Entendiendo el Mundo con Datos: Valor en la Toma de Decisiones",
+        subtitle: "Data",
+        description:
+          "Los datos no solo registran eventos, sino que nos cuentan historias y nos permiten identificar patrones que, de otra manera, pasarían desapercibidos. En esta charla exploraré un análisis en base a un dataset de conflictos en Asia como ejemplo de cómo los datos pueden ayudarnos a comprender problemas complejos, anticipar tendencias y aportar un valor significativo en la toma de decisiones estratégicas.",
+        speaker: "Alejandro Brea",
+        image: Brea,
+        avatar: BreaAvatar,
+        linkedin: "alejandrobrea",
+        x: null,
+        role: "Data Analyst & Engineer | Deloitte",
+        bio: `Apasionado por los datos y como estos proporcionan valor a la inteligencia y toma de decisiones. Trabajo en el campo de la Inteligencia Artificial y Datos desarrollando soluciones innovadoras con herramientas como Python, Snowflake y Databricks.
+        Colaboro activamente en la comunidad tech de Galicia, donde disfruto aprendiendo y compartiendo conocimientos.`,
+      },
+      {
+        id: "talkkuartillo",
+        time: null,
+        title: "(MVL) Mínima Legalidad Viable",
+        subtitle: "Legal",
+        description:
+          "A través de esta charla explicaré a los asistentes aquellos elementos o aspectos que tienen que tener en cuenta cuando pretendan iniciar un proyecto personal y no morir de éxito.",
+        speaker: "José Manuel 'Kuartillo' Sendín",
+        image: Kuartillo,
+        avatar: KuartilloAvatar,
+        linkedin: null,
+        x: null,
+        role: "Socio del despacho de abogados | Sistemius",
+        bio: `Abogado especializado en propiedad intelectual e industrial. Me gusta traducir el complejo lenguaje jurídico a un lenguaje humano y por este motivo suelo decir que me dedico a 'traducir de legal a humano'.`,
+      },
+      {
+        id: "talkcarla",
+        time: null,
+        title:
+          "Descifrando los Artículos Científicos: Una Introducción Esencial",
+        subtitle: "Divulgación científica",
+        description:
+          "¿Cómo se estructura un artículo científico y cuál es su propósito? Esta charla rápida desglosa los elementos principales que componen un manuscrito académico, ofreciendo un panorama claro para aquellos que desean iniciarse en la escritura científica o comprender mejor este formato clave en la investigación.",
+        speaker: "Carla Rodríguez",
+        image: Carla,
+        avatar: CarlaAvatar,
+        linkedin: "carla-rodr%C3%ADguez-est%C3%A9vez-42b757243/",
+        x: null,
+        role: "Frontend developer | Sngular",
+        bio: `Soy Carla, ingeniera informática apasionada por el aprendizaje constante y por explorar nuevos horizontes, tanto profesionales como personales. Dedico mi tiempo libre a hobbies como aprender idiomas, leer libros o descubrir historias en mis series favoritas.
+        Desde hace dos años, trabajo en mi pasión de 9 a 5, pero mi entusiasmo por este mundo viene de mucho antes. Creo en la curiosidad como motor de crecimiento y siempre busco formas de desafiarme y aportar valor en todo lo que hago.`,
+      },
+      {
+        id: "talknestor",
+        time: null,
+        title: "Rompiendo los Límites de SQLite",
+        subtitle: null,
+        description: `¿Imaginas poder dar a cada usuario de tu aplicación su propia base de datos SQLite? ¿Una base de datos que se replique automáticamente, que funcione de forma asíncrona y que escale sin esfuerzo?
+        En esta charla, descubriremos cómo libSQL está transformando SQLite para la era moderna. Veremos cómo una comunidad de desarrolladores está llevando la base de datos más utilizada del mundo al siguiente nivel, añadiendo características que parecían imposibles: replicación nativa, búsqueda vectorial para IA, funciones WebAssembly, y mucho más.`,
+        speaker: "Nestor López",
+        image: Nestor,
+        avatar: NestorAvatar,
+        linkedin: "nstlopez",
+        x: "nstlopez",
+        role: "Software Architect | Zephyr Cloud",
+        bio: `Llevo desarrollando software como mi pasión durante 8 años y contribuyendo a proyectos de código abierto.Me defino como arquitecto de software porque disfruto creando procesos que permitan a mis clientes escalar sus empresas de la mano de sus tecnologías.
+        Siempre estoy en búsqueda de nuevas herramientas y metodologías para optimizar el desarrollo y la colaboración en los equipos.`,
+      },
+      {
+        id: "talkpablo",
+        time: null,
+        title: "CI/CD: Pipelines Sólidas en un Mundo Caótico",
+        subtitle: "DevOps",
+        description:
+          "En un mundo donde cada día escuchas sobre incendios en los despliegues a producción, es momento de buscar la calma y hacer pipelines legibles, entendibles y que no añadan dolores de cabeza a los equipos en cada release.",
+        speaker: "Pablo Pan (PanDevOps)",
+        image: Pablo,
+        avatar: PabloAvatar,
+        linkedin: "pablo-pan-veira",
+        instagram: "pablo.p.veira",
+        role: "DevOps Lead | DEUS",
+        bio: `Desde que era un chaval siempre intenté automatizarlo todo, no me gustaba nada tener que hacer cosas repetitivas, así que lo convertí en mi profesión.
+        Actualmente trabajo como DevOps Lead enDEUS.AI, también comparto conocimiento en mi canal de YouTube, donde exploro temas de DevOps, scripting y lo que se tercie, siempre intentando enfocarlo lo más didáctico posible y con un poco de humor.`,
+      },
+      {
+        id: "talksergio",
+        time: null,
+        title:
+          "Dev, el SEO no te odia, pero tu código y su rastreo piden terapia (y salir del backlog algún día)",
+        subtitle: "SEO",
+        description: null,
+        speaker: "Sergio Castelo",
+        image: Sergio,
+        avatar: SergioAvatar,
+        linkedin: "sergiocastelo",
+        role: "Consultor SEO | smartclick",
+        bio: `Especializado en SEO y dedicado a ello desde 2011, trabajando en proyectos digitales locales, nacionales e internacionales para mejorar su visibilidad y generar resultados.
+        Compagino mi trabajo con la formación, impartiendo clases y mentorías en escuelas de negocios y empresas.`,
+      },
+    ],
+  },
+  {
+    id: "breakafternoon",
+    time: "18:00",
+    title: "Break",
+    subtitle: "Merienda y más actividades",
+    speaker: null,
+    image: null,
+  },
+  {
+    id: "talkgodlike",
+    time: "18:45",
+    title: "3D minutos en el infierno",
+    subtitle: "Impresión 3D",
+    description:
+      "Bienvenidos al maravilloso averno de la impresión 3D. En esta charla vamos a cubrir los temas principales sobre lo relacionado a la impresión FDM. Tipos de impresoras, filamentos, tips sobre diseños y problemas más comunes. En otras palabras, un viaje por una película de Cronenberg, en donde los monstruos son impresiones fallidas, llanto y dolor.",
+    speaker: "Godlike",
+    image: Godlike,
+    avatar: GodlikeAvatar,
+    x: "godlike64",
+    role: "Senior Principal Technical Support Engineer | Red Hat",
+    bio: `Godlike es el sysadmin clásico. Después de empezar con Linux y pasar un tiempo en IBM trabajando con sistemas UNIX, ahora trabaja en Red Hat en el área de Soporte, donde pone a prueba sus habilidades para resolver problemas todos los días.
+    De vez en cuando también programa en Python, para mantenerse en forma.
+    Le interesa todo lo relacionado con sistemas: seguridad, administración de sistemas, buen diseño y buen código.`,
+  },
+  {
+    id: "keynote2",
+    time: "19:30",
+    title: "Derribar marcos. Construir Comunidad",
+    subtitle: "Keynote | Comunidad",
+    description: `«¿Existe una «comunidad técnica gallega»? En esta charla repasaremos qué convierte a un grupo de personas en una Comunidad y los pilares sobre los que se sustenta la misma, para intentar contestar esa pregunta y conocer qué pasos hay que dar a partir de la respuesta.`,
+    speaker: "David Bonilla",
+    image: David,
+    avatar: DavidAvatar,
+    instagram: "dbonillaf",
+    linkedin: "dbonillaf",
+    x: "david_bonilla",
+    blueSky: "davidbonilla.bsky.social",
+    role: "Co-fundador | Pétalo. Autor de la Bonilista. Organizador de la TRGCON",
+    bio: `David Bonilla lleva más de 25 años en la industria informática. Ha trabajado en todo tipo de empresas, desde grandes corporaciones hasta startups de Silicon Valley, ha vivido la salida a Bolsa de dos de ellas y ha fundado y vendido otras dos.
+    Además, escribe la Bonilista —una newsletter semanal sobre tecnología— y organiza la TRGCON, «la conferencia más gallega y awesómica del mundo».
+    Pero, sobre todo, es marido de Candela, papá de Irene y Dani, del Atleti, gallego militante, programador, corredor lento de maratones y una persona profundamente enamorada de su profesión.`,
+  },
+  {
+    id: "end",
+    time: "20:30",
+    title: "Esto es todo amigos",
+    subtitle: "Conclusiones, cuentas y despedida.",
+    description: null,
+    speaker: null,
+    image: null,
   },
 ];
 ---
@@ -99,7 +329,6 @@ const agenda = [
   >
     <div class="flex flex-col align-start justify-start">
       <h1 class="text-3xl font-bold">Agenda</h1>
-      <h4 class="text-xs font-bold tracking-widest">Coming soon</h4>
     </div>
 
     <button class="toggle-agenda">
@@ -114,59 +343,146 @@ const agenda = [
           stroke-linecap="round"
           stroke-linejoin="round"
           stroke-width="2"
-          d="M12 4v16m8-8H4"></path>
+          d="M6 18L18 6M6 6l12 12"></path>
       </svg>
     </button>
   </header>
+  <div class="agenda-list open">
+    <div class="mb-4 text-center text-sm extended">
+      La agenda de la #LareiraConf25 ya está aquí: 12 horas non stop de charlas
+      que prenderán tu curiosidad y sorpresas para hacerte disfrutar. ¡No te
+      pierdas nada!
+    </div>
 
-  <ul class="space-y-4 agenda-list">
-    {
-      agenda.map((item) => (
-        <li class="agenda-item border-4 border-black p-4 gap: grid grid-cols-1 sm:grid-cols-[auto,1fr] sm:p-4 sm:gap-16 items-start">
-          <div class="text-xl font-semibold mb-2">{item.time}</div>
-          <div>
-            <h2 class="text-xl font-semibold ">{item.title}</h2>
-            <p class="font-light mb-2">{item.description}</p>
-            <div class="flex items-center">
-              {item.image && (
-                <Image
-                  class="rounded-full w-10 h-10 object-cover filter grayscale mr-4"
-                  src={item.image}
-                  alt={item.speaker}
-                />
-              )}
-
-              <div class="flex gap-4 items-center flex-row">
-                {item.speaker && <p>{item.speaker}</p>}
-                <div class="flex flex-row gap-2">
-                  {item.linkedin && (
-                    <Social href={item.linkedin} platform="linkedin" />
-                  )}
-                  {item.x && <Social href={item.x} platform="x" class="" />}
-                </div>
-              </div>
+    <ul class="space-y-2">
+      {
+        agenda.map((item, index) => (
+          <li
+            class="agenda-item border-4 border-black p-4 gap: grid grid-cols-1 sm:grid-cols-[auto,1fr] sm:p-4 sm:gap-16 items-start"
+            style={`--speaker-index: ${index};`}
+          >
+            {item.description && (
+              <button class="toggle-talk">
+                <svg
+                  class="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+            )}
+            <div class="text-xl font-semibold mb-2 min-w-[60px] items-center flex gap-2 ">
+              {item.time}
             </div>
-          </div>
-        </li>
-      ))
-    }
-  </ul>
+            <div class="flex flex-col gap-4">
+              <div class="flex flex-col gap-1 ">
+                <h2 class="text-xl font-semibold">{item.title}</h2>
+                {item.subtitle && <i class="text-sm mb-2">{item.subtitle}</i>}
+                {item.description &&
+                  item.description
+                    .split("\n")
+                    .map((text) => (
+                      <p class="hide-on-compact agenda-description text-sm mb-3">
+                        {text}
+                      </p>
+                    ))}
+              </div>
+
+              {item.speaker && <Speaker item={item} class="hide-on-compact" />}
+
+              {item.subItems && (
+                <ul class="flex flex-col gap-2">
+                  {item.subItems.map((subItem, subIndex) => (
+                    <li
+                      class="agenda-item border-2 border-black p-4 sm:grid-cols-[auto,1fr] sm:p-4 sm:gap-16 items-start"
+                      style={`--speaker-index: ${index}.${subIndex};`}
+                    >
+                      {subItem.description && (
+                        <button class="toggle-talk">
+                          <svg
+                            class="w-6 h-6"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M19 9l-7 7-7-7"
+                            />
+                          </svg>
+                        </button>
+                      )}
+                      <div class="flex flex-col gap-4">
+                        <div class="flex flex-col gap-1">
+                          <h2 class="text-xl font-semibold">{subItem.title}</h2>
+                          {subItem.subtitle && (
+                            <i class="text-sm">{subItem.subtitle}</i>
+                          )}
+                          {subItem.description && (
+                            <p class="hide-on-compact agenda-description text-sm mb-3">
+                              {subItem.description}
+                            </p>
+                          )}
+                        </div>
+                        <Speaker item={subItem} />
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="my-4 text-center text-sm extended">
+      Los horarios son orientativos y podrían sufrir modificaciones.
+    </div>
+  </div>
 </Wrapper>
 
 <script>
   const agendaList = document.querySelector(".agenda-list");
-  const chevron = document.querySelector(".toggle-agenda svg") as HTMLElement;
-  const button = document.querySelector(".toggle-agenda");
+  const addIcon = document.querySelector(".toggle-agenda svg") as HTMLElement;
+  const toggleAgendaButton = document.querySelector(".toggle-agenda");
 
   let rotation = 0;
 
   const toggleAgenda = () => {
-    // agendaList.classList.toggle("open");
+    agendaList.classList.toggle("open");
     rotation += 225;
-    chevron.style.transform = `rotate(${rotation}deg)`;
+    addIcon.style.transform = `rotate(${rotation}deg)`;
   };
 
-  button.addEventListener("click", toggleAgenda);
+  toggleAgendaButton.addEventListener("click", toggleAgenda);
+
+  const toggleTalkButtons = document.querySelectorAll(".toggle-talk");
+  toggleTalkButtons.forEach((button) => {
+    const chevron = button.querySelector("svg") as unknown as HTMLElement;
+    let rotation = 0;
+
+    const toggleTalk = (event) => {
+      console.log("hola");
+      const item = event.currentTarget.closest(".agenda-item");
+      item.classList.toggle("expanded");
+      rotation += 180;
+      chevron.style.transform = `rotate(${rotation}deg)`;
+    };
+
+    button.addEventListener("click", toggleTalk);
+  });
 </script>
 
 <style>
@@ -191,8 +507,15 @@ const agenda = [
     animation: slideUp 0.6s ease-in-out forwards;
   }
 
-  .agenda-list.open .agenda-item:nth-child(n) {
-    animation-delay: calc(0.1s * n);
+  .agenda-list.open .agenda-item:nth-child(n + 1) {
+    animation-delay: calc(0.1s);
+  }
+
+  .hide-on-compact {
+    display: none;
+  }
+  .agenda-item.expanded .hide-on-compact {
+    display: flex;
   }
 
   @keyframes slideUp {
@@ -208,5 +531,14 @@ const agenda = [
 
   .toggle-agenda svg {
     transition: transform 0.6s ease-in-out;
+  }
+
+  .agenda-item .extended {
+    background-color: red;
+  }
+  .toggle-talk {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
   }
 </style>

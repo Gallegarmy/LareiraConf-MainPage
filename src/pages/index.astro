@@ -1,46 +1,13 @@
 ---
-import Intro from "@components/Intro/Intro.astro";
-import Dates from "@components/Intro/Dates.astro";
-import About from "@components/About/About.astro";
-import Team from "@components/Team/Team.astro";
-import Sponsors from "@components/Sponsors/Sponsors.astro";
-import Agenda from "@components/Agenda/Agenda.astro";
-import Place from "@components/Intro/Place.astro";
-import "../styles/global.css";
-import Toggle from "@components/Others/Toggle.astro";
 import Layout from "src/layouts/Layout.astro";
-import Tickets from "@components/Tickets/Tickets.astro";
+import Intro from "@components/Intro/Intro.astro";
 ---
 
-<Layout title="Lareira Conf 2025">
-  <div class="grid grid-rows-auto p-6 lg:p-12 gap-24 scroll-mt-32" id="intro">
-    <Toggle />
-    <section
-      class="grid xl:grid-cols-3 xl:grid-rows-4 xl:gap-20 min-h-[40rem] grid-cols-1 gap-16"
-      style="grid-auto-rows: minmax(240px, auto);"
-    >
-      <div class="xl:col-span-2 xl:row-span-4 row-span-2"><Intro /></div>
-      <div class="xl:col-span-1 xl:row-span-2"><Dates /></div>
-      <div class="xl:row-start-3 xl:col-start-3 xl:row-span-2">
-        <Place />
-      </div>
-    </section>
-    <section class="row-span-1 scroll-mt-32" id="about">
-      <About />
-    </section>
-
-    <section class="row-span-1 scroll-mt-52" id="agenda">
-      <Agenda />
-    </section>
-    <section class="row-span-1 scroll-mt-32" id="team">
-      <Team />
-    </section>
-    <section class="row-span-1 scroll-mt-32" id="sponsors">
-      <Sponsors />
-    </section>
-    <section class="row-span-1 scroll-mt-32" id="tickets">
-      <Tickets />
-    </section>
-    <!-- <section class="row-span-1" id="speakers"><Speakers /></section> -->
+<Layout title="Lareira Conf 2026">
+  <div class="flex justify-end p-6">
+    <a href="2025" class=" top-6 right-6 btn-3d main-btn">
+      Ver la edición 2025
+    </a>
   </div>
+  <Intro />
 </Layout>

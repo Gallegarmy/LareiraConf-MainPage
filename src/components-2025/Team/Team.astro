@@ -1,0 +1,212 @@
+---
+import Social from "../Others/Social.astro";
+import Wrapper from "../Others/Wrapper.astro";
+import Partner from "../Team/Partner.astro";
+
+const crew = [
+  {
+    name: "Nacho Espósito",
+    src: "/archived-editions/2025/crew/Ignacio_pixel.webp",
+    alt: "Miembro del equipo",
+    role: "Founder",
+    job: "DevOps",
+    description:
+      "Apasionado por la tecnología y el desarrollo de soluciones digitales. He ayudado a traer Sysarmy a Galicia para seguir conectando a la comunidad IT",
+    redes: [{ icon: "Linkedin", username: "ignacioespositobusto" }],
+    groups: [{ icon: "Sysarmy", url: "https://sysarmygalicia.com/" }],
+  },
+  {
+    name: "Andrea Magán",
+    src: "/archived-editions/2025/crew/Andrea_pixel.webp",
+    alt: "Andrea Magán",
+    role: "Presentadora",
+    job: "Front developer",
+    description:
+      "Dev by day, designer by night. Me encanta crear productos con buena UX, y construir comunidades y equipos.",
+    redes: [{ icon: "Linkedin", username: "andreamaganrey" }],
+    groups: [
+      {
+        icon: "CoruñaWTF",
+        url: "https://www.eventbrite.es/o/corunawtf-58544773663",
+      },
+      { icon: "Sysarmy", url: "https://sysarmygalicia.com/" },
+    ],
+  },
+  {
+    name: "Jesús Pérez Roca",
+    src: "/archived-editions/2025/crew/Jesus_pixel.webp",
+    alt: "Jesús Pérez Roca",
+    role: "Beerworking",
+    job: "Profesor",
+    description:
+      "Profesor experimentado con un historial demostrado de trabajo en la industria de la educación superior.",
+    redes: [{ icon: "Linkedin", username: "jesusperezrocafernandez" }],
+    groups: [
+      {
+        icon: "CoruñaWTF",
+        url: "https://www.eventbrite.es/o/corunawtf-58544773663",
+      },
+      { icon: "Sysarmy", url: "https://sysarmygalicia.com/" },
+      { icon: "Python", url: "https://pythoncoruna.github.io/es/" },
+    ],
+  },
+  {
+    name: "Jorge Teixeira",
+    src: "/archived-editions/2025/crew/Jorge_pixel.webp",
+    alt: "Jorge Teixeira",
+    role: "Tesorero",
+    job: "Tech Advocate",
+    description: "Presidente en GPUL, activo en la comunidad y con experiencia en infraestructura y desarrollo.",
+    redes: [{ icon: "Linkedin", username: "jorge-teixeira-crespo" }],
+    groups: [{ icon: "Gpul", url: "https://gpul.org/" }],
+  },
+];
+---
+
+<Wrapper>
+  <div class="flex flex-col xl:flex-row justify-between gap-4">
+    <div class="crew-container place-content-center basis-1/2">
+      <h1 class="text-5xl font-bold mb-8">El equipo</h1>
+      <p class="text-l mb-8">
+        Somos un grupo de apasionados por la tecnología, cada uno en su área,
+        pero unidos por un objetivo común: crear espacios donde las comunidades
+        locales puedan conectarse y compartir ideas. Así nació Lareiraconf, un
+        proyecto que comenzó de una chispa en unas admincañas (como no podía ser
+        de otra manera) y que nos ha llevado hasta aquí.
+      </p>
+      <p class="text-l mb-8">
+        Queremos que este evento sea ese punto de encuentro donde surjan ideas y
+        conexiones que inspiren a todos. Detrás de cada charla, de cada detalle,
+        está nuestro compromiso por hacer de LareiraConf un evento memorable
+        para la comunidad.
+      </p>
+      <Partner />
+    </div>
+    <div
+      class="flex flex-wrap gap-2 w-full h-full basis-1/2 place-content-center"
+    >
+      {
+        crew.map((crewMate) => {
+          return (
+            <div id="card-crew-animate" class="flip-container pointer">
+              <div class="flipper">
+                <div class="front h-full">
+                  <div class="border-8 border-black p-4 text-center h-full">
+                    <div class="icon sm:hide-icon">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="1rem"
+                        height="1rem"
+                        style="isolation:isolate"
+                        fill="currentColor"
+                        viewBox="0 0 64 64"
+                        id="share"
+                      >
+                        <g>
+                          <path d=" M 32.891 30.886 C 17.886 30.886 4.104 43.921 3.744 58.827 C 3.726 59.544 3.528 59.574 3.301 58.893 C 2.593 56.772 2 53.18 2 49.451 C 2 31.206 16.191 16.248 32.837 15.112 C 33.55 15.064 34.129 14.444 34.129 13.729 L 34.129 5.548 C 34.129 4.444 34.874 4.045 35.793 4.657 L 61.599 21.861 C 62.517 22.473 62.517 23.467 61.599 24.08 L 35.793 41.284 C 34.874 41.896 34.133 41.497 34.139 40.393 Q 34.185 31.766 34.185 31.766 C 34.185 31.281 33.605 30.886 32.891 30.886 Z " />
+                        </g>
+                      </svg>
+                    </div>
+                    <img
+                      src={crewMate.src}
+                      alt={crewMate.alt}
+                      class="crew-img border-8 border-black"
+                    />
+                    <footer class="flex flex-col justify-between p-2">
+                      <h3 class="text-xl  tracking-widest">{crewMate.name}</h3>
+
+                      <p class="text-xs mb-2">{crewMate.job}</p>
+                      <p class="text-s mb-4">{crewMate.role}</p>
+                    </footer>
+                  </div>
+                </div>
+                <div class="flex flex-col gap-4 items-center back border-8 border-black p-4 dotted-bg">
+                  <div class="flex items-center">
+                    <div class="logo flex p-4 relative">
+                      LAREIRA CONF
+                      <img
+                        src="/archived-editions/2025/lareira-isotipo.svg"
+                        alt="lareira isotipo"
+                        class="isotipo"
+                      />
+                    </div>
+                  </div>
+                  <section class="groups flex flex-col p-2 w-full">
+                    <p class="text-xs md:text-xxs">Comunidades:</p>
+                    <div class="flex flex-wrap gap-2 items-center whitespace-nowrap">
+                      {crewMate.groups.map((item) => {
+                        return <span class="tag">{item.icon} </span>;
+                      })}
+                    </div>
+                  </section>
+
+                  <div class="description p-2 text-center flex flex-col flex-grow justify-around items-center">
+                    <p class="text-xs md:text-xxs">
+                      {crewMate.description}
+                      <div class="flex justify-center">
+                        {crewMate.redes.map((item) => {
+                          return (
+                            <>
+                              {item.icon === "Linkedin" && (
+                                <Social
+                                  username={item.username}
+                                  platform="linkedin"
+                                  class="text-blue-500 hover:underline mr-2"
+                                />
+                              )}
+                            </>
+                          );
+                        })}
+                      </div>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        })
+      }
+    </div>
+  </div>
+</Wrapper>
+
+<style>
+  .logo {
+    background-color: var(--secondary);
+    color: var(--text-primary);
+  }
+
+  .groups,
+  .description {
+    background-color: var(--primary);
+    color: var(--text-secondary);
+  }
+
+  .tag {
+    background-color: var(--secondary);
+    color: var(--text-primary);
+    padding: 0.1rem 0.2rem;
+    font-size: 0.7rem;
+  }
+
+  .isotipo {
+    height: 1.375rem;
+    width: 1.375rem;
+    position: absolute;
+    left: 2.5rem;
+    bottom: 1.125rem;
+  }
+
+  .crew-img {
+    width: 100%;
+  }
+
+  .icon {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    width: 1rem;
+    height: 1rem;
+    animation: pulse 1.5s 3;
+  }
+</style>

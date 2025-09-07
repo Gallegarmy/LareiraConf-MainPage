@@ -1,24 +1,26 @@
----
-import Wrapper from "@components/Others/Wrapper.astro";
----
-
-<Wrapper>
-  <div class="flex align-center justify-center h-48 w-48 xl:h-40 xl:w-40 mb-6 relative mx-auto my-6 lareira-container">
-    <div
-      class="lareira-animated"
-    >
-    </div>
+<div class="flex grow flex-col items-center justify-center text-center">
+  <div class="lareira-container">
+    <div class="lareira-animated"></div>
   </div>
-  <h1 class="font-bold text-center text-5xl mb-2">
-    Bienvenidos a LareiraConf.
+  <h1
+    class="logo-style text-4xl font-bold md:text-6xl lg:text-7xl"
+    data-text="LAREIRACONF'26"
+  >
+    LAREIRACONF'26
   </h1>
-  <h2 class="font-bold text-center text-3xl">
-    El encuentro tech que enciende ideas y conecta comunidades
-  </h2>
-</Wrapper>
+  <span
+    class="date-text mt-4 block text-lg md:text-2xl lg:text-3xl"
+    data-text="21.03.26 A CORUÑA"
+  >
+    21.03.26 A CORUÑA
+  </span>
+</div>
 
 <style>
   .lareira-container {
+    width: 190px;
+    height: 80px;
+    position: relative;
     filter: drop-shadow(0px 5px 120px #ff7e47);
   }
 </style>

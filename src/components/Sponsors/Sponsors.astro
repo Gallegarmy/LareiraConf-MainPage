@@ -5,54 +5,147 @@ import Denodo from "@img/sponsors/denodo.svg";
 import Dinahosting from "@img/sponsors/dinahosting.svg";
 import Tecdesoft from "@img/sponsors/tecdesoft.svg";
 import Captology from "@img/sponsors/captology.svg";
-import SponsorCard from "./SponsorCard.astro";
+import SponsorsTier from "./SponsorsTier.astro";
 import Teimas from "@img/sponsors/teimas.svg";
 import SmartClick from "@img/sponsors/smartclick.svg";
+import UDC from "@img/sponsors/udc.svg";
+import Codely from "@img/sponsors/codely.svg";
+import Lucus from "@img/sponsors/lucus.svg";
+import Barkibu from "@img/sponsors/barkibu.svg";
+import Docuten from "@img/sponsors/docuten.svg";
+import NextDigital from "@img/sponsors/nextdigital.svg";
+import Sweepend from "@img/sponsors/sweepend.svg";
+import AdanEvents from "@img/sponsors/adanevents.svg";
+import Malte from "@img/sponsors/malte.svg";
+import SirviendoCodigo from "@img/sponsors/sirviendocodigo.svg";
+import GrupoBillingham  from  '@img/sponsors/grupobillingham.svg';
+import WordPress from "@img/sponsors/wordpress.svg";
+
+enum SponsorTier {
+  Lume = "lume",
+  Brasa = "brasa",
+  Faisca = "faisca",
+  Vagalume = "vagalume",
+}
 
 const sponsors = [
   {
     name: "Raiola Networks",
     logo: Raiola,
     url: "https://raiolanetworks.com/",
-    tier: "lume",
+    tier: SponsorTier.Lume,
   },
   {
     name: "Denodo",
     logo: Denodo,
     url: "https://www.denodo.com/",
-    tier: "lume",
+    tier: SponsorTier.Lume,
   },
   {
     name: "dinahosting",
     logo: Dinahosting,
     url: "https://dinahosting.com/",
-    tier: "lume",
+    tier: SponsorTier.Lume,
   },
   {
     name: "Smartclick",
     logo: SmartClick,
     url: "https://smartclick.es/",
-    tier: "lume",
+    tier: SponsorTier.Lume,
   },
   {
-    name: "Tecdesoft",
-    logo: Tecdesoft,
-    url: "https://tecdesoft.es/",
-    tier: "brasa",
+    name: "Lucus Host",
+    logo: Lucus,
+    url: "https://www.lucushost.com/",
+    tier: SponsorTier.Lume,
+  },
+  {
+    name: "Barkibu",
+    logo: Barkibu,
+    url: "https://www.barkibu.com/",
+    tier: SponsorTier.Lume,
+  },
+  {
+    name: "Docuten",
+    logo: Docuten,
+    url: "https://docuten.com/",
+    tier: SponsorTier.Lume,
+  },
+  {
+    name: "WordPress",
+    logo: WordPress,
+    url: "https://wordpress.com/es/wordcamp",
+    tier: SponsorTier.Lume,
   },
   {
     name: "Teimas",
     logo: Teimas,
     url: "https://www.teimas.com/",
-    tier: "brasa",
+    tier: SponsorTier.Brasa,
+  },
+  {
+    name: "Tecdesoft",
+    logo: Tecdesoft,
+    url: "https://tecdesoft.es/",
+    tier: SponsorTier.Brasa,
   },
   {
     name: "Captology",
     logo: Captology,
     url: "https://www.captology.es/",
-    tier: "faisca",
+    tier: SponsorTier.Faisca,
+  },
+  {
+    name: "Sweepend",
+    logo: Sweepend,
+    url: "https://www.sweepend.com",
+    tier: SponsorTier.Faisca,
+  },
+  {
+    name: "Next Digital",
+    logo: NextDigital,
+    url: "https://www.nextdigital.es/",
+    tier: SponsorTier.Vagalume,
+  },
+  {
+    name: "Sirviendo código",
+    logo: SirviendoCodigo,
+    url: "https://sirviendocodigo.com/",
+    tier: SponsorTier.Vagalume,
+  },
+  {
+    name: "Codely",
+    logo: Codely,
+    url: "https://codely.com/",
+    tier: SponsorTier.Vagalume,
+  },
+  {
+    name: "Universidade da Coruña",
+    logo: UDC,
+    url: "https://www.udc.es/",
+    tier: SponsorTier.Vagalume,
+  },
+  {
+    name: "Adan Events",
+    logo: AdanEvents,
+    url: "mailto:javiayude@gmail.com",
+    tier: SponsorTier.Vagalume,
+  },
+  {
+    name: "Malte",
+    logo: Malte,
+    url: "https://www.somosmalte.com",
+    tier: SponsorTier.Vagalume,
+  },
+  {
+    name: "Grupo Billingam",
+    logo: GrupoBillingham,
+    url: "https://www.grupobillingham.com",
+    tier: SponsorTier.Vagalume,
   },
 ];
+
+const tiers = [SponsorTier.Lume, SponsorTier.Brasa, SponsorTier.Faisca, SponsorTier.Vagalume];
 ---
 
 <Wrapper>
@@ -61,15 +154,18 @@ const sponsors = [
   >
     <h1 class="text-5xl font-bold mb-4">Sponsors</h1>
     <p class="mb-10">
-      La LareiraConf, no sería posible sin el apoyo de las empresas que han
-      apostado por lo que estamos construyendo. Gracias a su ayuda, podemos
-      organizar un evento que reúna a la comunidad tecnológica gallega con el
-      nivel que merece y con un precio ajustado.
+      La LareiraConf no sería posible sin el apoyo de las empresas y organizaciones que han apostado por lo que estamos construyendo, contribuyendo con recursos, servicios y espacios para ofrecer un evento a la altura de la comunidad y una experiencia única a un precio accesible.
     </p>
-    <div
-      class="flex flex-col items-center justify-center gap-2 flex-wrap sm:flex-row sm:items-start"
-    >
-      {sponsors.map((sponsor) => <SponsorCard {...sponsor} />)}
+    <div class="flex items-center justify-between gap-2 flex-wrap">
+      {
+        tiers.map((tier) => (
+          <SponsorsTier
+            sponsors={sponsors.filter((sponsor) => sponsor.tier === tier)}
+            class={tier}
+            tier={tier}
+          />
+        ))
+      }
     </div>
     <p class="mb-10 flex flex-col item-center">
       <span class="mb-2">
@@ -82,7 +178,7 @@ const sponsors = [
       </span>
       <button
         class="p-2 text-accent btn-3d w-fit place-self-center"
-        onclick="window.location.href='mailto:administracion@sysarmygalicia.com?subject=Patrocinio LareiraConf 2025'"
+        onclick="window.location.href='mailto:infon@lareiraconf.es?subject=Patrocinio LareiraConf 2025'"
       >
         escríbenos un email
       </button>
