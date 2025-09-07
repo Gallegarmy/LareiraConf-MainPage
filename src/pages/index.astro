@@ -1,27 +1,13 @@
 ---
 import Layout from "src/layouts/Layout.astro";
+import Intro from "@components/Intro/Intro.astro";
 ---
 
 <Layout title="Lareira Conf 2026">
   <div class="flex justify-end p-6">
-      <a href="2025" class=" top-6 right-6 btn-3d main-btn">
-        Ver la edición 2025
-      </a>
+    <a href="2025" class=" top-6 right-6 btn-3d main-btn">
+      Ver la edición 2025
+    </a>
   </div>
-  <div class="flex grow items-center justify-center text-center ">
-    <div>
-      <h1
-        class="logo-style text-4xl font-bold md:text-6xl lg:text-7xl"
-        data-text="LAREIRACONF'26"
-      >
-        LAREIRACONF'26
-      </h1>
-      <span
-        class="date-text mt-4 block text-lg md:text-2xl lg:text-3xl"
-        data-text="21.03.26 A CORUÑA"
-      >
-        21.03.26 A CORUÑA
-      </span>
-    </div>
-  </div>
+  <Intro />
 </Layout>
