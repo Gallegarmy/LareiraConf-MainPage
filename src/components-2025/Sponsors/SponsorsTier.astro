@@ -1,0 +1,66 @@
+---
+import SponsorCard from "../Sponsors/SponsorCard.astro";
+
+export interface Props {
+  tier: string;
+  sponsors: Array<{
+    url: string;
+    logo: string;
+    name: string;
+    tier: string;
+  }>;
+  class: string;
+}
+
+const { tier, sponsors, class: className } = Astro.props;
+---
+
+<div class={`sponsor-tier  ${tier} ${className} border-4 border-black flex-col md:flex-row`}>
+  <div class="sponsor-header flex flex-row justify-between p-2 ">
+    <div class="uppercase">{tier}</div>
+
+    <svg
+      class="w-6 h-6"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M5 19l14-14M5 5h14v14"></path>
+    </svg>
+  </div>
+  <div class={`flex flex-wrap w-full gap-6 p-2 justify-around`}>
+    {
+      sponsors
+        .filter((sponsor) => sponsor.tier === tier)
+        .map((sponsor) => (
+          <SponsorCard
+            url={sponsor.url}
+            logo={sponsor.logo}
+            name={sponsor.name}
+            class={`${tier}-tier`}
+            tier={sponsor.tier}
+          />
+        ))
+    }
+  </div>
+</div>
+
+<style>
+  .sponsor-tier {
+    /* background-color: white; */
+    height: auto;
+    width: 100%;
+    display: flex; 
+    justify-content: space-around; 
+  }
+  .sponsor-header {
+    background-color: var(--secondary);
+    color: var(--text-primary);
+    min-width: 7.5rem;
+  }
+</style>

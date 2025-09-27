@@ -1,0 +1,54 @@
+---
+export interface Props {
+  url: string;
+  logo: string;
+  name: string;
+  tier: string;
+  class?: string;
+}
+
+const { url, logo, name, tier, class: customClass } = Astro.props;
+---
+
+<a
+  class=`sponsor-card ${tier}-tier filter grayscale transition-all duration-300 hover:filter-none hover:invert-none dark:filter dark:invert dark:hover:filter-none dark:hover:sepia-0`
+  href={url}
+  target="_blank"
+  rel="noopener noreferrer flex flex-row justify-between p-2"
+>
+  <div
+    class={`sponsor-card no-underline flex justify-center w-full h-full ${customClass ? customClass : ""}`}
+  >
+    <img src={logo} alt={name || ""} class="max-w-xs w-full" />
+  </div>
+</a>
+
+<style>
+  .sponsor-card {
+    max-width: 400px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .sponsor-card:hover {
+    background-color: var(--bg-light);
+  }
+
+  .lume-tier {
+    max-width: 400px;
+  }
+
+  .brasa-tier {
+    max-width: 250px;
+  }
+
+  .faisca-tier {
+    max-width: 125px;
+  }
+
+  .vagalume-tier {
+    max-width: 400px;
+  }
+</style>

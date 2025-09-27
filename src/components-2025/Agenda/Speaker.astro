@@ -1,0 +1,138 @@
+---
+import Social from "../Others/Social.astro";
+import Modal from "../Others/Modal.astro";
+
+const { item, class: className } = Astro.props;
+---
+
+<div class="speaker-card flex items-start gap-4">
+  {
+    item.image && (
+      <img
+        class={`speaker-avatar rounded-full w-12 h-12 object-cover pointer`}
+        src={item.avatar}
+        alt={item.speaker}
+        width="48"
+        height="48"
+      />
+    )
+  }
+  <div class="flex gap-1 flex-col items-start">
+    {
+      item.speaker && (
+        <Modal id={item.id} title={item.speaker} class="fit">
+          <div slot="main" class="flex flex-col items-start gap-4">
+            <div class="flex flex-col items-center gap-6 lg:flex-row">
+              <div>
+                {item.image && (
+                  <div class="relative">
+                    <img
+                      class={`speaker-image w-64 h-64 object-cover border border-8 border-black`}
+                      src={item.image}
+                      alt={item.speaker}
+                      width="256"
+                      height="256"
+                    />
+
+                    <img
+                      class={`speaker-avatar abs rounded-full w-16 h-16 object-cover border border-4 border-black`}
+                      src={item.avatar}
+                      alt={item.speaker}
+                      width="64"
+                      height="64"
+                    />
+                  </div>
+                )}
+                <div
+                  class={`${className} flex flex-row gap-2 mt-2 justify-end`}
+                >
+                  {item.linkedin && (
+                    <Social username={item.linkedin} platform="linkedin" />
+                  )}
+                  {item.x && <Social username={item.x} platform="x" />}
+                  {item.blueSky && (
+                    <Social username={item.blueSky} platform="bluesky" />
+                  )}
+                  {item.instagram && (
+                    <Social username={item.instagram} platform="instagram" />
+                  )}
+                </div>
+              </div>
+
+              <div class="flex flex-1 flex-col gap-4 items-start">
+                <div class="flex flex-row flex-wrap items-center gap-6 ">
+                  <div>
+                    <strong>{item.speaker}</strong>
+                    {item.role && (
+                      <p class="agenda-role text-sm">{item.role}</p>
+                    )}
+                  </div>
+
+                  {item.bio && (
+                    <div class="flex flex-col items-start gap-2">
+                      {item.bio.split("\n").map((text) => (
+                        <div class={`${className} text-sm agenda-bio`}>
+                          {text}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        </Modal>
+      )
+    }
+    {item.role && <p class="agenda-role text-sm">{item.role}</p>}
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll(".speaker-avatar").forEach((image) => {
+    image.addEventListener("click", (event) => {
+      const modalId = (event.target as Element)
+        .closest(".speaker-card")
+        .querySelector("dialog").id;
+      (document.getElementById(modalId) as HTMLDialogElement).showModal();
+    });
+  });
+</script>
+
+<style>
+  .speaker-avatar {
+    background-color: var(--primary);
+    border: 0.2rem solid var(--secondary);
+  }
+
+  .abs {
+    position: absolute;
+    bottom: -32px;
+    left: 12px;
+  }
+
+  .speaker-avatar:hover {
+    border: 0.2rem solid var(--accent);
+  }
+
+  @keyframes coin-flip {
+    0% {
+      transform: rotateY(0deg);
+    }
+    20% {
+      transform: rotateY(360deg);
+    }
+    100% {
+      transform: rotateY(360deg);
+    }
+  }
+
+  .speaker-avatar {
+    animation: coin-flip 10s ease-in-out infinite;
+    animation-delay: calc(var(--speaker-index) * 0.5s);
+  }
+
+  .speaker-card button {
+    text-align: start;
+  }
+</style>

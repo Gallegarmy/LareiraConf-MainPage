@@ -7,9 +7,9 @@
 :root {
   --primary: white;
   --secondary: black;
-  --terciary: #ff6b35;
-  --color-5: #fff8dc;
-  --accent: #ffd700;
+  --terciary: black;
+  --color-5: #ff8906;
+  --accent: #e95c3c;
   --bg-light: #f8f8f8;
 
   --text-primary: var(--primary);

@@ -1,0 +1,149 @@
+.torch-cursor {
+  cursor:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='64' viewBox='0 0 32 64'%3E%3C!-- Llama --%3E%3Crect x='14' y='0' width='4' height='4' fill='%23FFD700'/%3E%3Crect x='12' y='4' width='8' height='4' fill='%23FF8C00'/%3E%3Crect x='10' y='8' width='12' height='4' fill='%23FF4500'/%3E%3Crect x='12' y='12' width='8' height='4' fill='%23FF8C00'/%3E%3C!-- Mango --%3E%3Crect x='14' y='16' width='4' height='48' fill='%238B4513'/%3E%3E%3C/svg%3E")
+      16 0,
+    auto;
+}
+
+.dark-cave {
+  position: relative;
+  overflow: hidden;
+  background-color: #000000;
+  min-height: 100vh;
+}
+
+.torch-light {
+  position: fixed; /* Use fixed for a global light source */
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 140, 0, 0.8) 0%,
+    rgba(255, 107, 53, 0.6) 20%,
+    rgba(255, 69, 0, 0.4) 40%,
+    rgba(255, 140, 0, 0.2) 60%,
+    rgba(220, 20, 60, 0.1) 80%,
+    transparent 100%
+  );
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  z-index: 10;
+}
+
+.torch-light.is-lit {
+  animation: torch-flicker 1.8s ease-in-out infinite alternate;
+}
+
+.logo-style,
+.date-text {
+  font-family: "square", "Courier New", monospace, sans-serif;
+  font-weight: normal;
+  color: #ff6b35;
+  text-shadow:
+    0 0 5px #ff6b35,
+    0 0 10px #ff6b35,
+    0 0 20px #ff6b35,
+    0 0 40px #ff8c00,
+    0 0 80px #ff8c00;
+  animation: burning 3s steps(50) infinite;
+}
+
+@keyframes burning {
+  0%,
+  100% {
+    text-shadow:
+      0 0 0 #fff8dc,
+      0 0 0 #ffd700,
+      -1px -1px 0 #cd4606,
+      0 -2px 0 #973716,
+      1px -2px 0 #ffca32;
+  }
+  20% {
+    text-shadow:
+      1px 1px 0 #fff8dc,
+      -1px 0 0 #ffd700,
+      0 -1px 0 #cd4606,
+      -1px -2px 0 #973716,
+      0 -1px 0 #ffca32;
+  }
+  40% {
+    text-shadow:
+      -1px 0 0 #fff8dc,
+      1px -1px 0 #ffd700,
+      0 1px 0 #cd4606,
+      1px 0 0 #973716,
+      -1px -1px 0 #ffca32;
+  }
+  60% {
+    text-shadow:
+      0 1px 0 #fff8dc,
+      -1px 1px 0 #ffd700,
+      1px 0 0 #cd4606,
+      0 -1px 0 #973716,
+      1px -1px 0 #ffca32;
+  }
+  80% {
+    text-shadow:
+      1px -1px 0 #fff8dc,
+      0 0 0 #ffd700,
+      -1px 1px 0 #cd4606,
+      1px 1px 0 #973716,
+      0 -2px 0 #ffca32;
+  }
+}
+
+@keyframes torch-flicker {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.8;
+  }
+  25% {
+    transform: translate(-50%, -50%) scale(1.05);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 0.3;
+  }
+  75% {
+    transform: translate(-50%, -50%) scale(1.02);
+    opacity: 0.95;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.95);
+    opacity: 0.85;
+  }
+}
+
+.unlit-torch {
+  display: none; /* Hidden by default, shown via script */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #555;
+  text-align: center;
+  z-index: 20;
+  font-size: 1.5rem;
+  pointer-events: none; /* Prevent it from blocking touches */
+}
+
+.unlit-torch::before {
+  content: "";
+  display: block;
+  margin: 0 auto;
+  width: 64px;
+  height: 128px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='64' viewBox='0 0 32 64'%3E%3C!-- Llama --%3E%3Crect x='14' y='0' width='4' height='4' fill='%23FFD700'/%3E%3Crect x='12' y='4' width='8' height='4' fill='%23FF8C00'/%3E%3Crect x='10' y='8' width='12' height='4' fill='%23FF4500'/%3E%3Crect x='12' y='12' width='8' height='4' fill='%23FF8C00'/%3E%3C!-- Mango --%3E%3Crect x='14' y='16' width='4' height='48' fill='%238B4513'/%3E%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.unlit-torch::after {
+  content: "Toca para encender";
+  display: block;
+  margin-top: 1rem;
+  font-family: monospace;
+}

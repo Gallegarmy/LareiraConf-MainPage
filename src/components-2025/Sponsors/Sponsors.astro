@@ -1,0 +1,168 @@
+---
+import Wrapper from "../Others/Wrapper.astro";
+import SponsorsTier from "./SponsorsTier.astro";
+
+enum SponsorTier {
+  Lume = "lume",
+  Brasa = "brasa",
+  Faisca = "faisca",
+  Vagalume = "vagalume",
+}
+
+const sponsors = [
+  {
+    name: "Raiola Networks",
+    logo: "/archived-editions/2025/sponsors/raiola.svg",
+    url: "https://raiolanetworks.com/",
+    tier: SponsorTier.Lume,
+  },
+  {
+    name: "Denodo",
+    logo: "/archived-editions/2025/sponsors/denodo.svg",
+    url: "https://www.denodo.com/",
+    tier: SponsorTier.Lume,
+  },
+  {
+    name: "dinahosting",
+    logo: "/archived-editions/2025/sponsors/dinahosting.svg",
+    url: "https://dinahosting.com/",
+    tier: SponsorTier.Lume,
+  },
+  {
+    name: "Smartclick",
+    logo: "/archived-editions/2025/sponsors/smartclick.svg",
+    url: "https://smartclick.es/",
+    tier: SponsorTier.Lume,
+  },
+  {
+    name: "Lucus Host",
+    logo: "/archived-editions/2025/sponsors/lucus.svg",
+    url: "https://www.lucushost.com/",
+    tier: SponsorTier.Lume,
+  },
+  {
+    name: "Barkibu",
+    logo: "/archived-editions/2025/sponsors/barkibu.svg",
+    url: "https://www.barkibu.com/",
+    tier: SponsorTier.Lume,
+  },
+  {
+    name: "Docuten",
+    logo: "/archived-editions/2025/sponsors/docuten.svg",
+    url: "https://docuten.com/",
+    tier: SponsorTier.Lume,
+  },
+  {
+    name: "WordPress",
+    logo: "/archived-editions/2025/sponsors/wordpress.svg",
+    url: "https://wordpress.com/es/wordcamp",
+    tier: SponsorTier.Lume,
+  },
+  {
+    name: "Teimas",
+    logo: "/archived-editions/2025/sponsors/teimas.svg",
+    url: "https://www.teimas.com/",
+    tier: SponsorTier.Brasa,
+  },
+  {
+    name: "Tecdesoft",
+    logo: "/archived-editions/2025/sponsors/tecdesoft.svg",
+    url: "https://tecdesoft.es/",
+    tier: SponsorTier.Brasa,
+  },
+  {
+    name: "Captology",
+    logo: "/archived-editions/2025/sponsors/captology.svg",
+    url: "https://www.captology.es/",
+    tier: SponsorTier.Faisca,
+  },
+  {
+    name: "Sweepend",
+    logo: "/archived-editions/2025/sponsors/sweepend.svg",
+    url: "https://www.sweepend.com",
+    tier: SponsorTier.Faisca,
+  },
+  {
+    name: "Next Digital",
+    logo: "/archived-editions/2025/sponsors/nextdigital.svg",
+    url: "https://www.nextdigital.es/",
+    tier: SponsorTier.Vagalume,
+  },
+  {
+    name: "Sirviendo código",
+    logo: "/archived-editions/2025/sponsors/sirviendocodigo.svg",
+    url: "https://sirviendocodigo.com/",
+    tier: SponsorTier.Vagalume,
+  },
+  {
+    name: "Codely",
+    logo: "/archived-editions/2025/sponsors/codely.svg",
+    url: "https://codely.com/",
+    tier: SponsorTier.Vagalume,
+  },
+  {
+    name: "Universidade da Coruña",
+    logo: "/archived-editions/2025/sponsors/udc.svg",
+    url: "https://www.udc.es/",
+    tier: SponsorTier.Vagalume,
+  },
+  {
+    name: "Adan Events",
+    logo: "/archived-editions/2025/sponsors/adanevents.svg",
+    url: "mailto:javiayude@gmail.com",
+    tier: SponsorTier.Vagalume,
+  },
+  {
+    name: "Malte",
+    logo: "/archived-editions/2025/sponsors/malte.svg",
+    url: "https://www.somosmalte.com",
+    tier: SponsorTier.Vagalume,
+  },
+  {
+    name: "Grupo Billingam",
+    logo: "/archived-editions/2025/sponsors/grupobillingham.svg",
+    url: "https://www.grupobillingham.com",
+    tier: SponsorTier.Vagalume,
+  },
+];
+
+const tiers = [SponsorTier.Lume, SponsorTier.Brasa, SponsorTier.Faisca, SponsorTier.Vagalume];
+---
+
+<Wrapper>
+  <div
+    class="sponsors-container col-span-1 place-content-center text-center space-y-10"
+  >
+    <h1 class="text-5xl font-bold mb-4">Sponsors</h1>
+    <p class="mb-10">
+      La LareiraConf no sería posible sin el apoyo de las empresas y organizaciones que han apostado por lo que estamos construyendo, contribuyendo con recursos, servicios y espacios para ofrecer un evento a la altura de la comunidad y una experiencia única a un precio accesible.
+    </p>
+    <div class="flex items-center justify-between gap-2 flex-wrap">
+      {
+        tiers.map((tier) => (
+          <SponsorsTier
+            sponsors={sponsors.filter((sponsor) => sponsor.tier === tier)}
+            class={tier}
+            tier={tier}
+          />
+        ))
+      }
+    </div>
+    <p class="mb-10 flex flex-col item-center">
+      <span class="mb-2">
+        Si quieres encender la Lareira, consulta nuestras <a
+          class="underline"
+          target="_blank"
+          href="https://drive.google.com/file/d/1qAiU4k50GV9pbgfehwGJIA9ow2SCxUWh/view?usp=sharing"
+          >flamantes oportunidades de patrocinio</a
+        > y
+      </span>
+      <button
+        class="p-2 text-accent btn-3d w-fit place-self-center"
+        onclick="window.location.href='mailto:infon@lareiraconf.es?subject=Patrocinio LareiraConf 2025'"
+      >
+        escríbenos un email
+      </button>
+    </p>
+  </div>
+</Wrapper>

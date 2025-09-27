@@ -10,7 +10,7 @@ import Lumi from "./Lumi.astro";
 </div>
 
 <style>
-  ∂ .dark {
+  .dark {
     background: var(--primary);
     color: var(--text-accent);
   }
@@ -38,13 +38,13 @@ import Lumi from "./Lumi.astro";
   const body = document.body;
   const checkBox = document.getElementById("checkBox") as HTMLInputElement;
 
-  // Default to dark theme if no theme is set in localStorage
-  const currentTheme = localStorage.getItem("theme") || "dark";
-
-  body.classList.add(currentTheme);
-  body.classList.remove(currentTheme === "dark" ? "light" : "dark");
-  body.setAttribute("data-theme", currentTheme);
-  checkBox.checked = currentTheme === "dark";
+  const currentTheme = localStorage.getItem("theme");
+  if (currentTheme) {
+    body.classList.add(currentTheme);
+    body.classList.remove(currentTheme === "dark" ? "light" : "dark");
+    body.setAttribute("data-theme", currentTheme);
+    checkBox.checked = currentTheme === "dark";
+  }
 
   checkBox.addEventListener("change", () => {
     if (checkBox.checked) {
