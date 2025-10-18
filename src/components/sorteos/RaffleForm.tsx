@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useLayoutEffect } from "react";
 import gsap from "gsap";
 import Match from "./Match";
 import "./RaffleForm.scss";
@@ -45,17 +45,28 @@ const RaffleForm: React.FC<RaffleFormProps> = ({
   const [isAnimating, setIsAnimating] = useState(false);
   const [matchLit, setMatchLit] = useState(false);
 
+  const containerRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
   const matchRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const successRef = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    if (formRef.current && containerRef.current) {
+      const h = formRef.current.offsetHeight;
+      containerRef.current.style.minHeight = h + "px";
+    }
+  }, []);
 
   const playMatchAnimation = async () => {
     if (!matchRef.current || !buttonRef.current || !formRef.current) {
       return;
     }
 
-    const tl = gsap.timeline();
+    const tl = gsap.timeline({
+      onStart: () => {},
+    });
+
     const buttonRect = buttonRef.current.getBoundingClientRect();
     const matchRect = matchRef.current.getBoundingClientRect();
 
@@ -65,14 +76,7 @@ const RaffleForm: React.FC<RaffleFormProps> = ({
       buttonRect.width / 2 -
       (matchRect.left + matchRect.width / 2);
 
-    if (successRef.current) {
-      gsap.set(successRef.current, {
-        opacity: 0,
-        y: 20,
-        display: "none",
-      });
-    }
-
+    // Movimiento inicial hacia el botón
     tl.to(matchRef.current, {
       y: deltaY,
       x: deltaX,
@@ -85,10 +89,9 @@ const RaffleForm: React.FC<RaffleFormProps> = ({
       }, "-=0.2")
       .to({}, { duration: 0.5 })
       .to(matchRef.current, {
-        x: 0,
-        y: -60,
+        x: -20,
+        y: -20,
         rotation: 0,
-        // scale eliminado para mantener tamaño original de la cerilla
         duration: 1.0,
         ease: "back.out(1.7)",
       })
@@ -97,29 +100,22 @@ const RaffleForm: React.FC<RaffleFormProps> = ({
         {
           opacity: 0,
           duration: 0.6,
+          onComplete: () => {
+            if (formRef.current) {
+              formRef.current.style.pointerEvents = "none";
+            }
+          },
         },
         "-=0.8",
       );
 
     if (successRef.current) {
-      tl.to(
+      tl.set(successRef.current, { opacity: 0, display: "flex" }).to(
         successRef.current,
         {
-          display: "block",
           opacity: 1,
-          y: 0,
           duration: 0.6,
           ease: "power2.out",
-          onComplete: () => {
-            gsap.set(matchRef.current, {
-              x: 0,
-              y: 0,
-              rotation: 0,
-              visibility: "visible",
-              opacity: 1,
-              zIndex: 100,
-            });
-          },
         },
         "-=0.4",
       );
@@ -162,9 +158,7 @@ const RaffleForm: React.FC<RaffleFormProps> = ({
     setSubmitError("");
     setIsAnimating(true);
 
-    if (onAnimationStart) {
-      onAnimationStart();
-    }
+    onAnimationStart?.();
 
     try {
       const animationPromise = playMatchAnimation();
@@ -187,6 +181,9 @@ const RaffleForm: React.FC<RaffleFormProps> = ({
           opacity: 1,
           duration: 0.3,
           ease: "power2.out",
+          onComplete: () => {
+            formRef.current!.style.pointerEvents = "auto";
+          },
         });
       }
 
@@ -211,13 +208,15 @@ const RaffleForm: React.FC<RaffleFormProps> = ({
   };
 
   return (
-    <div className="raffle-form">
+    <div ref={containerRef} className="raffle-form">
       <div ref={successRef} className="raffle-form__success-animation">
-        <div className="raffle-form__success">
-          <h3>¡Tu cerilla se ha encendido!</h3>
-          <p>Te has registrado correctamente en el sorteo.</p>
-          <p>Te mandaremos un correo si ganas.</p>
-        </div>
+        {submitStatus === "success" && (
+          <div className="raffle-form__success">
+            <h3>¡Tu cerilla se ha encendido!</h3>
+            <p>Te has registrado correctamente en el sorteo.</p>
+            <p>Te mandaremos un correo si ganas.</p>
+          </div>
+        )}
       </div>
 
       <div ref={matchRef} className="raffle-form__match-static">

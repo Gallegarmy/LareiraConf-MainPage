@@ -6,6 +6,10 @@
   font-family: var(--font-family-display);
   margin-top: 16px;
   position: relative;
+  transition: height 0.4s ease;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 
   &__match-animation {
     position: absolute;
