@@ -141,13 +141,18 @@
 
 @media (max-width: 768px) {
   .match {
-    width: 6px;
-    height: 60px;
+    /* Aumentar ancho para que el palo no quede más estrecho que la cabeza */
+    width: 10px;
+    height: 70px;
 
-    &__stick { height: 50px; }
-    &__head { width: 8px; height: 10px; top: -5px; }
-    &__flame { width: 12px; height: 15px; top: -20px; }
-    &__flame-core { width: 8px; height: 12px; }
-    &__flame-outer { width: 12px; height: 15px; }
+    &__stick { height: 60px; }
+
+    /* Igualar ancho de la cabeza al palo para evitar desajuste visual */
+    &__head { width: 10px; height: 10px; top: -6px; }
+
+    /* Ajustar llama proporcional al nuevo tamaño */
+    &__flame { width: 14px; height: 18px; top: -24px; left: 0px; }
+    &__flame-core { width: 10px; height: 14px; top: 2px; left: 2px; }
+    &__flame-outer { width: 14px; height: 18px; }
   }
 }

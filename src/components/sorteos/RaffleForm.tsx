@@ -105,12 +105,21 @@ const RaffleForm: React.FC<RaffleFormProps> = ({
         setMatchLit(true);
       })
       .to({}, { duration: 0.18 })
-      .to(matchRef.current, {
-        x: -20,
-        y: -90,
-        rotation: 0,
-        duration: 1.0,
-        ease: "back.out(1.7)",
+      // Movimiento final: tween directo al centro sin reposicionamiento posterior
+      .add(() => {
+        if (!matchRef.current || !containerRef.current) return;
+        const cRect = containerRef.current.getBoundingClientRect();
+        const mRect = matchRef.current.getBoundingClientRect();
+        const dx = cRect.left + cRect.width / 2 - (mRect.left + mRect.width / 2);
+        // elevar cerilla 40px por encima del centro
+        const dy = cRect.top + cRect.height / 2 - (mRect.top + mRect.height / 2) - 100;
+        gsap.to(matchRef.current, {
+          x: "+=" + dx,
+          y: "+=" + dy,
+          rotation: 0,
+          duration: 1.0,
+          ease: "back.out(1.7)",
+        });
       })
       .to(
         formRef.current,

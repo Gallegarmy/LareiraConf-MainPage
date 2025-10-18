@@ -59,6 +59,10 @@
   &__form {
     display: flex;
     flex-direction: column;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+    padding-bottom: 64px;
   }
 
   &__description {
@@ -274,7 +278,6 @@
 
   &__success {
     text-align: center;
-    padding: var(--spacing-xl);
     background: var(--color-brown);
 
     h3 {
@@ -315,5 +318,35 @@
   }
   60% {
     transform: translateY(-5px);
+  }
+}
+
+@media (max-width: 600px) {
+  .raffle-form__form {
+    max-width: 340px;
+  }
+
+  .raffle-form__description {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+
+  .raffle-form__input {
+    font-size: 18px;
+    padding: 8px 10px;
+  }
+
+  .raffle-form__checkbox-label {
+    font-size: 16px;
+  }
+
+  .raffle-form__submit {
+    font-size: 20px;
+    padding: 12px 0;
+  }
+
+  .raffle-form__match-static {
+    right: 10px;
+    bottom: 20%;
   }
 }
