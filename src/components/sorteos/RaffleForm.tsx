@@ -76,7 +76,6 @@ const RaffleForm: React.FC<RaffleFormProps> = ({
       buttonRect.width / 2 -
       (matchRect.left + matchRect.width / 2);
 
-    // Movimiento inicial hacia el botón
     tl.to(matchRef.current, {
       y: deltaY,
       x: deltaX,
@@ -84,13 +83,31 @@ const RaffleForm: React.FC<RaffleFormProps> = ({
       duration: 1.2,
       ease: "power2.inOut",
     })
+      .to(matchRef.current, {
+        x: "+=40",
+        rotation: -28,
+        duration: 0.28,
+        ease: "power2.inOut",
+      })
+      .to(matchRef.current, {
+        x: "-=70",
+        rotation: -12,
+        duration: 0.28,
+        ease: "power2.inOut",
+      })
+      .to(matchRef.current, {
+        x: "+=55",
+        rotation: -22,
+        duration: 0.26,
+        ease: "power2.inOut",
+      })
       .add(() => {
         setMatchLit(true);
-      }, "-=0.2")
-      .to({}, { duration: 0.5 })
+      })
+      .to({}, { duration: 0.18 })
       .to(matchRef.current, {
         x: -20,
-        y: -20,
+        y: -90,
         rotation: 0,
         duration: 1.0,
         ease: "back.out(1.7)",
