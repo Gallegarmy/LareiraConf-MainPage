@@ -1,5 +1,8 @@
-FROM node:lts AS runtime
+FROM node:lts
 WORKDIR /app
+
+# Forzar registro público de npm
+RUN npm config set registry https://registry.npmjs.org/
 
 COPY . .
 
