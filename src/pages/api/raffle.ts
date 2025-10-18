@@ -17,9 +17,6 @@ export const POST: APIRoute = async ({ request }) => {
     const acceptTerms = body.acceptTerms === true;
 
 
-    const forwarded = request.headers.get("x-forwarded-for");
-    const ip = forwarded?.split(",")[0].trim() || "";
-
     const timestamp = new Date().toISOString();
 
     await googleSheetsService.submit({
@@ -27,7 +24,6 @@ export const POST: APIRoute = async ({ request }) => {
       email,
       acceptTerms,
       timestamp,
-      ipAddress: ip,
       sheetName: "trg"
     });
 

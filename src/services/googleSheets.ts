@@ -5,7 +5,6 @@ export interface FormSubmissionData {
   acceptTerms: boolean;
   eventId: string;
   timestamp: string;
-  ipAddress?: string;
 }
 
 export interface GoogleSheetsConfig {
@@ -25,34 +24,10 @@ class GoogleSheetsService {
    * Get OAuth access token using client credentials
    */
   private async getAccessToken(): Promise<string> {
-    const envAny = (import.meta as any).env || {};
-    const clientId = envAny.GOOGLE_CLIENT_ID
-      || envAny.REACT_APP_GOOGLE_CLIENT_ID
-      || process.env.GOOGLE_CLIENT_ID
-      || process.env.REACT_APP_GOOGLE_CLIENT_ID;
-    const clientSecret = envAny.GOOGLE_CLIENT_SECRET
-      || envAny.REACT_APP_GOOGLE_CLIENT_SECRET
-      || process.env.GOOGLE_CLIENT_SECRET
-      || process.env.REACT_APP_GOOGLE_CLIENT_SECRET;
-    const refreshToken = envAny.GOOGLE_REFRESH_TOKEN
-      || envAny.REACT_APP_GOOGLE_REFRESH_TOKEN
-      || process.env.GOOGLE_REFRESH_TOKEN
-      || process.env.REACT_APP_GOOGLE_REFRESH_TOKEN;
-
-    if (process.env.NODE_ENV !== 'production') {
-      if (!clientId || !clientSecret || !refreshToken) {
-        console.warn('[raffle][env] Variables faltantes:',
-          {
-            hasClientId: !!clientId,
-            hasClientSecret: !!clientSecret,
-            hasRefreshToken: !!refreshToken,
-            knownKeys: [
-              ...Object.keys(envAny).filter(k => k.startsWith('GOOGLE_') || k.startsWith('REACT_APP_GOOGLE_'))
-            ]
-          }
-        );
-      }
-    }
+    const env = (import.meta as any).env || {};
+    const clientId = env.GOOGLE_CLIENT_ID
+    const clientSecret = env.GOOGLE_CLIENT_SECRET
+    const refreshToken = env.GOOGLE_REFRESH_TOKEN
 
     if (!clientId || !clientSecret || !refreshToken) {
       throw new Error('OAuth credentials not configured. Missing CLIENT_ID, CLIENT_SECRET, or REFRESH_TOKEN');
@@ -187,8 +162,7 @@ class GoogleSheetsService {
           data.name,
           data.email,
           data.acceptTerms ? 'Sí' : 'No',
-          data.eventId,
-          data.ipAddress || 'N/A'
+          data.eventId
         ]
       ];
 
@@ -226,35 +200,24 @@ class GoogleSheetsService {
     }
   }
 
-  async submit(data: { name?: string; email?: string; acceptTerms?: boolean; timestamp: string; ipAddress?: string; sheetName: string }): Promise<void> {
+  async submit(data: { name?: string; email?: string; acceptTerms?: boolean; timestamp: string; sheetName: string }): Promise<void> {
     const payload: FormSubmissionData = {
       name: data.name || '',
       email: data.email || '',
       acceptTerms: !!data.acceptTerms,
       eventId: data.sheetName,
-      timestamp: data.timestamp,
-      ipAddress: data.ipAddress
+      timestamp: data.timestamp
     };
     return this.submitToSheet(payload);
   }
 }
 
-// Configuration
-// Configuration
-// Configuration (fallback a process.env si viene de entorno de despliegue)
+
 const _env: any = (import.meta as any).env || {};
-// Configuration (fallback incluye prefijos antiguos REACT_APP_)
 const googleSheetsConfig: GoogleSheetsConfig = {
-  spreadsheetId: _env.GOOGLE_SHEETS_ID
-    || _env.REACT_APP_GOOGLE_SHEETS_ID
-    || process.env.GOOGLE_SHEETS_ID
-    || process.env.REACT_APP_GOOGLE_SHEETS_ID
-    || '',
+  spreadsheetId: _env.GOOGLE_SHEETS_ID || undefined,
   sheetName: 'trg',
-  apiKey: _env.GOOGLE_SHEETS_API_KEY
-    || _env.REACT_APP_GOOGLE_SHEETS_API_KEY
-    || process.env.GOOGLE_SHEETS_API_KEY
-    || process.env.REACT_APP_GOOGLE_SHEETS_API_KEY
+  apiKey: _env.GOOGLE_SHEETS_API_KEY || undefined,
 };
 
 if (!googleSheetsConfig.spreadsheetId) {
@@ -262,15 +225,3 @@ if (!googleSheetsConfig.spreadsheetId) {
 }
 
 export const googleSheetsService = new GoogleSheetsService(googleSheetsConfig);
-
-// Utility function to get user's IP (optional)
-export const getUserIP = async (): Promise<string | null> => {
-  try {
-    const response = await fetch('https://api.ipify.org?format=json');
-    const result = await response.json();
-    return result.ip;
-  } catch (error) {
-    console.warn('Could not get user IP:', error);
-    return null;
-  }
-};
