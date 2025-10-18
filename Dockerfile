@@ -1,3 +1,11 @@
+# Etapa de build
+FROM node:20-alpine AS build
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+COPY . .
+RUN npm run build
+
 # Etapa de runtime mínima
 FROM node:20-alpine AS runtime
 WORKDIR /app
@@ -13,8 +21,4 @@ COPY --from=build --chown=astro:astro /app/dist ./dist
 COPY --from=build --chown=astro:astro /app/astro.config.mjs ./astro.config.mjs
 
 EXPOSE 4321
-
-HEALTHCHECK --interval=30s --timeout=5s --start-period=20s --retries=3 \
-  CMD wget -qO- http://localhost:4321 || exit 1
-
 CMD ["node", "dist/server/entry.mjs"]
