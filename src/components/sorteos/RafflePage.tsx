@@ -1,6 +1,8 @@
 import React from "react";
 import RaffleForm from "./RaffleForm";
 import "./RafflePage.scss";
+import torchImg from "../../img/assets/torch.png";
+import ticketImg from "../../img/assets/ticket.webp";
 
 /**
  * Configuración de sorteos (estática).
@@ -27,7 +29,7 @@ const RAFFLE_CONFIGS: Record<string, RaffleConfig> = {
     drawDate: "15 de mayo de 2026",
     prize: "1 entrada gratuita para LareiraConf'26",
     matchHeadColor: "#ea3368",
-    logo: "/src/img/assets/ticket.webp",
+    logo: ticketImg.src,
   },
 };
 
@@ -40,7 +42,7 @@ const RafflePage: React.FC = () => {
         <div className="raffle-page__title-plate">
           <div className="title-torch title-torch--left">
             <img
-              src="/src/img/assets/torch.png"
+              src={torchImg.src}
               alt="Antorcha"
               className="torch-image torch-image--lit"
             />
@@ -50,7 +52,7 @@ const RafflePage: React.FC = () => {
 
           <div className="title-torch title-torch--right">
             <img
-              src="/src/img/assets/torch.png"
+              src={torchImg.src}
               alt="Antorcha"
               className="torch-image torch-image--lit"
             />
