@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import RaffleForm from "./RaffleForm";
 import "./RafflePage.scss";
 
@@ -32,49 +32,7 @@ const RAFFLE_CONFIGS: Record<string, RaffleConfig> = {
 };
 
 const RafflePage: React.FC = () => {
-  const [eventId, setEventId] = useState<string | null>(null);
-  const [config, setConfig] = useState<RaffleConfig | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  // Obtener parámetro evento
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const evt = params.get("evento");
-    setEventId(evt);
-  }, []);
-
-  useEffect(() => {
-    if (eventId && RAFFLE_CONFIGS[eventId]) {
-      setConfig(RAFFLE_CONFIGS[eventId]);
-    }
-    setIsLoading(false);
-  }, [eventId]);
-
-  if (isLoading) {
-    return (
-      <div className="raffle-page">
-        <div className="raffle-page__container">
-          <div style={{ textAlign: "center", padding: "4rem", color: "white" }}>
-            <p>Cargando sorteo...</p>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  if (!config) {
-    return (
-      <div className="raffle-page">
-        <div className="raffle-page__container">
-          <div
-            style={{ textAlign: "center", padding: "4rem", color: "orange" }}
-          >
-            <p>Sorteo no encontrado.</p>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  const config = RAFFLE_CONFIGS.trg;
 
   return (
     <div className="raffle-page" data-background="custom">
