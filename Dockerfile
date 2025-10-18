@@ -37,4 +37,8 @@ COPY --from=build --chown=astro:astro /app/astro.config.mjs ./astro.config.mjs
 
 # Exponer el puerto y definir el comando de inicio
 EXPOSE 4321
+
+# Forzar que Node escuche en todas las interfaces
+ENV HOST=0.0.0.0
+
 CMD ["node", "dist/server/entry.mjs"]
