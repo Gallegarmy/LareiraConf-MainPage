@@ -15,15 +15,6 @@ export const POST: APIRoute = async ({ request }) => {
     const email = body.email?.trim();
     const acceptTerms = body.acceptTerms === true;
 
-    if (!name || name.length < 2) {
-      return new Response("Nombre inválido", { status: 400 });
-    }
-    if (!email || !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email)) {
-      return new Response("Email inválido", { status: 400 });
-    }
-    if (!acceptTerms) {
-      return new Response("Debes aceptar los términos", { status: 400 });
-    }
 
     const forwarded = request.headers.get("x-forwarded-for");
     const ip = forwarded?.split(",")[0].trim() || "";
