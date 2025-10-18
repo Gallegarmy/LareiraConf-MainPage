@@ -1,5 +1,6 @@
 import type { APIRoute } from "astro";
 import { googleSheetsService } from "../../services/googleSheets";
+export const prerender = false; // asegurar SSR para acceder a headers y runtime env
 
 interface IncomingBody {
   name?: string;

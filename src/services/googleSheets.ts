@@ -1,18 +1,17 @@
-/**
- * Google Sheets OAuth service (Astro server side)
- * Mirrors logic from React project adapting env var names (without REACT_APP_)
- */
+// Google Sheets API integration service
 export interface FormSubmissionData {
   name: string;
   email: string;
   acceptTerms: boolean;
+  eventId: string;
   timestamp: string;
   ipAddress?: string;
-  sheetName: string; // fixed (e.g. "trg" or general raffle)
 }
 
-interface GoogleSheetsConfig {
+export interface GoogleSheetsConfig {
   spreadsheetId: string;
+  sheetName: string;
+  apiKey?: string;
 }
 
 class GoogleSheetsService {
@@ -22,92 +21,256 @@ class GoogleSheetsService {
     this.config = config;
   }
 
-  private required(name: string, value: string | undefined): string {
-    if (!value) throw new Error(`Missing env var ${name}`);
-    return value;
-  }
-
+  /**
+   * Get OAuth access token using client credentials
+   */
   private async getAccessToken(): Promise<string> {
-    const clientId = this.required("GOOGLE_CLIENT_ID", import.meta.env.GOOGLE_CLIENT_ID);
-    const clientSecret = this.required("GOOGLE_CLIENT_SECRET", import.meta.env.GOOGLE_CLIENT_SECRET);
-    const refreshToken = this.required("GOOGLE_REFRESH_TOKEN", import.meta.env.GOOGLE_REFRESH_TOKEN);
+    const envAny = (import.meta as any).env || {};
+    const clientId = envAny.GOOGLE_CLIENT_ID
+      || envAny.REACT_APP_GOOGLE_CLIENT_ID
+      || process.env.GOOGLE_CLIENT_ID
+      || process.env.REACT_APP_GOOGLE_CLIENT_ID;
+    const clientSecret = envAny.GOOGLE_CLIENT_SECRET
+      || envAny.REACT_APP_GOOGLE_CLIENT_SECRET
+      || process.env.GOOGLE_CLIENT_SECRET
+      || process.env.REACT_APP_GOOGLE_CLIENT_SECRET;
+    const refreshToken = envAny.GOOGLE_REFRESH_TOKEN
+      || envAny.REACT_APP_GOOGLE_REFRESH_TOKEN
+      || process.env.GOOGLE_REFRESH_TOKEN
+      || process.env.REACT_APP_GOOGLE_REFRESH_TOKEN;
 
-    const resp = await fetch("https://oauth2.googleapis.com/token", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    if (process.env.NODE_ENV !== 'production') {
+      if (!clientId || !clientSecret || !refreshToken) {
+        console.warn('[raffle][env] Variables faltantes:',
+          {
+            hasClientId: !!clientId,
+            hasClientSecret: !!clientSecret,
+            hasRefreshToken: !!refreshToken,
+            knownKeys: [
+              ...Object.keys(envAny).filter(k => k.startsWith('GOOGLE_') || k.startsWith('REACT_APP_GOOGLE_'))
+            ]
+          }
+        );
+      }
+    }
+
+    if (!clientId || !clientSecret || !refreshToken) {
+      throw new Error('OAuth credentials not configured. Missing CLIENT_ID, CLIENT_SECRET, or REFRESH_TOKEN');
+    }
+
+    const response = await fetch('https://oauth2.googleapis.com/token', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
       body: new URLSearchParams({
         client_id: clientId,
         client_secret: clientSecret,
         refresh_token: refreshToken,
-        grant_type: "refresh_token"
+        grant_type: 'refresh_token'
       })
     });
 
-    if (!resp.ok) {
-      const txt = await resp.text();
-      throw new Error(`OAuth token refresh failed: ${txt}`);
+    if (!response.ok) {
+      const error = await response.text();
+      throw new Error(`OAuth token refresh failed: ${error}`);
     }
-    const data = await resp.json();
+
+    const data = await response.json();
     return data.access_token;
   }
 
+  /**
+   * Check if email already exists in the sheet
+   */
   private async checkEmailExists(accessToken: string, sheetName: string, email: string): Promise<boolean> {
     try {
-      const url = `https://sheets.googleapis.com/v4/spreadsheets/${this.config.spreadsheetId}/values/${encodeURIComponent(sheetName)}`;
-      const resp = await fetch(url, {
-        headers: { Authorization: `Bearer ${accessToken}` }
+      console.log('🔧 DEBUG: Checking if email exists:', email);
+
+      const url = `https://sheets.googleapis.com/v4/spreadsheets/${this.config.spreadsheetId}/values/${sheetName}`;
+
+      const response = await fetch(url, {
+        headers: {
+          'Authorization': `Bearer ${accessToken}`,
+        }
       });
-      if (!resp.ok) return false;
-      const data = await resp.json();
-      const rows: string[][] = data.values || [];
+
+      if (!response.ok) {
+        console.log('⚠️ WARNING: Could not check existing emails, proceeding...');
+        return false;
+      }
+
+      const data = await response.json();
+      const rows = data.values || [];
+
+      // Skip header row if exists, then check email column (index 2)
       for (let i = 1; i < rows.length; i++) {
         const row = rows[i];
         if (row && row[2] && row[2].toLowerCase() === email.toLowerCase()) {
+          console.log('❌ WARNING: Email already exists in sheet:', email);
           return true;
         }
       }
+
+      console.log('✅ DEBUG: Email not found, can proceed:', email);
       return false;
-    } catch {
+    } catch (error) {
+      console.log('⚠️ WARNING: Error checking email, proceeding anyway:', error);
       return false;
     }
   }
 
-  async submit(data: FormSubmissionData): Promise<void> {
-    const accessToken = await this.getAccessToken();
-    const sheetName = data.sheetName;
+  /**
+   * Get the number of participants for a specific event
+   */
+  async getParticipantCount(eventId: string): Promise<number> {
+    try {
+      console.log('🔧 DEBUG: Getting participant count for event:', eventId);
 
-    // Email uniqueness
-    if (await this.checkEmailExists(accessToken, sheetName, data.email)) {
-      throw new Error("DUPLICATE_EMAIL: El email ya está registrado");
+      // Get OAuth access token
+      const accessToken = await this.getAccessToken();
+
+      const sheetName = eventId;
+      const url = `https://sheets.googleapis.com/v4/spreadsheets/${this.config.spreadsheetId}/values/${sheetName}`;
+
+      const response = await fetch(url, {
+        headers: {
+          'Authorization': `Bearer ${accessToken}`,
+        }
+      });
+
+      if (!response.ok) {
+        console.log('⚠️ WARNING: Could not get participant count, returning 0');
+        return 0;
+      }
+
+      const data = await response.json();
+      const rows = data.values || [];
+
+      // Subtract 1 if there's a header row, otherwise count all rows
+      const participantCount = Math.max(0, rows.length - 1);
+
+      console.log('✅ DEBUG: Participant count:', participantCount);
+      return participantCount;
+    } catch (error) {
+      console.log('⚠️ WARNING: Error getting participant count:', error);
+      return 0;
     }
+  }
 
-    const values = [[
-      data.timestamp,
-      data.name,
-      data.email,
-      data.acceptTerms ? "Sí" : "No",
-      data.ipAddress || "N/A"
-    ]];
+  /**
+   * Submit form data to Google Sheets using OAuth access token
+   * Uses the eventId directly as the sheet name and validates email uniqueness
+   */
+  async submitToSheet(data: FormSubmissionData): Promise<void> {
+    try {
+      console.log('🔧 DEBUG: Starting OAuth Google Sheets submission...');
 
-    const url = `https://sheets.googleapis.com/v4/spreadsheets/${this.config.spreadsheetId}/values/${encodeURIComponent(sheetName)}:append?valueInputOption=RAW`;
-    const resp = await fetch(url, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ values })
-    });
+      // Get OAuth access token
+      const accessToken = await this.getAccessToken();
+      console.log('🔧 DEBUG: OAuth token obtained successfully');
 
-    if (!resp.ok) {
-      const txt = await resp.text();
-      throw new Error(`Failed to append row: ${txt}`);
+      // Use the eventId directly as the sheet name
+      const sheetName = data.eventId;
+      console.log('🔧 DEBUG: Using sheet name from eventId:', sheetName);
+
+      // Check if email already exists in the sheet
+      const emailExists = await this.checkEmailExists(accessToken, sheetName, data.email);
+      if (emailExists) {
+        console.error('❌ ERROR: Email already registered:', data.email);
+        throw new Error(`DUPLICATE_EMAIL: El email ${data.email} ya está registrado en este sorteo`);
+      }
+
+      const values = [
+        [
+          data.timestamp,
+          data.name,
+          data.email,
+          data.acceptTerms ? 'Sí' : 'No',
+          data.eventId,
+          data.ipAddress || 'N/A'
+        ]
+      ];
+
+      console.log('🔧 DEBUG: Sending data to sheet:', sheetName);
+
+      const url = `https://sheets.googleapis.com/v4/spreadsheets/${this.config.spreadsheetId}/values/${sheetName}:append?valueInputOption=RAW`;
+
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${accessToken}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          values: values
+        })
+      });
+
+      console.log('🔧 DEBUG: Response status:', response.status);
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error('❌ ERROR: Failed to submit:', errorText);
+        throw new Error(`Failed to submit to sheet: ${errorText}`);
+      }
+
+      const result = await response.json();
+      console.log('✅ SUCCESS: Data added to sheet successfully!');
+      console.log('✅ Sheet used:', sheetName);
+      console.log('✅ Result:', result);
+
+    } catch (error) {
+      console.error('❌ FATAL ERROR: Failed to submit to Google Sheets:', error);
+      throw new Error(`Failed to submit form data: ${error instanceof Error ? error.message : 'Unknown error'}`);
     }
+  }
+
+  async submit(data: { name?: string; email?: string; acceptTerms?: boolean; timestamp: string; ipAddress?: string; sheetName: string }): Promise<void> {
+    const payload: FormSubmissionData = {
+      name: data.name || '',
+      email: data.email || '',
+      acceptTerms: !!data.acceptTerms,
+      eventId: data.sheetName,
+      timestamp: data.timestamp,
+      ipAddress: data.ipAddress
+    };
+    return this.submitToSheet(payload);
   }
 }
 
-const spreadsheetId = import.meta.env.GOOGLE_SHEETS_ID || "";
+// Configuration
+// Configuration
+// Configuration (fallback a process.env si viene de entorno de despliegue)
+const _env: any = (import.meta as any).env || {};
+// Configuration (fallback incluye prefijos antiguos REACT_APP_)
+const googleSheetsConfig: GoogleSheetsConfig = {
+  spreadsheetId: _env.GOOGLE_SHEETS_ID
+    || _env.REACT_APP_GOOGLE_SHEETS_ID
+    || process.env.GOOGLE_SHEETS_ID
+    || process.env.REACT_APP_GOOGLE_SHEETS_ID
+    || '',
+  sheetName: 'trg',
+  apiKey: _env.GOOGLE_SHEETS_API_KEY
+    || _env.REACT_APP_GOOGLE_SHEETS_API_KEY
+    || process.env.GOOGLE_SHEETS_API_KEY
+    || process.env.REACT_APP_GOOGLE_SHEETS_API_KEY
+};
 
-export const googleSheetsService = new GoogleSheetsService({
-  spreadsheetId
-});
+if (!googleSheetsConfig.spreadsheetId) {
+  console.warn('[raffle][env] GOOGLE_SHEETS_ID no definido (revisa .env en raíz del proyecto y reinicia el dev server)');
+}
+
+export const googleSheetsService = new GoogleSheetsService(googleSheetsConfig);
+
+// Utility function to get user's IP (optional)
+export const getUserIP = async (): Promise<string | null> => {
+  try {
+    const response = await fetch('https://api.ipify.org?format=json');
+    const result = await response.json();
+    return result.ip;
+  } catch (error) {
+    console.warn('Could not get user IP:', error);
+    return null;
+  }
+};
