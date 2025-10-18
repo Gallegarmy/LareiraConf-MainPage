@@ -1,0 +1,68 @@
+/* Base tipografía y resets mínimos para página de sorteos
+   Evita importar scrollbar, cursors y efectos de otras páginas.
+   Recupera las variables de fuentes originales del proyecto. */
+
+@import "./fonts.css";
+
+/* Variables de fuentes originales (sin traer global.css completo) */
+:root {
+  --logo-font: "Square", sans-serif;
+  --heading-font: "Nine-By-Five", sans-serif;
+  --text-font: "Nine-By-Five", sans-serif;
+  --custom-letter-spacing: 0.2rem;
+}
+
+/* Normalización mínima */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--text-font);
+  background: var(--color-bg, #0b0b0b);
+  color: var(--color-text, #ffffff);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Titulares usan la fuente heading original */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--heading-font);
+  letter-spacing: var(--custom-letter-spacing);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* Elementos de texto */
+p, span, li, label, input, button {
+  font-family: var(--text-font);
+}
+
+/* Botones básicos (evita heredar estilos 3D globales) */
+button {
+  font-family: var(--heading-font);
+  letter-spacing: var(--custom-letter-spacing);
+  text-transform: uppercase;
+}
+
+/* Evitar estilos de scroll personalizados */
+::-webkit-scrollbar,
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-thumb {
+  all: unset;
+}
+
+/* Asegura que no se hereda cursor custom */
+body, a, button {
+  cursor: auto;
+}
+
+/* Puedes añadir ajustes específicos si algún componente dependía de .dark */
+.dark & {
+  background: var(--color-bg, #0b0b0b);
+  color: var(--color-text, #ffffff);
+}

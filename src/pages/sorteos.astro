@@ -1,0 +1,10 @@
+---
+import LayoutNoTorch from "../layouts/LayoutNoTorch.astro";
+import RafflePage from "../components/sorteos/RafflePage";
+const title = "Sorteos | LareiraConf";
+---
+
+<LayoutNoTorch {title}>
+  <!-- Página de sorteos (React) -->
+  <RafflePage client:load />
+</LayoutNoTorch>

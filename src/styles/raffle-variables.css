@@ -1,0 +1,46 @@
+/* Variables específicas para página de sorteos (copiadas de proyecto React) */
+:root {
+  --color-bg: #0b0b0b;
+  --color-text: #ffffff;
+  --color-accent: #ff6a00;
+  --color-accent-light: #ffa940;
+  --color-accent-dark: #ff3c00;
+
+  --color-brown: #6a4a35;
+  --color-brown-dark: #2b1c12;
+  --color-brown-light: #5e3c28;
+
+  --color-text-body-light: #ffa940;
+  --color-text-body-dark: #0b0b0b;
+  --color-text-weak: #0b0b0b;
+
+  --color-input-bg: #2a211b;
+
+  --color-primary: #333;
+  --color-secondary: #666;
+  --color-background: #fff;
+
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+
+  --font-size-sm: 14px;
+  --font-size-md: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 24px;
+
+  --easing-enter: cubic-bezier(0.22, 1, 0.36, 1);
+  --easing-exit: cubic-bezier(0.55, 0.06, 0.68, 0.19);
+  --dur-short: 0.2s;
+  --dur-medium: 0.5s;
+  --dur-long: 1s;
+
+  --custom-background-image: url("/src/img/assets/raffle-bg.png");
+
+  /* Tipografía (referencias; las fuentes ya están declaradas en fonts.css global del proyecto) */
+  --font-family-display: var(--heading-font);
+  --letter-spacing-nine-by-five: 1px;
+  --line-height-nine-by-five: 1.1;
+}
