@@ -1,32 +1,12 @@
-# Build stage
-FROM node:20-alpine AS build
+FROM node:lts AS runtime
 WORKDIR /app
 
-# Install dependencies
-COPY package*.json ./
-RUN npm ci
-
-# Copy source code and build
 COPY . .
+
+RUN npm install
 RUN npm run build
 
-# Minimal runtime stage
-FROM node:20-alpine AS runtime
-WORKDIR /app
-ENV NODE_ENV=production
-
-# Create non-root user
-RUN addgroup -S astro && adduser -S astro -G astro
-USER astro
-
-# Copy only production dependencies
-COPY --chown=astro:astro package*.json ./
-RUN npm ci --omit=dev --unsafe-perm
-
-# Copy build artifacts
-COPY --from=build --chown=astro:astro /app/dist ./dist
-COPY --from=build --chown=astro:astro /app/astro.config.mjs ./astro.config.mjs
-
-# Expose port and start server
+ENV HOST=0.0.0.0
+ENV PORT=4321
 EXPOSE 4321
-CMD ["node", "dist/server/entry.mjs"]
+CMD ["node", "./dist/server/entry.mjs"]
