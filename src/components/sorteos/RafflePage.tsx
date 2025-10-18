@@ -60,8 +60,23 @@ const RafflePage: React.FC = () => {
         <div className="raffle-page__container">
           <RaffleForm
             description={config.description}
-            onSubmit={async () => {
-              /* stub submit */
+            onSubmit={async (data) => {
+              const res = await fetch("/api/raffle", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  name: data.name,
+                  email: data.email,
+                  acceptTerms: data.acceptTerms,
+                }),
+              });
+              if (!res.ok) {
+                if (res.status === 409) {
+                  throw new Error("Este email ya está registrado");
+                }
+                const text = await res.text();
+                throw new Error(text || "Error al registrar");
+              }
             }}
           />
         </div>
