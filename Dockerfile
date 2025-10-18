@@ -1,22 +1,34 @@
 FROM node:20-alpine AS build
 WORKDIR /app
 
-# Install dependencies first 
+# Debug: mostrar entorno npm relevante
+RUN echo "== ENV (npm-related) ==" && env | grep -i npm || true
+
+# Forzar registry público explícito
+ENV NPM_CONFIG_REGISTRY=https://registry.npmjs.org/
+
+# Copiar manifests
 COPY package*.json ./
+
+# Debug: inspeccionar .npmrc (home y workdir) antes de instalar
+RUN echo "== ls -al /root ==" && ls -al /root; \
+    echo "== /root/.npmrc (si existe) =="; \
+    if [ -f /root/.npmrc ]; then sed 's/_authToken=.*/_authToken=[REDACTED]/' /root/.npmrc; else echo "no /root/.npmrc"; fi; \
+    echo "== /app/.npmrc (si existe) =="; \
+    if [ -f /app/.npmrc ]; then sed 's/_authToken=.*/_authToken=[REDACTED]/' /app/.npmrc; else echo "no /app/.npmrc"; fi; \
+    echo "== npm config list =="; npm config list; \
+    echo "== npm config get registry =="; npm config get registry
+
+# Limpieza defensiva de credenciales heredadas
+RUN npm config delete //registry.npmjs.org/:_authToken || true; \
+    rm -f /root/.npmrc || true; \
+    rm -f /app/.npmrc || true
+
+# Mostrar config tras limpieza
+RUN echo "== AFTER CLEANUP npm config list =="#; npm config list
+
+# Instalación (sólo después de depurar)
 RUN npm ci --no-audit --no-fund
 COPY . .
 RUN npm run build
-# Quitar dependencias de dev para runtime
 RUN npm prune --omit=dev
-
-FROM node:20-alpine AS runtime
-WORKDIR /app
-ENV NODE_ENV=production
-RUN addgroup -S astro && adduser -S astro -G astro
-USER astro
-COPY --chown=astro:astro package*.json ./
-COPY --from=build --chown=astro:astro /app/node_modules ./node_modules
-COPY --from=build --chown=astro:astro /app/dist ./dist
-COPY --from=build --chown=astro:astro /app/astro.config.mjs ./astro.config.mjs
-EXPOSE 4321
-CMD ["node", "dist/server/entry.mjs"]
