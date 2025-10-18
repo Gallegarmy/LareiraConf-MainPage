@@ -21,10 +21,14 @@ ENV NODE_ENV=production
 
 # Crear y usar un usuario no root
 RUN addgroup -S astro && adduser -S astro -G astro
+
+# Cambiar permisos del directorio para el usuario no root
+COPY --chown=astro:astro package*.json ./
+RUN chown -R astro:astro /app
+
 USER astro
 
 # Copiar dependencias de producción
-COPY --chown=astro:astro package*.json ./
 RUN npm ci --omit=dev --no-audit --no-fund
 
 # Copiar los archivos necesarios desde la etapa de build
