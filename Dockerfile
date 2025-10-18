@@ -15,7 +15,7 @@ RUN addgroup -S astro && adduser -S astro -G astro
 USER astro
 
 COPY --chown=astro:astro package*.json ./
-RUN npm ci --omit=dev
+RUN npm ci --omit=dev --unsafe-perm
 
 COPY --from=build --chown=astro:astro /app/dist ./dist
 COPY --from=build --chown=astro:astro /app/astro.config.mjs ./astro.config.mjs
