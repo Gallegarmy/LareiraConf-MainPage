@@ -1,34 +1,40 @@
+# Etapa de build
 FROM node:20-alpine AS build
 WORKDIR /app
 
-# Debug: mostrar entorno npm relevante
-RUN echo "== ENV (npm-related) ==" && env | grep -i npm || true
+# Copiar y configurar credenciales de npm
+ARG NPM_TOKEN
+RUN echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
 
-# Forzar registry público explícito
-ENV NPM_CONFIG_REGISTRY=https://registry.npmjs.org/
-
-# Copiar manifests
+# Copiar y instalar dependencias
 COPY package*.json ./
+RUN npm ci --no-audit --no-fund && rm -f .npmrc
 
-# Debug: inspeccionar .npmrc (home y workdir) antes de instalar
-RUN echo "== ls -al /root ==" && ls -al /root; \
-    echo "== /root/.npmrc (si existe) =="; \
-    if [ -f /root/.npmrc ]; then sed 's/_authToken=.*/_authToken=[REDACTED]/' /root/.npmrc; else echo "no /root/.npmrc"; fi; \
-    echo "== /app/.npmrc (si existe) =="; \
-    if [ -f /app/.npmrc ]; then sed 's/_authToken=.*/_authToken=[REDACTED]/' /app/.npmrc; else echo "no /app/.npmrc"; fi; \
-    echo "== npm config list =="; npm config list; \
-    echo "== npm config get registry =="; npm config get registry
-
-# Limpieza defensiva de credenciales heredadas
-RUN npm config delete //registry.npmjs.org/:_authToken || true; \
-    rm -f /root/.npmrc || true; \
-    rm -f /app/.npmrc || true
-
-# Mostrar config tras limpieza
-RUN echo "== AFTER CLEANUP npm config list =="#; npm config list
-
-# Instalación (sólo después de depurar)
-RUN npm ci --no-audit --no-fund
+# Copiar el resto de los archivos y construir la aplicación
 COPY . .
 RUN npm run build
-RUN npm prune --omit=dev
+
+# Etapa de runtime mínima
+FROM node:20-alpine AS runtime
+WORKDIR /app
+ENV NODE_ENV=production
+
+# Crear y usar un usuario no root
+RUN addgroup -S astro && adduser -S astro -G astro
+
+# Cambiar permisos del directorio para el usuario no root
+COPY --chown=astro:astro package*.json ./
+RUN chown -R astro:astro /app
+
+USER astro
+
+# Copiar dependencias de producción
+RUN npm ci --omit=dev --no-audit --no-fund
+
+# Copiar los archivos necesarios desde la etapa de build
+COPY --from=build --chown=astro:astro /app/dist ./dist
+COPY --from=build --chown=astro:astro /app/astro.config.mjs ./astro.config.mjs
+
+# Exponer el puerto y definir el comando de inicio
+EXPOSE 4321
+CMD ["node", "dist/server/entry.mjs"]
