@@ -24,7 +24,7 @@ class GoogleSheetsService {
    * Get OAuth access token using client credentials
    */
   private async getAccessToken(): Promise<string> {
-    const env = (import.meta as any).env || {};
+    const env = (import.meta as any).env || process.env;
     const clientId = env.GOOGLE_CLIENT_ID
     const clientSecret = env.GOOGLE_CLIENT_SECRET
     const refreshToken = env.GOOGLE_REFRESH_TOKEN
