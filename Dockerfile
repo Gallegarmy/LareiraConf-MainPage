@@ -1,12 +1,9 @@
 FROM node:lts
 WORKDIR /app
 
-# Forzar registro público de npm
-RUN npm config set registry https://registry.npmjs.org/
-
 COPY . .
 
-RUN npm install
+RUN npm install --registry https://registry.npmjs.org
 RUN npm run build
 
 ENV HOST=0.0.0.0
