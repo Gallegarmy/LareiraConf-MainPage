@@ -110,9 +110,11 @@ const RaffleForm: React.FC<RaffleFormProps> = ({
         if (!matchRef.current || !containerRef.current) return;
         const cRect = containerRef.current.getBoundingClientRect();
         const mRect = matchRef.current.getBoundingClientRect();
-        const dx = cRect.left + cRect.width / 2 - (mRect.left + mRect.width / 2);
+        const dx =
+          cRect.left + cRect.width / 2 - (mRect.left + mRect.width / 2);
         // elevar cerilla 40px por encima del centro
-        const dy = cRect.top + cRect.height / 2 - (mRect.top + mRect.height / 2) - 100;
+        const dy =
+          cRect.top + cRect.height / 2 - (mRect.top + mRect.height / 2) - 100;
         gsap.to(matchRef.current, {
           x: "+=" + dx,
           y: "+=" + dy,
@@ -187,8 +189,9 @@ const RaffleForm: React.FC<RaffleFormProps> = ({
     onAnimationStart?.();
 
     try {
-      const animationPromise = playMatchAnimation();
+      // Ejecutar petición primero; sólo animar si tiene éxito
       await onSubmit(formData);
+      const animationPromise = playMatchAnimation();
       await animationPromise;
       setSubmitStatus("success");
       onSuccess?.();
@@ -213,13 +216,22 @@ const RaffleForm: React.FC<RaffleFormProps> = ({
         });
       }
 
+      // Sanitizar mensaje: evitar mostrar trazas o contenido crudo
+      let friendly =
+        "Hubo un error al registrarte. Por favor, inténtalo de nuevo.";
       if (error instanceof Error) {
-        setSubmitError(error.message);
-      } else {
-        setSubmitError(
-          "Hubo un error al registrarte. Por favor, inténtalo de nuevo.",
-        );
+        const firstLine = error.message.split("\\n")[0].trim();
+        // Normalizar algunos casos conocidos
+        if (/email.*registrad/i.test(firstLine)) {
+          friendly = "Este email ya está registrado";
+        } else if (/timeout/i.test(firstLine)) {
+          friendly = "Tiempo de espera agotado. Inténtalo de nuevo.";
+        } else if (/network|fetch|failed/i.test(firstLine)) {
+          friendly =
+            "Ooops, ha ocurrido un error, inténtalo nuevamente en un rato.";
+        }
       }
+      setSubmitError(friendly);
     }
   };
 
@@ -304,14 +316,13 @@ const RaffleForm: React.FC<RaffleFormProps> = ({
             <span className="raffle-form__error">{errors.acceptTerms}</span>
           )}
 
-          {submitStatus === "error" && (
-            <div className="raffle-form__error-message">
-              {submitError ||
-                "Hubo un error al registrarte. Por favor, inténtalo de nuevo."}
-            </div>
-          )}
-
           <div className="raffle-form__panel-footer">
+            {submitStatus === "error" && (
+              <div className="raffle-form__error-message">
+                {submitError ||
+                  "Hubo un error al registrarte. Por favor, inténtalo de nuevo."}
+              </div>
+            )}
             <button
               ref={buttonRef}
               type="submit"
