@@ -24,13 +24,18 @@ class GoogleSheetsService {
    * Get OAuth access token using client credentials
    */
   private async getAccessToken(): Promise<string> {
-    const clientId = process.env.GOOGLE_CLIENT_ID;
-    const clientSecret = process.env.GOOGLE_CLIENT_SECRET;
-    const refreshToken = process.env.GOOGLE_REFRESH_TOKEN;
+    const clientId = process.env.GOOGLE_CLIENT_ID || _env.GOOGLE_CLIENT_ID;
+    const clientSecret = process.env.GOOGLE_CLIENT_SECRET || _env.GOOGLE_CLIENT_SECRET;
+    const refreshToken = process.env.GOOGLE_REFRESH_TOKEN || _env.GOOGLE_REFRESH_TOKEN;
 
     if (!clientId || !clientSecret || !refreshToken) {
+      const missing = [
+        !clientId && 'GOOGLE_CLIENT_ID',
+        !clientSecret && 'GOOGLE_CLIENT_SECRET',
+        !refreshToken && 'GOOGLE_REFRESH_TOKEN'
+      ].filter(Boolean).join(', ');
       throw new Error(
-        'OAuth credentials not configured. Missing GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, or GOOGLE_REFRESH_TOKEN.'
+        'OAuth credentials not configured. Missing: ' + missing
       );
     }
 
@@ -240,9 +245,9 @@ class GoogleSheetsService {
 
 const _env: any = (import.meta as any).env || {};
 const googleSheetsConfig: GoogleSheetsConfig = {
-  spreadsheetId: _env.GOOGLE_SHEETS_ID || undefined,
-  sheetName: 'trg',
-  apiKey: _env.GOOGLE_SHEETS_API_KEY || undefined,
+  spreadsheetId: _env.GOOGLE_SHEETS_ID || process.env.GOOGLE_SHEETS_ID || undefined,
+  sheetName: _env.GOOGLE_SHEETS_NAME || process.env.GOOGLE_SHEETS_NAME || 'trg',
+  apiKey: _env.GOOGLE_SHEETS_API_KEY || process.env.GOOGLE_SHEETS_API_KEY || undefined,
 };
 
 if (!googleSheetsConfig.spreadsheetId) {
