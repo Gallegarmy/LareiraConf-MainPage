@@ -24,13 +24,14 @@ class GoogleSheetsService {
    * Get OAuth access token using client credentials
    */
   private async getAccessToken(): Promise<string> {
-    const env = (import.meta as any).env || process.env;
-    const clientId = env.GOOGLE_CLIENT_ID
-    const clientSecret = env.GOOGLE_CLIENT_SECRET
-    const refreshToken = env.GOOGLE_REFRESH_TOKEN
+    const clientId = process.env.GOOGLE_CLIENT_ID;
+    const clientSecret = process.env.GOOGLE_CLIENT_SECRET;
+    const refreshToken = process.env.GOOGLE_REFRESH_TOKEN;
 
     if (!clientId || !clientSecret || !refreshToken) {
-      throw new Error('OAuth credentials not configured. Missing CLIENT_ID, CLIENT_SECRET, or REFRESH_TOKEN');
+      throw new Error(
+        'OAuth credentials not configured. Missing GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, or GOOGLE_REFRESH_TOKEN.'
+      );
     }
 
     const response = await fetch('https://oauth2.googleapis.com/token', {
@@ -42,8 +43,8 @@ class GoogleSheetsService {
         client_id: clientId,
         client_secret: clientSecret,
         refresh_token: refreshToken,
-        grant_type: 'refresh_token'
-      })
+        grant_type: 'refresh_token',
+      }),
     });
 
     if (!response.ok) {
@@ -71,6 +72,11 @@ class GoogleSheetsService {
     }
 
     const data = await response.json();
+
+    if (!data.access_token) {
+      throw new Error('No access token returned from Google OAuth response.');
+    }
+
     return data.access_token;
   }
 
