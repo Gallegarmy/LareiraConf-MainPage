@@ -47,8 +47,27 @@ class GoogleSheetsService {
     });
 
     if (!response.ok) {
-      const error = await response.text();
-      throw new Error(`OAuth token refresh failed: ${error}`);
+      const raw = await response.text();
+      let parsed: any = null;
+      try { parsed = JSON.parse(raw); } catch {}
+      // Clasificar invalid_grant para guiar la regeneración del refresh token
+      if (parsed?.error === 'invalid_grant') {
+        /**
+         * Causas típicas:
+         * - Refresh token generado sin access_type=offline & prompt=consent
+         * - Consent screen / app aún en modo testing y el usuario ya no está en la lista de test
+         * - Se revocó manualmente en la cuenta (Seguridad -> Acceso de terceros)
+         * - Se regeneraron credenciales (client secret nuevo) y el refresh antiguo quedó inválido
+         * - Uso de redirect_uri diferente al que se usó al obtener el token
+         * Acciones:
+         * 1. Verificar en Google Cloud: OAuth consent screen y que el usuario esté autorizado.
+         * 2. Regenerar refresh token:
+         *    https://accounts.google.com/o/oauth2/v2/auth?response_type=code&access_type=offline&prompt=consent&client_id=CLIENT_ID&redirect_uri=REDIRECT_URI&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fspreadsheets
+         * 3. Intercambiar el code por tokens en /token y copiar el nuevo refresh token a .env
+         */
+        throw new Error('OAUTH_INVALID_GRANT: refresh token expirado/revocado. Regenerar siguiendo comentarios en código. Raw=' + raw);
+      }
+      throw new Error(`OAuth token refresh failed: ${raw}`);
     }
 
     const data = await response.json();
