@@ -1,0 +1,50 @@
+.main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  background-color: rgba(26, 26, 26, 0.8);
+  backdrop-filter: blur(10px);
+}
+
+.logo {
+  font-family: var(--logo-font), sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  position: relative;
+}
+
+.logo img {
+  height: 30px; /* Reducido de 40px a 30px */
+}
+
+.cta-button {
+  /* Estilos de botón eliminados, ahora es un enlace de texto */
+  text-decoration: none;
+  font-size: 1rem;
+  font-family: var(--heading-font), sans-serif;
+  text-transform: uppercase;
+  letter-spacing: var(--custom-letter-spacing);
+}
+
+.cta-button:hover {
+  text-decoration: underline;
+}
+
+.isotipo::after {
+  display: inline-block;
+  content: "";
+  background-image: url("/lareira-isotipo.svg");
+  background-size: 1rem 1rem;
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  top: 0.4375rem;
+  left: 8.6rem;
+}
