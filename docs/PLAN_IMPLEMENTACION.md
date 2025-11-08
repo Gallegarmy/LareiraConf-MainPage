@@ -8,7 +8,7 @@
 ---
 
 
-## **FASE 0: Migración de la Landing Legacy** 🔜 POR EMPEZAR
+## **FASE 0: Migración de la Landing Legacy** ✅ HECHO
 *Objetivo: Archivar la web actual para dar paso a la nueva implementación.*
 
 ### 0.1 Mover código existente
