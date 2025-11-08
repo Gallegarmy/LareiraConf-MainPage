@@ -16,7 +16,6 @@ export const POST: APIRoute = async ({ request }) => {
     const email = body.email?.trim();
     const acceptTerms = body.acceptTerms === true;
 
-
     const timestamp = new Date().toISOString();
 
     await googleSheetsService.submit({
@@ -24,12 +23,12 @@ export const POST: APIRoute = async ({ request }) => {
       email,
       acceptTerms,
       timestamp,
-      sheetName: "trg"
+      sheetName: "nerdearla",
     });
 
     return new Response(JSON.stringify({ ok: true }), {
       status: 200,
-      headers: { "Content-Type": "application/json" }
+      headers: { "Content-Type": "application/json" },
     });
   } catch (e) {
     const msg =
