@@ -1,3 +1,9 @@
+@import url(scrollbar.css);
+@import url(fonts.css);
+@import url(animations.css);
+@import url(lareira.css);
+@import url(lumi.css);
+
 :root {
   --primary: white;
   --secondary: black;
@@ -14,8 +20,7 @@
   --heading-font: "Nine-By-Five", sans-serif;
   --custom-letter-spacing: 0.2rem;
 
-  --custom-scrollbar-background:
-    linear-gradient(
+  --custom-scrollbar-background: linear-gradient(
       45deg,
       var(--secondary) 25%,
       transparent 25%,
@@ -47,8 +52,7 @@
   --text-primary: #1e1e1e;
   --text-secondary: #e18b49;
 
-  --custom-scrollbar-background:
-    linear-gradient(
+  --custom-scrollbar-background: linear-gradient(
       45deg,
       var(--secondary) 25%,
       transparent 25%,
