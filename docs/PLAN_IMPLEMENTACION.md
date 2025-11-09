@@ -12,46 +12,46 @@
 *Objetivo: Archivar la web actual para dar paso a la nueva implementación.*
 
 ### 0.1 Mover código existente
-- [ ] **Paso 0.1.1:** Mover el contenido de `src/pages/index.astro` a una nueva página `src/pages/landing-2026.astro`.
-- [ ] **Paso 0.1.2:** Limpiar `src/pages/index.astro` para que sea la base de la nueva web de 2026.
-- [ ] **Paso 0.1.3:** Asegurarse de que las rutas y assets de la versión legacy sigan funcionando correctamente.
+- [X] **Paso 0.1.1:** Mover el contenido de `src/pages/index.astro` a una nueva página `src/pages/landing-2026.astro`.
+- [X] **Paso 0.1.2:** Limpiar `src/pages/index.astro` para que sea la base de la nueva web de 2026.
+- [X] **Paso 0.1.3:** Asegurarse de que las rutas y assets de la versión legacy sigan funcionando correctamente.
 
 ---
 
-## **FASE 1: Sistema de Parallax y Scroll Horizontal** 🔜 POR EMPEZAR
+## **FASE 1: Sistema de Parallax y Scroll Horizontal** ✅ HECHO
 *Objetivo: Implementar la mecánica de scroll principal y el efecto parallax para la nueva web.*
 
 ### 1.1 Estructura del scroll horizontal
-- [ ] **Paso 1.1.1:** Crear un layout principal o componente en React que gestione el scroll horizontal.
-- [ ] **Paso 1.1.2:** Configurar GSAP para mapear el scroll vertical del usuario a un movimiento horizontal del contenido.
+- [X] **Paso 1.1.1:** Crear un layout principal o componente en React que gestione el scroll horizontal.
+- [X] **Paso 1.1.2:** Configurar GSAP para mapear el scroll vertical del usuario a un movimiento horizontal del contenido.
 
 ### 1.2 Demo de Parallax
-- [ ] **Paso 1.2.1:** Crear un componente de capa parallax (`<ParallaxLayer>`).
-- [ ] **Paso 1.2.2:** Implementar 3 capas con diferentes velocidades:
+- [X] **Paso 1.2.1:** Crear un componente de capa parallax (`<ParallaxLayer>`).
+- [X] **Paso 1.2.2:** Implementar 3 capas con diferentes velocidades:
     - Capa de fondo (movimiento lento).
     - Capa de contenido (velocidad normal).
     - Capa de detalles (movimiento rápido).
-- [ ] **Paso 1.2.3:** Crear una página de demo para probar y ajustar el efecto.
+- [X] **Paso 1.2.3:** Crear una página de demo para probar y ajustar el efecto.
 
 ---
 
-## **FASE 2: Sección de Inicio** 🔜 POR EMPEZAR
+## **FASE 2: Sección de Inicio** ✅ HECHO
 *Objetivo: Crear la primera sección visible de la nueva web.*
 
 ### 2.1 Componente de Inicio
-- [ ] **Paso 2.1.1:** Crear el componente de React `<HomeSection>`.
-- [ ] **Paso 2.1.2:** Añadir el contenido principal: título, fecha, lugar.
-- [ ] **Paso 2.1.3:** Integrar la sección en el layout de scroll horizontal.
+- [X] **Paso 2.1.1:** Crear el componente de React `<HomeSection>`.
+- [X] **Paso 2.1.2:** Añadir el contenido principal: título, fecha, lugar.
+- [X] **Paso 2.1.3:** Integrar la sección en el layout de scroll horizontal.
 
 ---
 
-## **FASE 3: Sección de Tickets** 🔜 POR EMPEZAR
+## **FASE 3: Sección de Tickets** ✅ HECHO
 *Objetivo: Añadir la sección para la venta de entradas.*
 
 ### 3.1 Componente de Tickets
-- [ ] **Paso 3.1.1:** Crear el componente de React `<TicketsSection>`.
-- [ ] **Paso 3.1.2:** Diseñar el layout para mostrar los diferentes tipos de tickets.
-- [ ] **Paso 3.1.3:** Integrar la sección en el layout de scroll horizontal después de la sección de inicio.
+- [X] **Paso 3.1.1:** Crear el componente de React `<TicketsSection>`.
+- [X] **Paso 3.1.2:** Diseñar el layout para mostrar los diferentes tipos de tickets.
+- [X] **Paso 3.1.3:** Integrar la sección en el layout de scroll horizontal después de la sección de inicio.
 
 ---
 
