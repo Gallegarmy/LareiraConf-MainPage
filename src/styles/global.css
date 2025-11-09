@@ -2,13 +2,6 @@
 @import url(animations.css);
 
 :root {
-  --primary: white;
-  --secondary: black;
-  --terciary: #ff6b35;
-  --color-5: #fff8dc;
-  --accent: #ffd700;
-  --bg-light: #f8f8f8;
-
   --text-primary: var(--primary);
   --text-secondary: var(--secondary);
 
@@ -17,33 +10,10 @@
   --heading-font: "Nine-By-Five", sans-serif;
   --custom-letter-spacing: 0.2rem;
 
-  --custom-scrollbar-background:
-    linear-gradient(
-      45deg,
-      var(--secondary) 25%,
-      transparent 25%,
-      transparent 75%,
-      var(--secondary) 75%,
-      var(--secondary)
-    ),
-    linear-gradient(
-      45deg,
-      var(--secondary) 25%,
-      transparent 25%,
-      transparent 75%,
-      var(--secondary) 75%,
-      var(--secondary)
-    );
-  --custom-scrollbar-background-color: var(--primary);
-  --custom-scrollbar-background-size: 4px 4px;
-  --custom-scrollbar-background-position: 0 0, 2px 2px;
-}
-
-[data-theme="dark"] {
   --primary: #1e1e1e;
   --secondary: #584e46;
   --terciary: #1c1c1c;
-  --color-5: #ff8906;
+  --light-orange: #ff8906;
   --accent: #e95c3c;
   --bg-light: #f8f8f8;
 
@@ -75,6 +45,9 @@
       var(--secondary)
     );
   --custom-scrollbar-background-color: var(--primary);
+
+  --box-shadow-border:
+    0 0 0 3px var(--color-brown-dark), inset 0 0 0 3px var(--color-brown-light);
 
   .border-black {
     border-color: var(--secondary);

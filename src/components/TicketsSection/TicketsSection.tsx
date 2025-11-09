@@ -6,6 +6,7 @@ import "./TicketsSection.scss";
 
 import mountainsImg from "@img/parallax/mountains.png";
 import treesImg from "@img/parallax/trees.png";
+import Torch from "@components/Torch/Torch";
 
 const TicketsSection = () => {
   return (
@@ -22,7 +23,7 @@ const TicketsSection = () => {
           <div
             style={{
               background:
-                "radial-gradient(ellipse at bottom, #35231b 0%, #0f0b09 100%)",
+                "radial-gradient(ellipse at center, #241813 0%, #0f0b09 100%)",
               width: "100%",
               height: "100%",
             }}
@@ -40,10 +41,25 @@ const TicketsSection = () => {
         </ParallaxLayer> */}
 
         <ParallaxLayer speed={0} className="content-layer">
-          <div className="tickets-container">
-            {tickets.map((ticket) => (
-              <TicketCard key={ticket.id} ticket={ticket} />
-            ))}
+          <div className="tickets-content">
+            <div className="section-description">
+              <Torch position="left" size={100} />
+              <Torch position="right" size={100} />
+              <p>
+                Alguien robó el fuego de la Lareira, y solo Lumi sobrevive entre
+                las sombras.
+              </p>
+              <p>
+                Elige tu personaje y preparate para formar tu equipo, ganar
+                conocimientos, resolver acertijos y vivir la aventura de
+                reavivar la Lareira.
+              </p>
+            </div>
+            <div className="tickets-container">
+              {tickets.map((ticket) => (
+                <TicketCard key={ticket.id} ticket={ticket} />
+              ))}
+            </div>
           </div>
         </ParallaxLayer>
       </div>

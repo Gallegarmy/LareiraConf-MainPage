@@ -1,7 +1,7 @@
 [
   {
     "id": "anventurero",
-    "name": "Aventureiro/a da Cacharela",
+    "name": "Aventureiro/a",
     "description": "Llegas sin armas ni armaduras, solo con ganas de aprender y explorar.",
     "image": "/images/tickets/aventureros.png",
     "price": {
@@ -19,7 +19,7 @@
   },
   {
     "id": "guerrero",
-    "name": "Guerreiro/a da Chama",
+    "name": "Guerreiro/a",
     "description": "Sabes que las mejores historias se viven. Tu objetivo es generar alianzas hasta el amanecer.",
     "image": "/images/tickets/guerreros.png",
     "price": {
@@ -37,7 +37,7 @@
   },
   {
     "id": "paladin",
-    "name": "Paladín do Lumeiro",
+    "name": "Paladín/a",
     "description": "Tu fuego no es solo tuyo. Lo compartes con quienes aún buscan el suyo.",
     "image": "/images/tickets/paladines.png",
     "price": {

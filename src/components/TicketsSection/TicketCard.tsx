@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import FireParticles from "../Others/FireParticles";
 import Icon from "../Icon/Icon";
 import Torch from "../Torch/Torch";
+import CornerFlourish from "../CornerFlourish/CornerFlourish";
 
 import Coin from "@img/icons/coin.svg?react";
 
@@ -34,15 +35,18 @@ const TicketCard: React.FC<TicketCardProps> = ({ ticket }) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <Torch position="left" size={100} />
-      <Torch position="right" size={100} />
+      <CornerFlourish position="top-left" />
+      <CornerFlourish position="top-right" />
 
       {isHovered && <FireParticles />}
-      <div className="ticket-image">
+      <h3 className="ticket-name">{ticket.name}</h3>
+      <div
+        className="ticket-image"
+        style={{ backgroundImage: `url(${ticket.image})` }}
+      >
         <img src={ticket.image} alt={ticket.name} />
       </div>
       <div className="ticket-content">
-        <h3>{ticket.name}</h3>
         <p className="ticket-description">{ticket.description}</p>
         <ul className="ticket-perks">
           {ticket.perks.map((perk) => (
