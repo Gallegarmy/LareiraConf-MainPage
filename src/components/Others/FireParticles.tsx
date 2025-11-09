@@ -3,10 +3,15 @@ import "@styles/particles.css";
 
 const FireParticles = ({ count = 50 }) => {
   const particles = Array.from({ length: count }).map((_, i) => {
+    const size = `${Math.random() * 5 + 2}px`;
+    const colors = ["var(--accent)", "var(--color-5)"];
+    const color = colors[Math.floor(Math.random() * colors.length)];
+
     const style = {
       left: `${Math.random() * 100}%`,
-      width: `${Math.random() * 5 + 2}px`,
-      height: `${Math.random() * 5 + 2}px`,
+      width: size,
+      height: size,
+      backgroundColor: color,
       animationDuration: `${Math.random() * 5 + 5}s`,
       animationDelay: `${Math.random() * 5}s`,
     };
