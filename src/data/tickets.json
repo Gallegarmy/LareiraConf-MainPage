@@ -1,0 +1,56 @@
+[
+  {
+    "id": "anventurero",
+    "name": "Aventureiro/a da Cacharela",
+    "description": "Llegas sin armas ni armaduras, solo con ganas de aprender y explorar.",
+    "image": "/images/tickets/aventureros.png",
+    "price": {
+      "original": 30,
+      "discounted": 18
+    },
+    "perks": [
+      { "name": "Acceso a todas las charlas", "included": true },
+      { "name": "Café y comida incluidos", "included": true },
+      { "name": "Acceso a la fiesta post-evento", "included": false },
+      { "name": "Sorteos especiales", "included": false },
+      { "name": "Avatar personalizado y merchan exclusivo", "included": false }
+    ],
+    "available": true
+  },
+  {
+    "id": "guerrero",
+    "name": "Guerreiro/a da Chama",
+    "description": "Sabes que las mejores historias se viven. Tu objetivo es generar alianzas hasta el amanecer.",
+    "image": "/images/tickets/guerreros.png",
+    "price": {
+      "original": 75,
+      "discounted": 58
+    },
+    "perks": [
+      { "name": "Acceso a todas las charlas", "included": true },
+      { "name": "Café y comida incluidos", "included": true },
+      { "name": "Acceso a la fiesta post-evento", "included": true },
+      { "name": "Sorteos especiales", "included": false },
+      { "name": "Avatar personalizado y merchan exclusivo", "included": false }
+    ],
+    "available": true
+  },
+  {
+    "id": "paladin",
+    "name": "Paladín do Lumeiro",
+    "description": "Tu fuego no es solo tuyo. Lo compartes con quienes aún buscan el suyo.",
+    "image": "/images/tickets/paladines.png",
+    "price": {
+      "original": 120,
+      "discounted": 90
+    },
+    "perks": [
+      { "name": "Acceso a todas las charlas", "included": true },
+      { "name": "Café y comida incluidos", "included": true },
+      { "name": "Acceso a la fiesta post-evento", "included": true },
+      { "name": "Sorteos especiales", "included": true },
+      { "name": "Avatar personalizado y merchan exclusivo", "included": true }
+    ],
+    "available": true
+  }
+]

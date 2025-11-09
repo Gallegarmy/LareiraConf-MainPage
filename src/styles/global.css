@@ -1,4 +1,5 @@
 @import url(fonts.css);
+@import url(animations.css);
 
 :root {
   --primary: white;
@@ -48,6 +49,13 @@
 
   --text-primary: #1e1e1e;
   --text-secondary: #e18b49;
+  --text-light: #fcdea5ff;
+
+  --color-brown: #6a4a35;
+  --color-brown-dark: #2b1c12;
+  --color-brown-light: #5e3c28;
+  --color-text-body-light: #ffa940;
+  --color-text-body-dark: #0b0b0b;
 
   --custom-scrollbar-background:
     linear-gradient(

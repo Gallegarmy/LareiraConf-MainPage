@@ -2,6 +2,7 @@
 import Layout from "src/layouts/Layout.astro";
 import HorizontalScroll from "@components/Parallax/HorizontalScroll";
 import HomeSection from "@components/Home/HomeSection";
+import TicketsSection from "@components/TicketsSection/TicketsSection";
 ---
 
 <style is:global>
@@ -19,9 +20,6 @@ import HomeSection from "@components/Home/HomeSection";
     overflow: hidden;
     flex-shrink: 0;
   }
-  .placeholder-section {
-    background-color: #1b1b1b; /* Gris */
-  }
   .container {
     display: flex;
     width: 200%; /* 2 panels for now */
@@ -32,8 +30,6 @@ import HomeSection from "@components/Home/HomeSection";
 <Layout title="Lareira Conf 2026">
   <HorizontalScroll client:load className="container">
     <HomeSection />
-    <div class="panel placeholder-section">
-      <h2>Próxima Sección (Tickets)</h2>
-    </div>
+    <TicketsSection client:load />
   </HorizontalScroll>
 </Layout>

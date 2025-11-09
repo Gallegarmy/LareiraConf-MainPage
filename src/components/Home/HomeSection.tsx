@@ -25,7 +25,8 @@ const HomeSection = () => {
         <ParallaxLayer speed={-0.5} className="bg-layer">
           <div
             style={{
-              backgroundColor: "#1a1a1a",
+              background:
+                "radial-gradient(ellipse at bottom, #35221b 0%, #0f0b09 100%)",
               width: "100%",
               height: "100%",
             }}
@@ -61,6 +62,9 @@ const HomeSection = () => {
               </h2>
             </div>
             <h1 className="logo">Lareira Conf '26</h1>
+            <div className="subtitle">
+              <p>El encuentro tech que enciende ideas y conecta comunidades</p>
+            </div>
           </div>
         </ParallaxLayer>
         <ParallaxLayer speed={0.1} className="lareira-layer">
