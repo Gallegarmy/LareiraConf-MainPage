@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import FireParticles from "../Others/FireParticles";
 import Icon from "../Icon/Icon";
-import Torch from "../Torch/Torch";
 import CornerFlourish from "../CornerFlourish/CornerFlourish";
 
 import Coin from "@img/icons/coin.svg?react";
@@ -28,6 +27,22 @@ interface TicketCardProps {
 
 const TicketCard: React.FC<TicketCardProps> = ({ ticket }) => {
   const [isHovered, setIsHovered] = useState(false);
+
+  const handleBuyClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (!ticket.available) {
+      e.preventDefault();
+      return;
+    }
+    e.preventDefault();
+    const w = window.open(
+      "https://widget.weezevent.com/ticket/E1414831/?code=39358&locale=es-ES&width_auto=1&color_primary=ff6900",
+      "Venta de entradas Lareira Conf",
+      "width=650, height=600, top=100, left=100, toolbar=no, resizable=yes, scrollbars=yes, status=no",
+    );
+    if (w) {
+      w.focus();
+    }
+  };
 
   return (
     <div
@@ -70,10 +85,15 @@ const TicketCard: React.FC<TicketCardProps> = ({ ticket }) => {
               <span className="current-price">${ticket.price.original}</span>
             )}
           </div>
-          <button className="buy-button" disabled={!ticket.available}>
+          <a
+            href="https://widget.weezevent.com/ticket/E1414831/?code=39358&locale=es-ES&width_auto=1&color_primary=ff6900"
+            onClick={handleBuyClick}
+            className={`buy-button ${!ticket.available ? "disabled" : ""}`}
+            aria-disabled={!ticket.available}
+          >
             <Coin className="coin-icon" />
             {ticket.available ? "Comprar" : "Agotado"}
-          </button>
+          </a>
         </div>
       </div>
     </div>
