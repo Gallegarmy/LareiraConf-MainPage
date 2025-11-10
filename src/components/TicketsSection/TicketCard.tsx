@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import FireParticles from "../Others/FireParticles";
 import Icon from "../Icon/Icon";
 import CornerFlourish from "../CornerFlourish/CornerFlourish";
@@ -27,6 +27,41 @@ interface TicketCardProps {
 
 const TicketCard: React.FC<TicketCardProps> = ({ ticket }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const updateIsMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    updateIsMobile();
+    window.addEventListener("resize", updateIsMobile);
+    return () => window.removeEventListener("resize", updateIsMobile);
+  }, []);
+
+  useEffect(() => {
+    if (!isMobile || !cardRef.current) {
+      return;
+    }
+
+    const element = cardRef.current;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          setIsHovered(entry.isIntersecting);
+        });
+      },
+      { threshold: 0.35 },
+    );
+
+    observer.observe(element);
+
+    return () => {
+      observer.unobserve(element);
+      observer.disconnect();
+    };
+  }, [isMobile]);
 
   const handleBuyClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (!ticket.available) {
@@ -46,6 +81,7 @@ const TicketCard: React.FC<TicketCardProps> = ({ ticket }) => {
 
   return (
     <div
+      ref={cardRef}
       className={`ticket-card ${!ticket.available ? "disabled" : ""}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
