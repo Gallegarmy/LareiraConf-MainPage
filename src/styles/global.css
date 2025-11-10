@@ -64,7 +64,20 @@ html {
   color: var(--text-secondary);
 }
 
+/* Responsive font size adjustments */
+@media (max-width: 1024px) {
+  html {
+    font-size: 15px;
+  }
+}
+
 @media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
   html {
     font-size: 13px;
   }
@@ -119,6 +132,21 @@ main {
   position: relative;
 }
 
+.parallax-layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+  inset: 0;
+}
+
+.parallax-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
 nav {
   display: flex;
   justify-content: center;
@@ -135,4 +163,56 @@ nav {
 .label {
   font-family: var(--heading-font), sans-serif;
   font-size: 1rem;
+}
+
+/* General responsive utilities */
+@media (max-width: 768px) {
+  /* Disable parallax animations on mobile for performance */
+  .panel {
+    height: auto !important;
+    min-height: 100vh;
+  }
+
+  .parallax-wrapper {
+    position: static;
+    height: auto;
+    overflow: visible;
+  }
+
+  .parallax-layer.content-layer {
+    position: static;
+    height: auto;
+    will-change: auto;
+  }
+
+  .parallax-layer.mountains-layer,
+  .parallax-layer.trees-layer,
+  .parallax-layer.evil-character-layer,
+  .parallax-layer.lareira-layer,
+  .parallax-layer.particles-layer {
+    display: none;
+  }
+
+  /* Hide cursor custom styles on mobile */
+  html {
+    cursor: auto;
+  }
+
+  a,
+  button,
+  .pointer {
+    cursor: pointer;
+  }
+
+  /* Adjust general spacing */
+  .content {
+    padding: 1rem !important;
+  }
+}
+
+/* Very small devices (phones in portrait, 480px and down) */
+@media (max-width: 480px) {
+  .content {
+    padding: 0.5rem !important;
+  }
 }

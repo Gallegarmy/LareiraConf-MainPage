@@ -1,4 +1,4 @@
-import React, { useRef, useLayoutEffect } from "react";
+import React, { useRef, useLayoutEffect, useState, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -15,8 +15,25 @@ const HorizontalScroll: React.FC<HorizontalScrollProps> = ({
 }) => {
   const component = useRef<HTMLDivElement>(null);
   const slider = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   useLayoutEffect(() => {
+    if (typeof window !== "undefined" && window.innerWidth <= 768) {
+      return;
+    }
+
+    if (isMobile) return;
+
     let ctx = gsap.context(() => {
       if (!slider.current) return;
 
@@ -53,7 +70,7 @@ const HorizontalScroll: React.FC<HorizontalScrollProps> = ({
       });
     }, component);
     return () => ctx.revert();
-  }, []);
+  }, [isMobile]);
 
   return (
     <div ref={component}>

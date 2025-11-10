@@ -24,6 +24,30 @@ import TicketsSection from "@components/TicketsSection/TicketsSection";
     display: flex;
     width: 200%; /* 2 panels for now */
     height: 100vh;
+    transition: width 0.3s ease;
+  }
+
+  /* Mobile styles */
+  @media (max-width: 768px) {
+    .container {
+      width: 100%;
+      height: auto;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    .container .panel {
+      width: 100%;
+      height: auto;
+      min-height: 100vh;
+      flex-shrink: 1;
+      position: relative;
+    }
+
+    body {
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
   }
 </style>
 
