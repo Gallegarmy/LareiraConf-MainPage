@@ -6,37 +6,20 @@ declare module "*.svg?react" {
   export default content;
 }
 
-declare module "*.svg" {
-  const value: string;
-  export default value;
+declare module "@img/*" {
+  const metadata: import("astro").ImageMetadata;
+  export default metadata;
 }
 
-declare module "*.svg?url" {
-  const value: string;
-  export default value;
+interface ImportMetaEnv {
+  readonly GOOGLE_SHEETS_ID: string;
+  readonly GOOGLE_CLIENT_ID: string;
+  readonly GOOGLE_CLIENT_SECRET: string;
+  readonly GOOGLE_REFRESH_TOKEN: string;
+  // Opcional público (ejemplo): readonly PUBLIC_API_URL?: string;
+  // Añade aquí cualquier variable PUBLIC_ adicional que necesites exponer al cliente.
 }
 
-declare module "*.png" {
-  const value: import("astro").ImageMetadata;
-  export default value;
-}
-
-declare module "*.jpg" {
-  const value: import("astro").ImageMetadata;
-  export default value;
-}
-
-declare module "*.jpeg" {
-  const value: import("astro").ImageMetadata;
-  export default value;
-}
-
-declare module "*.webp" {
-  const value: import("astro").ImageMetadata;
-  export default value;
-}
-
-declare module "*.gif" {
-  const value: import("astro").ImageMetadata;
-  export default value;
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
 }
