@@ -86,7 +86,7 @@
   font-size: 3rem;
   font-weight: bold;
   margin: 0;
-  color: var(--text-light);
+  color: var(--accent);
 }
 
 .home-section .home-info {

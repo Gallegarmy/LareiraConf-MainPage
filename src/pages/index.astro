@@ -3,6 +3,7 @@ import Layout from "src/layouts/Layout.astro";
 import HorizontalScroll from "@components/Parallax/HorizontalScroll";
 import HomeSection from "@components/Home/HomeSection";
 import TicketsSection from "@components/TicketsSection/TicketsSection";
+import SocialSection from "@components/SocialSection/SocialSection";
 ---
 
 <style is:global>
@@ -15,14 +16,13 @@ import TicketsSection from "@components/TicketsSection/TicketsSection";
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 4rem;
     position: relative;
     overflow: hidden;
     flex-shrink: 0;
   }
   .container {
     display: flex;
-    width: 200%; /* 2 panels for now */
+    width: 300%; /* 3 panels */
     height: 100vh;
     transition: width 0.3s ease;
   }
@@ -55,5 +55,6 @@ import TicketsSection from "@components/TicketsSection/TicketsSection";
   <HorizontalScroll client:load className="container">
     <HomeSection />
     <TicketsSection client:load />
+    <SocialSection client:load />
   </HorizontalScroll>
 </Layout>

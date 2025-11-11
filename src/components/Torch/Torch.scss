@@ -3,6 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  top: 0;
 
   .torch {
     width: 100%;
@@ -27,12 +28,12 @@
 
   &.left {
     left: 0;
-    transform: translate(-20%, -60%);
+    transform: translate(-20%, -30%);
   }
 
   &.right {
     right: 0;
-    transform: translate(20%, -60%);
+    transform: translate(20%, -30%);
   }
 }
 
