@@ -30,6 +30,14 @@
   font-family: var(--heading-font), sans-serif;
   text-transform: uppercase;
   letter-spacing: var(--custom-letter-spacing);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.cta-button__icon {
+  width: 1.15rem;
+  height: 1.15rem;
 }
 
 .isotipo::after {
@@ -67,5 +75,10 @@
   }
   .cta-button {
     font-size: 0.9rem;
+  }
+
+  .cta-button__icon {
+    width: 1rem;
+    height: 1rem;
   }
 }

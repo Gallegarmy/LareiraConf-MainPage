@@ -1,5 +1,6 @@
 ---
 import "@styles/header.css";
+import TicketIcon from "@img/icons/ticket.svg?react";
 ---
 
 <header class="main-header">
@@ -7,7 +8,10 @@ import "@styles/header.css";
     <a href="#intro" class="logo isotipo">LAREIRA CONF</a>
   </div>
   <nav>
-    <a href="#tickets" class="cta-button">Entradas</a>
+    <a href="#tickets" class="cta-button">
+      <TicketIcon className="cta-button__icon" aria-hidden="true" />
+      <span>Entradas</span>
+    </a>
   </nav>
 </header>
 
