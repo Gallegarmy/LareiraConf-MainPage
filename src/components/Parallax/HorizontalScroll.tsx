@@ -93,7 +93,14 @@ const HorizontalScroll: React.FC<HorizontalScrollProps> = ({
         parallaxSets.forEach(({ layers }) => {
           layers.forEach((layer) => {
             const speed = parseFloat(layer.dataset.speed || "0");
-            gsap.set(layer, { xPercent: -100 * speed * progress });
+            const normalizedProgress =
+              layer.dataset.centered === "true"
+                ? Math.sin(progress * Math.PI) * (2 * progress - 1)
+                : progress;
+
+            gsap.set(layer, {
+              xPercent: -100 * speed * normalizedProgress,
+            });
           });
         });
       };

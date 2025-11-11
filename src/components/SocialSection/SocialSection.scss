@@ -10,25 +10,55 @@
   color: var(--text-light);
   overflow: hidden;
   font-size: 1rem;
+  background: radial-gradient(ellipse at bottom, #35221b 0%, #0f0b09 100%);
 }
 
 .social-section__background {
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(
-      ellipse at top,
-      rgba(255, 137, 6, 0.18) 0%,
-      transparent 55%
-    ),
-    radial-gradient(
-      ellipse at bottom,
-      rgba(233, 92, 60, 0.22) 10%,
-      transparent 60%
-    ),
-    linear-gradient(180deg, #0a0503 0%, #1a0d08 45%, #080403 100%);
-  opacity: 0.95;
+  overflow: hidden;
   z-index: 0;
+}
+
+.social-section__bg-layer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 0;
+}
+
+.social-section__bg-image {
+  filter: grayscale(1) brightness(0.9) contrast(1);
+  width: 130vw;
+  min-width: 120vw;
+  max-width: none;
+  height: auto;
+  min-height: 100%;
+  opacity: 0.7;
+  object-fit: cover;
+  object-position: center;
+}
+
+.social-section__particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.social-section__particles .particle-container {
+  mix-blend-mode: screen;
+  opacity: 0.5;
+}
+
+.social-section__overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  background: transparent;
 }
 
 .social-section__frame {

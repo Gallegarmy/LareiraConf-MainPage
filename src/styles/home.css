@@ -48,10 +48,30 @@
   opacity: 0.1;
 }
 
+.ground-layer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.ground-layer .ground-image {
+  width: 130%;
+  max-width: none;
+  height: auto;
+  min-height: 22rem;
+  object-fit: cover;
+  object-position: bottom center;
+  opacity: 0.4;
+  filter: saturate(0.7) brightness(0.85);
+}
+
 .evil-character-img {
+  width: 100%;
   height: 90%;
+  image-rendering: pixelated;
+  object-fit: contain;
   left: 3%;
-  bottom: 0;
+  bottom: 30px;
   opacity: 1;
 }
 
@@ -60,7 +80,7 @@
   object-fit: contain;
   height: auto;
   left: 50%;
-  bottom: 0;
+  bottom: 20px;
   transform: translateX(-50%);
   opacity: 1;
 }
@@ -163,12 +183,22 @@
   opacity: 0.15;
 }
 
+.home-background__layer.ground {
+  width: 140%;
+  height: auto;
+  min-height: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0.55;
+  z-index: 2;
+}
+
 .home-background__layer.character {
   width: auto;
   height: 70%;
   left: 50%;
   transform: translateX(-50%);
-  bottom: 0;
+  bottom: 40px;
   opacity: 1;
   z-index: 2;
 }
@@ -178,7 +208,7 @@
   height: auto;
   left: 50%;
   transform: translateX(-50%);
-  bottom: 0;
+  bottom: 0px;
   opacity: 0.85;
   z-index: 3;
 }
@@ -223,6 +253,12 @@
 
   .home-background-mobile {
     display: block;
+  }
+
+  .home-background__layer.ground {
+    width: 200%;
+    min-height: 95%;
+    opacity: 0.25;
   }
 
   .home-content {

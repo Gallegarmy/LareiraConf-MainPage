@@ -7,6 +7,7 @@ import mountainsImg from "@img/parallax/mountains.png";
 import treesImg from "@img/parallax/trees.png";
 import evilCharacterImg from "@img/parallax/evil-character.png";
 import lareiraImg from "@img/parallax/lareira.png";
+import groundImg from "@img/parallax/ground.png";
 
 import "@styles/home.css";
 
@@ -22,6 +23,9 @@ const HomeSection = () => {
         </ParallaxLayer>
         <ParallaxLayer speed={-0.5} className="trees-layer">
           <img src={treesImg.src} alt="Árboles" className="parallax-img" />
+        </ParallaxLayer>
+        <ParallaxLayer speed={0} className="ground-layer">
+          <img src={groundImg.src} alt="" className="ground-image" />
         </ParallaxLayer>
         <ParallaxLayer speed={-0.2} className="evil-character-layer">
           <img
@@ -57,6 +61,11 @@ const HomeSection = () => {
           src={treesImg.src}
           alt=""
           className="home-background__layer trees"
+        />
+        <img
+          src={groundImg.src}
+          alt=""
+          className="home-background__layer ground"
         />
         <img
           src={evilCharacterImg.src}

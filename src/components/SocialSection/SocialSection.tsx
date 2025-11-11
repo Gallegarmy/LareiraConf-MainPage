@@ -1,5 +1,9 @@
 import React from "react";
 import CornerFlourish from "@components/CornerFlourish/CornerFlourish";
+import ParallaxLayer from "@components/Parallax/ParallaxLayer";
+import FireParticles from "@components/Others/FireParticles";
+
+import socialBackground from "@img/parallax/social-background.png";
 
 import "./SocialSection.scss";
 
@@ -115,7 +119,27 @@ const SOCIAL_LINKS: SocialLink[] = [
 const SocialSection = () => {
   return (
     <section className="panel social-section" id="community">
-      <div className="social-section__background" aria-hidden="true" />
+      <div className="social-section__background" aria-hidden="true">
+        <ParallaxLayer
+          speed={0}
+          className="social-section__bg-layer"
+          isCentered
+        >
+          <img
+            src={socialBackground.src}
+            alt=""
+            className="social-section__bg-image"
+          />
+        </ParallaxLayer>
+        <ParallaxLayer
+          speed={-0.35}
+          className="social-section__particles"
+          isCentered
+        >
+          <FireParticles count={60} />
+        </ParallaxLayer>
+        <div className="social-section__overlay" />
+      </div>
       <div className="social-section__frame">
         <CornerFlourish position="top-left" />
         <CornerFlourish position="top-right" />
@@ -128,9 +152,8 @@ const SocialSection = () => {
               La historia no termina aquí.
             </h2>
             <p className="social-section__description">
-              Explora la {" "}
-              <a href={LAST_YEAR_URL}>web de la última edición</a>, revive
-              la llama en nuestro{" "}
+              Explora la <a href={LAST_YEAR_URL}>web de la última edición</a>,
+              revive la llama en nuestro{" "}
               <a
                 href={VIDEO_SUMMARY_URL}
                 target="_blank"
@@ -138,7 +161,7 @@ const SocialSection = () => {
               >
                 vídeo resumen
               </a>{" "}
-              y sigue nuestras redes… aun queda mucho por descubrir.
+              y sigue nuestras redes… aún queda mucho por descubrir.
             </p>
           </header>
 
