@@ -49,6 +49,15 @@
     gap: 3rem;
     width: 100%;
   }
+
+  .tickets-note {
+    margin: 0;
+    font-size: 0.75rem;
+    letter-spacing: var(--custom-letter-spacing);
+    text-transform: uppercase;
+    color: rgba(255, 247, 236, 0.65);
+    text-align: center;
+  }
 }
 
 .ticket-card {
@@ -257,6 +266,10 @@
     .tickets-container {
       grid-template-columns: 1fr;
       gap: 2rem;
+    }
+
+    .tickets-note {
+      font-size: 0.75rem;
     }
   }
 

@@ -23,8 +23,8 @@
     "description": "Sabes que las mejores historias se viven. Tu objetivo es generar alianzas hasta el amanecer.",
     "image": "/images/tickets/guerreros.png",
     "price": {
-      "original": 75,
-      "discounted": 58
+      "original": 65,
+      "discounted": 45
     },
     "perks": [
       { "name": "Acceso a todas las charlas", "included": true },
@@ -41,8 +41,8 @@
     "description": "Tu fuego no es solo tuyo. Lo compartes con quienes aún buscan el suyo.",
     "image": "/images/tickets/paladines.png",
     "price": {
-      "original": 120,
-      "discounted": 90
+      "original": 99,
+      "discounted": 75
     },
     "perks": [
       { "name": "Acceso a todas las charlas", "included": true },

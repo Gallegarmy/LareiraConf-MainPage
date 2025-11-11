@@ -28,6 +28,11 @@ const TicketsSection = () => {
             <TicketCard key={ticket.id} ticket={ticket} />
           ))}
         </div>
+        <p className="tickets-note">
+          *Los precios no incluyen IVA ni gastos de gestión. Son costes externos
+          que no van a las arcas de la Lareira. Los quitaríamos si pudiéramos,
+          pero no queremos ir presos.
+        </p>
       </div>
     </section>
   );
