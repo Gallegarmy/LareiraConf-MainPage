@@ -29,46 +29,98 @@ const HorizontalScroll: React.FC<HorizontalScrollProps> = ({
 
   useLayoutEffect(() => {
     if (typeof window !== "undefined" && window.innerWidth <= 768) {
-      return;
+      return undefined;
     }
 
-    if (isMobile) return;
+    if (isMobile) return undefined;
 
-    let ctx = gsap.context(() => {
+    const ctx = gsap.context(() => {
       if (!slider.current) return;
 
-      let panels = gsap.utils.toArray<HTMLElement>(".panel", slider.current);
-      if (panels.length === 0) return;
+      const panels = gsap.utils.toArray<HTMLElement>(".panel", slider.current);
+      if (panels.length <= 1) return;
 
-      ScrollTrigger.create({
+      const parallaxSets = panels.map((panel) => {
+        const layers = Array.from(
+          panel.querySelectorAll<HTMLElement>(".parallax-layer"),
+        );
+        return { panel, layers };
+      });
+
+      gsap.set(slider.current, { x: 0 });
+
+      const step = 1 / (panels.length - 1);
+      const clampIndex = gsap.utils.clamp(0, panels.length - 1);
+
+      const getMaxTranslate = () => {
+        if (!slider.current) return 0;
+        return slider.current.scrollWidth - window.innerWidth;
+      };
+
+      const horizontalTween = gsap.to(slider.current, {
+        x: () => -getMaxTranslate(),
+        ease: "none",
+        paused: true,
+      });
+
+      const snapToPanel = (value: number) => {
+        const currentProgress = horizontalTween.progress();
+        const currentIndex = clampIndex(Math.round(currentProgress / step));
+        const targetIndex = clampIndex(Math.round(value / step));
+
+        if (Math.abs(targetIndex - currentIndex) <= 1) {
+          return targetIndex * step;
+        }
+
+        const direction = targetIndex > currentIndex ? 1 : -1;
+        const nextIndex = clampIndex(currentIndex + direction);
+        return nextIndex * step;
+      };
+
+      const refreshParallax = (progress: number) => {
+        parallaxSets.forEach(({ layers }) => {
+          layers.forEach((layer) => {
+            const speed = parseFloat(layer.dataset.speed || "0");
+            gsap.set(layer, { xPercent: -100 * speed * progress });
+          });
+        });
+      };
+
+      const trigger = ScrollTrigger.create({
         trigger: slider.current,
+        start: "top top",
         pin: true,
         scrub: 1,
-        snap: 1 / (panels.length - 1),
-        end: () => "+=" + slider.current!.offsetWidth,
-        onUpdate: (self) => {
-          // Animate panels
-          gsap.to(panels, {
-            xPercent: -100 * (panels.length - 1) * self.progress,
-            ease: "none",
-          });
-
-          // Animate parallax layers inside the current active panel
-          panels.forEach((panel) => {
-            const parallaxLayers =
-              panel.querySelectorAll<HTMLElement>(".parallax-layer");
-            parallaxLayers.forEach((layer) => {
-              const speed = parseFloat(layer.dataset.speed || "0");
-              // We adjust the movement based on the main scroll progress
-              gsap.to(layer, {
-                x: self.progress * 100 * -speed + "vw",
-                ease: "none",
-              });
-            });
-          });
+        end: () => "+=" + getMaxTranslate(),
+        animation: horizontalTween,
+        snap: {
+          snapTo: snapToPanel,
+          duration: { min: 0.3, max: 0.6 },
+          delay: 0.05,
+          ease: "power1.inOut",
         },
+        invalidateOnRefresh: true,
+        onUpdate: (self) => refreshParallax(self.progress),
       });
+
+      refreshParallax(trigger.progress);
+
+      const handleRefresh = () => {
+        refreshParallax(trigger.progress);
+      };
+
+      ScrollTrigger.addEventListener("refresh", handleRefresh);
+
+      return () => {
+        ScrollTrigger.removeEventListener("refresh", handleRefresh);
+        trigger.kill();
+        horizontalTween.kill();
+        if (slider.current) {
+          gsap.set(slider.current, { clearProps: "transform" });
+        }
+      };
     }, component);
+
     return () => ctx.revert();
   }, [isMobile]);
 

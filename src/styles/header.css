@@ -55,7 +55,8 @@
   }
 
   .isotipo::after {
-    left: 7.8rem;
+    left: 7.5rem;
+    top: 0.3rem;
   }
 }
 
@@ -64,19 +65,6 @@
   .main-header {
     padding: 0.8rem 1rem;
   }
-
-  .logo {
-    font-size: 1.1rem;
-  }
-
-  .isotipo::after {
-    background-size: 0.9rem 0.9rem;
-    width: 0.9rem;
-    height: 0.9rem;
-    left: 6.8rem;
-    top: 0.3rem;
-  }
-
   .cta-button {
     font-size: 0.9rem;
   }
