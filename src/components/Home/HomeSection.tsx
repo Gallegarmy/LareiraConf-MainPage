@@ -12,7 +12,7 @@ import "@styles/home.css";
 
 const HomeSection = () => {
   return (
-    <section className="panel home-section">
+    <section id="intro" className="panel home-section">
       <div className="home-parallax" aria-hidden="true">
         <ParallaxLayer speed={-0.5} className="bg-layer">
           <div className="home-gradient" />

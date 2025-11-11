@@ -4,6 +4,14 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
+declare global {
+  interface Window {
+    horizontalPanelNav?: {
+      goToPanel: (panel: number | string) => void;
+    } | null;
+  }
+}
+
 interface HorizontalScrollProps {
   children: React.ReactNode;
   className?: string;
@@ -29,10 +37,14 @@ const HorizontalScroll: React.FC<HorizontalScrollProps> = ({
 
   useLayoutEffect(() => {
     if (typeof window !== "undefined" && window.innerWidth <= 768) {
+      window.horizontalPanelNav = null;
       return undefined;
     }
 
-    if (isMobile) return undefined;
+    if (isMobile) {
+      window.horizontalPanelNav = null;
+      return undefined;
+    }
 
     const ctx = gsap.context(() => {
       if (!slider.current) return;
@@ -105,6 +117,33 @@ const HorizontalScroll: React.FC<HorizontalScrollProps> = ({
 
       refreshParallax(trigger.progress);
 
+      const goToPanel = (panelTarget: number | string) => {
+        if (!slider.current) return;
+
+        let desiredIndex: number | null = null;
+
+        if (typeof panelTarget === "number") {
+          desiredIndex = clampIndex(panelTarget);
+        } else {
+          const cleanId = panelTarget.replace(/^#/, "");
+          const foundIndex = panels.findIndex((panel) => panel.id === cleanId);
+          if (foundIndex !== -1) {
+            desiredIndex = clampIndex(foundIndex);
+          }
+        }
+
+        if (desiredIndex === null) return;
+
+        const targetProgress = desiredIndex * step;
+        const distance = trigger.end - trigger.start;
+        if (distance <= 0) return;
+        const targetScroll = trigger.start + targetProgress * distance;
+
+        window.scrollTo({ top: targetScroll, behavior: "smooth" });
+      };
+
+      window.horizontalPanelNav = { goToPanel };
+
       const handleRefresh = () => {
         refreshParallax(trigger.progress);
       };
@@ -118,6 +157,7 @@ const HorizontalScroll: React.FC<HorizontalScrollProps> = ({
         if (slider.current) {
           gsap.set(slider.current, { clearProps: "transform" });
         }
+        window.horizontalPanelNav = null;
       };
     }, component);
 

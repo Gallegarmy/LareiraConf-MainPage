@@ -10,3 +10,62 @@ import "@styles/header.css";
     <a href="#tickets" class="cta-button">Entradas</a>
   </nav>
 </header>
+
+<script>
+  const isHorizontalLayout = () => window.innerWidth > 768;
+
+  const scrollToTarget = (selector) => {
+    const cleanId = selector.replace(/^#/, "");
+    const targetEl = document.getElementById(cleanId);
+    if (!targetEl) return false;
+
+    targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
+    return true;
+  };
+
+  const handleNavClick = (event) => {
+    const target = event.currentTarget;
+    if (!(target instanceof HTMLAnchorElement)) {
+      return;
+    }
+
+    const href = target.getAttribute("href");
+    if (!href || !href.startsWith("#")) {
+      return;
+    }
+
+    if (isHorizontalLayout()) {
+      if (window.horizontalPanelNav?.goToPanel) {
+        event.preventDefault();
+        window.horizontalPanelNav.goToPanel(href);
+      }
+      return;
+    }
+
+    const scrolled = scrollToTarget(href);
+    if (scrolled) {
+      event.preventDefault();
+    }
+  };
+
+  const setupHeaderNav = () => {
+    const links = document.querySelectorAll(".main-header a[href^='#']");
+    links.forEach((link) => {
+      link.removeEventListener("click", handleNavClick);
+      link.addEventListener("click", handleNavClick);
+    });
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupHeaderNav, {
+      once: true,
+    });
+  } else {
+    setupHeaderNav();
+  }
+
+  window.addEventListener("resize", () => {
+    if (!isHorizontalLayout()) return;
+    setupHeaderNav();
+  });
+</script>
