@@ -1,0 +1,53 @@
+---
+import { Content as CodeOfConduct } from "../CodeOfConduct/CodeOfConduct.md";
+import { Content as PrivacyPolicy } from "../PrivacyPolicy/PrivacyPolicy.md";
+import Modal from "../Others/Modal.astro";
+import LareiraSocials from "../Others/LareiraSocials.astro";
+
+const linkedin = "lareira-conf-coruña-20313a337";
+const x = "LareiraConf";
+const instagram = "lareiraconf";
+---
+
+<footer class="grid grid-cols-1 gap-2 p-4 text-white md:grid-cols-3">
+  <div
+    class="order-2 flex h-full flex-row items-start justify-between md:order-1 md:flex-col"
+  >
+    <Modal id="codeOfConduct" title="Código de conducta" class="full">
+      <CodeOfConduct slot="main" />
+    </Modal>
+    <Modal id="privacyPolicy" title="Política de privacidad" class="full">
+      <PrivacyPolicy slot="main" />
+    </Modal>
+  </div>
+  <div class="align-center order-1 flex h-full flex-col md:order-2">
+    <p class="social flex justify-center gap-2">
+      <LareiraSocials customClass={"text-lg"} />
+    </p>
+  </div>
+  <div
+    class="order-3 flex h-full flex-row justify-between text-end md:order-3 md:flex-col"
+  >
+    <p>Made with ♥ by LAREIRACONF CREW</p>
+    <p>
+      Open source, <a
+        href="https://github.com/Gallegarmy/LareiraConf-MainPage/"
+        target="_blank"
+        rel="noopener noreferrer">check out the code</a
+      >
+    </p>
+  </div>
+</footer>
+
+<style>
+  footer {
+    position: -webkit-sticky;
+    position: sticky;
+    bottom: 0px;
+    z-index: 1;
+    border-top: 8px solid var(--secondary);
+    background-color: var(--primary);
+    color: var(--text-secondary);
+    font-size: 0.7rem;
+  }
+</style>

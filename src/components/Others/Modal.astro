@@ -1,0 +1,90 @@
+---
+const { id, title, class: className } = Astro.props;
+---
+
+<style>
+  dialog {
+    overflow: hidden;
+    border: 8px solid var(--secondary);
+    background-color: var(--primary);
+    color: var(--text-secondary);
+    &::backdrop {
+      position: fixed;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .dialog-content {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    header {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.2rem 0.2rem 0.2rem 1rem;
+      background-color: var(--secondary);
+      color: var(--text-primary);
+    }
+
+    .content {
+      display: flex;
+      gap: 16px;
+      flex-direction: column;
+      overflow: auto;
+      height: 100%;
+      padding: 2rem;
+      gap: 1rem;
+    }
+  }
+
+  dialog.full {
+    height: 100%;
+  }
+  .link:hover {
+    color: var(--accent);
+  }
+</style>
+
+<button class="link text-left" onclick={`window.${id}.showModal()`}
+  >{title}</button
+>
+
+<dialog id=`${id}` class=`${className} w-5/5 max-h-4/5 lg:w-4/5 sm:max-h-3/5`>
+  <div class="dialog-content">
+    <header>
+      <h2>{title}</h2>
+      <form method="dialog">
+        <button>
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </form>
+    </header>
+    <div class="content">
+      <slot name="main" />
+    </div>
+  </div>
+</dialog>
