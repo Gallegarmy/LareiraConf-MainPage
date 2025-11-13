@@ -6,7 +6,7 @@
     "image": "/images/tickets/aventureros.png",
     "price": {
       "original": 30,
-      "discounted": 18
+      "discounted": null
     },
     "perks": [
       { "name": "Acceso a todas las charlas", "included": true },
@@ -24,7 +24,7 @@
     "image": "/images/tickets/guerreros.png",
     "price": {
       "original": 65,
-      "discounted": 45
+      "discounted": null
     },
     "perks": [
       { "name": "Acceso a todas las charlas", "included": true },
@@ -42,7 +42,7 @@
     "image": "/images/tickets/paladines.png",
     "price": {
       "original": 99,
-      "discounted": 75
+      "discounted": null
     },
     "perks": [
       { "name": "Acceso a todas las charlas", "included": true },

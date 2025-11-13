@@ -26,6 +26,10 @@ interface TicketCardProps {
 }
 
 const TicketCard: React.FC<TicketCardProps> = ({ ticket }) => {
+  const hasDiscount =
+    typeof ticket.price.discounted === "number" &&
+    ticket.price.discounted < ticket.price.original;
+
   const [isHovered, setIsHovered] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -110,7 +114,7 @@ const TicketCard: React.FC<TicketCardProps> = ({ ticket }) => {
         <div className="separator" />
         <div className="buy-content">
           <div className="ticket-price">
-            {ticket.price.discounted ? (
+            {hasDiscount ? (
               <>
                 <span className="original-price">{ticket.price.original}€</span>
                 <span className="discounted-price">
@@ -118,7 +122,7 @@ const TicketCard: React.FC<TicketCardProps> = ({ ticket }) => {
                 </span>
               </>
             ) : (
-              <span className="current-price">${ticket.price.original}</span>
+              <span className="current-price">{ticket.price.original}€</span>
             )}
           </div>
           <a
