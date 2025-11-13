@@ -1,118 +1,75 @@
-<header
-  class="header fixed w-full flex items-center justify-between border-black border-b-8 p-4 top-0 z-10"
->
-  <div class="flex items-center">
+---
+import "@styles/header.css";
+import TicketIcon from "@img/icons/ticket.svg?react";
+---
+
+<header class="main-header">
+  <div class="logo">
     <a href="#intro" class="logo isotipo">LAREIRA CONF</a>
   </div>
-  <nav class="hidden xl:flex justify-center space-x-4">
-    <a href="#about" class="btn-3d" id="about-link">El evento</a>
-    <a href="#agenda" class="btn-3d" id="agenda-link">Agenda</a>
-    <a href="#team" class="btn-3d" id="team-link">Equipo</a>
-    <a href="#sponsors" class="btn-3d" id="sponsors-link">Patrocinadores</a>
-    <a
-      href="#tickets"
-      class="btn-3d main-btn fire"
-      target="_blank"
-      id="tickets-link">Entradas agotadas</a
-    >
+  <nav>
+    <a href="#tickets" class="cta-button">
+      <TicketIcon className="cta-button__icon" aria-hidden="true" />
+      <span>Entradas</span>
+    </a>
   </nav>
-  <button class="xl:hidden flex items-center px-3 py-2" id="menu-toggle">
-    <svg
-      class="fill-current h-6 w-6"
-      viewBox="0 0 20 20"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <title>Menu</title>
-      <path d="M0 3h20v2H0zM0 9h20v2H0zM0 15h20v2H0z"></path>
-    </svg>
-  </button>
-  <div
-    class="menu xl:hidden hidden flex flex-col place-content-center gap-8 border border-8 border-black p-8 fixed top-[71px] right-0 w-full z-40"
-    id="mobile-menu"
-  >
-    <a href="#about" class="btn-3d" id="about-link-mobile">El evento</a>
-    <a href="#agenda" class="btn-3d" id="agenda-link-mobile">Agenda</a>
-    <a href="#team" class="btn-3d" id="team-link-mobile">Equipo</a>
-    <a href="#sponsors" class="btn-3d" id="sponsors-link-mobile"
-      >Patrocinadores</a
-    >
-    <a
-      href="#tickets"
-      class="btn-3d main-btn fire"
-      target="_blank"
-      id="tickets-link-mobile">Entradas agotadas</a
-    >
-  </div>
 </header>
 
 <script>
-  document.getElementById("menu-toggle").addEventListener("click", () => {
-    const mobileMenu = document.getElementById("mobile-menu");
-    mobileMenu.classList.toggle("hidden");
-  });
+  const isHorizontalLayout = () => window.innerWidth > 768;
 
-  document.querySelectorAll("#mobile-menu a").forEach((link) => {
-    link.addEventListener("click", () => {
-      const mobileMenu = document.getElementById("mobile-menu");
-      mobileMenu.classList.add("hidden");
-    });
-  });
+  const scrollToTarget = (selector) => {
+    const cleanId = selector.replace(/^#/, "");
+    const targetEl = document.getElementById(cleanId);
+    if (!targetEl) return false;
 
-  window.addEventListener("scroll", () => {
-    const sections = Array.from(document.querySelectorAll("section")).filter(
-      (section) => section.id
-    );
-    const links = document.querySelectorAll("nav a");
-    let currentSection = null;
+    targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
+    return true;
+  };
 
-    sections.forEach((section, index) => {
-      const rect = section.getBoundingClientRect();
-      const sectionHeight = rect.height;
-      const visibleHeight =
-        Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
-
-      if (visibleHeight > sectionHeight / 2) {
-        currentSection = section;
-      } else if (index === sections.length - 1 && visibleHeight > 0) {
-        currentSection = section;
-      }
-    });
-
-    if (currentSection) {
-      links.forEach((link) => {
-        link.classList.remove("active");
-        if (link.getAttribute("href").substring(1) === currentSection.id) {
-          link.classList.add("active");
-        }
-      });
+  const handleNavClick = (event) => {
+    const target = event.currentTarget;
+    if (!(target instanceof HTMLAnchorElement)) {
+      return;
     }
-  });
 
-  // Agregar animación al navegar a un ancla
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener("click", function (e) {
-      e.preventDefault();
-      const targetId = this.getAttribute("href").substring(1);
-      const targetElement = document.getElementById(targetId);
-      targetElement.scrollIntoView({ behavior: "smooth" });
+    const href = target.getAttribute("href");
+    if (!href || !href.startsWith("#")) {
+      return;
+    }
+
+    if (isHorizontalLayout()) {
+      if (window.horizontalPanelNav?.goToPanel) {
+        event.preventDefault();
+        window.horizontalPanelNav.goToPanel(href);
+      }
+      return;
+    }
+
+    const scrolled = scrollToTarget(href);
+    if (scrolled) {
+      event.preventDefault();
+    }
+  };
+
+  const setupHeaderNav = () => {
+    const links = document.querySelectorAll(".main-header a[href^='#']");
+    links.forEach((link) => {
+      link.removeEventListener("click", handleNavClick);
+      link.addEventListener("click", handleNavClick);
     });
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupHeaderNav, {
+      once: true,
+    });
+  } else {
+    setupHeaderNav();
+  }
+
+  window.addEventListener("resize", () => {
+    if (!isHorizontalLayout()) return;
+    setupHeaderNav();
   });
 </script>
-
-<style>
-  .menu,
-  .header {
-    background-color: var(--primary);
-  }
-  .isotipo::after {
-    display: inline-block;
-    content: "";
-    background-image: url("/lareira-isotipo.svg");
-    background-size: 1.375rem 1.375rem;
-    width: 1.375rem;
-    height: 1.375rem;
-    position: absolute;
-    top: 0.4375rem;
-    left: 11.5rem;
-  }
-</style>

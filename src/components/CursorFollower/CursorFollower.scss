@@ -1,0 +1,14 @@
+.cursor-follower {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transition: opacity 0.3s ease;
+
+  img {
+    width: 50px;
+    height: auto;
+    opacity: 0.8;
+  }
+}
