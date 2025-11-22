@@ -1,0 +1,575 @@
+:global(:root) {
+  --planner-bg: transparent;
+  --planner-surface: transparent;
+  --planner-border: rgba(255, 198, 128, 0.32);
+  --planner-grid-line: rgba(255, 206, 150, 0.28);
+  --planner-text: #fbead3;
+  --planner-muted: rgba(251, 234, 211, 0.8);
+  --planner-focus: #ff922b;
+  --slot-color-talk: #ffe066;
+  --slot-color-announcement: #ff922b;
+  --slot-color-registration: #ffb773ff;
+  --slot-color-interview: #d9904cff;
+  --slot-color-show: #803e15ff;
+  --slot-color-break: #3c3c3cff;
+  --slot-color-party: #c15000ff;
+}
+
+.planner {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  color: var(--planner-text);
+  max-width: 1200px;
+  margin: 2rem auto;
+  background: var(--planner-surface);
+  border-radius: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+  position: relative;
+  overflow: visible;
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+}
+
+.titleBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.title {
+  font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: var(--planner-muted);
+}
+
+.headerActions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.downloadButton {
+  background: var(--slot-color-announcement);
+  border: 1px solid rgba(191, 117, 70, 0.4);
+  color: var(--primary, #1e1e1e);
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    transform 0.15s ease;
+  box-shadow: none;
+}
+
+.downloadButton:hover,
+.downloadButton:focus-visible {
+  background: var(--slot-color-talk);
+  transform: translateY(-1px);
+}
+
+.copyFeedback {
+  min-height: 1em;
+  font-size: 0.75rem;
+  color: var(--planner-muted);
+}
+
+.timelineWrapper {
+  display: grid;
+  grid-template-columns: minmax(64px, 96px) repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  align-items: end;
+}
+
+.timeScale {
+  position: relative;
+  height: var(--timeline-height);
+  font-size: 0.75rem;
+  color: var(--planner-muted);
+}
+
+.timeMark {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transform: translateY(calc(-100% + 0.5rem));
+}
+
+.timeLabel {
+  min-width: 48px;
+  font-variant-numeric: tabular-nums;
+}
+
+.timeLine {
+  flex: 1;
+  height: 1px;
+  background: var(--planner-grid-line);
+}
+
+.track {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.trackHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.trackTitle {
+  font-weight: 600;
+  letter-spacing: 0.025em;
+}
+
+.trackBody {
+  position: relative;
+  border-radius: 0;
+  border: 1px solid rgba(255, 198, 128, 0.28);
+  background-color: rgba(255, 244, 227, 0.06);
+  overflow: hidden;
+  box-shadow: none;
+}
+
+.slot {
+  position: absolute;
+  left: 0;
+  right: 0;
+  --slot-height: 120px;
+  padding-block: clamp(0.18rem, calc(var(--slot-height) / 22), 0.75rem);
+  padding-inline: clamp(0.45rem, calc(var(--slot-height) / 10), 1.05rem);
+  border: 1px solid rgba(51, 35, 24, 0.32);
+  color: #201813;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.18rem, calc(var(--slot-height) / 34), 0.45rem);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24);
+  cursor: grab;
+  transition: transform 0.15s ease;
+  touch-action: none;
+  border-radius: 0;
+  overflow: hidden;
+  justify-content: space-between;
+  backdrop-filter: blur(6px);
+}
+
+.slotControls {
+  position: absolute;
+  top: 0.35rem;
+  right: 0.35rem;
+  display: flex;
+  gap: 0.25rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+}
+
+.slot:hover .slotControls,
+.slot:focus-within .slotControls {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.controlButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  background: rgba(33, 24, 20, 0.32);
+  color: var(--planner-text);
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.controlButton:hover,
+.controlButton:focus-visible {
+  background: rgba(33, 24, 20, 0.48);
+}
+
+.controlButton svg {
+  width: 0.95rem;
+  height: 0.95rem;
+  fill: currentColor;
+}
+
+.controlButtonDelete {
+  background: rgba(233, 92, 60, 0.6);
+}
+
+.controlButtonDelete:hover,
+.controlButtonDelete:focus-visible {
+  background: rgba(233, 92, 60, 0.78);
+}
+
+.slot:active {
+  cursor: grabbing;
+  transform: scale(1.01);
+}
+
+.slotTalk {
+  background: var(--slot-color-talk);
+}
+
+.slotSocial {
+  background: var(--slot-color-social);
+}
+
+.slotAnnouncement {
+  background: var(--slot-color-announcement);
+}
+
+.slotRegistration {
+  background: var(--slot-color-registration);
+}
+
+.slotInterview {
+  background: var(--slot-color-interview);
+}
+
+.slotShow {
+  background: var(--slot-color-show);
+}
+
+.slotBreak {
+  background: var(--slot-color-break);
+}
+
+.slotParty {
+  background: var(--slot-color-party);
+}
+
+.slotCompetition {
+  background: var(--slot-color-show);
+}
+
+.slotActivity {
+  background: var(--slot-color-social);
+}
+
+.slotMeal {
+  background: var(--slot-color-registration);
+}
+
+.slotClosing {
+  background: var(--slot-color-announcement);
+}
+
+.slotInfo {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(0.2rem, calc(var(--slot-height) / 32), 0.5rem);
+  flex: 1 1 auto;
+}
+
+.slotTitle {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-weight: 700;
+  letter-spacing: 0.015em;
+  line-height: 1.05;
+  font-size: clamp(0.85rem, calc(0.65rem + var(--slot-height) / 180), 1.2rem);
+}
+
+.slotMeta {
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: 0.35rem;
+  font-size: clamp(0.7rem, calc(0.55rem + var(--slot-height) / 220), 1rem);
+  font-variant-numeric: tabular-nums;
+  color: rgba(32, 24, 19, 0.82);
+}
+
+.slotTime {
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: clamp(0.78rem, calc(0.62rem + var(--slot-height) / 240), 1.05rem);
+}
+
+.slotDuration {
+  font-size: clamp(0.7rem, calc(0.52rem + var(--slot-height) / 280), 0.95rem);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(32, 24, 19, 0.75);
+}
+
+.slotCategory {
+  display: none;
+}
+
+.slotCompact {
+  padding-block: clamp(0.16rem, calc(var(--slot-height) / 24), 0.55rem);
+  padding-inline: clamp(0.4rem, calc(var(--slot-height) / 12), 0.9rem);
+  flex-direction: row;
+  align-items: center;
+  gap: clamp(0.16rem, calc(var(--slot-height) / 28), 0.4rem);
+}
+
+.slotCompact .slotInfo {
+  flex-direction: row;
+  align-items: center;
+  gap: clamp(0.16rem, calc(var(--slot-height) / 28), 0.35rem);
+}
+
+.slotCompact .slotMeta {
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: flex-end;
+  margin-left: auto;
+  text-align: right;
+  gap: clamp(0.16rem, calc(var(--slot-height) / 32), 0.35rem);
+  flex-shrink: 0;
+}
+
+.slotCompact .slotControls {
+  top: 0.15rem;
+  right: 0.15rem;
+  gap: 0.15rem;
+}
+
+.slotCompact .controlButton {
+  width: 1.4rem;
+  height: 1.4rem;
+}
+
+.slotCompact .controlButton svg {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.editForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 0.6rem 0.75rem;
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.18);
+  color: #0b0d0f;
+}
+
+.formRow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.formLabel {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(11, 13, 15, 0.65);
+}
+
+.formInput,
+.formSelect {
+  width: 100%;
+  border: 1px solid rgba(11, 13, 15, 0.2);
+  border-radius: 0.6rem;
+  padding: 0.45rem 0.65rem;
+  font-size: 0.85rem;
+  background: rgba(255, 255, 255, 0.86);
+  color: #0b0d0f;
+}
+
+.formActions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.3rem;
+}
+
+.formButton {
+  flex: 1;
+  border: none;
+  border-radius: 999px;
+  padding: 0.4rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    background 0.15s ease;
+}
+
+.formButton.save {
+  background: var(--slot-color-social);
+  color: var(--primary, #1e1e1e);
+}
+
+.formButton.cancel {
+  background: rgba(11, 13, 15, 0.2);
+  color: #0b0d0f;
+}
+
+.formButtonSave {
+  background: var(--slot-color-social);
+  color: var(--primary, #1e1e1e);
+}
+
+.formButtonCancel {
+  background: rgba(11, 13, 15, 0.2);
+  color: #0b0d0f;
+}
+
+.formButton:hover,
+.formButton:focus-visible {
+  transform: translateY(-1px);
+}
+
+.resizeHandle {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: clamp(6px, calc(var(--slot-height) / 8), 12px);
+  cursor: ns-resize;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: none;
+}
+
+.resizeHandle::after {
+  content: "";
+  width: clamp(20px, calc(var(--slot-height) / 2), 32px);
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(11, 13, 15, 0.3);
+}
+
+.resizeTop {
+  top: 0;
+  transform: translateY(-50%);
+}
+
+.resizeBottom {
+  bottom: 0;
+  transform: translateY(50%);
+}
+
+.legend {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-size: 0.85rem;
+  color: var(--planner-muted);
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.legendSwatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  box-shadow: 0 0 0 1px rgba(233, 92, 60, 0.35);
+}
+
+.addButton {
+  background: rgba(255, 145, 77, 0.18);
+  border: 1px solid rgba(191, 117, 70, 0.4);
+  color: var(--planner-text);
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  transition:
+    background 0.15s ease,
+    transform 0.15s ease;
+}
+
+.addButton:hover,
+.addButton:focus-visible {
+  background: rgba(255, 145, 77, 0.32);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 960px) {
+  .timelineWrapper {
+    grid-template-columns: minmax(64px, 80px) 1fr;
+  }
+
+  .headerActions {
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .track:last-child {
+    grid-column: span 2;
+  }
+
+  .trackBody {
+    min-height: 480px;
+  }
+}
+
+@media (max-width: 640px) {
+  .planner {
+    padding: clamp(1rem, 6vw, 2rem);
+  }
+
+  .headerActions {
+    gap: 0.75rem;
+  }
+
+  .slot {
+    left: 8px;
+    right: 8px;
+    padding-inline: clamp(0.45rem, 4vw, 0.85rem);
+    padding-block: clamp(0.12rem, calc(var(--slot-height) / 24), 0.55rem);
+  }
+
+  .slotInfo {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: clamp(0.18rem, calc(var(--slot-height) / 32), 0.35rem);
+  }
+
+  .slotMeta {
+    align-items: flex-start;
+    text-align: left;
+    gap: clamp(0.12rem, calc(var(--slot-height) / 36), 0.3rem);
+  }
+}

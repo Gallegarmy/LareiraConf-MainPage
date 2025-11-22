@@ -6,6 +6,12 @@ declare module "*.svg?react" {
   export default content;
 }
 
+declare module "@img/*.svg?react" {
+  import type { FunctionComponent, SVGProps } from "react";
+  const content: FunctionComponent<SVGProps<SVGSVGElement>>;
+  export default content;
+}
+
 declare module "@img/*" {
   const metadata: import("astro").ImageMetadata;
   export default metadata;
