@@ -192,6 +192,7 @@
     }
     .ticket-price {
       font-family: var(--heading-font);
+      text-align: left;
 
       .original-price {
         text-decoration: line-through;
@@ -201,9 +202,17 @@
       }
       .discounted-price,
       .current-price {
+        line-height: 1;
         font-size: 2rem;
         font-weight: bold;
         color: var(--accent);
+      }
+      .total-price {
+        display: block;
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--text-light);
+        letter-spacing: 0.02em;
       }
     }
 

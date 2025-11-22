@@ -25,10 +25,34 @@ interface TicketCardProps {
   ticket: Ticket;
 }
 
+const TOTAL_PRICE_WITH_FEES: Record<string, number> = {
+  anventurero: 37.29,
+  guerrero: 80.67,
+  paladin: 122.86,
+};
+
 const TicketCard: React.FC<TicketCardProps> = ({ ticket }) => {
   const hasDiscount =
     typeof ticket.price.discounted === "number" &&
     ticket.price.discounted < ticket.price.original;
+
+  const discountedPrice =
+    typeof ticket.price.discounted === "number"
+      ? ticket.price.discounted
+      : ticket.price.original;
+
+  const formatCurrency = (value: number) =>
+    new Intl.NumberFormat("es-ES", {
+      style: "currency",
+      currency: "EUR",
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    }).format(value);
+
+  const formatBasePrice = (value: number) => formatCurrency(value);
+  const formatPriceDetail = (value: number) => `${formatCurrency(value)}`;
+
+  const totalPriceWithFees = TOTAL_PRICE_WITH_FEES[ticket.id];
 
   const [isHovered, setIsHovered] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -116,13 +140,22 @@ const TicketCard: React.FC<TicketCardProps> = ({ ticket }) => {
           <div className="ticket-price">
             {hasDiscount ? (
               <>
-                <span className="original-price">{ticket.price.original}€</span>
+                <span className="original-price">
+                  {formatPriceDetail(ticket.price.original)}
+                </span>
                 <span className="discounted-price">
-                  {ticket.price.discounted}€
+                  {formatBasePrice(discountedPrice)}
                 </span>
               </>
             ) : (
-              <span className="current-price">{ticket.price.original}€</span>
+              <span className="current-price">
+                {formatBasePrice(ticket.price.original)}
+              </span>
+            )}
+            {typeof totalPriceWithFees === "number" && (
+              <span className="total-price">
+                Total (IVA incluido): {formatCurrency(totalPriceWithFees)}
+              </span>
             )}
           </div>
           <a
