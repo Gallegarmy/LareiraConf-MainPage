@@ -47,7 +47,27 @@ const HomeSection = () => {
       </div>
 
       <div className="home-content">
-        <EventContent />
+        <div className="home-primary" aria-hidden="false">
+          <EventContent />
+        </div>
+        <div className="home-secondary" aria-hidden="true">
+          <p className="home-secondary__eyebrow">
+            Charlas. Networking. Juegos. Show
+          </p>
+          <h2 className="home-secondary__title">
+            Una conferencia diferente para una comunidad única
+          </h2>
+          <p className="home-secondary__copy">
+            LareiraConf es una conferencia técnica en A Coruña pensada para
+            reunir a la comunidad, aprender, conectar y vivir una experiencia
+            distinta, con buen rollo y mucha energía.
+          </p>
+          <p className="home-secondary__copy">
+            Este año no vienes solo a escuchar: vienes a participar. Te espera
+            un día lleno de contenido, dinámicas, retos y momentos diseñados
+            para que conozcas gente, te inspires y formes parte de algo único.
+          </p>
+        </div>
       </div>
 
       <div className="home-background-mobile" aria-hidden="true">
