@@ -6,6 +6,11 @@ declare module "*.svg?react" {
   export default content;
 }
 
+declare module "@img/*?url" {
+  const src: string;
+  export default src;
+}
+
 declare module "@img/*" {
   const metadata: import("astro").ImageMetadata;
   export default metadata;

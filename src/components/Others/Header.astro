@@ -1,6 +1,7 @@
 ---
 import "@styles/header.css";
 import TicketIcon from "@img/icons/ticket.svg?react";
+import UsersIcon from "@img/icons/users.svg?react";
 ---
 
 <header class="main-header">
@@ -8,9 +9,14 @@ import TicketIcon from "@img/icons/ticket.svg?react";
     <a href="#intro" class="logo isotipo">LAREIRA CONF</a>
   </div>
   <nav>
+
     <a href="#tickets" class="cta-button">
       <TicketIcon className="cta-button__icon" aria-hidden="true" />
       <span>Entradas</span>
+    </a>
+    <a href="#team" class="cta-button">
+      <UsersIcon className="cta-button__icon" aria-hidden="true" />
+      <span>Equipo</span>
     </a>
   </nav>
 </header>
