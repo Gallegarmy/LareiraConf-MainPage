@@ -141,7 +141,7 @@
 .team-copy {
   margin: 0 auto;
   padding: 1rem 0;
-  max-width: 720px;
+  max-width: 950px;
 }
 
 .team-copy h2 {
@@ -166,7 +166,7 @@
   display: flex;
   gap: 1rem;
   align-items: flex-end;
-  margin-top: 2.5rem;
+  justify-content: center;
 }
 
 .character-card {
@@ -281,6 +281,7 @@
   width: min(360px, 70vw);
   background: #3d2516;
   padding: 1.25rem 1.35rem;
+  border: 2px solid rgba(156, 110, 62, 0.9);
   border-radius: 0;
   box-shadow: 0 18px 32px rgba(12, 6, 2, 0.45);
   opacity: 0;
@@ -328,7 +329,7 @@
 .character-tooltip::before {
   content: "";
   position: absolute;
-  top: calc(100% - 3px);
+  top: calc(100% - 2px);
   left: 50%;
   transform: translateX(-50%);
   border-width: 11px 12px 0 12px;
@@ -544,10 +545,8 @@
     transform: none;
     opacity: 0;
     pointer-events: none;
-    max-height: 250px;
     width: min(260px, 85vw);
     overflow: visible;
-
     transition:
       opacity 0.25s ease,
       transform 0.25s ease;
