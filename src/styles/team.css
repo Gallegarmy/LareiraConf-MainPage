@@ -166,7 +166,6 @@
   display: flex;
   gap: 1rem;
   align-items: flex-end;
-  justify-content: center;
 }
 
 .character-card {
@@ -498,15 +497,21 @@
   }
 
   .team-characters {
+    --team-carousel-card-basis: 82%;
+    --team-carousel-edge-buffer: calc(
+      (100% - var(--team-carousel-card-basis)) / 2
+    );
     display: flex;
     flex-wrap: nowrap;
     gap: 1.5rem;
     overflow-x: auto;
-    padding: 0 1.25rem;
-    margin: 0 -1.25rem;
+    padding-inline: calc(1.25rem + var(--team-carousel-edge-buffer));
+    margin-inline: calc(-1.25rem - var(--team-carousel-edge-buffer));
     scroll-snap-type: x mandatory;
+    scroll-padding-inline: calc(1.25rem + var(--team-carousel-edge-buffer));
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
+    align-items: stretch;
   }
 
   .team-characters::-webkit-scrollbar {
@@ -514,7 +519,7 @@
   }
 
   .character-card {
-    flex: 0 0 82%;
+    flex: 0 0 var(--team-carousel-card-basis);
     scroll-snap-align: center;
     scroll-snap-stop: always;
   }
