@@ -86,6 +86,7 @@
 }
 
 .team-copy h2 {
+  text-align: center;
   font-family: var(--heading-font), sans-serif;
   font-size: clamp(2.5rem, 4vw, 3.6rem);
   letter-spacing: var(--custom-letter-spacing);
@@ -95,6 +96,7 @@
 }
 
 .team-copy p {
+  text-align: center;
   margin: 0 0 0.75rem;
   font-size: 1.1rem;
   letter-spacing: var(--custom-letter-spacing);
@@ -395,6 +397,9 @@
   }
 
   .team-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
   }
 
