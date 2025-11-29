@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import ParallaxLayer from "@components/Parallax/ParallaxLayer";
 import FireParticles from "@components/Others/FireParticles";
 
 import campBackdrop from "@img/parallax/team-camp.png";
@@ -197,6 +196,12 @@ const TeamSection: React.FC = () => {
     return () => observer.disconnect();
   }, [isMobileView]);
 
+  useEffect(() => {
+    if (isMobileView) {
+      setActiveMember((prev) => prev ?? crewMembers[0]?.id ?? null);
+    }
+  }, [isMobileView]);
+
   const activateMember = useCallback((memberId: string) => {
     setActiveMember(memberId);
   }, []);
@@ -209,16 +214,27 @@ const TeamSection: React.FC = () => {
     setActiveMember((prev) => (prev === memberId ? null : memberId));
   }, []);
 
+  const scrollToMember = useCallback((memberId: string) => {
+    const node = cardRefs.current[memberId];
+    if (!node) {
+      return;
+    }
+
+    node.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest",
+      inline: "center",
+    });
+  }, []);
+
   return (
     <section id="team" className="panel team-section">
       <div className="team-parallax" aria-hidden="true">
-        {/* <ParallaxLayer speed={-0.55} className="team-backdrop"> */}
         <img
           src={campBackdrop.src}
           alt="Campamento nocturno iluminado por una hoguera"
           className="team-parallax-img team-backdrop-img"
         />
-        {/* </ParallaxLayer> */}
         <div className="team-gradient" />
         <div className="team-particles">
           <FireParticles count={85} />
@@ -232,7 +248,7 @@ const TeamSection: React.FC = () => {
             Somos un grupo de personas que disfruta de la tecnología y, sobre
             todo, de la gente que se junta alrededor de ella. Unidos por un
             objetivo común: crear un evento para juntarse, conectar y compartir
-           ideas.
+            ideas.
           </p>
           <p>
             Lo hacemos de forma voluntaria y sin ánimo de lucro, dedicando
@@ -382,6 +398,36 @@ const TeamSection: React.FC = () => {
             );
           })}
         </div>
+
+        {isMobileView && (
+          <nav className="team-pagination" aria-label="Miembros del equipo">
+            {crewMembers.map((member, index) => {
+              const isDotActive = activeMember
+                ? activeMember === member.id
+                : index === 0;
+              const buttonClasses = ["team-pagination__button"];
+              if (isDotActive) {
+                buttonClasses.push("is-active");
+              }
+
+              return (
+                <button
+                  key={member.id}
+                  type="button"
+                  className={buttonClasses.join(" ")}
+                  aria-label={`Ver a ${member.name}`}
+                  aria-pressed={isDotActive}
+                  onClick={() => {
+                    scrollToMember(member.id);
+                    activateMember(member.id);
+                  }}
+                >
+                  <span className="team-pagination__dot" aria-hidden="true" />
+                </button>
+              );
+            })}
+          </nav>
+        )}
       </div>
     </section>
   );

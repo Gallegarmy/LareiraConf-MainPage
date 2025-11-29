@@ -30,6 +30,9 @@ import UsersIcon from "@img/icons/users.svg?raw";
 </header>
 
 <script>
+  const HORIZONTAL_NAV_RETRY_LIMIT = 20;
+  const HORIZONTAL_NAV_RETRY_DELAY = 75;
+
   const isHorizontalLayout = () => window.innerWidth > 768;
 
   const scrollToTarget = (selector) => {
@@ -39,6 +42,68 @@ import UsersIcon from "@img/icons/users.svg?raw";
 
     targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
     return true;
+  };
+
+  const buildUrlWithHash = (hash) =>
+    `${window.location.pathname}${window.location.search}${hash}`;
+
+  const updateUrlHash = (hash, { replace = false } = {}) => {
+    if (!hash) return;
+    const normalizedHash = hash.startsWith("#") ? hash : `#${hash}`;
+    const url = buildUrlWithHash(normalizedHash);
+    const state = { anchor: normalizedHash };
+
+    if (replace || window.location.hash === normalizedHash) {
+      window.history.replaceState(state, "", url);
+    } else {
+      window.history.pushState(state, "", url);
+    }
+  };
+
+  const navigateToHash = (
+    hash,
+    { updateHistory = false, replace = false, attempt = 0 } = {},
+  ) => {
+    if (!hash) return false;
+
+    const normalizedHash = hash.startsWith("#") ? hash : `#${hash}`;
+    const finalize = () => {
+      if (updateHistory) {
+        updateUrlHash(normalizedHash, { replace });
+      }
+    };
+
+    if (isHorizontalLayout()) {
+      const navigator = window.horizontalPanelNav?.goToPanel;
+      if (typeof navigator === "function") {
+        navigator(normalizedHash);
+        finalize();
+        return true;
+      }
+
+      if (updateHistory && attempt === 0) {
+        updateUrlHash(normalizedHash, { replace });
+      }
+
+      if (attempt < HORIZONTAL_NAV_RETRY_LIMIT) {
+        window.setTimeout(() => {
+          navigateToHash(normalizedHash, {
+            updateHistory,
+            replace,
+            attempt: attempt + 1,
+          });
+        }, HORIZONTAL_NAV_RETRY_DELAY);
+      }
+
+      return false;
+    }
+
+    const scrolled = scrollToTarget(normalizedHash);
+    if (scrolled) {
+      finalize();
+    }
+
+    return scrolled;
   };
 
   const handleNavClick = (event) => {
@@ -52,16 +117,11 @@ import UsersIcon from "@img/icons/users.svg?raw";
       return;
     }
 
-    if (isHorizontalLayout()) {
-      if (window.horizontalPanelNav?.goToPanel) {
-        event.preventDefault();
-        window.horizontalPanelNav.goToPanel(href);
-      }
-      return;
-    }
+    const navigated = navigateToHash(href, { updateHistory: true });
 
-    const scrolled = scrollToTarget(href);
-    if (scrolled) {
+    if (navigated) {
+      event.preventDefault();
+    } else if (isHorizontalLayout()) {
       event.preventDefault();
     }
   };
@@ -74,16 +134,50 @@ import UsersIcon from "@img/icons/users.svg?raw";
     });
   };
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", setupHeaderNav, {
-      once: true,
+  const applyInitialHash = () => {
+    if (!window.location.hash) return;
+    navigateToHash(window.location.hash, {
+      updateHistory: false,
+      replace: true,
     });
-  } else {
+  };
+
+  const handlePopState = (event) => {
+    const hash = event.state?.anchor ?? window.location.hash;
+    if (hash) {
+      navigateToHash(hash, { updateHistory: false, replace: true });
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
+  const init = () => {
     setupHeaderNav();
+    applyInitialHash();
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init, { once: true });
+  } else {
+    init();
   }
 
   window.addEventListener("resize", () => {
     if (!isHorizontalLayout()) return;
     setupHeaderNav();
+    if (window.location.hash) {
+      navigateToHash(window.location.hash, { updateHistory: false, replace: true });
+    }
   });
+
+  window.addEventListener("hashchange", () => {
+    if (!window.location.hash) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
+    navigateToHash(window.location.hash, { updateHistory: false, replace: true });
+  });
+
+  window.addEventListener("popstate", handlePopState);
 </script>
