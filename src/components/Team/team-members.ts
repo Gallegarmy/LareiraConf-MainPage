@@ -8,8 +8,8 @@ export const teamMembers: TeamMember[] = [
   {
     id: "nacho",
     name: "Nacho Espósito",
-    role: "Founder · DevOps",
-    bio: "Apasionado por la tecnología y el desarrollo de soluciones digitales. He ayudado a traer Sysarmy a Galicia. Es el culpable de que estemos aquí.",
+    role: "Forjador de Sistemas",
+    bio: "Soy un apasionado de la tecnología y de arrancar ideas que parecen imposibles. Me gusta conectar piezas, construir cosas y convencer al resto de que sí, esto podemos hacerlo.",
     image: { src: nachoImg.src, alt: "Retrato pixel art de Nacho" },
     socials: [
       {
@@ -21,8 +21,8 @@ export const teamMembers: TeamMember[] = [
   {
     id: "andrea",
     name: "Andrea Magán",
-    role: "Host · Frontend dev",
-    bio: "Diseña experiencias con mimo y a también las programa. Lleva el micrófono y anima el campamento.",
+    role: "Tejedora de Historias",
+    bio: "Diseño con mimo, pico código y disfruto creando experiencias que conectan a la gente. En la Lareira cojo el micro, guío la aventura y mantengo el campamento encendido.",
     image: { src: andreaImg.src, alt: "Retrato pixel art de Andrea" },
     socials: [
       { label: "LinkedIn", url: "https://www.linkedin.com/in/andreamaganrey" },
@@ -31,8 +31,8 @@ export const teamMembers: TeamMember[] = [
   {
     id: "yisus",
     name: "Jesús Pérez-Roca",
-    role: "Beerworking · Profesor",
-    bio: "Profesor experimentado. No se pierde un evento tech en Galicia y siempre está dispuesto a compartir una buena cerveza.",
+    role: "Maestro Cervecero Errante",
+    bio: "Soy profesor y un habitual de casi cualquier evento tech en Galicia. Me encanta aprender, compartir y charlar con calma… especialmente si hay una cerveza por medio.",
     image: { src: jesusImg.src, alt: "Retrato pixel art de Yisus" },
     mirrored: true,
     socials: [
@@ -45,11 +45,13 @@ export const teamMembers: TeamMember[] = [
   {
     id: "tizi",
     name: "Tiziana Amicarella",
-    role: "Tesorera · Backend dev",
-    bio: "Coordina y maneja las cuentas. Tanto te maneja una base de datos como te monta un evento. Swiftie hasta la médula.",
+    role: "Guardiana del Tesoro",
+    bio: "Guardo el cofre, organizo el campamento y siempre busco una solución cuando algo se tuerce. Vengo del mundo más oscuro del código y encuentro la luz siendo la Swiftie oficial del grupo.",
     image: { src: tiziImg.src, alt: "Retrato pixel art de Tizi" },
     initials: "TZ",
     mirrored: true,
-    socials: [{ label: "LinkedIn", url: "https://www.linkedin.com" }],
+    socials: [
+      { label: "LinkedIn", url: "https://www.linkedin.com/in/tizianaamica" },
+    ],
   },
 ];
