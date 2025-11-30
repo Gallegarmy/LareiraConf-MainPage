@@ -42,18 +42,7 @@
 .speakers-parallax__gradient {
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(8, 4, 14, 0.92) 0%,
-      rgba(16, 7, 24, 0.78) 45%,
-      rgba(5, 3, 9, 0.95) 100%
-    ),
-    radial-gradient(
-      circle at center,
-      rgba(38, 17, 44, 0.6) 0%,
-      rgba(6, 2, 10, 0.92) 70%
-    );
+  background: none;
 }
 
 .speakers-content {
@@ -104,27 +93,10 @@
   aspect-ratio: 16 / 10;
   border-radius: 1.75rem;
   overflow: hidden;
-  box-shadow:
-    0 28px 48px rgba(0, 0, 0, 0.45),
-    inset 0 0 0 1px rgba(250, 228, 210, 0.12);
-  background: linear-gradient(
-    135deg,
-    rgba(28, 12, 38, 0.85),
-    rgba(8, 4, 14, 0.9)
-  );
 }
 
 .speakers-preview-embed::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: linear-gradient(
-    120deg,
-    rgba(255, 255, 255, 0.08),
-    transparent 55%
-  );
-  mix-blend-mode: screen;
+  content: none;
 }
 
 .speakers-preview-embed iframe {
@@ -132,7 +104,6 @@
   height: 100%;
   border: 0;
   border-radius: inherit;
-  background-color: #0b0611;
   filter: saturate(1.05);
 }
 

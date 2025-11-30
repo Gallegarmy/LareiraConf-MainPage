@@ -1,7 +1,7 @@
 import React from "react";
 import ParallaxLayer from "@components/Parallax/ParallaxLayer";
 import FireParticles from "@components/Others/FireParticles";
-import EventContent from "./EventContent";
+import EventContent from "@components/Home/EventContent";
 
 import mountainsImg from "@img/parallax/mountains.png";
 import treesImg from "@img/parallax/trees.png";
