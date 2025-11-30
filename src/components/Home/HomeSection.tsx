@@ -63,9 +63,10 @@ const HomeSection = () => {
             distinta, con buen rollo y mucha energía.
           </p>
           <p className="home-secondary__copy">
-            Este año no vienes solo a escuchar: vienes a participar. Un único track, con ponentes top.
-            Pero también dinámicas, sorteos, comida, show y muchos momentos diseñados
-            para que conozcas gente, te inspires y disfrutes del día.
+            Este año no vienes solo a escuchar: vienes a participar. Un único
+            track, con ponentes top. Pero también dinámicas, sorteos, comida,
+            show y muchos momentos diseñados para que conozcas gente, te
+            inspires y disfrutes del día.
           </p>
         </div>
       </div>
