@@ -1,0 +1,158 @@
+.speakers-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: clamp(3rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3rem);
+  color: var(--text-light);
+  font-family: var(--heading-font), sans-serif;
+}
+
+.speakers-parallax {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.speakers-parallax__background {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.75) brightness(0.62);
+  transform: scale(1.05);
+}
+
+.speakers-parallax__foreground {
+  position: absolute;
+  bottom: -6%;
+  left: 50%;
+  width: 135%;
+  max-width: 1400px;
+  transform: translateX(-50%);
+  opacity: 0.22;
+}
+
+.speakers-parallax__gradient {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(8, 4, 14, 0.92) 0%,
+      rgba(16, 7, 24, 0.78) 45%,
+      rgba(5, 3, 9, 0.95) 100%
+    ),
+    radial-gradient(
+      circle at center,
+      rgba(38, 17, 44, 0.6) 0%,
+      rgba(6, 2, 10, 0.92) 70%
+    );
+}
+
+.speakers-content {
+  position: relative;
+  z-index: 2;
+  width: min(1100px, 94%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(2rem, 4vw, 3rem);
+}
+
+.speakers-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 760px;
+}
+
+.speakers-copy__eyebrow {
+  font-size: 0.85rem;
+  letter-spacing: var(--custom-letter-spacing);
+  text-transform: uppercase;
+  color: rgba(255, 231, 210, 0.7);
+  margin: 0;
+}
+
+.speakers-copy h2 {
+  margin: 0;
+  line-height: 1;
+  font-size: clamp(2.4rem, 4.8vw, 3.8rem);
+  letter-spacing: var(--custom-letter-spacing);
+  color: var(--accent);
+}
+
+.speakers-copy p {
+  margin: 0;
+  color: rgba(255, 231, 210, 0.92);
+  letter-spacing: 0.08rem;
+  font-size: clamp(1rem, 1.2vw, 1.15rem);
+  line-height: 1.45;
+}
+
+.speakers-preview-embed {
+  position: relative;
+  width: min(960px, 100%);
+  aspect-ratio: 16 / 10;
+  border-radius: 1.75rem;
+  overflow: hidden;
+  box-shadow:
+    0 28px 48px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 1px rgba(250, 228, 210, 0.12);
+  background: linear-gradient(
+    135deg,
+    rgba(28, 12, 38, 0.85),
+    rgba(8, 4, 14, 0.9)
+  );
+}
+
+.speakers-preview-embed::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.08),
+    transparent 55%
+  );
+  mix-blend-mode: screen;
+}
+
+.speakers-preview-embed iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: inherit;
+  background-color: #0b0611;
+  filter: saturate(1.05);
+}
+
+@media (max-width: 900px) {
+  .speakers-section {
+    padding: clamp(2.5rem, 6vw, 3.5rem) clamp(1.25rem, 5vw, 2rem);
+  }
+
+  .speakers-preview-embed {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+  }
+}
+
+@media (max-width: 540px) {
+  .speakers-copy p {
+    font-size: 0.98rem;
+  }
+
+  .speakers-preview-embed {
+    aspect-ratio: 4 / 5;
+  }
+}
