@@ -1,13 +1,60 @@
 ---
 import Layout from "src/layouts/Layout.astro";
-import Intro from "@components/Intro/Intro.astro";
+import HorizontalScroll from "@components/Parallax/HorizontalScroll";
+import HomeSection from "@components/Home/HomeSection";
+import TicketsSection from "@components/TicketsSection/TicketsSection";
+import SocialSection from "@components/SocialSection/SocialSection";
 ---
 
+<style is:global>
+  body {
+    overflow-x: hidden;
+  }
+  .panel {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .container {
+    display: flex;
+    width: 300%; /* 3 panels */
+    height: 100vh;
+    transition: width 0.3s ease;
+  }
+
+  /* Mobile styles */
+  @media (max-width: 768px) {
+    .container {
+      width: 100%;
+      height: auto;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    .container .panel {
+      width: 100%;
+      height: auto;
+      min-height: 100vh;
+      flex-shrink: 1;
+      position: relative;
+    }
+
+    body {
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+  }
+</style>
+
 <Layout title="Lareira Conf 2026">
-  <div class="flex justify-end p-6">
-    <a href="2025" class=" top-6 right-6 btn-3d main-btn">
-      Ver la edición 2025
-    </a>
-  </div>
-  <Intro />
+  <HorizontalScroll client:load className="container">
+    <HomeSection />
+    <TicketsSection client:load />
+    <SocialSection client:load />
+  </HorizontalScroll>
 </Layout>

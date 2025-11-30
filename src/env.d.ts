@@ -1,5 +1,16 @@
 /// <reference path="../.astro/types.d.ts" />
 
+declare module "*.svg?react" {
+  import type { FunctionComponent, SVGProps } from "react";
+  const content: FunctionComponent<SVGProps<SVGSVGElement>>;
+  export default content;
+}
+
+declare module "@img/*" {
+  const metadata: import("astro").ImageMetadata;
+  export default metadata;
+}
+
 interface ImportMetaEnv {
   readonly GOOGLE_SHEETS_ID: string;
   readonly GOOGLE_CLIENT_ID: string;

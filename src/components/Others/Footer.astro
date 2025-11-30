@@ -1,18 +1,17 @@
 ---
-import Social from "@components/Others/Social.astro";
-import { Content as CodeOfConduct } from "@components/CodeOfConduct/CodeOfConduct.md";
-import { Content as PrivacyPolicy } from "@components/PrivacyPolicy/PrivacyPolicy.md";
-import Modal from "./Modal.astro";
-import LareiraSocials from "./LareiraSocials.astro";
+import { Content as CodeOfConduct } from "../CodeOfConduct/CodeOfConduct.md";
+import { Content as PrivacyPolicy } from "../PrivacyPolicy/PrivacyPolicy.md";
+import Modal from "../Others/Modal.astro";
+import LareiraSocials from "../Others/LareiraSocials.astro";
 
 const linkedin = "lareira-conf-coruña-20313a337";
 const x = "LareiraConf";
 const instagram = "lareiraconf";
 ---
 
-<footer class="grid grid-cols-1 md:grid-cols-3 text-white p-4 gap-2">
+<footer class="grid grid-cols-1 gap-2 p-4 text-white md:grid-cols-3">
   <div
-    class="order-2 md:order-1 flex justify-between h-full flex-row md:flex-col items-start"
+    class="order-2 flex h-full flex-row items-start justify-between md:order-1 md:flex-col"
   >
     <Modal id="codeOfConduct" title="Código de conducta" class="full">
       <CodeOfConduct slot="main" />
@@ -21,13 +20,13 @@ const instagram = "lareiraconf";
       <PrivacyPolicy slot="main" />
     </Modal>
   </div>
-  <div class="order-1 md:order-2 flex flex-col align-center h-full">
-    <p class="social flex gap-2 justify-center">
+  <div class="align-center order-1 flex h-full flex-col md:order-2">
+    <p class="social flex justify-center gap-2">
       <LareiraSocials customClass={"text-lg"} />
     </p>
   </div>
   <div
-    class="order-3 md:order-3 flex flex-row md:flex-col justify-between h-full text-end"
+    class="order-3 flex h-full flex-row justify-between text-end md:order-3 md:flex-col"
   >
     <p>Made with ♥ by LAREIRACONF CREW</p>
     <p>

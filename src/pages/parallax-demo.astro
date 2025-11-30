@@ -1,0 +1,46 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ParallaxDemo from "@components/Parallax/ParallaxDemo";
+---
+
+<Layout title="Parallax Demo">
+  <style is:global>
+    body {
+      overflow-x: hidden;
+    }
+    .panel {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 4rem;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .container {
+      display: flex;
+      width: 300%; /* 3 panels */
+      height: 100vh;
+    }
+    .bg-layer,
+.content-layer,
+   .details-layer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .panel-1 {
+     background-color: #3b82f6;
+ }
+    .panel-2 {
+   background-color: #16a34a;
+    }
+    .panel-3 {
+     background-color: #ef4444;
+  }
+  </style>
+
+  <ParallaxDemo client:load />
+</Layout>
