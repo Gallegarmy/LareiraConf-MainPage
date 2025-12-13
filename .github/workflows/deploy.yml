@@ -1,0 +1,56 @@
+name: Deploy contest-app to VPS
+
+on:
+  pull_request:
+    branches:
+      - master
+    types:
+      - closed
+
+jobs:
+  deploy:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.VPS_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.VPS_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Build and deploy on VPS
+        run: |
+          ssh ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << EOF
+            set -e
+
+            echo "🚀 Deploying contest-app..."
+
+            /root/Lareira/LareiraConf-MainPage
+
+            echo "📥 Pulling latest code"
+            git pull origin master
+
+            echo "🐳 Building Docker image"
+            docker build --no-cache \
+              --build-arg NPM_TOKEN=$NPM_TOKEN \
+              -t contest-app:latest .
+
+            echo "🛑 Stopping old container (if exists)"
+            docker stop contest-app || true
+            docker rm contest-app || true
+
+            echo "▶️ Running new container"
+            docker run -d \
+              --name contest-app \
+              --env-file /root/Lareira/env/.env.local \
+              -p 4321:4321 \
+              --restart unless-stopped \
+              contest-app:latest
+
+            echo "✅ Deployment successful"
+          EOF
