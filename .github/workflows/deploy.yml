@@ -30,7 +30,7 @@ jobs:
 
             echo "🚀 Deploying contest-app..."
 
-            /root/Lareira/LareiraConf-MainPage
+            cd /root/Lareira/LareiraConf-MainPage
 
             echo "📥 Pulling latest code"
             git pull origin master
