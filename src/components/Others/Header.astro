@@ -1,6 +1,7 @@
 ---
 import "@styles/header.css";
-import TicketIcon from "@img/icons/ticket.svg?react";
+import TicketIcon from "@img/icons/ticket.svg?raw";
+import UsersIcon from "@img/icons/users.svg?raw";
 ---
 
 <header class="main-header">
@@ -8,14 +9,30 @@ import TicketIcon from "@img/icons/ticket.svg?react";
     <a href="#intro" class="logo isotipo">LAREIRA CONF</a>
   </div>
   <nav>
+
     <a href="#tickets" class="cta-button">
-      <TicketIcon className="cta-button__icon" aria-hidden="true" />
+      <span
+        class="cta-button__icon"
+        aria-hidden="true"
+        set:html={TicketIcon}
+      />
       <span>Entradas</span>
     </a>
-  </nav>
+    <a href="#team" class="cta-button">
+      <span
+        class="cta-button__icon"
+        aria-hidden="true"
+        set:html={UsersIcon}
+      />
+      <span>Equipo</span>
+    </a>
+</nav>
 </header>
 
 <script>
+  const HORIZONTAL_NAV_RETRY_LIMIT = 20;
+  const HORIZONTAL_NAV_RETRY_DELAY = 75;
+
   const isHorizontalLayout = () => window.innerWidth > 768;
 
   const scrollToTarget = (selector) => {
@@ -25,6 +42,68 @@ import TicketIcon from "@img/icons/ticket.svg?react";
 
     targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
     return true;
+  };
+
+  const buildUrlWithHash = (hash) =>
+    `${window.location.pathname}${window.location.search}${hash}`;
+
+  const updateUrlHash = (hash, { replace = false } = {}) => {
+    if (!hash) return;
+    const normalizedHash = hash.startsWith("#") ? hash : `#${hash}`;
+    const url = buildUrlWithHash(normalizedHash);
+    const state = { anchor: normalizedHash };
+
+    if (replace || window.location.hash === normalizedHash) {
+      window.history.replaceState(state, "", url);
+    } else {
+      window.history.pushState(state, "", url);
+    }
+  };
+
+  const navigateToHash = (
+    hash,
+    { updateHistory = false, replace = false, attempt = 0 } = {},
+  ) => {
+    if (!hash) return false;
+
+    const normalizedHash = hash.startsWith("#") ? hash : `#${hash}`;
+    const finalize = () => {
+      if (updateHistory) {
+        updateUrlHash(normalizedHash, { replace });
+      }
+    };
+
+    if (isHorizontalLayout()) {
+      const navigator = window.horizontalPanelNav?.goToPanel;
+      if (typeof navigator === "function") {
+        navigator(normalizedHash);
+        finalize();
+        return true;
+      }
+
+      if (updateHistory && attempt === 0) {
+        updateUrlHash(normalizedHash, { replace });
+      }
+
+      if (attempt < HORIZONTAL_NAV_RETRY_LIMIT) {
+        window.setTimeout(() => {
+          navigateToHash(normalizedHash, {
+            updateHistory,
+            replace,
+            attempt: attempt + 1,
+          });
+        }, HORIZONTAL_NAV_RETRY_DELAY);
+      }
+
+      return false;
+    }
+
+    const scrolled = scrollToTarget(normalizedHash);
+    if (scrolled) {
+      finalize();
+    }
+
+    return scrolled;
   };
 
   const handleNavClick = (event) => {
@@ -38,16 +117,11 @@ import TicketIcon from "@img/icons/ticket.svg?react";
       return;
     }
 
-    if (isHorizontalLayout()) {
-      if (window.horizontalPanelNav?.goToPanel) {
-        event.preventDefault();
-        window.horizontalPanelNav.goToPanel(href);
-      }
-      return;
-    }
+    const navigated = navigateToHash(href, { updateHistory: true });
 
-    const scrolled = scrollToTarget(href);
-    if (scrolled) {
+    if (navigated) {
+      event.preventDefault();
+    } else if (isHorizontalLayout()) {
       event.preventDefault();
     }
   };
@@ -60,16 +134,50 @@ import TicketIcon from "@img/icons/ticket.svg?react";
     });
   };
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", setupHeaderNav, {
-      once: true,
+  const applyInitialHash = () => {
+    if (!window.location.hash) return;
+    navigateToHash(window.location.hash, {
+      updateHistory: false,
+      replace: true,
     });
-  } else {
+  };
+
+  const handlePopState = (event) => {
+    const hash = event.state?.anchor ?? window.location.hash;
+    if (hash) {
+      navigateToHash(hash, { updateHistory: false, replace: true });
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
+  const init = () => {
     setupHeaderNav();
+    applyInitialHash();
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init, { once: true });
+  } else {
+    init();
   }
 
   window.addEventListener("resize", () => {
     if (!isHorizontalLayout()) return;
     setupHeaderNav();
+    if (window.location.hash) {
+      navigateToHash(window.location.hash, { updateHistory: false, replace: true });
+    }
   });
+
+  window.addEventListener("hashchange", () => {
+    if (!window.location.hash) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
+    navigateToHash(window.location.hash, { updateHistory: false, replace: true });
+  });
+
+  window.addEventListener("popstate", handlePopState);
 </script>

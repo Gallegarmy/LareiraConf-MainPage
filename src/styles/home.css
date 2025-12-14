@@ -90,9 +90,29 @@
   z-index: 5;
   max-width: 760px;
   width: min(760px, 90%);
+  min-height: clamp(320px, 58vh, 460px);
+  margin: 0 auto;
+  display: block;
+}
+
+.home-primary,
+.home-secondary {
+  position: absolute;
+  inset: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 1.25rem;
+  padding: 0 1.5rem;
+}
+
+.home-secondary {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate3d(40%, 0, 0);
 }
 
 .home-content .content {
@@ -146,6 +166,35 @@
   margin-right: auto;
   line-height: 1.4;
   color: var(--text-light);
+}
+
+.home-secondary__eyebrow {
+  font-family: var(--heading-font), sans-serif;
+  text-transform: uppercase;
+  letter-spacing: var(--custom-letter-spacing);
+  color: var(--accent);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.home-secondary__title {
+  margin: 0;
+  font-family: var(--logo-font), sans-serif;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  line-height: 1.1;
+  color: var(--text-light);
+  text-transform: uppercase;
+}
+
+.home-secondary__copy {
+  margin: 0;
+  max-width: 520px;
+  font-size: 1.05rem;
+  font-family: var(--heading-font), sans-serif;
+  letter-spacing: var(--custom-letter-spacing);
+  text-transform: uppercase;
+  line-height: 1.35;
+  color: rgba(255, 240, 225, 0.92);
 }
 
 .home-background-mobile {
@@ -242,6 +291,7 @@
 
 @media (max-width: 768px) {
   .home-section {
+    display: block;
     height: auto;
     min-height: 100vh;
     padding: 5rem 1.5rem 4rem;
@@ -262,27 +312,64 @@
   }
 
   .home-content {
+    position: relative;
     width: min(520px, 100%);
-    transform: translateY(40%);
+    min-height: auto;
+    transform: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.75rem;
+  }
+
+  .home-primary,
+  .home-secondary {
+    position: relative;
+    inset: auto;
+    gap: 1rem;
+    padding: 0;
+    width: 100%;
+  }
+
+  .home-secondary {
+    margin-top: 0;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    pointer-events: auto;
+    display: none;
   }
 
   .home-section .home-info {
-    gap: 1rem;
+    flex-direction: column;
+    gap: 0.75rem;
     margin-bottom: 2rem;
+    width: 100%;
+    align-items: center;
+  }
+
+  .home-content .content,
+  .home-secondary {
+    align-items: center;
+    text-align: center;
   }
 
   .home-section h1 {
     font-size: 2.2rem;
     line-height: 1.2;
+    text-align: center;
+    width: 100%;
   }
 
   .home-section h2 {
     font-size: 1rem;
+    text-align: center;
   }
 
   .subtitle {
     font-size: 0.95rem;
-    max-width: 90%;
+    max-width: 100%;
+    text-align: center;
   }
 
   .home-section .element {
