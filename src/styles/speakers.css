@@ -48,6 +48,7 @@
   position: relative;
   z-index: 2;
   width: min(1100px, 94%);
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -85,11 +86,11 @@
   font-size: clamp(1rem, 1.2vw, 1.15rem);
   line-height: 1.45;
 }
-
 .speakers-preview-embed {
   position: relative;
   width: min(960px, 100%);
-  aspect-ratio: 16 / 10;
+  flex: 1;
+  min-height: 600px;
   border-radius: 1.75rem;
   overflow: hidden;
 }
