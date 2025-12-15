@@ -1,7 +1,6 @@
 import React from "react";
 import "@styles/speakers.css";
 import libraryBackdrop from "@img/parallax/library.png";
-import SpeakersCopy from "./SpeakersCopy";
 import SpeakersBookPreview from "./SpeakersBookPreview";
 
 const SpeakersSection: React.FC = () => (
@@ -17,7 +16,6 @@ const SpeakersSection: React.FC = () => (
     </div>
 
     <div className="speakers-content">
-      <SpeakersCopy />
       <SpeakersBookPreview />
     </div>
   </section>

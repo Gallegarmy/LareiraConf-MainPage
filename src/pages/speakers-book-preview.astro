@@ -1,12 +1,13 @@
-
 ---
 import { speakers } from "../components/Speakers/speakers-data";
+import coverIllustration from "../img/parallax/lareira.png";
+import "../styles/global.css";
 
 const speakerLeaves = speakers.map((speaker, index) => ({
-    speaker,
-    pageIndex: index + 2,
-    frontNumber: index * 2 + 1,
-    backNumber: index * 2 + 2,
+  speaker,
+  pageIndex: index + 2,
+  frontNumber: index * 2 + 1,
+  backNumber: index * 2 + 2,
 }));
 
 const pageCount = speakerLeaves.length * 2 + 2;
@@ -15,501 +16,494 @@ const backCoverIndex = speakerLeaves.length + 2;
 ---
 
 <html lang="es">
-    <head>
-        <meta charset="utf-8" />
-        <title>Speakers Book Preview</title>
-        <script
-            src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"
-            is:inline
-        ></script>
-        <script
-            src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"
-            is:inline
-        ></script>
-    </head>
-    <body
-        class="speakers-preview-page"
-        style={`--page-count: ${pageCount}; --page-scroll: ${pageScroll};`}
-    >
-        <div class="book" role="presentation">
-            <div class="book__spine"></div>
-            <div
-                class="page book__page book__cover book__cover--front"
-                style="--page-index: 1;"
-            >
-                <div class="page__half page__half--front">
-                    <div class="page-content cover-content cover-content--front">
-                        <p class="cover-eyebrow">Speakers 2025</p>
-                        <h1 class="cover-title">Lareira Conf</h1>
-                        <p class="cover-subtitle">Oito charlas para encender a chispa</p>
-                    </div>
-                </div>
-                <div class="page__half page__half--back">
-                    <div class="book__insert"></div>
-                    <div class="page-content cover-content cover-content--inside">
-                        <p class="cover-note">
-                            Cada volta de páxina amosa a quen compartirá escenario este ano.
-                            Descobre o que traen e sigue as súas canles para non perder o
-                            seguinte capítulo.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            {speakerLeaves.map(({ speaker, pageIndex, frontNumber, backNumber }, leaf) => (
-                <div class="page book__page" style={`--page-index: ${pageIndex};`}>
-                    <div class="page__half page__half--front">
-                        <article class="page-content speaker-page speaker-page--front">
-                            <figure class="speaker-page__portrait">
-                                <img
-                                    src={speaker.image.src}
-                                    alt={speaker.image.alt}
-                                    loading="lazy"
-                                    decoding="async"
-                                />
-                            </figure>
-                            <div class="speaker-page__identity">
-                                <p class="speaker-page__eyebrow">Speaker {leaf + 1}</p>
-                                <h2 class="speaker-page__name">{speaker.name}</h2>
-                                <p class="speaker-page__role">{speaker.role}</p>
-                            </div>
-                        </article>
-                        <div class="page__number">{frontNumber}</div>
-                    </div>
-                    <div class="page__half page__half--back">
-                        <article class="page-content speaker-page speaker-page--back">
-                            <h3 class="speaker-page__talk">{speaker.talkTitle}</h3>
-                            <p class="speaker-page__summary">{speaker.summary}</p>
-                            <ul class="speaker-page__socials">
-                                {speaker.socials.map((social) => (
-                                    <li>
-                                        <a
-                                            href={social.url}
-                                            target="_blank"
-                                            rel="noreferrer noopener"
-                                        >
-                                            {social.label}
-                                        </a>
-                                    </li>
-                                ))}
-                            </ul>
-                        </article>
-                        <div class="page__number">{backNumber}</div>
-                    </div>
-                </div>
-            ))}
-
-            <div
-                class="page book__page book__cover book__cover--back"
-                style={`--page-index: ${backCoverIndex};`}
-            >
-                <div class="page__half page__half--front">
-                    <div class="page-content cover-content cover-content--closing">
-                        <p class="cover-note">
-                            Grazas por compartir a lareira e apoiar a comunidade. Vémonos na
-                            seguinte edición.
-                        </p>
-                    </div>
-                </div>
-                <div class="page__half page__half--back">
-                    <div class="book__insert"></div>
-                </div>
-            </div>
+  <head>
+    <meta charset="utf-8" />
+    <title>Speakers Book Preview</title>
+    <script
+      src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"
+      is:inline></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"
+      is:inline></script>
+  </head>
+  <body
+    class="speakers-preview-page"
+    style={`--page-count: ${pageCount}; --page-scroll: ${pageScroll};`}
+  >
+    <div class="book" role="presentation">
+      <div class="book__spine"></div>
+      <div
+        class="page book__page book__cover book__cover--front"
+        style="--page-index: 1;"
+      >
+        <div class="page__half page__half--front">
+          <div class="page-content cover-content cover-content--front">
+            <img
+              src={coverIllustration.src}
+              alt="Ilustración da lareira"
+              class="cover-illustration"
+              loading="lazy"
+              decoding="async"
+            />
+            <h2 class="cover-title">Portadores de la llama</h2>
+            <p class="cover-note">
+              Descubre a los ponentes que encenderán la Lareira Conf '26 con sus
+              ideas.
+            </p>
+          </div>
         </div>
-    </body>
+        <div class="page__half page__half--back">
+          <div class="book__insert"></div>
+          <div class="page-content cover-content cover-content--inside"></div>
+        </div>
+      </div>
+
+      {
+        speakerLeaves.map(
+          ({ speaker, pageIndex, frontNumber, backNumber }, leaf) => (
+            <div class="page book__page" style={`--page-index: ${pageIndex};`}>
+              <div class="page__half page__half--front">
+                <article class="page-content speaker-page speaker-page--front">
+                  <figure class="speaker-page__portrait">
+                    <img
+                      src={speaker.image.src}
+                      alt={speaker.image.alt}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </figure>
+                  <div class="speaker-page__identity">
+                    <p class="speaker-page__eyebrow">Speaker {leaf + 1}</p>
+                    <h2 class="speaker-page__name">{speaker.name}</h2>
+                    <p class="speaker-page__role">{speaker.role}</p>
+                  </div>
+                </article>
+                <div class="page__number">{frontNumber}</div>
+              </div>
+              <div class="page__half page__half--back">
+                <article class="page-content speaker-page speaker-page--back">
+                  <h3 class="speaker-page__talk">{speaker.talkTitle}</h3>
+                  <p class="speaker-page__summary">{speaker.summary}</p>
+                  <ul class="speaker-page__socials">
+                    {speaker.socials.map((social) => (
+                      <li>
+                        <a
+                          href={social.url}
+                          target="_blank"
+                          rel="noreferrer noopener"
+                        >
+                          {social.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </article>
+                <div class="page__number">{backNumber}</div>
+              </div>
+            </div>
+          ),
+        )
+      }
+
+      <div
+        class="page book__page book__cover book__cover--back"
+        style={`--page-index: ${backCoverIndex};`}
+      >
+        <div class="page__half page__half--front">
+          <div class="page-content cover-content cover-content--closing"></div>
+        </div>
+        <div class="page__half page__half--back">
+          <div class="book__insert"></div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
 
 <style is:global>
-    * {
-        box-sizing: border-box;
-    }
+  * {
+    box-sizing: border-box;
+  }
 
-    :root {
-        --underline: rgba(94, 66, 41, 0.25);
-        --spine: #3d2214;
-        --cover: #7b4a27;
-        --insert: #e2c8a9;
-        --page: #f6f0e1;
-        --text-primary: #2a1a10;
-        --text-secondary: #5c4531;
-        --accent: #d9823b;
-    }
+  html,
+  body {
+    width: 100vw;
+    height: calc(((var(--page-count) + 2) * var(--page-scroll)) * 1vh);
+    background: transparent;
+    background-color: transparent;
+    color: var(--text-secondary);
+    font-family: var(--heading-font);
+    overflow-x: hidden;
+  }
 
-    html,
-    body {
-        width: 100vw;
-        height: calc(((var(--page-count) + 2) * var(--page-scroll)) * 1vh);
-        background: transparent;
-        background-color: transparent;
-        color: var(--text-primary);
-        font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-            sans-serif;
-        overflow-x: hidden;
-    }
+  .page {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+  }
 
-    .page {
-        height: 100%;
-        width: 100%;
-        position: relative;
-        transform-style: preserve-3d;
-    }
+  .page .page__number {
+    position: absolute;
+    bottom: 1.25rem;
+    font-size: 1.1vmin;
+    color: var(--secondary);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
 
-    .page .page__number {
-        position: absolute;
-        bottom: 1.25rem;
-        font-size: 1.1vmin;
-        color: var(--text-secondary);
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-    }
+  .page__half--front .page__number {
+    right: 1.5rem;
+  }
 
-    .page__half--front .page__number {
-        right: 1.5rem;
-    }
+  .page__half--back .page__number {
+    left: 1.5rem;
+  }
 
-    .page__half--back .page__number {
-        left: 1.5rem;
-    }
+  .page__half {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transform: rotateY(calc(var(--rotation) * 1deg))
+      translate3d(0, 0, calc((0.5 * var(--coefficient)) * 1px));
+    -webkit-clip-path: inset(0 0.5% 0 0.5%);
+    clip-path: inset(0 0.5% 0 0.5%);
+    padding: clamp(1.5rem, 4vmin, 3rem);
+  }
 
-    .page__half {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        transform: rotateY(calc(var(--rotation) * 1deg))
-            translate3d(0, 0, calc((0.5 * var(--coefficient)) * 1px));
-        -webkit-clip-path: inset(0 0.5% 0 0.5%);
-        clip-path: inset(0 0.5% 0 0.5%);
-        padding: clamp(1.5rem, 4vmin, 3rem);
-    }
+  .page__half--front {
+    --rotation: 0;
+    --coefficient: 0;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
 
-    .page__half--front {
-        --rotation: 0;
-        --coefficient: 0;
-        -webkit-backface-visibility: hidden;
-        backface-visibility: hidden;
-        border-radius: 0 5% 5% 0;
-    }
+  .page__half--back {
+    --rotation: 180;
+    --coefficient: 2;
+  }
 
-    .page__half--back {
-        --rotation: 180;
-        --coefficient: 2;
-        border-radius: 5% 0 0 5%;
-    }
+  .book {
+    height: 80vmin;
+    position: fixed;
+    width: 56vmin;
+    min-width: 220px;
+    min-height: 310px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.55);
+    transform-style: preserve-3d;
+    perspective: 1200px;
+    will-change: transform;
+  }
 
+  .book__insert {
+    content: "";
+    position: absolute;
+    height: 94%;
+    width: 94%;
+    background: var(--color-brown-light);
+    top: 50%;
+    right: -1rem;
+    transform: translate(0, -50%);
+  }
+
+  .book__spine {
+    height: 100%;
+    left: 0;
+    top: 0;
+    position: absolute;
+    background: var(--color-brown-dark);
+    transform-origin: 0 50%;
+    width: 12px;
+    transform: translate3d(0, 0, -13px) scaleX(1) rotateY(0deg);
+  }
+
+  .book__page {
+    position: absolute;
+    left: 2%;
+    top: 50%;
+    transform: translate(0, -50%);
+    height: 94%;
+    width: 94%;
+    z-index: calc(((var(--page-count) + 2) - var(--page-index)) * 2);
+    transform-origin: 0% 50%;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  }
+
+  .book__cover {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    background: var(--color-brown-dark);
+  }
+
+  .book__cover--front {
+    transform-origin: 0 50%;
+  }
+
+  .book__cover--front .page__half--back {
+    border-right: 1rem solid var(--color-brown-dark);
+  }
+
+  .book__cover--back {
+    transform-origin: 0% 50%;
+  }
+
+  .book__cover--back .page__half--front {
+    border-left: 1rem solid var(--color-brown-dark);
+  }
+
+  .book__cover--back .book__insert {
+    left: 0;
+  }
+
+  .book__page:not(.book__cover) .page__half {
+    background:
+      repeating-linear-gradient(
+          0deg,
+          transparent 0 1.5rem,
+          rgba(88, 78, 70, 0.1) 1.5rem calc(1.5rem + 1px),
+          transparent calc(1.5rem + 1px)
+        )
+        0 1.5rem/100% 100% no-repeat,
+      var(--bg-light);
+  }
+  .page-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.75rem, 2vmin, 1.5rem);
+  }
+
+  .cover-content {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--text-light);
+  }
+
+  .cover-content--front {
+    gap: 1.5rem;
+  }
+
+  .cover-illustration {
+    display: block;
+    width: clamp(140px, 28vmin, 260px);
+    image-rendering: pixelated;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    filter: drop-shadow(0 8px 0 rgba(0, 0, 0, 0.25));
+  }
+
+  .cover-content--inside,
+  .cover-content--closing {
+    color: var(--text-secondary);
+    text-align: left;
+    font-size: clamp(0.95rem, 2vmin, 1.05rem);
+    line-height: 1.6;
+  }
+
+  .cover-eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.32em;
+    font-size: clamp(0.7rem, 1.4vmin, 0.95rem);
+    opacity: 0.85;
+  }
+
+  .cover-title {
+    font-size: clamp(2rem, 6vmin, 3.75rem);
+    margin: 0;
+  }
+
+  .cover-subtitle {
+    font-size: clamp(1rem, 2.6vmin, 1.4rem);
+    margin: 0;
+    color: var(--text-light);
+  }
+
+  .cover-note {
+    margin: 0;
+    max-width: 30ch;
+  }
+
+  .speaker-page {
+    height: 100%;
+  }
+
+  .speaker-page--front {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .speaker-page--back {
+    justify-content: center;
+  }
+
+  .speaker-page__portrait {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: clamp(0.5rem, 2vmin, 1.5rem);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 1.25rem;
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .speaker-page__portrait img {
+    display: block;
+    width: clamp(120px, 18vmin, 200px);
+    height: clamp(120px, 18vmin, 200px);
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .speaker-page__identity {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
+  }
+
+  .speaker-page__eyebrow {
+    margin: 0;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    color: var(--secondary);
+  }
+
+  .speaker-page__name {
+    margin: 0;
+    font-size: clamp(1.4rem, 3vmin, 2rem);
+    line-height: 1.2;
+  }
+
+  .speaker-page__role {
+    margin: 0;
+    font-size: clamp(0.95rem, 2vmin, 1.1rem);
+    color: var(--secondary);
+  }
+
+  .speaker-page__talk {
+    margin: 0;
+    font-size: clamp(1.2rem, 2.4vmin, 1.6rem);
+    line-height: 1.4;
+    color: var(--light-orange);
+  }
+
+  .speaker-page__summary {
+    margin: 0;
+    font-size: clamp(0.95rem, 2vmin, 1.1rem);
+    line-height: 1.6;
+  }
+
+  .speaker-page__socials {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .speaker-page__socials a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px solid transparent;
+    transition:
+      border-color 0.2s ease,
+      color 0.2s ease;
+  }
+
+  .speaker-page__socials a:hover,
+  .speaker-page__socials a:focus-visible {
+    color: var(--light-orange);
+    border-color: var(--light-orange);
+    outline: none;
+  }
+
+  @media only screen and (max-width: 600px) {
     .book {
-        height: 65vmin;
-        position: fixed;
-        width: 60vmin;
-        min-width: 280px;
-        min-height: 360px;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) scale(0.55);
-        transform-style: preserve-3d;
-        perspective: 1200px;
-        will-change: transform;
-    }
-
-    .book__insert {
-        content: "";
-        position: absolute;
-        height: 94%;
-        width: 94%;
-        background: var(--insert);
-        top: 50%;
-        right: -1rem;
-        transform: translate(0, -50%);
-        border-radius: 5% 0 0 5%;
-    }
-
-    .book__spine {
-        height: 100%;
-        left: 0;
-        top: 0;
-        position: absolute;
-        background: var(--spine);
-        transform-origin: 0 50%;
-        width: 12px;
-        transform: translate3d(0, 0, -13px) scaleX(1) rotateY(0deg);
-    }
-
-    .book__page {
-        position: absolute;
-        left: 2%;
-        top: 50%;
-        border-radius: 0 5% 5% 0;
-        transform: translate(0, -50%);
-        height: 94%;
-        width: 94%;
-        z-index: calc(((var(--page-count) + 2) - var(--page-index)) * 2);
-        transform-origin: 0% 50%;
-        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
-    }
-
-    .book__cover {
-        border-radius: 0 5% 5% 0;
-        height: 100%;
-        width: 100%;
-        position: absolute;
-        top: 50%;
-        left: 0;
-        background: linear-gradient(135deg, #8b5a33 0%, #5a351d 100%);
-    }
-
-    .book__cover--front {
-        transform-origin: 0 50%;
-    }
-
-    .book__cover--front .page__half--back {
-        border-right: 1rem solid var(--spine);
-    }
-
-    .book__cover--back {
-        transform-origin: 0% 50%;
-    }
-
-    .book__cover--back .page__half--front {
-        border-left: 1rem solid var(--spine);
-    }
-
-    .book__cover--back .book__insert {
-        left: 0;
-        border-radius: 0 5% 5% 0;
-    }
-
-    .book__page:not(.book__cover) .page__half {
-        background:
-            repeating-linear-gradient(
-                    0deg,
-                    transparent 0 1.5rem,
-                    var(--underline) 1.5rem calc(1.5rem + 1px),
-                    transparent calc(1.5rem + 1px)
-                )
-                0 1.5rem/100% 100% no-repeat,
-            var(--page);
-    }
-
-    .page-content {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        gap: clamp(0.75rem, 2vmin, 1.5rem);
-    }
-
-    .cover-content {
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        color: #f2f2f2;
-    }
-
-    .cover-content--front {
-        gap: 1.5rem;
-    }
-
-    .cover-content--inside,
-    .cover-content--closing {
-        color: var(--text-primary);
-        text-align: left;
-        font-size: clamp(0.95rem, 2vmin, 1.05rem);
-        line-height: 1.6;
-    }
-
-    .cover-eyebrow {
-        text-transform: uppercase;
-        letter-spacing: 0.32em;
-        font-size: clamp(0.7rem, 1.4vmin, 0.95rem);
-        opacity: 0.85;
-    }
-
-    .cover-title {
-        font-size: clamp(2rem, 6vmin, 3.75rem);
-        margin: 0;
-    }
-
-    .cover-subtitle {
-        font-size: clamp(1rem, 2.6vmin, 1.4rem);
-        margin: 0;
-        color: rgba(242, 242, 242, 0.8);
-    }
-
-    .cover-note {
-        margin: 0;
-        max-width: 30ch;
-    }
-
-    .speaker-page {
-        height: 100%;
-    }
-
-    .speaker-page--front {
-        align-items: center;
-        justify-content: center;
-    }
-
-    .speaker-page--back {
-        justify-content: center;
-    }
-
-    .speaker-page__portrait {
-        margin: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: clamp(0.5rem, 2vmin, 1.5rem);
-        border: 1px solid rgba(0, 0, 0, 0.08);
-        border-radius: 1.25rem;
-        background: rgba(255, 255, 255, 0.7);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      height: 100vmin;
+      width: 70vmin;
+      left: 55%;
+      transform: translate(-50%, -50%) scale(0.7);
     }
 
     .speaker-page__portrait img {
-        display: block;
-        width: clamp(120px, 18vmin, 200px);
-        height: clamp(120px, 18vmin, 200px);
-        object-fit: cover;
-        border-radius: 50%;
+      width: clamp(110px, 24vmin, 170px);
+      height: clamp(110px, 24vmin, 170px);
     }
 
-    .speaker-page__identity {
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-        text-align: center;
+    .cover-note {
+      max-width: 24ch;
     }
-
-    .speaker-page__eyebrow {
-        margin: 0;
-        text-transform: uppercase;
-        font-size: 0.8rem;
-        letter-spacing: 0.2em;
-        color: var(--text-secondary);
-    }
-
-    .speaker-page__name {
-        margin: 0;
-        font-size: clamp(1.4rem, 3vmin, 2rem);
-        line-height: 1.2;
-    }
-
-    .speaker-page__role {
-        margin: 0;
-        font-size: clamp(0.95rem, 2vmin, 1.1rem);
-        color: var(--text-secondary);
-    }
-
-    .speaker-page__talk {
-        margin: 0;
-        font-size: clamp(1.2rem, 2.4vmin, 1.6rem);
-        line-height: 1.4;
-        color: var(--accent);
-    }
-
-    .speaker-page__summary {
-        margin: 0;
-        font-size: clamp(0.95rem, 2vmin, 1.1rem);
-        line-height: 1.6;
-    }
-
-    .speaker-page__socials {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.75rem;
-    }
-
-    .speaker-page__socials a {
-        color: var(--text-primary);
-        text-decoration: none;
-        font-weight: 600;
-        border-bottom: 1px solid transparent;
-        transition: border-color 0.2s ease, color 0.2s ease;
-    }
-
-    .speaker-page__socials a:hover,
-    .speaker-page__socials a:focus-visible {
-        color: var(--accent);
-        border-color: var(--accent);
-        outline: none;
-    }
-
-    @media only screen and (max-width: 600px) {
-        .book {
-            height: 90vmin;
-            left: 55%;
-            transform: translate(-50%, -50%) scale(0.7);
-        }
-
-        .speaker-page__portrait img {
-            width: clamp(110px, 24vmin, 170px);
-            height: clamp(110px, 24vmin, 170px);
-        }
-
-        .cover-note {
-            max-width: 24ch;
-        }
-    }
+  }
 </style>
 <script is:inline>
-    // @ts-nocheck
-    window.addEventListener("load", () => {
-        const { gsap, ScrollTrigger } = window;
+  // @ts-nocheck
+  window.addEventListener("load", () => {
+    const { gsap, ScrollTrigger } = window;
 
-        if (!gsap || !ScrollTrigger) {
-            return;
-        }
+    if (!gsap || !ScrollTrigger) {
+      return;
+    }
 
-        gsap.registerPlugin(ScrollTrigger);
+    gsap.registerPlugin(ScrollTrigger);
 
-        const segment = () => window.innerHeight * 0.35;
+    const segment = () => window.innerHeight * 0.35;
 
-        gsap.to(".book", {
-            scrollTrigger: {
-                scrub: 1,
-                start: () => 0,
-                end: () => segment(),
-            },
-            scale: 1.15,
-            x: "40%",
-            duration: 0.5,
-        });
-
-        const pages = Array.from(document.querySelectorAll(".book__page"));
-
-        pages.forEach((page, index) => {
-            gsap.set(page, { z: index === 0 ? 13 : -index });
-
-            if (index === pages.length - 1) {
-                return;
-            }
-
-            const start = () => (index + 1) * segment();
-            const end = () => (index + 1.5) * segment();
-
-            gsap.to(page, {
-                rotateY: -180,
-                scrollTrigger: {
-                    scrub: 1,
-                    start,
-                    end,
-                },
-            });
-
-            gsap.to(page, {
-                z: index === 0 ? -13 : index,
-                scrollTrigger: {
-                    scrub: 1,
-                    start,
-                    end,
-                },
-            });
-        });
+    gsap.to(".book", {
+      scrollTrigger: {
+        scrub: 1,
+        start: () => 0,
+        end: () => segment(),
+      },
+      scale: 1.15,
+      x: "40%",
+      duration: 0.5,
     });
+
+    const pages = Array.from(document.querySelectorAll(".book__page"));
+
+    pages.forEach((page, index) => {
+      gsap.set(page, { z: index === 0 ? 13 : -index });
+
+      if (index === pages.length - 1) {
+        return;
+      }
+
+      const start = () => (index + 1) * segment();
+      const end = () => (index + 1.5) * segment();
+
+      gsap.to(page, {
+        rotateY: -180,
+        scrollTrigger: {
+          scrub: 1,
+          start,
+          end,
+        },
+      });
+
+      gsap.to(page, {
+        z: index === 0 ? -13 : index,
+        scrollTrigger: {
+          scrub: 1,
+          start,
+          end,
+        },
+      });
+    });
+  });
 </script>
