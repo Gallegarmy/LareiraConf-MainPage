@@ -2,7 +2,7 @@ import styles from "./schedule-planner.module.css";
 import type { ScheduleSlot, SlotCategory, TrackId } from "./slot-utils";
 
 export const DAY_START_MINUTES = 9 * 60;
-export const DAY_END_MINUTES = 21 * 60;
+export const DAY_END_MINUTES = 24 * 60;
 export const TOTAL_MINUTES = DAY_END_MINUTES - DAY_START_MINUTES;
 export const PIXELS_PER_MINUTE = 3;
 
@@ -76,22 +76,22 @@ export const BASE_SCHEDULE: BaseScheduleSlot[] = [
     category: "announcement",
     track: "auditorium",
     start: 60,
-    duration: 25,
+    duration: 30,
   },
   {
     id: "charla-1",
     title: "Charla 1",
     category: "talk",
     track: "auditorium",
-    start: 85,
-    duration: 40,
+    start: 90,
+    duration: 30,
   },
   {
     id: "entrevista-1",
     title: "Entrevista 1",
     category: "interview",
     track: "auditorium",
-    start: 125,
+    start: 120,
     duration: 30,
   },
   {
@@ -99,7 +99,7 @@ export const BASE_SCHEDULE: BaseScheduleSlot[] = [
     title: "Coffee break",
     category: "break",
     track: "exterior",
-    start: 155,
+    start: 150,
     duration: 45,
   },
   {
@@ -107,7 +107,7 @@ export const BASE_SCHEDULE: BaseScheduleSlot[] = [
     title: "Entrevista 2",
     category: "interview",
     track: "auditorium",
-    start: 200,
+    start: 195,
     duration: 30,
   },
   {
@@ -115,7 +115,7 @@ export const BASE_SCHEDULE: BaseScheduleSlot[] = [
     title: "Charla 2",
     category: "talk",
     track: "auditorium",
-    start: 230,
+    start: 225,
     duration: 30,
   },
   {
@@ -123,7 +123,7 @@ export const BASE_SCHEDULE: BaseScheduleSlot[] = [
     title: "Entrevista 3",
     category: "interview",
     track: "auditorium",
-    start: 260,
+    start: 255,
     duration: 30,
   },
   {
@@ -131,7 +131,7 @@ export const BASE_SCHEDULE: BaseScheduleSlot[] = [
     title: "Comida",
     category: "break",
     track: "exterior",
-    start: 300,
+    start: 285,
     duration: 105,
   },
   {
@@ -139,7 +139,7 @@ export const BASE_SCHEDULE: BaseScheduleSlot[] = [
     title: "Actuación sorpresa",
     category: "show",
     track: "auditorium",
-    start: 405,
+    start: 390,
     duration: 45,
   },
   {
@@ -147,7 +147,7 @@ export const BASE_SCHEDULE: BaseScheduleSlot[] = [
     title: "Charla 3",
     category: "talk",
     track: "auditorium",
-    start: 450,
+    start: 435,
     duration: 30,
   },
   {
@@ -155,7 +155,7 @@ export const BASE_SCHEDULE: BaseScheduleSlot[] = [
     title: "Entrevista 4",
     category: "interview",
     track: "auditorium",
-    start: 480,
+    start: 465,
     duration: 30,
   },
   {
@@ -163,7 +163,7 @@ export const BASE_SCHEDULE: BaseScheduleSlot[] = [
     title: "Break",
     category: "break",
     track: "exterior",
-    start: 510,
+    start: 495,
     duration: 45,
   },
   {
@@ -171,15 +171,7 @@ export const BASE_SCHEDULE: BaseScheduleSlot[] = [
     title: "Charla 4",
     category: "talk",
     track: "auditorium",
-    start: 555,
-    duration: 30,
-  },
-  {
-    id: "entrevista-5",
-    title: "Entrevista 5",
-    category: "interview",
-    track: "auditorium",
-    start: 585,
+    start: 540,
     duration: 30,
   },
   {
@@ -187,16 +179,24 @@ export const BASE_SCHEDULE: BaseScheduleSlot[] = [
     title: "Cierre del día",
     category: "announcement",
     track: "auditorium",
-    start: 615,
-    duration: 30,
+    start: 570,
+    duration: 45,
   },
   {
     id: "fiesta",
     title: "Fiesta Lareira",
     category: "party",
     track: "exterior",
-    start: 645,
-    duration: 75,
+    start: 615,
+    duration: 105,
+  },
+  {
+    id: "cena",
+    title: "Cena",
+    category: "break",
+    track: "exterior",
+    start: 720,
+    duration: 180,
   },
 ];
 
