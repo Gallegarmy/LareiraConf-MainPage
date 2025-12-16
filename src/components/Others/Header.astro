@@ -2,31 +2,27 @@
 import "@styles/header.css";
 import TicketIcon from "@img/icons/ticket.svg?raw";
 import UsersIcon from "@img/icons/users.svg?raw";
+import ShieldIcon from "@img/icons/shield.svg?raw";
 ---
 
 <header class="main-header">
   <div class="logo">
     <a href="#intro" class="logo isotipo">LAREIRA CONF</a>
   </div>
-  <nav>
-
+  <nav class="main-nav">
     <a href="#tickets" class="cta-button">
-      <span
-        class="cta-button__icon"
-        aria-hidden="true"
-        set:html={TicketIcon}
-      />
+      <span class="cta-button__icon" aria-hidden="true" set:html={TicketIcon} />
       <span>Entradas</span>
     </a>
     <a href="#team" class="cta-button">
-      <span
-        class="cta-button__icon"
-        aria-hidden="true"
-        set:html={UsersIcon}
-      />
+      <span class="cta-button__icon" aria-hidden="true" set:html={UsersIcon} />
       <span>Equipo</span>
     </a>
-</nav>
+    <a href="#comunidades" class="cta-button">
+      <span class="cta-button__icon" aria-hidden="true" set:html={ShieldIcon} />
+      <span>Comunidades</span>
+    </a>
+  </nav>
 </header>
 
 <script>
@@ -166,7 +162,10 @@ import UsersIcon from "@img/icons/users.svg?raw";
     if (!isHorizontalLayout()) return;
     setupHeaderNav();
     if (window.location.hash) {
-      navigateToHash(window.location.hash, { updateHistory: false, replace: true });
+      navigateToHash(window.location.hash, {
+        updateHistory: false,
+        replace: true,
+      });
     }
   });
 
@@ -176,7 +175,10 @@ import UsersIcon from "@img/icons/users.svg?raw";
       return;
     }
 
-    navigateToHash(window.location.hash, { updateHistory: false, replace: true });
+    navigateToHash(window.location.hash, {
+      updateHistory: false,
+      replace: true,
+    });
   });
 
   window.addEventListener("popstate", handlePopState);

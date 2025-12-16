@@ -29,6 +29,36 @@
   height: 30px; /* Reducido de 40px a 30px */
 }
 
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  font-size: 1rem;
+  font-family: var(--heading-font), sans-serif;
+  text-transform: uppercase;
+  letter-spacing: var(--custom-letter-spacing);
+  color: var(--text-light);
+  transition: color 0.3s ease;
+}
+
+.nav-link__icon {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.nav-link:hover,
+.nav-link:focus-visible {
+  color: var(--accent);
+  outline: none;
+}
+
 .cta-button {
   /* Estilos de botón eliminados, ahora es un enlace de texto */
   text-decoration: none;
@@ -89,9 +119,15 @@
   .main-header {
     padding: 0.8rem 1rem;
   }
-  .main-header nav {
+
+  .main-nav {
     gap: 1rem;
   }
+
+  .nav-link {
+    font-size: 0.85rem;
+  }
+
   .cta-button {
     font-size: 0.9rem;
   }
