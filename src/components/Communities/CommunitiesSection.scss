@@ -29,18 +29,45 @@
   z-index: 0;
 }
 
+.communities-section__backdrop-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: sepia(0.35) saturate(0.7) brightness(0.75) contrast(1.2)
+   hue-rotate(15deg);
+}
+
+.communities-section__particles {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
 .communities-section__overlay {
   position: absolute;
   inset: 0;
   pointer-events: none;
   z-index: 2;
-  background: transparent;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(4, 2, 6, 0.7) 0%,
+      rgba(4, 2, 6, 0.3) 32%,
+      rgba(17, 10, 25, 0) 62%
+    ),
+    radial-gradient(
+      circle at bottom,
+      rgba(17, 10, 25, 0) 0%,
+      rgba(5, 2, 12, 0.8) 95%
+    );
 }
 
 .communities-section__content {
   position: relative;
   z-index: 3;
-  width: min(1200px, 100%);
+  width: min(1280px, 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -70,11 +97,22 @@
 }
 
 .communities-section__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: clamp(1.5rem, 3vw, 2.5rem);
+  display: flex;
+  flex-wrap: nowrap;
+  gap: clamp(0.75rem, 1.5vw, 1.25rem);
   width: 100%;
   margin-top: 1rem;
+  overflow-x: auto;
+  padding: 0.5rem 0;
+  justify-content: center;
+
+  /* Hide scrollbar but keep functionality */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
 }
 
 .community-card {
@@ -82,8 +120,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
-  padding: clamp(1.5rem, 3vw, 2rem);
+  gap: 0.75rem;
+  padding: clamp(0.75rem, 1.5vw, 1.25rem);
   background: rgba(17, 10, 7, 0.86);
   border: 3px solid var(--color-brown-dark);
   box-shadow: var(--box-shadow-border);
@@ -91,6 +129,9 @@
   color: var(--text-light);
   transition: all 0.3s ease;
   cursor: pointer;
+  flex-shrink: 0;
+  min-width: clamp(90px, 8vw, 140px);
+  max-width: clamp(90px, 8vw, 140px);
 
   &:hover,
   &:focus-visible {
@@ -113,13 +154,13 @@
 
 .community-card__logo-wrapper {
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 1 / 1;
   display: flex;
   align-items: center;
   justify-content: center;
   background: rgba(255, 255, 255, 0.05);
   border-radius: 8px;
-  padding: 1rem;
+  padding: 0.75rem;
   overflow: hidden;
 }
 
@@ -133,28 +174,38 @@
 }
 
 .community-card__name {
-  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-size: clamp(0.7rem, 1.2vw, 0.9rem);
   font-weight: 600;
   margin: 0;
   text-transform: uppercase;
   letter-spacing: var(--custom-letter-spacing);
   color: var(--accent);
-  line-height: 1.3;
+  line-height: 1.2;
+  text-align: center;
+  word-break: break-word;
+  hyphens: auto;
 }
 
 @media (max-width: 768px) {
   .communities-section__grid {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 1.5rem;
+    justify-content: flex-start;
+    padding: 0.5rem 1rem;
+    gap: 1rem;
   }
 
   .community-card {
+    min-width: 140px;
+    max-width: 140px;
     padding: 1.25rem;
+  }
+
+  .community-card__name {
+    font-size: 0.9rem;
   }
 }
 
 @media (max-width: 480px) {
   .communities-section__grid {
-    grid-template-columns: 1fr;
+    padding: 0.5rem;
   }
 }

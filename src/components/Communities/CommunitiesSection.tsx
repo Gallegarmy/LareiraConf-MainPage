@@ -1,13 +1,22 @@
 import React from "react";
 import "./CommunitiesSection.scss";
 import { communities } from "./communities-data";
+import FireParticles from "@components/Others/FireParticles";
+import communitiesCamp from "@img/parallax/communities-camp.png";
 
 const CommunitiesSection: React.FC = () => {
   return (
     <section className="panel communities-section" id="comunidades">
       <div className="communities-section__background">
         <div className="communities-section__bg-layer">
-          {/* Imagen de fondo parallax - puedes añadir una imagen aquí */}
+          <img
+            src={communitiesCamp.src}
+            alt="Campamento nocturno con hoguera"
+            className="communities-section__backdrop-img"
+          />
+        </div>
+        <div className="communities-section__particles">
+          <FireParticles count={85} />
         </div>
       </div>
 
