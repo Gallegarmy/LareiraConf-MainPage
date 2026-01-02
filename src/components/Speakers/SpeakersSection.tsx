@@ -1,7 +1,8 @@
 import React from "react";
 import "@styles/speakers.css";
+import "@styles/ThroneRoomGallery.scss";
 import libraryBackdrop from "@img/parallax/library.png";
-import SpeakersBookPreview from "./SpeakersBookPreview";
+import ThroneRoomGallery from "./ThroneRoomGallery";
 
 const SpeakersSection: React.FC = () => (
   <section id="speakers" className="panel speakers-section">
@@ -16,7 +17,7 @@ const SpeakersSection: React.FC = () => (
     </div>
 
     <div className="speakers-content">
-      <SpeakersBookPreview />
+      <ThroneRoomGallery />
     </div>
   </section>
 );

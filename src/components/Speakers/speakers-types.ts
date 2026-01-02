@@ -12,6 +12,7 @@ export type Speaker = {
   id: string;
   name: string;
   talkTitle: string;
+  talkDescription?: string;
   role: string;
   summary: string;
   image: SpeakerImage;
