@@ -14,12 +14,13 @@ import SocialSection from "@components/SocialSection/SocialSection";
   }
   .panel {
     width: 100vw;
-    height: 100vh;
+    height: auto;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     flex-shrink: 0;
   }
   .container {
@@ -55,10 +56,9 @@ import SocialSection from "@components/SocialSection/SocialSection";
 
 <Layout title="Lareira Conf 2026">
   <HorizontalScroll client:load className="container">
-        <SpeakersSection client:load />
-
     <HomeSection />
     <TicketsSection client:load />
+    <SpeakersSection client:load />
     <TeamSection client:load />
     <SocialSection client:load />
   </HorizontalScroll>

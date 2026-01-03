@@ -13,20 +13,30 @@ const PortraitFrame: React.FC<PortraitFrameProps> = ({
   rotation,
   onClick,
 }) => {
+  const isRevealed = speaker.isRevealed !== false; // Por defecto true si no se especifica
+
   return (
     <div
-      className="portrait-frame"
+      className={`portrait-frame ${!isRevealed ? "portrait-frame--unrevealed" : ""}`}
       style={{ transform: `rotate(${rotation}deg)` }}
-      onClick={onClick}
-      role="button"
-      tabIndex={0}
-      onKeyDown={(e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          onClick();
-        }
-      }}
-      aria-label={`Ver detalles de ${speaker.name}`}
+      onClick={isRevealed ? onClick : undefined}
+      role={isRevealed ? "button" : undefined}
+      tabIndex={isRevealed ? 0 : -1}
+      onKeyDown={
+        isRevealed
+          ? (e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                onClick();
+              }
+            }
+          : undefined
+      }
+      aria-label={
+        isRevealed
+          ? `Ver detalles de ${speaker.name}`
+          : "Ponente aún no revelado"
+      }
     >
       <CornerFlourish position="top-left" />
       <CornerFlourish position="top-right" />
@@ -43,8 +53,12 @@ const PortraitFrame: React.FC<PortraitFrameProps> = ({
       </div>
 
       <div className="portrait-frame__nameplate">
-        <span className="portrait-frame__name">{speaker.name}</span>
-        <span className="portrait-frame__role">{speaker.role}</span>
+        <span className="portrait-frame__name">
+          {isRevealed ? speaker.name : "############"}
+        </span>
+        <span className="portrait-frame__role">
+          {isRevealed ? speaker.role : "############"}
+        </span>
       </div>
     </div>
   );

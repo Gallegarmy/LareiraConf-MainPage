@@ -10,8 +10,11 @@ const ThroneRoomGallery: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const galleryRef = useRef<HTMLDivElement>(null);
 
-  // Generar rotaciones aleatorias para cada speaker (entre -3 y 3 grados)
-  const rotations = speakers.map(() => Math.random() * 6 - 3);
+  // Generar rotaciones aleatorias: 40% sin rotación, 60% con rotación leve (entre -2 y 2 grados)
+  const rotations = speakers.map(() => {
+    const shouldRotate = Math.random() > 0.4;
+    return shouldRotate ? Math.random() * 4 - 2 : 0;
+  });
 
   useEffect(() => {
     if (!galleryRef.current) return;

@@ -4,7 +4,7 @@
   min-height: 100vh;
   height: auto;
   display: block;
-  padding: clamp(3rem, 5vw, 4rem) 0;
+  padding: clamp(6rem, 8vw, 8rem) 0 clamp(3rem, 5vw, 4rem);
   color: var(--text-light);
   font-family: var(--heading-font), sans-serif;
 }
@@ -50,7 +50,29 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: clamp(2rem, 4vw, 3rem);
+}
+
+.speakers-title {
+  font-family: var(--heading-font);
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--accent);
+  text-align: center;
+  letter-spacing: var(--custom-letter-spacing);
+  text-transform: uppercase;
+  margin: 0;
+  padding: 0 2rem;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.speakers-description {
+  font-family: var(--body-font);
+  font-size: 1rem;
+  line-height: 1.4rem;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--text-light);
+  letter-spacing: var(--custom-letter-spacing);
+  padding: 0 2rem;
 }
 
 .speakers-copy {

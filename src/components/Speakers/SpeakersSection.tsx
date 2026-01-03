@@ -17,6 +17,11 @@ const SpeakersSection: React.FC = () => (
     </div>
 
     <div className="speakers-content">
+      <h2 className="speakers-title">Portadores de la llama</h2>
+      <p className="speakers-description">
+        PONENTES QUE TRAEN SU LLAMA PARA COMPARTIR CONOCIMIENTO,
+        EXPERIENCIAS E IDEAS CON LA COMUNIDAD.
+      </p>
       <ThroneRoomGallery />
     </div>
   </section>

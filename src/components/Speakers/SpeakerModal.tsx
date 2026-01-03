@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import type { Speaker } from "./speakers-types";
+import { renderSocialIcon } from "../Team/social-icons";
+import CornerFlourish from "../CornerFlourish/CornerFlourish";
 
 interface SpeakerModalProps {
   speaker: Speaker | null;
@@ -80,9 +82,13 @@ const SpeakerModal: React.FC<SpeakerModalProps> = ({
 
         <div className="speaker-modal__header">
           <div className="speaker-modal__image-container">
+            <CornerFlourish position="top-left" />
+            <CornerFlourish position="top-right" />
+            <CornerFlourish position="bottom-left" />
+            <CornerFlourish position="bottom-right" />
             <img
-              src={speaker.image.src}
-              alt={speaker.image.alt}
+              src={speaker.imageReal?.src || speaker.image.src}
+              alt={speaker.imageReal?.alt || speaker.image.alt}
               className="speaker-modal__image"
             />
           </div>
@@ -101,55 +107,7 @@ const SpeakerModal: React.FC<SpeakerModalProps> = ({
                     aria-label={social.label}
                     title={social.label}
                   >
-                    {social.label === "LinkedIn" && (
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                        <rect x="2" y="9" width="4" height="12" />
-                        <circle cx="4" cy="4" r="2" />
-                      </svg>
-                    )}
-                    {social.label === "X" && (
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <path d="M4 4l11.733 16h4.267l-11.733 -16z" />
-                        <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
-                      </svg>
-                    )}
-                    {social.label === "YouTube" && (
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" />
-                        <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" />
-                      </svg>
-                    )}
+                    {renderSocialIcon(social.label)}
                   </a>
                 ))}
               </div>
@@ -159,12 +117,10 @@ const SpeakerModal: React.FC<SpeakerModalProps> = ({
 
         <div className="speaker-modal__body">
           <section className="speaker-modal__section">
-            <h3 className="speaker-modal__section-title">Biografía</h3>
             <p className="speaker-modal__text">{speaker.summary}</p>
           </section>
 
           <section className="speaker-modal__section">
-            <h3 className="speaker-modal__section-title">Charla</h3>
             <h4 className="speaker-modal__talk-title">{speaker.talkTitle}</h4>
             {speaker.talkDescription && (
               <p className="speaker-modal__text">{speaker.talkDescription}</p>
