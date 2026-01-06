@@ -3,19 +3,20 @@ import "@styles/header.css";
 import TicketIcon from "@img/icons/ticket.svg?raw";
 import UsersIcon from "@img/icons/users.svg?raw";
 import ShieldIcon from "@img/icons/shield.svg?raw";
+import MenuIcon from "@img/icons/menu.svg?raw";
+import CloseIcon from "@img/icons/close.svg?raw";
 ---
 
 <header class="main-header">
   <div class="logo">
     <a href="#intro" class="logo isotipo">LAREIRA CONF</a>
   </div>
-  
+
   <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
-    <span class="hamburger__line"></span>
-    <span class="hamburger__line"></span>
-    <span class="hamburger__line"></span>
+    <span class="hamburger__icon hamburger__icon--menu" set:html={MenuIcon} />
+    <span class="hamburger__icon hamburger__icon--close" set:html={CloseIcon} />
   </button>
-  
+
   <nav class="main-nav">
     <a href="#tickets" class="cta-button">
       <span class="cta-button__icon" aria-hidden="true" set:html={TicketIcon} />
@@ -34,26 +35,26 @@ import ShieldIcon from "@img/icons/shield.svg?raw";
 
 <script>
   // Hamburger menu
-  const hamburger = document.querySelector('.hamburger');
-  const mainNav = document.querySelector('.main-nav');
-  
-  hamburger?.addEventListener('click', () => {
-    const isOpen = hamburger.getAttribute('aria-expanded') === 'true';
-    hamburger.setAttribute('aria-expanded', String(!isOpen));
-    hamburger.classList.toggle('hamburger--open');
-    mainNav?.classList.toggle('main-nav--open');
+  const hamburger = document.querySelector(".hamburger");
+  const mainNav = document.querySelector(".main-nav");
+
+  hamburger?.addEventListener("click", () => {
+    const isOpen = hamburger.getAttribute("aria-expanded") === "true";
+    hamburger.setAttribute("aria-expanded", String(!isOpen));
+    hamburger.classList.toggle("hamburger--open");
+    mainNav?.classList.toggle("main-nav--open");
   });
-  
+
   // Close menu when clicking on a link
-  const navLinks = document.querySelectorAll('.main-nav a');
-  navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      hamburger?.classList.remove('hamburger--open');
-      mainNav?.classList.remove('main-nav--open');
-      hamburger?.setAttribute('aria-expanded', 'false');
+  const navLinks = document.querySelectorAll(".main-nav a");
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      hamburger?.classList.remove("hamburger--open");
+      mainNav?.classList.remove("main-nav--open");
+      hamburger?.setAttribute("aria-expanded", "false");
     });
   });
-  
+
   const HORIZONTAL_NAV_RETRY_LIMIT = 20;
   const HORIZONTAL_NAV_RETRY_DELAY = 75;
 
