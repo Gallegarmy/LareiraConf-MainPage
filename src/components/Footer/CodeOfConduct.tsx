@@ -107,13 +107,13 @@ export default function CodeOfConduct() {
           </a>
         </li>
         <li>
-          <strong>Jorge Teixeira</strong>:{" "}
+          <strong>Tiziana Amicarella</strong>:{" "}
           <a
-            href="https://t.me/jorgeteixe"
+            href="https://t.me/tizianaamicca"
             target="_blank"
             rel="noopener noreferrer"
           >
-            @jorgeteixe en Telegram
+            @tizianaamicca en Telegram
           </a>
         </li>
       </ul>
@@ -135,7 +135,7 @@ export default function CodeOfConduct() {
         </a>
       </p>
       <p>
-        <strong>Última actualización: 10/11/2024</strong>
+        <strong>Última actualización: 06/01/2026</strong>
       </p>
     </div>
   );

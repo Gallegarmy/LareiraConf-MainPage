@@ -29,9 +29,8 @@
       margin: 0;
       line-height: 1.5;
       font-family: var(--body-font), sans-serif;
-      font-size: 1rem;
       color: var(--text-light);
-      letter-spacing: 0.02em;
+      letter-spacing: var(--custom-letter-spacing);
     }
   }
 
@@ -46,13 +45,12 @@
       margin: 0;
       line-height: 1.5;
       font-family: var(--body-font), sans-serif;
-      font-size: 1rem;
       color: var(--text-light);
-      letter-spacing: 0.02em;
+      letter-spacing: var(--custom-letter-spacing);
     }
 
     a {
-      color: var(--accent);
+      color: var(--text-light);
       text-decoration: underline;
       text-underline-offset: 2px;
       transition: opacity 0.3s ease;

@@ -8,16 +8,15 @@ export default function PrivacyPolicy() {
 
       <h2>Responsable del tratamiento</h2>
       <p>
-        La Asociación Grupo de Programadores y Usuarios de Linux (en adelante,
-        "GPUL") con NIF G15659220 y dirección en la Facultad de Informática,
-        Campus de Elviña S/N, 15007, A Coruña es la Responsable del tratamiento
-        de sus datos personales.
+        La Asociación Sysarmy Galicia con NIF G21961842 y dirección en Travesía
+        de Arteixo 5, 3º derecha, localidad de Arteixo es la Responsable del
+        tratamiento de sus datos personales.
       </p>
       <p>
-        Puede contactar a GPUL en la dirección postal anteriormente indicada o
-        en la siguiente dirección de correo electrónico para cualquier consulta,
-        solicitud o aclaración relacionada con el tratamiento de sus datos
-        personales:{" "}
+        Puede contactar a Sysarmy Galicia en la dirección postal anteriormente
+        indicada o en la siguiente dirección de correo electrónico para
+        cualquier consulta, solicitud o aclaración relacionada con el
+        tratamiento de sus datos personales:{" "}
         <a href="mailto:administracion@sysarmygalicia.com">
           administracion@sysarmygalicia.com
         </a>
@@ -25,18 +24,18 @@ export default function PrivacyPolicy() {
       </p>
 
       <h2>Qué datos personales tratamos y cómo los hemos obtenido</h2>
-      <p>GPUL tratará los siguientes datos personales:</p>
+      <p>Sysarmy Galicia tratará los siguientes datos personales:</p>
       <ul>
         <li>
           Cualquier dato inicial que usted proporcione voluntariamente
           relacionado con una solicitud de registro como asistente, solicitudes
           de información a nuestra empresa, solicitudes de participación en
           promociones o solicitudes de recepción de cualquiera de los servicios
-          ofrecidos por GPUL.
+          ofrecidos por Sysarmy Galicia.
         </li>
         <li>
           Cualquier dato que se genere o intercambie posteriormente con los
-          Usuarios para que GPUL cumpla con su solicitud inicial.
+          Usuarios para que Sysarmy Galicia cumpla con su solicitud inicial.
         </li>
         <li>
           Cualquier dato personal que usted proporcione a través de redes
@@ -117,10 +116,10 @@ export default function PrivacyPolicy() {
 
       <h3>Cuando se registra como Asistente</h3>
       <p>
-        GPUL tratará sus datos para gestionar y procesar solicitudes recibidas,
-        así como para enviar, incluidos medios electrónicos, comunicaciones
-        comerciales sobre actividades, servicios o productos ofrecidos por GPUL
-        similares a los solicitados previamente.
+        Sysarmy Galicia tratará sus datos para gestionar y procesar solicitudes
+        recibidas, así como para enviar, incluidos medios electrónicos,
+        comunicaciones comerciales sobre actividades, servicios o productos
+        ofrecidos por Sysarmy Galicia similares a los solicitados previamente.
       </p>
 
       <h3>Cuando se registra como Patrocinador</h3>
@@ -151,47 +150,50 @@ export default function PrivacyPolicy() {
 
       <h3>Con respecto a las imágenes y videos</h3>
       <p>
-        GPUL está autorizado para procesar sus datos personales para mostrar,
-        transmitir y/o publicarlos con su consentimiento expreso.
+        Sysarmy Galicia está autorizado para procesar sus datos personales para
+        mostrar, transmitir y/o publicarlos con su consentimiento expreso.
       </p>
 
       <h3>Respecto a alergias e intolerancias alimentarias</h3>
       <p>
-        GPUL procesará sus datos personales únicamente para gestionar el
-        servicio de catering.
+        Sysarmy Galicia procesará sus datos personales únicamente para gestionar
+        el servicio de catering.
       </p>
 
       <h2>Por qué podríamos procesar sus datos personales</h2>
 
       <h3>Asistentes</h3>
       <p>
-        GPUL tiene derecho a procesar datos personales para gestionar
+        Sysarmy Galicia tiene derecho a procesar datos personales para gestionar
         solicitudes y enviar comunicaciones comerciales basadas en un interés
         legítimo.
       </p>
       <p>
         Puede oponerse a recibir comunicaciones comerciales en cualquier momento
         enviando un correo electrónico a{" "}
-        <a href="mailto:info@gpul.org">info@gpul.org</a>.
+        <a href="mailto:administracion@sysarmygalicia.com">
+          administracion@sysarmygalicia.com
+        </a>
+        .
       </p>
 
       <h3>Patrocinadores</h3>
       <p>
         El procesamiento de datos de contacto empresarial se basa en el interés
-        legítimo de GPUL en mantener relaciones con la empresa para la cual
-        trabaja.
+        legítimo de Sysarmy Galicia en mantener relaciones con la empresa para
+        la cual trabaja.
       </p>
 
       <h3>Con respecto a las imágenes y videos</h3>
       <p>
-        GPUL puede procesar sus datos personales para mostrar, transmitir y/o
-        publicarlos porque ha dado su consentimiento expreso.
+        Sysarmy Galicia puede procesar sus datos personales para mostrar,
+        transmitir y/o publicarlos porque ha dado su consentimiento expreso.
       </p>
 
       <h3>Respecto a alergias e intolerancias alimentarias</h3>
       <p>
-        GPUL procesará sus datos personales para gestionar el servicio de
-        catering con su consentimiento expreso.
+        Sysarmy Galicia procesará sus datos personales para gestionar el
+        servicio de catering con su consentimiento expreso.
       </p>
 
       <h2>Cuándo y por qué podremos transmitir sus datos a terceros</h2>
@@ -211,21 +213,23 @@ export default function PrivacyPolicy() {
         </li>
         <li>
           <strong>Proveedores</strong>: quienes requieren acceso a sus datos
-          personales para proporcionar los servicios que GPUL les ha contratado.
+          personales para proporcionar los servicios que Sysarmy Galicia les ha
+          contratado.
         </li>
       </ul>
 
       <h2>Transferencias internacionales de datos</h2>
       <p>
-        GPUL no ha contratado proveedores de servicios tecnológicos ubicados en
-        países sin una regulación de protección de datos equivalente a la
-        Europea.
+        Sysarmy Galicia no ha contratado proveedores de servicios tecnológicos
+        ubicados en países sin una regulación de protección de datos equivalente
+        a la Europea.
       </p>
 
       <h2>Cuánto tiempo almacenaremos sus datos</h2>
       <p>
-        Sus datos serán almacenados mientras su relación con GPUL esté en curso
-        y, una vez finalizada, por los términos legales aplicables.
+        Sus datos serán almacenados mientras su relación con Sysarmy Galicia
+        esté en curso y, una vez finalizada, por los términos legales
+        aplicables.
       </p>
 
       <h2>Cuáles son sus derechos</h2>
@@ -240,7 +244,8 @@ export default function PrivacyPolicy() {
       </p>
       <ul>
         <li>
-          <strong>GPUL</strong>: a través de las direcciones indicadas.
+          <strong>Sysarmy Galicia</strong>: a través de las direcciones
+          indicadas.
         </li>
         <li>
           <strong>Agencia Española de Protección de Datos</strong>: mediante sus
@@ -267,7 +272,7 @@ export default function PrivacyPolicy() {
         </a>
       </p>
       <p>
-        <strong>Última actualización: 10/11/2024</strong>
+        <strong>Última actualización: 06/01/2026</strong>
       </p>
     </div>
   );

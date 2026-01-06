@@ -1,12 +1,18 @@
 .modal {
-  border: 8px solid var(--secondary);
-  background-color: var(--primary);
-  color: var(--text-secondary);
+  border: 3px solid var(--color-brown-dark);
+  background: rgba(17, 10, 7, 0.86);
+  color: var(--text-light);
   width: 90%;
-  max-width: 800px;
+  max-width: 900px;
   max-height: 85vh;
   padding: 0;
   overflow: hidden;
+  box-shadow: var(--box-shadow-border);
+
+  &[open] {
+    display: flex;
+    flex-direction: column;
+  }
 
   &::backdrop {
     background: rgba(0, 0, 0, 0.7);
@@ -25,9 +31,9 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem 1.5rem;
-    background-color: var(--secondary);
-    color: var(--text-primary);
-    border-bottom: 4px solid var(--primary);
+    background-color: var(--color-brown-dark);
+    color: var(--text-light);
+    border-bottom: 3px solid var(--color-brown-light);
   }
 
   &__title {
@@ -41,7 +47,7 @@
   &__close {
     background: transparent;
     border: none;
-    color: var(--text-primary);
+    color: var(--text-light);
     cursor: pointer;
     padding: 0.25rem;
     display: flex;
@@ -65,32 +71,40 @@
   &__body {
     padding: 2rem;
     overflow-y: auto;
-    flex: 1;
+    flex: 1 1 auto;
+    min-height: 0;
+    font-size: 1.25rem;
+    text-align: justify;
 
     h2 {
       font-family: var(--heading-font), sans-serif;
-      font-size: 1.3rem;
+      font-size: 1.5rem;
       margin-top: 1.5rem;
       margin-bottom: 0.75rem;
       color: var(--accent);
+      text-align: left;
     }
 
     h3 {
       font-family: var(--heading-font), sans-serif;
-      font-size: 1.1rem;
+      font-size: 1.25rem;
       margin-top: 1.25rem;
       margin-bottom: 0.5rem;
+      text-align: left;
     }
 
     p {
       line-height: 1.6;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
+      text-align: justify;
+      font-size: inherit;
     }
 
     a {
       color: var(--accent);
       text-decoration: underline;
       transition: opacity 0.3s ease;
+      font-size: inherit;
 
       &:hover {
         opacity: 0.8;
@@ -102,6 +116,16 @@
       margin-left: 1.5rem;
       margin-bottom: 1rem;
       line-height: 1.6;
+      font-size: inherit;
+
+      li {
+        margin-bottom: 0.5rem;
+        font-size: inherit;
+      }
+    }
+
+    strong {
+      font-size: inherit;
     }
   }
 }
@@ -112,7 +136,7 @@
   color: var(--text-light);
   font-family: var(--body-font), sans-serif;
   font-size: 1rem;
-  letter-spacing: 0.02em;
+  letter-spacing: var(--custom-letter-spacing);
   line-height: 1.5;
   cursor: pointer;
   padding: 0;
