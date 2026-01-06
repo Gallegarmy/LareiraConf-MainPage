@@ -2,6 +2,7 @@ import React from "react";
 import CornerFlourish from "@components/CornerFlourish/CornerFlourish";
 import ParallaxLayer from "@components/Parallax/ParallaxLayer";
 import FireParticles from "@components/Others/FireParticles";
+import Footer from "@components/Footer/Footer";
 
 import socialBackground from "@img/parallax/social-background.png";
 
@@ -185,6 +186,7 @@ const SocialSection = () => {
           <p className="social-section__continuara">Continuará...</p>
         </div>
       </div>
+      <Footer />
     </section>
   );
 };
