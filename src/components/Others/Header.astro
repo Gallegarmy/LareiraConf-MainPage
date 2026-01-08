@@ -3,6 +3,7 @@ import "@styles/header.css";
 import TicketIcon from "@img/icons/ticket.svg?raw";
 import UsersIcon from "@img/icons/users.svg?raw";
 import ShieldIcon from "@img/icons/shield.svg?raw";
+import ShoppingIcon from "@img/icons/shopping.svg?raw";
 import MenuIcon from "@img/icons/menu.svg?raw";
 import CloseIcon from "@img/icons/close.svg?raw";
 ---
@@ -21,6 +22,14 @@ import CloseIcon from "@img/icons/close.svg?raw";
     <a href="#tickets" class="cta-button">
       <span class="cta-button__icon" aria-hidden="true" set:html={TicketIcon} />
       <span>Entradas</span>
+    </a>
+    <a href="#sponsors" class="cta-button">
+      <span
+        class="cta-button__icon"
+        aria-hidden="true"
+        set:html={ShoppingIcon}
+      />
+      <span>Patrocinadores</span>
     </a>
     <a href="#team" class="cta-button">
       <span class="cta-button__icon" aria-hidden="true" set:html={UsersIcon} />
