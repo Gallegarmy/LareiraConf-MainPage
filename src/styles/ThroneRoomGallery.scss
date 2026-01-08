@@ -77,7 +77,6 @@
 .portrait-frame__image-container {
   position: relative;
   width: 100%;
-  aspect-ratio: 1 / 1;
   overflow: hidden;
 }
 
@@ -86,6 +85,20 @@
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+/* Multi-speaker images */
+.portrait-frame__multi-images {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+  height: 100%;
+}
+
+.portrait-frame__image--multi {
+  flex: 1;
+  width: calc(50% - 0.25rem);
+  object-fit: cover;
 }
 
 /* Nameplate - Plaquita con nombre */
@@ -158,7 +171,7 @@
   background: transparent;
   padding: 0;
   max-width: 90vw;
-  max-height: 90vh;
+  max-height: 80vh;
   width: 800px;
   overflow: visible;
 
@@ -176,8 +189,29 @@
     var(--box-shadow-border),
     0 20px 60px rgba(0, 0, 0, 0.6);
   padding: 2rem;
-  max-height: 85vh;
+  max-height: 75vh;
   overflow-y: auto;
+
+  /* Scroll personalizado */
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) var(--color-brown-dark);
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--color-brown-dark);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 4px;
+
+    &:hover {
+      background: var(--secondary);
+    }
+  }
 }
 
 .speaker-modal__close {
@@ -275,9 +309,42 @@
 .speaker-modal__role {
   font-size: clamp(1rem, 2.5vw, 1rem);
   color: var(--text-light);
-  margin: 0 0 1rem 0;
+  margin: 0 0 0.5rem 0;
   text-transform: uppercase;
   letter-spacing: var(--custom-letter-spacing);
+}
+
+.speaker-modal__company {
+  font-size: clamp(0.875rem, 2vw, 1rem);
+  color: var(--text-secondary);
+  margin: 0 0 1rem 0;
+  font-style: italic;
+}
+
+/* Multi-speakers layout */
+.speaker-modal__multi-speakers {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 1rem;
+
+  .speaker-modal__header {
+    border-bottom: 2px solid var(--secondary);
+    padding-bottom: 1.5rem;
+
+    &:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+  }
+}
+
+.speaker-modal__bio-title {
+  font-size: clamp(1rem, 2vw, 1.125rem);
+  color: var(--accent);
+  margin: 0 0 0.5rem 0;
+  text-transform: uppercase;
+  font-weight: 600;
 }
 
 .speaker-modal__socials {

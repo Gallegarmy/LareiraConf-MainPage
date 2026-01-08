@@ -14,11 +14,16 @@ const PortraitFrame: React.FC<PortraitFrameProps> = ({
   onClick,
 }) => {
   const isRevealed = speaker.isRevealed !== false; // Por defecto true si no se especifica
+  const isMultiSpeaker = speaker.isMultiSpeaker && speaker.speakers;
+  const colSpan = speaker.colSpan || 1;
 
   return (
     <div
-      className={`portrait-frame ${!isRevealed ? "portrait-frame--unrevealed" : ""}`}
-      style={{ transform: `rotate(${rotation}deg)` }}
+      className={`portrait-frame ${!isRevealed ? "portrait-frame--unrevealed" : ""} ${isMultiSpeaker ? "portrait-frame--multi" : ""}`}
+      style={{
+        transform: `rotate(${rotation}deg)`,
+        gridColumn: colSpan > 1 ? `span ${colSpan}` : undefined,
+      }}
       onClick={isRevealed ? onClick : undefined}
       role={isRevealed ? "button" : undefined}
       tabIndex={isRevealed ? 0 : -1}
@@ -44,12 +49,26 @@ const PortraitFrame: React.FC<PortraitFrameProps> = ({
       <CornerFlourish position="bottom-right" />
 
       <div className="portrait-frame__image-container">
-        <img
-          src={speaker.image.src}
-          alt={speaker.image.alt}
-          className="portrait-frame__image"
-          loading="lazy"
-        />
+        {isMultiSpeaker && speaker.speakers ? (
+          <div className="portrait-frame__multi-images">
+            {speaker.speakers.map((subSpeaker, index) => (
+              <img
+                key={index}
+                src={subSpeaker.image.src}
+                alt={subSpeaker.image.alt}
+                className="portrait-frame__image portrait-frame__image--multi"
+                loading="lazy"
+              />
+            ))}
+          </div>
+        ) : (
+          <img
+            src={speaker.image.src}
+            alt={speaker.image.alt}
+            className="portrait-frame__image"
+            loading="lazy"
+          />
+        )}
       </div>
 
       <div className="portrait-frame__nameplate">
@@ -57,7 +76,7 @@ const PortraitFrame: React.FC<PortraitFrameProps> = ({
           {isRevealed ? speaker.name : "############"}
         </span>
         <span className="portrait-frame__role">
-          {isRevealed ? speaker.role : "############"}
+          {isRevealed ? speaker.talkFormat || speaker.role : "############"}
         </span>
       </div>
     </div>
