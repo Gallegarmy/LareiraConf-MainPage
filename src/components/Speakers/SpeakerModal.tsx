@@ -9,6 +9,16 @@ interface SpeakerModalProps {
   onClose: () => void;
 }
 
+// Helper para renderizar texto con párrafos
+const renderTextWithParagraphs = (text: string, className: string) => {
+  const paragraphs = text.split("\n").filter((p) => p.trim());
+  return paragraphs.map((paragraph, index) => (
+    <p key={index} className={className}>
+      {paragraph}
+    </p>
+  ));
+};
+
 const SpeakerModal: React.FC<SpeakerModalProps> = ({
   speaker,
   isOpen,
@@ -135,7 +145,10 @@ const SpeakerModal: React.FC<SpeakerModalProps> = ({
                   <h3 className="speaker-modal__bio-title">
                     Bio - {subSpeaker.name}
                   </h3>
-                  <p className="speaker-modal__text">{subSpeaker.summary}</p>
+                  {renderTextWithParagraphs(
+                    subSpeaker.summary,
+"speaker-modal__text",
+                  )}
                 </section>
               ))}
 
@@ -144,9 +157,12 @@ const SpeakerModal: React.FC<SpeakerModalProps> = ({
                   {speaker.talkTitle}
                 </h4>
                 {speaker.talkDescription && (
-                  <p className="speaker-modal__text">
-                    {speaker.talkDescription}
-                  </p>
+                  <>
+                    {renderTextWithParagraphs(
+                      speaker.talkDescription,
+"speaker-modal__text",
+                    )}
+                  </>
                 )}
               </section>
             </div>
@@ -194,7 +210,10 @@ const SpeakerModal: React.FC<SpeakerModalProps> = ({
 
             <div className="speaker-modal__body">
               <section className="speaker-modal__section">
-                <p className="speaker-modal__text">{speaker.summary}</p>
+                {renderTextWithParagraphs(
+                  speaker.summary,
+                 "speaker-modal__text",
+                )}
               </section>
 
               <section className="speaker-modal__section">
@@ -202,9 +221,12 @@ const SpeakerModal: React.FC<SpeakerModalProps> = ({
                   {speaker.talkTitle}
                 </h4>
                 {speaker.talkDescription && (
-                  <p className="speaker-modal__text">
-                    {speaker.talkDescription}
-                  </p>
+                  <>
+                    {renderTextWithParagraphs(
+                      speaker.talkDescription,
+                     "speaker-modal__text",
+                    )}
+                  </>
                 )}
               </section>
             </div>

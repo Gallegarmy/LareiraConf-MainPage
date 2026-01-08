@@ -42,8 +42,8 @@ export const speakers: Speaker[] = [
   {
     id: "speaker-7",
     name: "Nerea Luis",
-    talkTitle: "Por confirmar",
-    talkDescription: "Más información próximamente.",
+    talkTitle: "####",
+    talkDescription: "####",
     tag: "IA",
     role: "Por confirmar",
     summary:
@@ -110,8 +110,8 @@ export const speakers: Speaker[] = [
   {
     id: "almudena-barreiro",
     name: "Almudena Barreiro",
-    talkTitle: "Cómo usar los datos & nómada digital",
-    talkDescription: "Más información próximamente.",
+    talkTitle: "####",
+    talkDescription: "####",
     talkFormat: "charla",
     tag: "Datos",
     role: "Científica de datos",
@@ -151,8 +151,8 @@ export const speakers: Speaker[] = [
   {
     id: "nacho-marquez",
     name: "Nacho Marquez",
-    talkTitle: "Por confirmar",
-    talkDescription: "Más información próximamente.",
+    talkTitle: "####",
+    talkDescription: "####",
     tag: "OSS",
     role: "Co-fundador",
     company: "Rural Hackers",
@@ -221,7 +221,7 @@ export const speakers: Speaker[] = [
     talkTitle:
       "25 años de MQTT. Homenaje [sin PowerPoint] al protocolo de la IoT",
     talkDescription:
-      "Los grandes protocolos nacen con el superpoder de la invisibilidad, y MQTT es uno de ellos. Está por todas partes: escondido en los ambientes más hostiles, viviendo meses con miliamperios, transmitiendo con anchos de banda de pocos kilobytes y cumpliendo con la misión de entregar y recibir mensajes a toda costa. Vamos a rendir homenaje a Andy Stanford-Clark y Arlen Nipper despellejando y destripando su creación para entender sus porqués de una buena vez, sin PowerPoint y en riguroso directo. Implementaciones anómalas, probablemente inútiles en la práctica, pero divertidas para aprender sin prejuicios. ¿Podrían ordenadores de hace 45 años, 8 bits y 64 Kilobytes de RAM ejecutar MQTT? ¿Os apetece comprobarlo?",
+      "Los grandes protocolos nacen con el superpoder de la invisibilidad, y MQTT es uno de ellos. Está por todas partes: escondido en los ambientes más hostiles, viviendo meses con miliamperios, transmitiendo con anchos de banda de pocos kilobytes y cumpliendo con la misión de entregar y recibir mensajes a toda costa.\n\nAdemás, es bello.\n\nTodo lo bello que los ingenieros podemos apreciar.\n\nMQTT es un protocolo recubierto hoy en día por capas de abstracción que muchas veces no nos dejan vislumbrar las lecciones que deberíamos aprender. Por ejemplo, la potente simplicidad y coherencia con la que Andy Stanford-Clark y Arlen Nipper resolvieron, a finales del siglo pasado, grandes problemas de comunicación, fiabilidad y escalado. [Parece que nuestros retos no cambian con el tiempo 😊]\n\nCreo que la mejor forma que tenemos los ingenieros de rendir homenaje a otros ingenieros es despellejando y destripando sus creaciones para entender sus porqués de una buena vez. Eso es lo que haremos, sin powerpoint y en riguroso directo.\n\nY como creo firmemente en el aprendizaje lateral, vamos a hacerlo por la vía de implementaciones anómalas, probablemente inútiles en la práctica, pero divertidas para aprender sin prejuicios. Aquí va una: ¿podrían ordenadores de hace 45 años, 8 bits y 64 Kilobytes de RAM ejecutar MQTT?\n\n¿Os apetece comprobarlo?\n\nA mí también.\n\nP.D: No os preocupéis porque sea un protocolo binario. Sólo es memoria muscular: 22 sigue siendo 34 y FF no se ha movido un ápice de 255.",
     talkFormat: "charla",
     tag: "IoT",
     role: "Arquitecto",

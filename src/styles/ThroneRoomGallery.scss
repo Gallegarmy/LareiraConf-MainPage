@@ -3,9 +3,9 @@
 /* Animación de rotación sutil */
 @keyframes subtle-rotate {
   0%,
-10%,
-90%,
-100% {
+  10%,
+  90%,
+  100% {
     transform: rotate(0deg);
   }
   5% {
@@ -50,49 +50,49 @@
 
   /* Delays y movimientos diferentes para cada marco */
   &:nth-child(1) {
-animation-delay: 0s;
-animation-duration: 18s;
---swing: 1.2deg;
-}
+    animation-delay: 0s;
+    animation-duration: 18s;
+    --swing: 1.2deg;
+  }
   &:nth-child(2) {
-animation-delay: 8s;
-animation-duration: 22s;
---swing: -1.8deg;
-}
+    animation-delay: 8s;
+    animation-duration: 22s;
+    --swing: -1.8deg;
+  }
   &:nth-child(3) {
-animation-delay: 16s;
-animation-duration: 19s;
---swing: 1.5deg;
-}
+    animation-delay: 16s;
+    animation-duration: 19s;
+    --swing: 1.5deg;
+  }
   &:nth-child(4) {
-animation-delay: 4s;
-animation-duration: 21s;
---swing: -1.3deg;
-}
+    animation-delay: 4s;
+    animation-duration: 21s;
+    --swing: -1.3deg;
+  }
   &:nth-child(5) {
-animation-delay: 12s;
-   animation-duration: 23s;
-   --swing: 1.7deg;
+    animation-delay: 12s;
+    animation-duration: 23s;
+    --swing: 1.7deg;
   }
   &:nth-child(6) {
-   animation-delay: 20s;
-   animation-duration: 17s;
-   --swing: -1.4deg;
+    animation-delay: 20s;
+    animation-duration: 17s;
+    --swing: -1.4deg;
   }
   &:nth-child(7) {
-   animation-delay: 6s;
-   animation-duration: 20s;
-   --swing: 1.6deg;
+    animation-delay: 6s;
+    animation-duration: 20s;
+    --swing: 1.6deg;
   }
   &:nth-child(8) {
-   animation-delay: 14s;
-   animation-duration: 24s;
-   --swing: -1.5deg;
+    animation-delay: 14s;
+    animation-duration: 24s;
+    --swing: -1.5deg;
   }
   &:nth-child(9) {
-   animation-delay: 10s;
-   animation-duration: 19s;
-   --swing: 1.4deg;
+    animation-delay: 10s;
+    animation-duration: 19s;
+    --swing: 1.4deg;
   }
 
   /* Marco dorado interior */
@@ -511,7 +511,7 @@ animation-delay: 12s;
   letter-spacing: var(--custom-letter-spacing);
   line-height: 1.1rem;
   color: var(--text-light);
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.75rem;
 }
 
 /* Responsive */
