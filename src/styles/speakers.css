@@ -2,11 +2,19 @@
   position: relative;
   width: 100%;
   min-height: 100vh;
-  height: auto;
-  display: block;
-  padding: clamp(6rem, 8vw, 8rem) 0 clamp(3rem, 5vw, 4rem);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
   color: var(--text-light);
   font-family: var(--heading-font), sans-serif;
+}
+
+/* Padding superior solo en desktop para evitar que el header tape el título */
+@media (min-width: 901px) {
+  .speakers-content {
+    padding-top: 140px;
+  }
 }
 
 .speakers-parallax {
@@ -46,10 +54,12 @@
   position: relative;
   z-index: 2;
   width: 100%;
-  height: auto;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: clamp(2rem, 4vw, 3rem);
+  overflow-y: auto;
 }
 
 .speakers-title {
@@ -128,8 +138,8 @@
 }
 
 @media (max-width: 900px) {
-  .speakers-section {
-    padding: clamp(2.5rem, 6vw, 3.5rem) clamp(1.25rem, 5vw, 2rem);
+  .speakers-content {
+    padding: clamp(1.5rem, 3vw, 2rem) 0;
   }
 
   .speakers-preview-embed {

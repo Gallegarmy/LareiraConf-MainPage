@@ -18,6 +18,7 @@ export type MultiSpeaker = {
   image: SpeakerImage;
   imageReal?: SpeakerImage;
   socials?: SpeakerSocial[];
+  flipImage?: boolean;
 };
 
 export type Speaker = {
@@ -25,7 +26,7 @@ export type Speaker = {
   name: string;
   talkTitle: string;
   talkDescription?: string;
-  talkFormat?: TalkFormat; 
+  talkFormat?: TalkFormat;
   tag: string;
   role: string;
   company?: string;
@@ -37,4 +38,5 @@ export type Speaker = {
   colSpan?: number; // Número de columnas que ocupa (1 por defecto, 2 para charlas conjuntas)
   isMultiSpeaker?: boolean; // Si es true, es una charla con múltiples ponentes
   speakers?: MultiSpeaker[]; // Array de ponentes para charlas conjuntas
+  flipImage?: boolean; // Si es true, voltea la imagen horizontalmente
 };

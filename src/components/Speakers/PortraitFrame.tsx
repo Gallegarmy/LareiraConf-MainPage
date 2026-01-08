@@ -58,6 +58,9 @@ const PortraitFrame: React.FC<PortraitFrameProps> = ({
                 alt={subSpeaker.image.alt}
                 className="portrait-frame__image--multi"
                 loading="lazy"
+                style={{
+                  transform: subSpeaker.flipImage ? "scaleX(-1)" : undefined,
+                }}
               />
             ))}
           </div>
@@ -67,6 +70,9 @@ const PortraitFrame: React.FC<PortraitFrameProps> = ({
             alt={speaker.image.alt}
             className="portrait-frame__image--single"
             loading="lazy"
+            style={{
+              transform: speaker.flipImage ? "scaleX(-1)" : undefined,
+            }}
           />
         )}
       </div>
@@ -76,7 +82,7 @@ const PortraitFrame: React.FC<PortraitFrameProps> = ({
           {isRevealed ? speaker.name : "############"}
         </span>
         <span className="portrait-frame__role">
-          {isRevealed ? speaker.tema || speaker.role : "############"}
+          {isRevealed ? speaker.tag : "############"}
         </span>
       </div>
     </div>
