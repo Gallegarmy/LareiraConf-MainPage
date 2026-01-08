@@ -150,7 +150,7 @@ export const speakers: Speaker[] = [
   },
   {
     id: "nacho-marquez",
-    name: "Nacho Marquez",
+    name: "Nacho Márquez",
     talkTitle: "####",
     talkDescription: "####",
     tag: "OSS",

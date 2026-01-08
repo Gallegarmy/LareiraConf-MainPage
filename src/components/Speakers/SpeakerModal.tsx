@@ -77,18 +77,14 @@ const SpeakerModal: React.FC<SpeakerModalProps> = ({
           aria-label="Cerrar"
         >
           <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
             fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
           >
-            <line x1="18" y1="6" x2="6" y2="18" />
-            <line x1="6" y1="6" x2="18" y2="18" />
+            <path
+              d="M5 5h2v2H5V5zm4 4H7V7h2v2zm2 2H9V9h2v2zm2 0h-2v2H9v2H7v2H5v2h2v-2h2v-2h2v-2h2v2h2v2h2v2h2v-2h-2v-2h-2v-2h-2v-2zm2-2v2h-2V9h2zm2-2v2h-2V7h2zm0 0V5h2v2h-2z"
+              fill="currentColor"
+            />
           </svg>
         </button>
 
@@ -147,7 +143,7 @@ const SpeakerModal: React.FC<SpeakerModalProps> = ({
                   </h3>
                   {renderTextWithParagraphs(
                     subSpeaker.summary,
-"speaker-modal__text",
+                    "speaker-modal__text",
                   )}
                 </section>
               ))}
@@ -160,7 +156,7 @@ const SpeakerModal: React.FC<SpeakerModalProps> = ({
                   <>
                     {renderTextWithParagraphs(
                       speaker.talkDescription,
-"speaker-modal__text",
+                      "speaker-modal__text",
                     )}
                   </>
                 )}
@@ -212,7 +208,7 @@ const SpeakerModal: React.FC<SpeakerModalProps> = ({
               <section className="speaker-modal__section">
                 {renderTextWithParagraphs(
                   speaker.summary,
-                 "speaker-modal__text",
+                  "speaker-modal__text",
                 )}
               </section>
 
@@ -224,7 +220,7 @@ const SpeakerModal: React.FC<SpeakerModalProps> = ({
                   <>
                     {renderTextWithParagraphs(
                       speaker.talkDescription,
-                     "speaker-modal__text",
+                      "speaker-modal__text",
                     )}
                   </>
                 )}

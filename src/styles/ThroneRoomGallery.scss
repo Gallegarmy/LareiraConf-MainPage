@@ -316,8 +316,8 @@
   position: absolute;
   top: 1rem;
   right: 1rem;
-  background: var(--color-brown-dark);
-  border: 2px solid var(--secondary);
+  background: transparent;
+  border: none;
   width: 40px;
   height: 40px;
   display: flex;
@@ -329,12 +329,11 @@
 
   svg {
     color: var(--text-secondary);
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
   }
 
   &:hover {
-    background: var(--accent);
     transform: scale(1.1) rotate(90deg);
 
     svg {
