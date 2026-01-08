@@ -25,7 +25,8 @@ export type Speaker = {
   name: string;
   talkTitle: string;
   talkDescription?: string;
-  talkFormat?: TalkFormat; // Formato: charla, entrevista o taller
+  talkFormat?: TalkFormat; 
+  tag: string;
   role: string;
   company?: string;
   summary: string;

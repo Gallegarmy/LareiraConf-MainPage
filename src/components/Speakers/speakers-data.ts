@@ -23,6 +23,7 @@ export const speakers: Speaker[] = [
     talkDescription:
       "La programación no muere, solo se transforma. La IA ha llegado para quedarse, sacudiendo los cimientos del desarrollo de software y abriendo un abanico de oportunidades y nuevas tecnologías. Una web más inteligente, modelos LLM corriendo en tu navegador, nuevas APIs como WebGPU para exprimir tu tarjeta gráfica y formas inéditas de llevar la experiencia de usuario a otro nivel. Y todo, con ejemplos en vivo. Porque saber programar es lo que marcará la diferencia entre crear cosas increíbles o confiar ciegamente en que la IA nunca se equivoca. (spoiler: se equivoca).",
     talkFormat: "charla",
+    tag: "Programación",
     role: "Creador de contenido y divulgador en programación",
     summary:
       "Miguel Ángel Durán, conocido como midudev, es desarrollador de software y divulgador con más de 17 años de experiencia. Creador de contenido sobre programación, JavaScript e inteligencia artificial, organiza conferencias y proyectos educativos para miles de desarrolladores en habla hispana.",
@@ -43,6 +44,7 @@ export const speakers: Speaker[] = [
     name: "Nerea Luis",
     talkTitle: "Por confirmar",
     talkDescription: "Más información próximamente.",
+    tag: "IA",
     role: "Por confirmar",
     summary:
       "Ponente confirmado para Lareira Conf '26. Más información próximamente.",
@@ -56,6 +58,7 @@ export const speakers: Speaker[] = [
     talkTitle: "Ciberseguridad",
     talkDescription: "Más información próximamente.",
     talkFormat: "charla",
+    tag: "Ciberseguridad",
     role: "Por confirmar",
     summary: "Charla conjunta sobre ciberseguridad.",
     image: { src: AntonioImage.src, alt: "Retrato de Antonio Fernandes" },
@@ -88,6 +91,7 @@ export const speakers: Speaker[] = [
     talkTitle: "Recruiting",
     talkDescription: "Más información próximamente.",
     talkFormat: "charla",
+    tag: "Empleabilidad",
     role: "Community & Marketing Lead",
     company: "Manfred",
     summary: "Comunicación, recruiting y sobre todo, ayudar a la gente.",
@@ -108,6 +112,7 @@ export const speakers: Speaker[] = [
     talkTitle: "Cómo usar los datos & nómada digital",
     talkDescription: "Más información próximamente.",
     talkFormat: "charla",
+    tag: "Datos",
     role: "Científica de datos",
     company: "Next Digital y Data for Good Madrid",
     summary:
@@ -133,6 +138,7 @@ export const speakers: Speaker[] = [
     name: "Cristina Rodríguez",
     talkTitle: "Por confirmar",
     talkDescription: "Más información próximamente.",
+    tag: "Diseño",
     role: "Por confirmar",
     summary:
       "Ponente confirmado para Lareira Conf '26. Más información próximamente.",
@@ -145,6 +151,7 @@ export const speakers: Speaker[] = [
     name: "Diego Mariño",
     talkTitle: "Por confirmar",
     talkDescription: "Más información próximamente.",
+    tag: "Negocio",
     role: "Por confirmar",
     summary:
       "Ponente confirmado para Lareira Conf '26. Más información próximamente.",
@@ -158,6 +165,7 @@ export const speakers: Speaker[] = [
     talkTitle: "Taller conjunto",
     talkDescription: "Más información próximamente.",
     talkFormat: "taller",
+    tag: "Analítica",
     role: "Por confirmar",
     summary: "Taller conjunto.",
     image: { src: CristinaImage.src, alt: "Retrato de Eva González" },
@@ -189,6 +197,7 @@ export const speakers: Speaker[] = [
     name: "Nacho Marquez",
     talkTitle: "Por confirmar",
     talkDescription: "Más información próximamente.",
+    tag: "OSS",
     role: "Co-fundador",
     company: "Rural Hackers",
     summary:
@@ -211,6 +220,7 @@ export const speakers: Speaker[] = [
     talkDescription:
       "Los grandes protocolos nacen con el superpoder de la invisibilidad, y MQTT es uno de ellos. Está por todas partes: escondido en los ambientes más hostiles, viviendo meses con miliamperios, transmitiendo con anchos de banda de pocos kilobytes y cumpliendo con la misión de entregar y recibir mensajes a toda costa. Vamos a rendir homenaje a Andy Stanford-Clark y Arlen Nipper despellejando y destripando su creación para entender sus porqués de una buena vez, sin PowerPoint y en riguroso directo. Implementaciones anómalas, probablemente inútiles en la práctica, pero divertidas para aprender sin prejuicios. ¿Podrían ordenadores de hace 45 años, 8 bits y 64 Kilobytes de RAM ejecutar MQTT? ¿Os apetece comprobarlo?",
     talkFormat: "charla",
+    tag: "IoT",
     role: "Arquitecto",
     summary:
       "Supe que sería ingeniero justo después de ver Juegos de Guerra, un clásico de los ochentas que todo informático de bien debería ver. Me encanta el cacharreo. Creo que es la mejor forma de aprender algo de verdad, porque te enseña a manejar la frustración y a gestionar recursos escasos. Una vez hecho esto, nada mejor que compartir lo que has aprendido para ser feliz.",

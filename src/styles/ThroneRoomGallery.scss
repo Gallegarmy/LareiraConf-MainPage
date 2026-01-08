@@ -78,9 +78,19 @@
   position: relative;
   width: 100%;
   overflow: hidden;
+  background: var(--color-brown-dark);
 }
 
-.portrait-frame__image {
+/* Solo las imágenes individuales tienen aspect-ratio en el contenedor */
+.portrait-frame:not(.portrait-frame--multi) .portrait-frame__image-container {
+  aspect-ratio: 1 / 1;
+}
+
+.portrait-frame__image,
+.portrait-frame__image--single {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -89,16 +99,19 @@
 
 /* Multi-speaker images */
 .portrait-frame__multi-images {
-  display: flex;
-  gap: 0.5rem;
-  width: 100%;
-  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 3vw, 3rem);
+  transform: scale(0.89);
+  transform-origin: center;
 }
 
 .portrait-frame__image--multi {
-  flex: 1;
-  width: calc(50% - 0.25rem);
+  width: 100%;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
+  object-position: center;
+  display: block;
 }
 
 /* Nameplate - Plaquita con nombre */
@@ -108,10 +121,20 @@
   border: 2px solid var(--secondary);
   text-align: center;
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
 .portrait-frame__name {
-  display: block;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
   font-family: var(--heading-font);
   font-size: clamp(0.875rem, 2vw, 1rem);
   color: var(--text-secondary);
@@ -119,14 +142,20 @@
   text-transform: uppercase;
   line-height: 1.2;
   margin-bottom: 0.25rem;
+  width: 100%;
 }
 
 .portrait-frame__role {
-  display: block;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
   font-size: clamp(0.8125rem, 1.8vw, 0.9375rem);
   color: var(--text-light);
   letter-spacing: 0.1rem;
   line-height: 1.2;
+  width: 100%;
 }
 
 /* Corner Flourish positioning override */
@@ -450,6 +479,10 @@
     &:hover {
       transform: scale(1.05) rotate(var(--hover-rotation, 0deg)) !important;
     }
+  }
+
+  .portrait-frame__nameplate {
+    height: 70px;
   }
 
   .speaker-modal {
