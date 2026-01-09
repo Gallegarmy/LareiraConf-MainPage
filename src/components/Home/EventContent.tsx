@@ -8,8 +8,7 @@ const EventContent = () => {
       <div className="home-info">
         <h2 className="element">
           <Calendar className="icon" />
-          <span>20 y 21 de Marzo 2026</span>
-          <span>21.03.26</span>
+          <span>20 y 21 de Marzo</span>
         </h2>
         <h2 className="element">
           <Location className="icon" />

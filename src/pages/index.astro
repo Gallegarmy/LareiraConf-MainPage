@@ -4,6 +4,7 @@ import HorizontalScroll from "@components/Parallax/HorizontalScroll";
 import HomeSection from "@components/Home/HomeSection";
 import TeamSection from "@components/Team/TeamSection";
 import TicketsSection from "@components/TicketsSection/TicketsSection";
+import SpeakersSection from "@components/Speakers/SpeakersSection";
 // import CommunitiesSection from "@components/Communities/CommunitiesSection";
 import SocialSection from "@components/SocialSection/SocialSection";
 ---
@@ -14,17 +15,18 @@ import SocialSection from "@components/SocialSection/SocialSection";
   }
   .panel {
     width: 100vw;
-    height: 100vh;
+    height: auto;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     flex-shrink: 0;
   }
   .container {
     display: flex;
-    width: 300%; /* 3 panels */
+    width: 500%;
     height: 100vh;
     transition: width 0.3s ease;
   }
@@ -57,6 +59,7 @@ import SocialSection from "@components/SocialSection/SocialSection";
   <HorizontalScroll client:load className="container">
     <HomeSection />
     <TicketsSection client:load />
+    <SpeakersSection client:load />
     <TeamSection client:load />
     {/* <CommunitiesSection client:load /> */}
     <SocialSection client:load />
