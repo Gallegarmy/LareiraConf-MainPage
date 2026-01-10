@@ -496,11 +496,18 @@
   .faq-characters-display {
     gap: 2rem;
     padding: 0.5rem 0;
+    align-items: flex-start;
   }
 
   .faq-character-sprite {
     width: 180px;
     height: 180px;
+  }
+
+  .faq-character-sprite.adventurer {
+    width: min(260px, 52vw);
+    height: min(260px, 52vw);
+    margin-bottom: -70px;
   }
 
   .faq-dialogue-box {
@@ -509,12 +516,13 @@
   }
 
   .faq-dialogue-header {
+    top: -2.2rem;
     padding: 0.625rem 1.25rem;
   }
 
   .faq-dialogue-name {
-    font-size: 2.5rem;
-    padding: 0.5rem 3rem;
+    font-size: 1rem;
+    padding: 0.45rem 2.5rem;
   }
 
   .faq-dialogue-content {
@@ -560,6 +568,7 @@
   .faq-characters-display {
     gap: 1rem;
     padding: 0.25rem 0;
+    align-items: flex-start;
   }
 
   .faq-character-sprite {
@@ -567,13 +576,20 @@
     height: 140px;
   }
 
+  .faq-character-sprite.adventurer {
+    width: min(220px, 60vw);
+    height: min(220px, 60vw);
+    margin-bottom: -55px;
+  }
+
   .faq-dialogue-header {
+    top: -2rem;
     padding: 0.5rem 1rem;
   }
 
   .faq-dialogue-name {
-    font-size: 2.5rem;
-    padding: 0.5rem 2.5rem;
+    font-size: 0.95rem;
+    padding: 0.4rem 2rem;
   }
 
   .faq-dialogue-content {
