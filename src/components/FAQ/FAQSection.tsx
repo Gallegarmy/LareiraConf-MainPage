@@ -4,8 +4,8 @@ import FireParticles from "@components/Others/FireParticles";
 import { faqData, type FAQTextSegment } from "./faqData";
 
 import faqBackground from "@img/parallax/tabern.png";
-import adventurerSprite from "@img/speakers/Samuel-x64.png";
-import lumiSprite from "@img/speakers/Midu-x64.png";
+import adventurerSprite from "@img/assets/aventurero.png";
+import lumiSprite from "@img/assets/lumi26.png";
 import "./FAQSection.scss";
 
 type DialogueState = "initial" | "questioning" | "thinking" | "answering";
@@ -247,6 +247,13 @@ const FAQSection = () => {
               {/* Characters sprites */}
               <div className="faq-characters-display">
                 <div className="faq-character-sprite adventurer">
+                  {dialogueState === "questioning" ? (
+                    <span className="faq-adventurer-question-marks" aria-hidden="true">
+                      <span className="faq-adventurer-question-mark lg">?</span>
+                      <span className="faq-adventurer-question-mark md">?</span>
+                      <span className="faq-adventurer-question-mark sm">?</span>
+                    </span>
+                  ) : null}
                   <img
                     src={adventurerSprite.src}
                     alt="Aventurero"

@@ -33,7 +33,7 @@ export const faqData: FAQItem[] = [
         text: "Habrá charlas sobre tecnología, entrevistas con referentes y actividades pensadas para conversar y compartir experiencias. El contenido está orientado a descubrir temas nuevos y conectar. ",
       },
       {
-        text: "Aquí se viene a abrir la mente y a conectar con expertos.",
+        text: "Aquí se viene a abrir la mente y a hablar con gente que sabe de lo suyo.",
         em: true,
       },
     ],
@@ -46,7 +46,7 @@ export const faqData: FAQItem[] = [
         text: "La previa es un encuentro el viernes por la tarde para empezar a conocerse y entrar en el ambiente del evento. Habrá actividades y dinámicas para aprender y socializar. ",
       },
       {
-        text: "Y sí: a la primera ronda invito yo.",
+        text: "La primera ronda corre de nuestra cuenta.",
         em: true,
       },
     ],
@@ -66,7 +66,7 @@ export const faqData: FAQItem[] = [
         text: ". ",
       },
       {
-        text: "Sí, es bastante para todo lo que incluye.",
+        text: "La resaca emocional no está incluida, pero la tendrás.",
         em: true,
       },
     ],
@@ -79,7 +79,7 @@ export const faqData: FAQItem[] = [
         text: "Sí. Durante el proceso de compra podrás solicitar factura con los datos de tu empresa. Si tienes algún caso especial, puedes escribirnos y lo revisamos. ",
       },
       {
-        text: "Tranquilo, que la burocracia aquí viene domada.",
+        text: "Tranquilo, que la burocracia aquí tampoco nos gusta.",
         em: true,
       },
     ],
