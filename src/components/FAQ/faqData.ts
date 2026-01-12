@@ -43,7 +43,7 @@ export const faqData: FAQItem[] = [
     question: "¿Qué es la previa de LareiraConf y cómo funciona?",
     answer: [
       {
-        text: "La previa es un encuentro el viernes por la tarde para empezar a conocerse y entrar en el ambiente del evento. Habrá actividades y dinámicas para aprender y socializar. ",
+        text: "La previa es un encuentro social el viernes por la tarde para empezar a conocerse y entrar en el ambiente del evento. Habrá actividades y dinámicas para aprender y socializar. ",
       },
       {
         text: "La primera ronda corre de nuestra cuenta.",
@@ -77,11 +77,7 @@ export const faqData: FAQItem[] = [
     answer: [
       {
         text: "Sí. Durante el proceso de compra podrás solicitar factura con los datos de tu empresa. Si tienes algún caso especial, puedes escribirnos y lo revisamos. ",
-      },
-      {
-        text: "Tranquilo, que la burocracia aquí tampoco nos gusta.",
-        em: true,
-      },
+      }
     ],
   },
   {
@@ -109,7 +105,15 @@ export const faqData: FAQItem[] = [
     question: "¿Cuándo y dónde se celebra LareiraConf? ¿Cómo puedo llegar?",
     answer: [
       {
-        text: "LareiraConf se celebra los días 20 y 21 de marzo en el Rectorado de la UDC, en la calle Maestranza (A Coruña). Se puede llegar fácilmente a pie, en transporte público o en coche. El lugar de la previa lo comunicaremos unas semanas antes del evento. ",
+        text: "El evento principal se celebra el día 21 de marzo en el ",
+      },
+      {
+        text: "Rectorado de la UDC",
+        href: "https://osm.org/go/b9lE1G7BY--?relation=11048863",
+        external: true,
+      },
+      {
+        text: ", en la calle Maestranza (A Coruña). Se puede llegar fácilmente a pie, en transporte público o en coche. ",
       },
       {
         text: "Llegar es fácil, marcharte te va a costar un poco más.",
@@ -122,7 +126,7 @@ export const faqData: FAQItem[] = [
     question: "¿Habrá comida o bebida durante el evento?",
     answer: [
       {
-        text: "Sí. La entrada incluye desayuno y comida durante el evento. En la previa, la primera ronda corre de nuestra cuenta, y si tu entrada incluye acceso a la fiesta post-evento, también tendrás la cena incluida. ",
+        text: "Sí. La entrada incluye desayuno y comida durante el evento. En la previa, la primera ronda corre de nuestra cuenta, y si tu entrada incluye acceso a la fiesta post-evento, también tendrás la cena incluida. Si tienes alguna necesidad alimentaria especial, puedes indicárnoslo durante el proceso de compra. ",
       },
       {
         text: "A ver dónde desayunas, comes y cenas por este precio… y además con espectáculo.",
