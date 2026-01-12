@@ -10,8 +10,8 @@
     },
     "perks": [
       { "name": "Acceso a todas las charlas", "included": true },
-      { "name": "Café y comida incluidos", "included": true },
-      { "name": "Acceso a la fiesta post-evento", "included": false },
+      { "name": "Desayuno y comida incluidos", "included": true },
+      { "name": "Acceso a la fiesta post-evento, con cena incluida", "included": false },
       { "name": "Sorteos especiales", "included": false },
       { "name": "Avatar personalizado y merchan exclusivo", "included": false }
     ],
@@ -28,8 +28,8 @@
     },
     "perks": [
       { "name": "Acceso a todas las charlas", "included": true },
-      { "name": "Café y comida incluidos", "included": true },
-      { "name": "Acceso a la fiesta post-evento", "included": true },
+      { "name": "Desayuno y comida incluidos", "included": true },
+      { "name": "Acceso a la fiesta post-evento, con cena incluida", "included": true },
       { "name": "Sorteos especiales", "included": false },
       { "name": "Avatar personalizado y merchan exclusivo", "included": false }
     ],
@@ -46,8 +46,8 @@
     },
     "perks": [
       { "name": "Acceso a todas las charlas", "included": true },
-      { "name": "Café y comida incluidos", "included": true },
-      { "name": "Acceso a la fiesta post-evento", "included": true },
+      { "name": "Desayuno y comida incluidos", "included": true },
+      { "name": "Acceso a la fiesta post-evento, con cena incluida", "included": true },
       { "name": "Sorteos especiales", "included": true },
       { "name": "Avatar personalizado y merchan exclusivo", "included": true }
     ],
