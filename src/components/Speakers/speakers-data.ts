@@ -89,9 +89,9 @@ export const speakers: Speaker[] = [
   {
     id: "borja-perez",
     name: "Borja Pérez",
-    talkTitle: "Recruiting",
+    talkTitle: "Actividad",
     talkDescription: "Más información próximamente.",
-    talkFormat: "charla",
+    talkFormat: "taller",
     tag: "Empleabilidad",
     role: "Community & Marketing Lead",
     company: "Manfred",
@@ -137,8 +137,9 @@ export const speakers: Speaker[] = [
   {
     id: "speaker-4",
     name: "Cristina Rodríguez",
-    talkTitle: "Por confirmar",
+    talkTitle: "Actividad",
     talkDescription: "Más información próximamente.",
+    talkFormat: "taller",
     tag: "Diseño",
     role: "Por confirmar",
     summary:
@@ -171,33 +172,48 @@ export const speakers: Speaker[] = [
   {
     id: "eva-gonzalez-brais-calvo",
     name: "Eva González & Brais Calvo",
-    talkTitle: "Taller conjunto",
+    talkTitle: "Actividad conjunta",
     talkDescription: "Más información próximamente.",
     talkFormat: "taller",
     tag: "Analítica",
-    role: "Por confirmar",
-    summary: "Taller conjunto.",
+    role: "Data Analyst · Cofundadores de nosDeu y Datola",
+    summary: "Actividad conjunta.",
     image: { src: CristinaImage.src, alt: "Retrato de Eva González" },
     socials: [],
-    isRevealed: false,
+    isRevealed: true,
     colSpan: 2,
     isMultiSpeaker: true,
     speakers: [
       {
         name: "Eva González",
-        role: "Por confirmar",
+        role: "Data Analyst · Cofundadora de nosDeu y Datola",
+        company: "nosDeu",
         summary:
-          "Ponente confirmado para Lareira Conf '26. Más información próximamente.",
+          "Muchos años dedicados a los datos, que se han convertido en mi pasión. Me encanta aprender cada día en nosDeu, la cooperativa del dato. También compartir todo lo que sé (y lo que no sé) con los demás en Datola.",
         image: { src: CristinaImage.src, alt: "Retrato de Eva González" },
-        socials: [],
+        socials: [
+          { label: "X", url: "https://x.com/evagvior" },
+          {
+            label: "LinkedIn",
+            url: "https://www.linkedin.com/in/evamariagonzalez",
+          },
+        ],
       },
       {
         name: "Brais Calvo",
-        role: "Por confirmar",
+        role: "Data Analyst · Cofundador de nosDeu y Datola",
+        company: "nosDeu",
         summary:
-          "Ponente confirmado para Lareira Conf '26. Más información próximamente.",
+          "Trabajo para que los datos sean fiables y útiles a través de la unificación, la automatización y el cuidado de la calidad. Construyo comunidad en Datola y soy cofundador de nosDeu, la cooperativa del dato.",
         image: { src: DiegoImage.src, alt: "Retrato de Brais Calvo" },
-        socials: [],
+        socials: [
+          { label: "X", url: "https://x.com/braiscv" },
+          {
+            label: "LinkedIn",
+            url: "https://www.linkedin.com/in/braiscalvo",
+          },
+          { label: "Web", url: "https://braiscalvo.com" },
+        ],
       },
     ],
   },

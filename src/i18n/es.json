@@ -83,7 +83,7 @@
         }
       },
       "borja-perez": {
-        "talkTitle": "Recruiting",
+        "talkTitle": "Actividad",
         "talkDescription": "Más información próximamente.",
         "role": "Community & Marketing Lead",
         "company": "Manfred",
@@ -97,7 +97,7 @@
         "summary": "Almudena Barreiro es cofundadora de Data for Good Madrid y consultora/científica de datos en Next Digital, donde lidera proyectos de calidad del dato, analítica predictiva e IA responsable. Combina formación en matemáticas y estadística con un fuerte enfoque ético (equidad, transparencia y dignidad humana) y colabora en Sesgo404 (Sirviendo Código) divulgando sobre el impacto social de la IA."
       },
       "speaker-4": {
-        "talkTitle": "Por confirmar",
+        "talkTitle": "Actividad",
         "talkDescription": "Más información próximamente.",
         "role": "Por confirmar",
         "summary": "Ponente confirmado para Lareira Conf '26. Más información próximamente."
@@ -110,18 +110,20 @@
         "summary": "Hola! Soy Nacho, cofundador de Rural Hackers: desde una aldea gallega de 97 habitantes convertimos el espíritu hacker en impacto real, juntamos talento, comunidad local e internacional con tecnología para luchar contra la despoblación rural. ¿Te animas a venirte a uno de nuestros proyectos?"
       },
       "eva-gonzalez-brais-calvo": {
-        "talkTitle": "Taller conjunto",
+        "talkTitle": "Actividad conjunta",
         "talkDescription": "Más información próximamente.",
-        "role": "Por confirmar",
-        "summary": "Taller conjunto.",
+        "role": "Data Analyst · Cofundadores de nosDeu y Datola",
+        "summary": "Actividad conjunta.",
         "speakers": {
           "eva": {
-            "role": "Por confirmar",
-            "summary": "Ponente confirmado para Lareira Conf '26. Más información próximamente."
+            "role": "Data Analyst · Cofundadora de nosDeu y Datola",
+            "company": "nosDeu",
+            "summary": "Muchos años dedicados a los datos, que se han convertido en mi pasión. Me encanta aprender cada día en nosDeu, la cooperativa del dato. También compartir todo lo que sé (y lo que no sé) con los demás en Datola."
           },
           "brais": {
-            "role": "Por confirmar",
-            "summary": "Ponente confirmado para Lareira Conf '26. Más información próximamente."
+            "role": "Data Analyst · Cofundador de nosDeu y Datola",
+            "company": "nosDeu",
+            "summary": "Trabajo para que los datos sean fiables y útiles a través de la unificación, la automatización y el cuidado de la calidad. Construyo comunidad en Datola y soy cofundador de nosDeu, la cooperativa del dato."
           }
         }
       },

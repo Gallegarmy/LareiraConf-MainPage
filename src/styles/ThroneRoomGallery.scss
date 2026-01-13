@@ -424,16 +424,6 @@
   flex-direction: column;
   gap: 2rem;
   margin-bottom: 1rem;
-
-  .speaker-modal__header {
-    border-bottom: 2px solid var(--secondary);
-    padding-bottom: 1.5rem;
-
-    &:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
-    }
-  }
 }
 
 .speaker-modal__bio-title {
@@ -577,6 +567,15 @@
 
   .speaker-modal__content {
     padding: 1.5rem;
+  }
+
+  .speaker-modal__header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .speaker-modal__socials {
+    justify-content: center;
   }
 }
 
