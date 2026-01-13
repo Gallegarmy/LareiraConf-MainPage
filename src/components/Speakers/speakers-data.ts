@@ -89,9 +89,9 @@ export const speakers: Speaker[] = [
   {
     id: "borja-perez",
     name: "Borja Pérez",
-    talkTitle: "Recruiting",
+    talkTitle: "Actividad",
     talkDescription: "Más información próximamente.",
-    talkFormat: "charla",
+    talkFormat: "taller",
     tag: "Empleabilidad",
     role: "Community & Marketing Lead",
     company: "Manfred",
@@ -137,8 +137,9 @@ export const speakers: Speaker[] = [
   {
     id: "speaker-4",
     name: "Cristina Rodríguez",
-    talkTitle: "Por confirmar",
+    talkTitle: "Actividad",
     talkDescription: "Más información próximamente.",
+    talkFormat: "taller",
     tag: "Diseño",
     role: "Por confirmar",
     summary:
@@ -171,15 +172,15 @@ export const speakers: Speaker[] = [
   {
     id: "eva-gonzalez-brais-calvo",
     name: "Eva González & Brais Calvo",
-    talkTitle: "Taller conjunto",
+    talkTitle: "Actividad conjunta",
     talkDescription: "Más información próximamente.",
     talkFormat: "taller",
     tag: "Analítica",
     role: "Data Analyst · Cofundadores de nosDeu y Datola",
-    summary: "Taller conjunto.",
+    summary: "Actividad conjunta.",
     image: { src: CristinaImage.src, alt: "Retrato de Eva González" },
     socials: [],
-    isRevealed: false,
+    isRevealed: true,
     colSpan: 2,
     isMultiSpeaker: true,
     speakers: [

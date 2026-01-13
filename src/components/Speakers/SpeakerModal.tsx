@@ -93,65 +93,64 @@ const SpeakerModal: React.FC<SpeakerModalProps> = ({
             {/* Múltiples ponentes */}
             <div className="speaker-modal__multi-speakers">
               {speaker.speakers.map((subSpeaker, index) => (
-                <div key={index} className="speaker-modal__header">
-                  <div className="speaker-modal__image-container">
-                    <CornerFlourish position="top-left" />
-                    <CornerFlourish position="top-right" />
-                    <CornerFlourish position="bottom-left" />
-                    <CornerFlourish position="bottom-right" />
-                    <img
-                      src={subSpeaker.imageReal?.src || subSpeaker.image.src}
-                      alt={subSpeaker.imageReal?.alt || subSpeaker.image.alt}
-                      className="speaker-modal__image"
-                    />
+                <div key={index} className="speaker-modal__speaker-block">
+                  <div className="speaker-modal__header">
+                    <div className="speaker-modal__image-container">
+                      <CornerFlourish position="top-left" />
+                      <CornerFlourish position="top-right" />
+                      <CornerFlourish position="bottom-left" />
+                      <CornerFlourish position="bottom-right" />
+                      <img
+                        src={subSpeaker.imageReal?.src || subSpeaker.image.src}
+                        alt={subSpeaker.imageReal?.alt || subSpeaker.image.alt}
+                        className="speaker-modal__image"
+                      />
+                    </div>
+                    <div className="speaker-modal__title">
+                      <h2 className="speaker-modal__name">{subSpeaker.name}</h2>
+                      <p className="speaker-modal__role">{subSpeaker.role}</p>
+                      {subSpeaker.company && (
+                        <p className="speaker-modal__company">
+                          {subSpeaker.company}
+                        </p>
+                      )}
+                      {subSpeaker.socials && subSpeaker.socials.length > 0 && (
+                        <div className="speaker-modal__socials">
+                          {subSpeaker.socials.map((social, socialIndex) => (
+                            <a
+                              key={socialIndex}
+                              href={social.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="speaker-modal__social-icon"
+                              aria-label={social.label}
+                              title={social.label}
+                            >
+                              {renderSocialIcon(social.label)}
+                            </a>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                   </div>
-                  <div className="speaker-modal__title">
-                    <h2 className="speaker-modal__name">{subSpeaker.name}</h2>
-                    <p className="speaker-modal__role">{subSpeaker.role}</p>
-                    {subSpeaker.company && (
-                      <p className="speaker-modal__company">
-                        {subSpeaker.company}
-                      </p>
+                  <section className="speaker-modal__section">
+                    <h3 className="speaker-modal__bio-title">
+                      Bio - {subSpeaker.name}
+                    </h3>
+                    {renderTextWithParagraphs(
+                      subSpeaker.summary,
+                      "speaker-modal__text",
                     )}
-                    {subSpeaker.socials && subSpeaker.socials.length > 0 && (
-                      <div className="speaker-modal__socials">
-                        {subSpeaker.socials.map((social, socialIndex) => (
-                          <a
-                            key={socialIndex}
-                            href={social.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="speaker-modal__social-icon"
-                            aria-label={social.label}
-                            title={social.label}
-                          >
-                            {renderSocialIcon(social.label)}
-                          </a>
-                        ))}
-                      </div>
-                    )}
-                  </div>
+                  </section>
                 </div>
               ))}
             </div>
 
             <div className="speaker-modal__body">
-              {speaker.speakers.map((subSpeaker, index) => (
-                <section key={index} className="speaker-modal__section">
-                  <h3 className="speaker-modal__bio-title">
-                    Bio - {subSpeaker.name}
-                  </h3>
-                  {renderTextWithParagraphs(
-                    subSpeaker.summary,
-                    "speaker-modal__text",
-                  )}
-                </section>
-              ))}
-
               <section className="speaker-modal__section">
-                <h4 className="speaker-modal__talk-title">
+                <h3 className="speaker-modal__talk-title">
                   {speaker.talkTitle}
-                </h4>
+                </h3>
                 {speaker.talkDescription && (
                   <>
                     {renderTextWithParagraphs(
@@ -213,9 +212,9 @@ const SpeakerModal: React.FC<SpeakerModalProps> = ({
               </section>
 
               <section className="speaker-modal__section">
-                <h4 className="speaker-modal__talk-title">
+                <h3 className="speaker-modal__talk-title">
                   {speaker.talkTitle}
-                </h4>
+                </h3>
                 {speaker.talkDescription && (
                   <>
                     {renderTextWithParagraphs(

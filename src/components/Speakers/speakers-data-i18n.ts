@@ -101,7 +101,7 @@ export function getSpeakersData(locale: Locale): Speaker[] {
       name: "Borja Pérez",
       talkTitle: speakersData["borja-perez"].talkTitle,
       talkDescription: speakersData["borja-perez"].talkDescription,
-      talkFormat: "charla",
+      talkFormat: "taller",
       tag: "Empleabilidad",
       role: speakersData["borja-perez"].role,
       company: speakersData["borja-perez"].company,
@@ -148,6 +148,7 @@ export function getSpeakersData(locale: Locale): Speaker[] {
       name: "Cristina Rodríguez",
       talkTitle: speakersData["speaker-4"].talkTitle,
       talkDescription: speakersData["speaker-4"].talkDescription,
+      talkFormat: "taller",
       tag: "Diseño",
       role: speakersData["speaker-4"].role,
       summary: speakersData["speaker-4"].summary,
@@ -186,14 +187,15 @@ export function getSpeakersData(locale: Locale): Speaker[] {
       summary: speakersData["eva-gonzalez-brais-calvo"].summary,
       image: { src: EvaImage.src, alt: "Retrato de Eva González" },
       socials: [],
-      isRevealed: false,
+      isRevealed: true,
       colSpan: 2,
       isMultiSpeaker: true,
       speakers: [
         {
           name: "Eva González",
           role: speakersData["eva-gonzalez-brais-calvo"].speakers.eva.role,
-          company: speakersData["eva-gonzalez-brais-calvo"].speakers.eva.company,
+          company:
+            speakersData["eva-gonzalez-brais-calvo"].speakers.eva.company,
           summary:
             speakersData["eva-gonzalez-brais-calvo"].speakers.eva.summary,
           image: { src: EvaImage.src, alt: "Retrato de Eva González" },
@@ -212,7 +214,8 @@ export function getSpeakersData(locale: Locale): Speaker[] {
         {
           name: "Brais Calvo",
           role: speakersData["eva-gonzalez-brais-calvo"].speakers.brais.role,
-          company: speakersData["eva-gonzalez-brais-calvo"].speakers.brais.company,
+          company:
+            speakersData["eva-gonzalez-brais-calvo"].speakers.brais.company,
           summary:
             speakersData["eva-gonzalez-brais-calvo"].speakers.brais.summary,
           image: { src: BraisImage.src, alt: "Retrato de Brais Calvo" },
