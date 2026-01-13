@@ -98,6 +98,44 @@
   left: 8.6rem;
 }
 
+/* Language selector in header */
+.lang-selector-header {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--heading-font);
+  text-transform: uppercase;
+  letter-spacing: var(--custom-letter-spacing);
+  font-size: 1rem;
+  margin-left: 0.5rem;
+}
+
+.lang-button-header {
+  background: none;
+  border: none;
+  color: var(--text-light);
+  font-family: var(--heading-font);
+  text-transform: uppercase;
+  letter-spacing: var(--custom-letter-spacing);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.2rem 0.4rem;
+  transition: color 0.3s ease;
+}
+
+.lang-button-header:hover {
+  color: var(--accent);
+}
+
+.lang-button-header[data-active="true"] {
+  color: var(--accent);
+}
+
+.lang-separator-header {
+  color: var(--text-light);
+  user-select: none;
+}
+
 /* Hamburger menu */
 .hamburger {
   display: none;

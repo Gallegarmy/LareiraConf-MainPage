@@ -12,6 +12,13 @@ export default defineConfig({
   adapter: node({
     mode: "standalone"
   }),
+  i18n: {
+    defaultLocale: "es",
+    locales: ["es", "gl"],
+    routing: {
+      prefixDefaultLocale: false
+    }
+  },
   integrations: [tailwind(), sitemap(), react(), compress()],
   vite: {
     plugins: [svgr()],
@@ -22,6 +29,7 @@ export default defineConfig({
         "@assets": fileURLToPath(new URL("./src/img/assets", import.meta.url)),
         "@img": fileURLToPath(new URL("./src/img", import.meta.url)),
         "@public": fileURLToPath(new URL("./public", import.meta.url)),
+        "@/i18n": fileURLToPath(new URL("./src/i18n", import.meta.url)),
       },
     },
   },

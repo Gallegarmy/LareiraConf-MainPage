@@ -1,11 +1,16 @@
 import React, { useEffect, useState, useRef } from "react";
-import { speakers } from "./speakers-data";
+import { getSpeakersData } from "./speakers-data-i18n";
 import type { Speaker } from "./speakers-types";
 import PortraitFrame from "./PortraitFrame";
 import SpeakerModal from "./SpeakerModal";
 import gsap from "gsap";
 
-const ThroneRoomGallery: React.FC = () => {
+interface ThroneRoomGalleryProps {
+  lang: string;
+}
+
+const ThroneRoomGallery: React.FC<ThroneRoomGalleryProps> = ({ lang }) => {
+  const speakers = getSpeakersData(lang as "es" | "gl");
   const [selectedSpeaker, setSelectedSpeaker] = useState<Speaker | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const galleryRef = useRef<HTMLDivElement>(null);
