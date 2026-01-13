@@ -158,7 +158,7 @@
     opacity 0.2s ease,
     transform 0.2s ease,
     visibility 0.2s;
-  z-index: 1000;
+  z-index: 10;
   min-width: 3rem;
 }
 
@@ -204,7 +204,7 @@
   border: none;
   cursor: pointer;
   padding: 0;
-  z-index: 1001;
+  z-index: 11;
 }
 
 .hamburger__icon {
@@ -272,7 +272,7 @@
     position: fixed;
     top: 0.8rem;
     left: 1rem;
-    z-index: 1002;
+    z-index: 11;
   }
 
   .main-nav {
