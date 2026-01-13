@@ -100,40 +100,98 @@
 
 /* Language selector in header */
 .lang-selector-header {
+  position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  font-family: var(--heading-font);
-  text-transform: uppercase;
-  letter-spacing: var(--custom-letter-spacing);
-  font-size: 1rem;
   margin-left: 0.5rem;
 }
 
-.lang-button-header {
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-family: var(--heading-font);
+  text-transform: uppercase;
+  letter-spacing: var(--custom-letter-spacing);
+  font-size: 0.875rem;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.3s ease;
+}
+
+.lang-toggle:hover {
+  color: var(--accent);
+}
+
+.lang-icon {
+  width: 1.2rem;
+  height: 1.2rem;
+  display: inline-block;
+}
+
+.lang-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.lang-current {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #ff8c00;
+}
+
+.lang-dropdown {
+  position: absolute;
+  top: calc(100% + 0.25rem);
+  right: 0;
+  background: var(--bg-dark);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.25rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-0.5rem);
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    visibility 0.2s;
+  z-index: 1000;
+  min-width: 3rem;
+}
+
+.lang-dropdown--open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.lang-option {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  width: 100%;
   background: none;
   border: none;
   color: var(--text-light);
   font-family: var(--heading-font);
   text-transform: uppercase;
   letter-spacing: var(--custom-letter-spacing);
-  font-size: 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
   cursor: pointer;
-  padding: 0.2rem 0.4rem;
-  transition: color 0.3s ease;
+  padding: 0;
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease;
 }
 
-.lang-button-header:hover {
+.lang-option:hover {
   color: var(--accent);
-}
-
-.lang-button-header[data-active="true"] {
-  color: var(--accent);
-}
-
-.lang-separator-header {
-  color: var(--text-light);
-  user-select: none;
+  background: rgba(255, 255, 255, 0.05);
 }
 
 /* Hamburger menu */
@@ -208,6 +266,13 @@
 
   .hamburger {
     display: flex;
+  }
+
+  .lang-selector-header {
+    position: fixed;
+    top: 0.8rem;
+    left: 1rem;
+    z-index: 1002;
   }
 
   .main-nav {

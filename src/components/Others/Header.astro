@@ -7,6 +7,7 @@ import ShieldIcon from "@img/icons/shield.svg?raw";
 import QuestionIcon from "@img/icons/question.svg?raw";
 import MenuIcon from "@img/icons/menu.svg?raw";
 import CloseIcon from "@img/icons/close.svg?raw";
+import MicPixel from "@img/icons/mic-pixel.svg?raw";
 import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
@@ -50,22 +51,18 @@ const t = useTranslations(lang);
     </a>
     <div class="lang-selector-header">
       <button
-        class="lang-button-header"
-        data-lang="es"
-        aria-label="Español"
-        data-active={lang === "es" ? "true" : "false"}
+        class="lang-toggle"
+        aria-label="Cambiar idioma"
+        aria-expanded="false"
       >
-        ES
+        <span class="lang-icon" set:html={MicPixel} />
+        <span class="lang-current">{lang.toUpperCase()}</span>
       </button>
-      <span class="lang-separator-header">/</span>
-      <button
-        class="lang-button-header"
-        data-lang="gl"
-        aria-label="Galego"
-        data-active={lang === "gl" ? "true" : "false"}
-      >
-        GL
-      </button>
+      <div class="lang-dropdown">
+        <button class="lang-option" data-lang={lang === "es" ? "gl" : "es"}>
+          <span>{lang === "es" ? "GL" : "ES"}</span>
+        </button>
+      </div>
     </div>
     <!-- <a href="#comunidades" class="cta-button">
       <span class="cta-button__icon" aria-hidden="true" set:html={ShieldIcon} />
@@ -76,10 +73,19 @@ const t = useTranslations(lang);
 
 <script>
   // Language switcher
-  const langButtons = document.querySelectorAll(".lang-button-header");
+  const langToggle = document.querySelector(".lang-toggle");
+  const langDropdown = document.querySelector(".lang-dropdown");
+  const langOptions = document.querySelectorAll(".lang-option");
 
-  langButtons.forEach((button) => {
-    button.addEventListener("click", () => {
+  langToggle?.addEventListener("click", () => {
+    const isOpen = langToggle.getAttribute("aria-expanded") === "true";
+    langToggle.setAttribute("aria-expanded", String(!isOpen));
+    langDropdown?.classList.toggle("lang-dropdown--open");
+  });
+
+  langOptions.forEach((button) => {
+    button.addEventListener("click", (e) => {
+      e.stopPropagation();
       const targetLang = button.getAttribute("data-lang");
       const currentPath = window.location.pathname;
       const pathWithoutLang = currentPath.replace(/^\/(es|gl)/, "");
@@ -89,6 +95,17 @@ const t = useTranslations(lang);
           : `/gl${pathWithoutLang || "/"}`;
       window.location.href = newPath;
     });
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener("click", (e) => {
+    if (
+      !langToggle?.contains(e.target as Node) &&
+      !langDropdown?.contains(e.target as Node)
+    ) {
+      langToggle?.setAttribute("aria-expanded", "false");
+      langDropdown?.classList.remove("lang-dropdown--open");
+    }
   });
 
   // Hamburger menu
