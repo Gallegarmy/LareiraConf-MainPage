@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import FireParticles from "../Others/FireParticles";
 import Icon from "../Icon/Icon";
 import CornerFlourish from "../CornerFlourish/CornerFlourish";
+import { useTranslations } from "@/i18n/utils";
 
 import Coin from "@img/icons/coin.svg?react";
 
@@ -23,6 +24,7 @@ interface Ticket {
 
 interface TicketCardProps {
   ticket: Ticket;
+  lang: string;
 }
 
 const TOTAL_PRICE_WITH_FEES: Record<string, number> = {
@@ -31,7 +33,9 @@ const TOTAL_PRICE_WITH_FEES: Record<string, number> = {
   paladin: 122.86,
 };
 
-const TicketCard: React.FC<TicketCardProps> = ({ ticket }) => {
+const TicketCard: React.FC<TicketCardProps> = ({ ticket, lang }) => {
+  const t = useTranslations(lang as "es" | "gl");
+
   const hasDiscount =
     typeof ticket.price.discounted === "number" &&
     ticket.price.discounted < ticket.price.original;
@@ -118,22 +122,30 @@ const TicketCard: React.FC<TicketCardProps> = ({ ticket }) => {
       <CornerFlourish position="top-right" />
 
       {isHovered && <FireParticles />}
-      <h3 className="ticket-name">{ticket.name}</h3>
+      <h3 className="ticket-name">{t(`tickets.types.${ticket.id}.name`)}</h3>
       <div
         className="ticket-image"
         style={{ backgroundImage: `url(${ticket.image})` }}
       >
-        <img src={ticket.image} alt={ticket.name} />
+        <img src={ticket.image} alt={t(`tickets.types.${ticket.id}.name`)} />
       </div>
       <div className="ticket-content">
-        <p className="ticket-description">{ticket.description}</p>
+        <p className="ticket-description">
+          {t(`tickets.types.${ticket.id}.description`)}
+        </p>
         <ul className="ticket-perks">
-          {ticket.perks.map((perk) => (
-            <li key={perk.name} className={perk.included ? "included" : ""}>
-              <Icon name={perk.included ? "check" : "x"} />
-              <span>{perk.name}</span>
-            </li>
-          ))}
+          {ticket.perks.map((perk, index) => {
+            // Mapeo de perks por orden: talks, meals, party, raffles, merch
+            const perkKeys = ["talks", "meals", "party", "raffles", "merch"];
+            const perkKey = perkKeys[index];
+
+            return (
+              <li key={perkKey} className={perk.included ? "included" : ""}>
+                <Icon name={perk.included ? "check" : "x"} />
+                <span>{t(`tickets.perks.${perkKey}`)}</span>
+              </li>
+            );
+          })}
         </ul>
         <div className="separator" />
         <div className="buy-content">
@@ -165,7 +177,7 @@ const TicketCard: React.FC<TicketCardProps> = ({ ticket }) => {
             aria-disabled={!ticket.available}
           >
             <Coin className="coin-icon" />
-            {ticket.available ? "Comprar" : "Agotado"}
+            {ticket.available ? t("common.buy") : t("common.soldOut")}
           </a>
         </div>
       </div>

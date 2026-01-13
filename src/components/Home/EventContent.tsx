@@ -1,23 +1,30 @@
 import React from "react";
 import Calendar from "@img/icons/calendar.svg?react";
 import Location from "@img/icons/location.svg?react";
+import { useTranslations, getLangFromUrl } from "@/i18n/utils";
 
-const EventContent = () => {
+interface EventContentProps {
+  lang: string;
+}
+
+const EventContent: React.FC<EventContentProps> = ({ lang }) => {
+  const t = useTranslations(lang as "es" | "gl");
+
   return (
     <div className="content">
       <div className="home-info">
         <h2 className="element">
           <Calendar className="icon" />
-          <span>20 y 21 de Marzo</span>
+          <span>{t("home.date")}</span>
         </h2>
         <h2 className="element">
           <Location className="icon" />
-          <span>A Coruña</span>
+          <span>{t("home.location")}</span>
         </h2>
       </div>
-      <h1 className="logo">Lareira Conf '26</h1>
+      <h1 className="logo">{t("home.title")}</h1>
       <div className="subtitle">
-        <p>El encuentro tech que enciende ideas y conecta comunidades</p>
+        <p>{t("home.subtitle")}</p>
       </div>
     </div>
   );

@@ -6,7 +6,6 @@ import TeamSection from "@components/Team/TeamSection";
 import TicketsSection from "@components/TicketsSection/TicketsSection";
 import SpeakersSection from "@components/Speakers/SpeakersSection";
 import FAQSection from "@components/FAQ/FAQSection";
-// import CommunitiesSection from "@components/Communities/CommunitiesSection";
 import SocialSection from "@components/SocialSection/SocialSection";
 import { getLangFromUrl } from "@/i18n/utils";
 
@@ -65,7 +64,6 @@ const lang = getLangFromUrl(Astro.url);
     <TicketsSection client:load lang={lang} />
     <SpeakersSection client:load lang={lang} />
     <TeamSection client:load lang={lang} />
-    {/* <CommunitiesSection client:load /> */}
     <FAQSection client:load lang={lang} />
     <SocialSection client:load lang={lang} />
   </HorizontalScroll>

@@ -3,6 +3,7 @@ import CornerFlourish from "@components/CornerFlourish/CornerFlourish";
 import ParallaxLayer from "@components/Parallax/ParallaxLayer";
 import FireParticles from "@components/Others/FireParticles";
 import Footer from "@components/Footer/Footer";
+import { useTranslations, type Locale } from "@/i18n/utils";
 
 import socialBackground from "@img/parallax/social-background.png";
 
@@ -117,7 +118,13 @@ const SOCIAL_LINKS: SocialLink[] = [
   },
 ];
 
-const SocialSection = () => {
+interface SocialSectionProps {
+  lang: Locale;
+}
+
+const SocialSection: React.FC<SocialSectionProps> = ({ lang }) => {
+  const t = useTranslations(lang);
+
   return (
     <section className="panel social-section" id="community">
       <div className="social-section__background" aria-hidden="true">
@@ -149,20 +156,35 @@ const SocialSection = () => {
 
         <div className="social-section__content">
           <header className="social-section__header">
-            <h2 className="social-section__title">
-              La historia no termina aquí.
-            </h2>
+            <h2 className="social-section__title">{t("social.title")}</h2>
             <p className="social-section__description">
-              Explora la <a href={LAST_YEAR_URL}>web de la última edición</a>,
-              revive la llama en nuestro{" "}
-              <a
-                href={VIDEO_SUMMARY_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                vídeo resumen
-              </a>{" "}
-              y sigue nuestras redes… aún queda mucho por descubrir.
+              {(() => {
+                const text = t("social.description.text");
+                const parts = text.split(/(\{lastYear\}|\{videoSummary\})/);
+
+                return parts.map((part, index) => {
+                  if (part === "{lastYear}") {
+                    return (
+                      <a key={index} href={LAST_YEAR_URL}>
+                        {t("social.description.lastYear")}
+                      </a>
+                    );
+                  }
+                  if (part === "{videoSummary}") {
+                    return (
+                      <a
+                        key={index}
+                        href={VIDEO_SUMMARY_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {t("social.description.videoSummary")}
+                      </a>
+                    );
+                  }
+                  return part;
+                });
+              })()}
             </p>
           </header>
 
@@ -183,10 +205,10 @@ const SocialSection = () => {
             ))}
           </ul>
 
-          <p className="social-section__continuara">Continuará...</p>
+          <p className="social-section__continuara">{t("social.continuara")}</p>
         </div>
       </div>
-      <Footer />
+      <Footer lang={lang} />
     </section>
   );
 };

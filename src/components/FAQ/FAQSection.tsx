@@ -1,12 +1,17 @@
 import React, { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
 import FireParticles from "@components/Others/FireParticles";
-import { faqData, type FAQTextSegment } from "./faqData";
+import { getFAQData, type FAQTextSegment } from "./faqDatai18n";
+import { useTranslations } from "@/i18n/utils";
 
 import faqBackground from "@img/parallax/tabern.png";
 import adventurerSprite from "@img/assets/aventurero.png";
 import lumiSprite from "@img/assets/lumi26.png";
 import "./FAQSection.scss";
+
+interface FAQSectionProps {
+  lang: string;
+}
 
 type DialogueState = "initial" | "questioning" | "thinking" | "answering";
 
@@ -49,13 +54,14 @@ const renderTypedSegments = (
   return nodes;
 };
 
-const FAQSection = () => {
+const FAQSection: React.FC<FAQSectionProps> = ({ lang }) => {
+  const t = useTranslations(lang as "es" | "gl");
+  const faqData = getFAQData(lang as "es" | "gl");
+
   const [activeQuestion, setActiveQuestion] = useState<number | null>(null);
   const [dialogueState, setDialogueState] = useState<DialogueState>("initial");
   const [adventurerText, setAdventurerText] = useState<string>("");
-  const [lumiText, setLumiText] = useState<string>(
-    "¿Cómo puedo ayudarte, aventurero perdido?",
-  );
+  const [lumiText, setLumiText] = useState<string>(t("faq.lumiInitial"));
   const [typedText, setTypedText] = useState<string>("");
   const [typedChars, setTypedChars] = useState<number>(0);
   const [isTyping, setIsTyping] = useState<boolean>(false);
@@ -159,7 +165,7 @@ const FAQSection = () => {
     setDialogueState("initial");
     setActiveQuestion(null);
     setAdventurerText("");
-    setLumiText("¿Cómo puedo ayudarte, aventurero perdido?");
+    setLumiText(t("faq.lumiInitial"));
   };
 
   const handleQuestionClick = (id: number) => {
@@ -190,7 +196,7 @@ const FAQSection = () => {
     // Step 2: Lumi thinks (after question finishes typing + a small pause)
     stageTimersRef.current.thinking = setTimeout(() => {
       setDialogueState("thinking");
-      setLumiText("...");
+      setLumiText(t("faq.thinking"));
     }, questionTypeMs + pauseAfterQuestionMs);
 
     // Step 3: Lumi answers (after thinking pause)
@@ -223,7 +229,7 @@ const FAQSection = () => {
         <div className="faq-content">
           {/* Questions List */}
           <div className="faq-questions">
-            <h3 className="faq-questions-title">Preguntas frecuentes</h3>
+            <h3 className="faq-questions-title">{t("faq.title")}</h3>
             <ul className="faq-questions-list" role="list">
               {faqData.map((item) => (
                 <li key={item.id}>
@@ -248,7 +254,10 @@ const FAQSection = () => {
               <div className="faq-characters-display">
                 <div className="faq-character-sprite adventurer">
                   {dialogueState === "questioning" ? (
-                    <span className="faq-adventurer-question-marks" aria-hidden="true">
+                    <span
+                      className="faq-adventurer-question-marks"
+                      aria-hidden="true"
+                    >
                       <span className="faq-adventurer-question-mark lg">?</span>
                       <span className="faq-adventurer-question-mark md">?</span>
                       <span className="faq-adventurer-question-mark sm">?</span>
@@ -286,8 +295,8 @@ const FAQSection = () => {
                 >
                   <div className="faq-dialogue-name">
                     {dialogueState === "questioning"
-                      ? "Aventurero Perdido"
-                      : "Lumi"}
+                      ? t("faq.adventurerName")
+                      : t("faq.lumiName")}
                   </div>
                 </div>
                 <div className="faq-dialogue-content">

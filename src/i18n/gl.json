@@ -1,0 +1,558 @@
+{
+  "common": {
+    "buy": "Comprar",
+    "soldOut": "Esgotado",
+    "close": "Pechar",
+    "readMore": "Ler máis"
+  },
+  "nav": {
+    "home": "Inicio",
+    "tickets": "Entradas",
+    "speakers": "Relatores",
+    "team": "Equipo",
+    "faq": "FAQ",
+    "social": "Social"
+  },
+  "home": {
+    "date": "20 e 21 de Marzo",
+    "location": "A Coruña",
+    "title": "Lareira Conf '26",
+    "subtitle": "O encontro tech que acende ideas e conecta comunidades",
+    "eyebrow": "Charlas. Networking. Xogos. Show",
+    "secondaryTitle": "Unha conferencia para vivila en primeira persoa",
+    "description1": "LareiraConf é unha conferencia técnica en A Coruña pensada para reunir á comunidade, aprender, conectar e vivir unha experiencia distinta, con bo rollo e moita enerxía.",
+    "description2": "Este ano non vés só a escoitar: vés a participar. Un único track, con relatores top. Pero tamén dinámicas, sorteos, comida, show e moitos momentos deseñados para que coñezas xente, te inspires e disfrutes do día."
+  },
+  "tickets": {
+    "description": {
+      "intro": "Alguén roubou o lume da Lareira, e só Lumi sobrevive entre as sombras.",
+      "cta": "Elixe o teu personaxe e prepárate para formar o teu equipo, gañar coñecementos, resolver acertixos e vivir a aventura de reavivar a Lareira."
+    },
+    "types": {
+      "anventurero": {
+        "name": "Aventureiro/a",
+        "description": "Chegas sen armas nin armaduras, só con ganas de aprender e explorar."
+      },
+      "guerrero": {
+        "name": "Guerreiro/a",
+        "description": "Sabes que as mellores historias vívense. O teu obxectivo é xerar alianzas ata o amencer."
+      },
+      "paladin": {
+        "name": "Paladín/á",
+        "description": "O teu lume non é só teu. Compártelo con quen aínda buscan o seu."
+      }
+    },
+    "perks": {
+      "talks": "Acceso a todas as charlas",
+      "meals": "Almorzo e comida incluídos",
+      "party": "Acceso á festa post-evento, con cea incluída",
+      "raffles": "Sorteos especiais",
+      "merch": "Avatar personalizado e merchan exclusivo"
+    }
+  },
+  "speakers": {
+    "title": "Portadores da chama",
+    "description": "RELATORES QUE TRAEN A SÚA CHAMA PARA COMPARTIR COÑECEMENTO, EXPERIENCIAS E IDEAS COA COMUNIDADE.",
+    "data": {
+      "miguel-angel-duran": {
+        "talkTitle": "A programación morreu. Longa vida á programación!",
+        "talkDescription": "A programación non morre, só se transforma. A IA chegou para quedar, sacudindo os alicerces do desenvolvemento de software e abrindo un abano de oportunidades e novas tecnoloxías. Unha web máis intelixente, modelos LLM correndo no teu navegador, novas APIs como WebGPU para espremer a túa tarxeta gráfica e formas inéditas de levar a experiencia de usuario a outro nivel. E todo, con exemplos en vivo. Porque saber programar é o que marcará a diferenza entre crear cousas incríbeis ou confiar cegamente en que a IA nunca se equivoca. (spoiler: equivócase).",
+        "role": "Creador de contido e divulgador en programación",
+        "summary": "Miguel Ángel Durán, coñecido como midudev, é desenvolvedor de software e divulgador con máis de 17 anos de experiencia. Creador de contido sobre programación, JavaScript e intelixencia artificial, organiza conferencias e proxectos educativos para miles de desenvolvedores en lingua hispana."
+      },
+      "speaker-7": {
+        "talkTitle": "####",
+        "talkDescription": "####",
+        "role": "Por confirmar",
+        "summary": "Relator confirmado para Lareira Conf '26. Máis información próximamente."
+      },
+      "antonio-fernandes-pilar-vila": {
+        "talkTitle": "Ciberseguridade",
+        "talkDescription": "Máis información próximamente.",
+        "role": "Por confirmar",
+        "summary": "Charla conxunta sobre ciberseguridade.",
+        "speakers": {
+          "antonio": {
+            "role": "Por confirmar",
+            "summary": "Relator confirmado para Lareira Conf '26. Máis información próximamente."
+          },
+          "pilar": {
+            "role": "Por confirmar",
+            "summary": "Relator confirmado para Lareira Conf '26. Máis información próximamente."
+          }
+        }
+      },
+      "borja-perez": {
+        "talkTitle": "Recruiting",
+        "talkDescription": "Máis información próximamente.",
+        "role": "Community & Marketing Lead",
+        "company": "Manfred",
+        "summary": "Comunicación, recruiting e sobre todo, axudar á xente."
+      },
+      "almudena-barreiro": {
+        "talkTitle": "####",
+        "talkDescription": "####",
+        "role": "Científica de datos",
+        "company": "Next Digital e Data for Good Madrid",
+        "summary": "Almudena Barreiro é cofundadora de Data for Good Madrid e consultora/científica de datos en Next Digital, onde lidera proxectos de calidade do dato, analítica preditiva e IA responsable. Combina formación en matemáticas e estatística cun forte enfoque ético (equidade, transparencia e dignidade humana) e colabora en Sesgo404 (Sirviendo Código) divulgando sobre o impacto social da IA."
+      },
+      "speaker-4": {
+        "talkTitle": "Por confirmar",
+        "talkDescription": "Máis información próximamente.",
+        "role": "Por confirmar",
+        "summary": "Relator confirmado para Lareira Conf '26. Máis información próximamente."
+      },
+      "nacho-marquez": {
+        "talkTitle": "####",
+        "talkDescription": "####",
+        "role": "Co-fundador",
+        "company": "Rural Hackers",
+        "summary": "Ola! Son Nacho, cofundador de Rural Hackers: desde unha aldea galega de 97 habitantes convertimos o espírito hacker en impacto real, xuntamos talento, comunidade local e internacional con tecnoloxía para loitar contra a despoboación rural. Anímaste a vir a un dos nosos proxectos?"
+      },
+      "eva-gonzalez-brais-calvo": {
+        "talkTitle": "Obradoiro conxunto",
+        "talkDescription": "Máis información próximamente.",
+        "role": "Por confirmar",
+        "summary": "Obradoiro conxunto.",
+        "speakers": {
+          "eva": {
+            "role": "Por confirmar",
+            "summary": "Relator confirmado para Lareira Conf '26. Máis información próximamente."
+          },
+          "brais": {
+            "role": "Por confirmar",
+            "summary": "Relator confirmado para Lareira Conf '26. Máis información próximamente."
+          }
+        }
+      },
+      "speaker-5": {
+        "talkTitle": "Por confirmar",
+        "talkDescription": "Máis información próximamente.",
+        "role": "Por confirmar",
+        "summary": "Relator confirmado para Lareira Conf '26. Máis información próximamente."
+      },
+      "samuel-jimenez": {
+        "talkTitle": "25 anos de MQTT. Homenaxe [sen PowerPoint] ao protocolo da IoT",
+        "talkDescription": "Os grandes protocolos nacen co superpoder da invisibilidade, e MQTT é un deles. Está por todas partes: agochado nos ambientes máis hostís, vivindo meses con miliamperios, transmitindo con anchos de banda de poucos kilobytes e cumprindo coa misión de entregar e recibir mensaxes a toda costa.\n\nAdemais, é belo.\n\nTodo o belo que os enxeñeiros podemos apreciar.\n\nMQTT é un protocolo recuberto hoxe en día por capas de abstracción que moitas veces non nos deixan vislumbrar as leccións que deberíamos aprender. Por exemplo, a potente simplicidade e coherencia coa que Andy Stanford-Clark e Arlen Nipper resolveron, a finais do século pasado, grandes problemas de comunicación, fiabilidade e escalado. [Parece que os nosos retos non cambian co tempo 😊]\n\nCreo que a mellor forma que temos os enxeñeiros de render homenaxe a outros enxeñeiros é esfolar e destripar as súas creacións para entender os seus porqués dunha boa vez. Iso é o que faremos, sen powerpoint e en rigoroso directo.\n\nE como creo firmemente na aprendizaxe lateral, imos facelo pola vía de implementacións anómalas, probablemente inútiles na práctica, pero divertidas para aprender sen prexuízos. Aquí vai unha: poderían ordenadores de hai 45 anos, 8 bits e 64 Kilobytes de RAM executar MQTT?\n\nApetécevos comprobalo?\n\nA min tamén.\n\nP.D: Non vos preocupedes porque sexa un protocolo binario. Só é memoria muscular: 22 segue sendo 34 e FF non se moveu un ápice de 255.",
+        "role": "Arquitecto",
+        "summary": "Souben que sería enxeñeiro xusto despois de ver Xogos de Guerra, un clásico dos oitenta que todo informático de ben debería ver. Encántame o cacharreo. Creo que é a mellor forma de aprender algo de verdade, porque che ensina a manexar a frustración e a xestionar recursos escasos. Unha vez feito isto, nada mellor que compartir o que aprendiches para ser feliz."
+      }
+    }
+  },
+  "team": {
+    "title": "O equipo",
+    "description1": "Somos un grupo de persoas que goza da tecnoloxía e, sobre todo, da xente que se xunta ao redor dela. Unidos por un obxectivo común: crear un evento para xuntarse, conectar e compartir ideas.",
+    "description2": "Facémolo de forma voluntaria e sen ánimo de lucro, dedicando tempo e agarimo a cada detalle. Porque cremos na comunidade tecnolóxica de Galicia e no poder de reunirnos ao redor da Lareira.",
+    "members": {
+      "nacho": {
+        "role": "Forxador de Sistemas",
+        "bio": "Son un apaixonado da tecnoloxía e de arrancar ideas que parecen imposibles. Gústame conectar pezas, construír cousas e convencer ao resto de que si, isto podemos facelo."
+      },
+      "andrea": {
+        "role": "Tecedora de Historias",
+        "bio": "Deseño con mimo, pico código e gozo creando experiencias que conectan á xente. Na Lareira collo o micro, guío a aventura e manteño o campamento aceso."
+      },
+      "yisus": {
+        "role": "Mestre Cervexeiro Errante",
+        "bio": "Son profesor e un habitual de case calquera evento tech en Galicia. Encántame aprender, compartir e charlar con calma… especialmente se hai unha cervexa polo medio."
+      },
+      "tizi": {
+        "role": "Gardiá do Tesouro",
+        "bio": "Gardo o cofre, organizo o campamento e sempre busco unha solución cando algo se torce. Veño do mundo máis escuro do código e atopo a luz sendo a Swiftie oficial do grupo."
+      }
+    }
+  },
+  "footer": {
+    "madeWith": "Feito con ♥ polo LAREIRACONF CREW",
+    "hostedBy": "Aloxado por",
+    "codeOfConduct": "Código de conduta",
+    "privacyPolicy": "Política de privacidade"
+  },
+  "faq": {
+    "title": "Preguntas frecuentes",
+    "adventurerName": "Aventureiro Perdido",
+    "lumiName": "Lumi",
+    "lumiInitial": "Como podo axudarche, aventureiro perdido?",
+    "thinking": "...",
+    "questions": {
+      "1": {
+        "question": "A quen está dirixida LareiraConf? É para min?",
+        "answer": [
+          {
+            "text": "A persoas con curiosidade pola tecnoloxía e a comunidade. Dá igual se estás empezando ou se tes experiencia: é un evento pensado para aprender, compartir e conectar nun ambiente próximo. "
+          },
+          {
+            "text": "Se che pica a curiosidade, seguramente este sexa o teu sitio.",
+            "em": true
+          }
+        ]
+      },
+      "2": {
+        "question": "Que tipo de contido haberá durante o evento?",
+        "answer": [
+          {
+            "text": "Haberá charlas sobre tecnoloxía, entrevistas con referentes e actividades pensadas para conversar e compartir experiencias. O contido está orientado a descubrir temas novos e conectar. "
+          },
+          {
+            "text": "Aquí véñese a abrir a mente e a falar con xente que sabe do seu.",
+            "em": true
+          }
+        ]
+      },
+      "3": {
+        "question": "Que é a previa de LareiraConf e como funciona?",
+        "answer": [
+          {
+            "text": "A previa é un encontro social o venres pola tarde para empezar a coñecerse e entrar no ambiente do evento. Haberá actividades e dinámicas para aprender e socializar. "
+          },
+          {
+            "text": "A primeira rolda corre da nosa conta.",
+            "em": true
+          }
+        ]
+      },
+      "4": {
+        "question": "Que inclúe a entrada?",
+        "answer": [
+          {
+            "text": "Todas as entradas inclúen acceso ao evento completo, a previa, charlas, actividades e espazos de comunidade, ademais de welcome pack, almorzo e comida. As entradas de Guerreiro e Paladín tamén inclúen acceso á festa post-evento con cea. Podes ver o detalle de cada entrada na sección de "
+          },
+          {
+            "text": "Entradas",
+            "href": "#tickets"
+          },
+          {
+            "text": ". "
+          },
+          {
+            "text": "A resaca emocional non está incluída, pero terala.",
+            "em": true
+          }
+        ]
+      },
+      "5": {
+        "question": "Se a miña empresa me paga a entrada, podedes emitir factura?",
+        "answer": [
+          {
+            "text": "Si. Durante o proceso de compra poderás solicitar factura cos datos da túa empresa. Se tes algún caso especial, podes escribirnos e revisámolo. "
+          },
+          {
+            "text": "Tranquilo, que a burocracia aquí tampouco nos gusta.",
+            "em": true
+          }
+        ]
+      },
+      "6": {
+        "question": "Poden as empresas comprar entradas en bloque?",
+        "answer": [
+          {
+            "text": "Si. Se queres comprar varias entradas, escríbenos a "
+          },
+          {
+            "text": "info@lareiraconf.es",
+            "href": "mailto:info@lareiraconf.es"
+          },
+          {
+            "text": ". A partir de 5 entradas ofrecemos descontos por volume e axudámosche coa xestión. "
+          },
+          {
+            "text": "Para que xestionar entradas non sexa outro marrón máis.",
+            "em": true
+          }
+        ]
+      },
+      "7": {
+        "question": "Cando e onde se celebra LareiraConf? Como podo chegar?",
+        "answer": [
+          {
+            "text": "O evento principal celébrase o día 21 de marzo no "
+          },
+          {
+            "text": "Reitorado da UDC",
+            "href": "https://osm.org/go/b9lE1G7BY--?relation=11048863",
+            "external": true
+          },
+          {
+            "text": ", na rúa Maestranza (A Coruña). Pódese chegar facilmente a pé, en transporte público ou en coche. "
+          },
+          {
+            "text": "Chegar é fácil, marchar vaiche custar un pouco máis.",
+            "em": true
+          }
+        ]
+      },
+      "8": {
+        "question": "Haberá comida ou bebida durante o evento?",
+        "answer": [
+          {
+            "text": "Si. A entrada inclúe almorzo e comida durante o evento. Na previa, a primeira rolda corre da nosa conta, e se a túa entrada inclúe acceso á festa post-evento, tamén terás a cea incluída. Se tes algún tipo de necesidade alimentaria especial, podes indicárnolo durante o proceso de compra. "
+          },
+          {
+            "text": "A ver onde almorzas, comes e ceas por este prezo… e ademais con espectáculo.",
+            "em": true
+          }
+        ]
+      },
+      "9": {
+        "question": "Quero colaborar coa Lareira, como podo facelo?",
+        "answer": [
+          {
+            "text": "Se queres patrocinar o evento, podes consultar o noso "
+          },
+          {
+            "text": "dossier de patrocinio",
+            "href": "https://drive.google.com/file/d/1qAiU4k50GV9pbgfehwGJIA9ow2SCxUWh/view?usp=sharing",
+            "external": true
+          },
+          {
+            "text": ". Se ofreces servizos ou produtos que poidan mellorar a experiencia, escríbenos a "
+          },
+          {
+            "text": "info@lareiraconf.es",
+            "href": "mailto:info@lareiraconf.es"
+          },
+          {
+            "text": " e cóntanos a túa idea. Estamos abertos a propostas."
+          }
+        ]
+      },
+      "10": {
+        "question": "Sigo tendo dúbidas, como podo contactar coa organización?",
+        "answer": [
+          {
+            "text": "Vexo que a miña axuda non é suficiente…",
+            "em": true
+          },
+          {
+            "text": " Podes escribirnos a "
+          },
+          {
+            "text": "info@lareiraconf.es",
+            "href": "mailto:info@lareiraconf.es"
+          },
+          {
+            "text": ". Estaremos encantados de resolvérche calquera dúbida."
+          }
+        ]
+      }
+    }
+  },
+  "social": {
+    "title": "A historia non remata aquí.",
+    "description": {
+      "text": "Explora a {lastYear}, revive a chama no noso {videoSummary} e segue as nosas redes… aínda queda moito por descubrir.",
+      "lastYear": "web da última edición",
+      "videoSummary": "vídeo resumo"
+    },
+    "continuara": "Continuará..."
+  },
+  "codeOfConduct": {
+    "intro": "Sé respectuoso. Calquera forma de acoso non será tolerada.",
+    "paragraph1": "Desde a organización de LareiraCon (Sysarmy Galicia) cremos que cada asistente ten o dereito de participar nun entorno seguro e amigable.",
+    "paragraph2": "O acoso inclúe, pero non se limita a, comentarios verbais ou escritos ofensivos relacionados co xénero, idade, orientación sexual, discapacidade, aparencia física, tamaño corporal, raza, relixión, clase social, estado económico, imaxes sexuais, intimidación deliberada, acoso, seguimento, fotografía ou gravación hostil, interrupción sostida de charlas ou outros eventos, contacto físico inapropiado e atención sexual non desexada. Se o que estás a facer fai que alguén se sinta incómodo, iso conta como acoso e é razón suficiente para deixar de facelo.",
+    "paragraph3": "Espérase que os asistentes aos que se lles pida que deteñan calquera comportamento acosador cumpran de inmediato.",
+    "paragraph4": "Patrocinadores, voluntarios, organizadores e calquera outra persoa no evento tamén están suxeitos á política antiacoso. O persoal dos stands (incluíndo voluntarios) non deben utilizar roupa/uniformes/disfraces sexualizados, nin crear un ambiente sexualizado.",
+    "paragraph5": "Se un participante invólucrase en comportamento de acoso, a organización pode tomar calquera acción que considere apropiada, incluíndo advertir ao ofensor ou expulsalo do evento sen dereito a reembolso, devolución ou agasallos de ningún tipo.",
+    "paragraph6": "Se estás sendo acosado, notas que alguén máis está sendo acosado ou tes calquera outra preocupación, por favor contacta coa organización utilizando os procedementos de denuncia definidos a continuación.",
+    "paragraph7": "Os organizadores do evento estarán encantados de axudar aos participantes a contactar coa seguridade do reitorado ou a policía local, proporcionar acompañantes ou asistir de calquera outra forma a aqueles que experimenten acoso para que se sintan seguros durante a duración do evento.",
+    "paragraph8": "Esperamos que os asistentes sigan estas regras en todas as zonas do evento, interaccións en liña relacionadas co evento, eventos sociais relacionados e en calquera situación relacionada co evento.",
+    "reportingTitle": "Procedementos de Denuncia",
+    "reportingP1": "Se te sentes incómodo ou cres que pode haber unha violación potencial do código de conduta, por favor repórtao inmediatamente utilizando un dos seguintes métodos. Todos os denunciantes teñen dereito a permanecer anónimos.",
+    "reportingP2": {
+      "before": "Enviándonos un correo electrónico a",
+      "after": ", a túa denuncia será recibida polos nosos organizadores. Se desexas permanecer anónimo, por favor envíanos un correo electrónico a través dun servizo de correo electrónico anónimo ou crea unha conta de correo electrónico temporal."
+    },
+    "reportingP3": "Se necesitas contactar directamente cun membro do equipo, por favor contacta cun dos nosos organizadores a continuación.",
+    "changesTitle": "Cambios",
+    "changesText": "O código de conduta pode cambiar. Informaremos de calquera cambio nesta páxina e, se os cambios son significativos, usaremos outros métodos adicionais para notificar devanditos cambios (incluíndo, por exemplo, o envío de correos electrónicos).",
+    "contactTitle": "Contacto",
+    "contactText": "Se tes algunha pregunta sobre o código de conduta, contáctanos:",
+    "contactEmail": {
+      "before": "Por correo:"
+    },
+    "lastUpdate": "Última actualización: 13/01/2026"
+  },
+  "privacyPolicy": {
+    "intro": "En cumprimento coa normativa vixente sobre protección de datos persoais, infórmaselle dos seguintes aspectos:",
+    "responsibleTitle": "Responsable do tratamento",
+    "responsibleP1": "A Asociación Sysarmy Galicia con NIF G21961842 e enderezo en Travesía de Arteixo 5, 3º dereita, localidade de Arteixo é a Responsable do tratamento dos seus datos persoais.",
+    "responsibleP2": {
+      "before": "Pode contactar con Sysarmy Galicia no enderezo postal anteriormente indicado ou no seguinte enderezo de correo electrónico para calquera consulta, solicitude ou aclaración relacionada co tratamento dos seus datos persoais:",
+      "after": "."
+    },
+    "dataCollectedTitle": "Que datos persoais tratamos e como os obtivemos",
+    "dataCollectedIntro": "Sysarmy Galicia tratará os seguintes datos persoais:",
+    "dataCollected": {
+      "item1": "Calquera dato inicial que vostede proporcione voluntariamente relacionado cunha solicitude de rexistro como asistente, solicitudes de información á nosa empresa, solicitudes de participación en promocións ou solicitudes de recepción de calquera dos servizos ofrecidos por Sysarmy Galicia.",
+      "item2": "Calquera dato que se xere ou intercambie posteriormente cos Usuarios para que Sysarmy Galicia cumpra coa súa solicitude inicial.",
+      "item3": "Calquera dato persoal que vostede proporcione a través de redes sociais para xestionar as súas solicitudes, dependendo dos axustes de privacidade de cada asistente."
+    },
+    "attendeeDataTitle": "Datos persoais recompilados ao rexistrarse como Asistente",
+    "attendeeData": {
+      "identifiers": {
+        "title": "Datos identificativos",
+        "data": "Nome, apelidos, cidade."
+      },
+      "contact": {
+        "title": "Datos de contacto",
+        "data": "Correo electrónico e número de teléfono."
+      },
+      "personal": {
+        "title": "Características persoais",
+        "data": "Sexo e talla de camiseta."
+      },
+      "academic": {
+        "title": "Datos académicos e profesionais",
+        "data": "empresa, rol."
+      },
+      "health": {
+        "title": "Datos de saúde",
+        "data": "Alerxias e intolerancias alimentarias."
+      },
+      "media": {
+        "title": "Imaxes e vídeos",
+        "data": "Fotografías ou vídeos tomados durante o evento nos que o relator poida aparecer."
+      }
+    },
+    "sponsorDataTitle": "Datos persoais recompilados ao rexistrarse como Patrocinador",
+    "sponsorData": {
+      "identifiers": {
+        "title": "Datos identificativos",
+        "data": "Nome, apelidos e imaxes ou vídeos da persoa de contacto ou empregado do patrocinador."
+      },
+      "businessContact": {
+        "title": "Datos de contacto empresariais",
+        "data": "Correo electrónico corporativo da persoa de contacto ou empregado do patrocinador, empresa e posto de traballo actual."
+      },
+      "health": {
+        "title": "Datos de saúde",
+        "data": "Alerxias e intolerancias alimentarias."
+      },
+      "media": {
+        "title": "Imaxes e vídeos",
+        "data": "Fotografías ou vídeos tomados durante o evento nos que o relator poida aparecer."
+      }
+    },
+    "speakerDataTitle": "Datos persoais recompilados para Relatores",
+    "speakerData": {
+      "identifiers": {
+        "title": "Datos identificativos",
+        "data": "Nome completo, apelidos e cargo actual."
+      },
+      "contact": {
+        "title": "Datos de contacto",
+        "data": "Correo electrónico profesional, teléfono de contacto e perfil en redes profesionais (por exemplo, LinkedIn)."
+      },
+      "professional": {
+        "title": "Información profesional",
+        "data": "Biografía, temas de especialización, título da charla e materiais relacionados coa mesma (presentacións, vídeos, etc.)."
+      },
+      "media": {
+        "title": "Imaxes e vídeos",
+        "data": "Fotografías ou vídeos tomados durante o evento nos que o relator poida aparecer."
+      }
+    },
+    "purposeTitle": "Para que tratamos os seus datos persoais",
+    "purpose": {
+      "attendee": {
+        "title": "Cando se rexistra como Asistente",
+        "text": "Sysarmy Galicia tratará os seus datos para xestionar e procesar solicitudes recibidas, así como para enviar, incluídos medios electrónicos, comunicacións comerciais sobre actividades, servizos ou produtos ofrecidos por Sysarmy Galicia similares aos solicitados previamente."
+      },
+      "sponsor": {
+        "title": "Cando se rexistra como Patrocinador",
+        "text": "Os seus datos procesaranse co único propósito de manter as relacións comerciais, contractuais ou de colaboración coa empresa para a que traballa ou colabora."
+      },
+      "speaker": {
+        "title": "Cando se rexistra como Relator",
+        "item1": {
+          "title": "Xestión do evento",
+          "text": "Preparar e organizar as charlas, comunicar os detalles loxísticos e coordinar a participación."
+        },
+        "item2": {
+          "title": "Promoción do evento",
+          "text": "Utilizar o seu nome, imaxe e detalles da charla en materiais promocionais como o sitio web do evento, redes sociais, ou en comunicacións de prensa."
+        },
+        "item3": {
+          "title": "Difusión de contidos",
+          "text": "Publicar e distribuír os materiais e gravacións das charlas, co fin de compartir coñecementos e documentar o evento."
+        }
+      },
+      "media": {
+        "title": "Con respecto ás imaxes e vídeos",
+        "text": "Sysarmy Galicia está autorizado para procesar os seus datos persoais para mostrar, transmitir e/ou publicalos co seu consentimento expreso."
+      },
+      "allergies": {
+        "title": "Respecto a alerxias e intolerancias alimentarias",
+        "text": "Sysarmy Galicia procesará os seus datos persoais unicamente para xestionar o servizo de catering."
+      }
+    },
+    "legalBasisTitle": "Por que poderiamos procesar os seus datos persoais",
+    "legalBasis": {
+      "attendees": {
+        "title": "Asistentes",
+        "p1": "Sysarmy Galicia ten dereito a procesar datos persoais para xestionar solicitudes e enviar comunicacións comerciais baseadas nun interese lexítimo.",
+        "p2": {
+          "before": "Pode opoñerse a recibir comunicacións comerciais en calquera momento enviando un correo electrónico a",
+          "after": "."
+        }
+      },
+      "sponsors": {
+        "title": "Patrocinadores",
+        "text": "O procesamento de datos de contacto empresarial baséase no interese lexítimo de Sysarmy Galicia en manter relacións coa empresa para a cal traballa."
+      },
+      "media": {
+        "title": "Con respecto ás imaxes e vídeos",
+        "text": "Sysarmy Galicia pode procesar os seus datos persoais para mostrar, transmitir e/ou publicalos porque deu o seu consentimento expreso."
+      },
+      "allergies": {
+        "title": "Respecto a alerxias e intolerancias alimentarias",
+        "text": "Sysarmy Galicia procesará os seus datos persoais para xestionar o servizo de catering co seu consentimento expreso."
+      }
+    },
+    "thirdPartiesTitle": "Cando e por que poderemos transmitir os seus datos a terceiros",
+    "thirdPartiesIntro": "Os seus datos poden ser transferidos a:",
+    "thirdParties": {
+      "publicAdmin": {
+        "title": "Administracións Públicas",
+        "text": "para cumprir con obrigacións legais."
+      },
+      "auditors": {
+        "title": "Firmas de auditoría contable",
+        "text": "para cumprir coas obrigacións legais de auditoría."
+      },
+      "lawEnforcement": {
+        "title": "Forzas da Orde",
+        "text": "cando sexa necesario en cumprimento dunha obrigación legal."
+      },
+      "providers": {
+        "title": "Provedores",
+        "text": "quen requiren acceso aos seus datos persoais para proporcionar os servizos que Sysarmy Galicia lles contratou."
+      }
+    },
+    "internationalTitle": "Transferencias internacionais de datos",
+    "internationalText": "Sysarmy Galicia non contratou provedores de servizos tecnolóxicos situados en países sen unha regulación de protección de datos equivalente á Europea.",
+    "retentionTitle": "Canto tempo almacenaremos os seus datos",
+    "retentionText": "Os seus datos serán almacenados mentres a súa relación con Sysarmy Galicia estea en curso e, unha vez finalizada, polos termos legais aplicables.",
+    "rightsTitle": "Cales son os seus dereitos",
+    "rightsP1": "Ten dereito a acceder, rectificar, suprimir, opoñerse, limitar o procesamento ou solicitar a portabilidade dos seus datos a través dos enderezos indicados.",
+    "rightsP2": "Se considera que o procesamento dos seus datos persoais viola os seus dereitos, pode presentar unha queixa a:",
+    "rights": {
+      "sysarmy": {
+        "title": "Sysarmy Galicia",
+        "text": "a través dos enderezos indicados."
+      },
+      "aepd": {
+        "title": "Axencia Española de Protección de Datos",
+        "text": "mediante os seus enderezos electrónicos ou postais."
+      }
+    },
+    "changesTitle": "Cambios",
+    "changesText": "A nosa política de privacidade pode cambiar. Informaremos de calquera cambio nesta páxina e, se os cambios son significativos, utilizaremos outros métodos adicionais para notificalo (por exemplo, enviando correos electrónicos).",
+    "contactTitle": "Contacto",
+    "contactIntro": "Se tes algunha pregunta sobre a política de privacidade, contáctanos:",
+    "contactEmail": {
+      "before": "Por correo:"
+    },
+    "lastUpdate": "Última actualización: 13/01/2026"
+  }
+}

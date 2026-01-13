@@ -2,11 +2,13 @@
 import "../styles/global.css";
 import Header from "@components/Others/Header.astro";
 import CursorFollower from "@components/CursorFollower/CursorFollower.tsx";
+import { getLangFromUrl } from "@/i18n/utils";
 
 const { title } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
 ---
 
-<html lang="es">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
