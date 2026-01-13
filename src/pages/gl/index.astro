@@ -65,6 +65,6 @@ const lang = getLangFromUrl(Astro.url);
     <SpeakersSection client:load lang={lang} />
     <TeamSection client:load lang={lang} />
     <FAQSection client:load lang={lang} />
-    <SocialSection client:load />
+    <SocialSection client:load lang={lang} />
   </HorizontalScroll>
 </Layout>

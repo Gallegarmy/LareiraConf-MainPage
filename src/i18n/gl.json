@@ -337,6 +337,15 @@
       }
     }
   },
+  "social": {
+    "title": "A historia non remata aquí.",
+    "description": {
+      "text": "Explora a {lastYear}, revive a chama no noso {videoSummary} e segue as nosas redes… aínda queda moito por descubrir.",
+      "lastYear": "web da última edición",
+      "videoSummary": "vídeo resumo"
+    },
+    "continuara": "Continuará..."
+  },
   "codeOfConduct": {
     "intro": "Sé respectuoso. Calquera forma de acoso non será tolerada.",
     "paragraph1": "Desde a organización de LareiraCon (Sysarmy Galicia) cremos que cada asistente ten o dereito de participar nun entorno seguro e amigable.",
@@ -361,7 +370,7 @@
     "contactEmail": {
       "before": "Por correo:"
     },
-    "lastUpdate": "Última actualización: 06/01/2026"
+    "lastUpdate": "Última actualización: 13/01/2026"
   },
   "privacyPolicy": {
     "intro": "En cumprimento coa normativa vixente sobre protección de datos persoais, infórmaselle dos seguintes aspectos:",
@@ -544,6 +553,6 @@
     "contactEmail": {
       "before": "Por correo:"
     },
-    "lastUpdate": "Última actualización: 06/01/2026"
+    "lastUpdate": "Última actualización: 13/01/2026"
   }
 }

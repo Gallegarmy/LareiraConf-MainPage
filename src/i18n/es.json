@@ -337,6 +337,15 @@
       }
     }
   },
+  "social": {
+    "title": "La historia no termina aquí.",
+    "description": {
+      "text": "Explora la {lastYear}, revive la llama en nuestro {videoSummary} y sigue nuestras redes… aún queda mucho por descubrir.",
+      "lastYear": "web de la última edición",
+      "videoSummary": "vídeo resumen"
+    },
+    "continuara": "Continuará..."
+  },
   "codeOfConduct": {
     "intro": "Se respetuoso. Cualquier forma de acoso no será tolerada.",
     "paragraph1": "Desde la organización de LareiraCon (Sysarmy Galicia) creemos que cada asistente tiene el derecho de participar en un entorno seguro y amigable.",
