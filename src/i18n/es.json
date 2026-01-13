@@ -112,16 +112,18 @@
       "eva-gonzalez-brais-calvo": {
         "talkTitle": "Taller conjunto",
         "talkDescription": "Más información próximamente.",
-        "role": "Por confirmar",
+        "role": "Data Analyst · Cofundadores de nosDeu y Datola",
         "summary": "Taller conjunto.",
         "speakers": {
           "eva": {
-            "role": "Por confirmar",
-            "summary": "Ponente confirmado para Lareira Conf '26. Más información próximamente."
+            "role": "Data Analyst · Cofundadora de nosDeu y Datola",
+            "company": "nosDeu",
+            "summary": "Muchos años dedicados a los datos, que se han convertido en mi pasión. Me encanta aprender cada día en nosDeu, la cooperativa del dato. También compartir todo lo que sé (y lo que no sé) con los demás en Datola."
           },
           "brais": {
-            "role": "Por confirmar",
-            "summary": "Ponente confirmado para Lareira Conf '26. Más información próximamente."
+            "role": "Data Analyst · Cofundador de nosDeu y Datola",
+            "company": "nosDeu",
+            "summary": "Trabajo para que los datos sean fiables y útiles a través de la unificación, la automatización y el cuidado de la calidad. Construyo comunidad en Datola y soy cofundador de nosDeu, la cooperativa del dato."
           }
         }
       },

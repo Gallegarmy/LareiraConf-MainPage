@@ -15,6 +15,10 @@ import DiegoImage from "@img/speakers/Diego-x64.png";
 import NachoImage from "@img/speakers/Nacho-x64.png";
 import NachoRealImage from "@img/speakers/Nacho-real.png";
 import NereaImage from "@img/speakers/Nerea-x64.png";
+import EvaImage from "@img/speakers/Eva-x64.png";
+import EvaRealImage from "@img/speakers/Eva-real.png";
+import BraisImage from "@img/speakers/Brais-x64.png";
+import BraisRealImage from "@img/speakers/Brais-real.jpg";
 
 export function getSpeakersData(locale: Locale): Speaker[] {
   const t = useTranslations(locale);
@@ -180,7 +184,7 @@ export function getSpeakersData(locale: Locale): Speaker[] {
       tag: "Analítica",
       role: speakersData["eva-gonzalez-brais-calvo"].role,
       summary: speakersData["eva-gonzalez-brais-calvo"].summary,
-      image: { src: CristinaImage.src, alt: "Retrato de Eva González" },
+      image: { src: EvaImage.src, alt: "Retrato de Eva González" },
       socials: [],
       isRevealed: false,
       colSpan: 2,
@@ -189,18 +193,41 @@ export function getSpeakersData(locale: Locale): Speaker[] {
         {
           name: "Eva González",
           role: speakersData["eva-gonzalez-brais-calvo"].speakers.eva.role,
+          company: speakersData["eva-gonzalez-brais-calvo"].speakers.eva.company,
           summary:
             speakersData["eva-gonzalez-brais-calvo"].speakers.eva.summary,
-          image: { src: CristinaImage.src, alt: "Retrato de Eva González" },
-          socials: [],
+          image: { src: EvaImage.src, alt: "Retrato de Eva González" },
+          imageReal: {
+            src: EvaRealImage.src,
+            alt: "Fotografía de Eva González",
+          },
+          socials: [
+            { label: "X", url: "https://x.com/evagvior" },
+            {
+              label: "LinkedIn",
+              url: "https://www.linkedin.com/in/evamariagonzalez",
+            },
+          ],
         },
         {
           name: "Brais Calvo",
           role: speakersData["eva-gonzalez-brais-calvo"].speakers.brais.role,
+          company: speakersData["eva-gonzalez-brais-calvo"].speakers.brais.company,
           summary:
             speakersData["eva-gonzalez-brais-calvo"].speakers.brais.summary,
-          image: { src: DiegoImage.src, alt: "Retrato de Brais Calvo" },
-          socials: [],
+          image: { src: BraisImage.src, alt: "Retrato de Brais Calvo" },
+          imageReal: {
+            src: BraisRealImage.src,
+            alt: "Fotografía de Brais Calvo",
+          },
+          socials: [
+            { label: "X", url: "https://x.com/braiscv" },
+            {
+              label: "LinkedIn",
+              url: "https://www.linkedin.com/in/braiscalvo",
+            },
+            { label: "Web", url: "https://braiscalvo.com" },
+          ],
         },
       ],
     },
