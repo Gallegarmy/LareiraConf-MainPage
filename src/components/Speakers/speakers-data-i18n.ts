@@ -11,6 +11,7 @@ import BorjaRealImage from "@img/speakers/Borja-real.jpg";
 import AntonioImage from "@img/speakers/Antonio-x64.png";
 import PilarImage from "@img/speakers/Pilar-x64.png";
 import CristinaImage from "@img/speakers/Cristina-x64.png";
+import CristinaRealImage from "@img/speakers/Cristina-real.jpeg";
 import DiegoImage from "@img/speakers/Diego-x64.png";
 import NachoImage from "@img/speakers/Nacho-x64.png";
 import NachoRealImage from "@img/speakers/Nacho-real.png";
@@ -145,16 +146,25 @@ export function getSpeakersData(locale: Locale): Speaker[] {
     },
     {
       id: "speaker-4",
-      name: "Cristina Rodríguez",
+      name: "Cristina G. Aradas (Mapache)",
       talkTitle: speakersData["speaker-4"].talkTitle,
       talkDescription: speakersData["speaker-4"].talkDescription,
       talkFormat: "taller",
-      tag: "Diseño",
+      tag: "Videojuegos",
       role: speakersData["speaker-4"].role,
       summary: speakersData["speaker-4"].summary,
-      image: { src: CristinaImage.src, alt: "Retrato de Cristina Rodríguez" },
-      socials: [],
-      isRevealed: false,
+      image: { src: CristinaImage.src, alt: "Retrato de Cristina G. Aradas" },
+      imageReal: {
+        src: CristinaRealImage.src,
+        alt: "Fotografía de Cristina G. Aradas",
+      },
+      socials: [
+        {
+          label: "LinkedIn",
+          url: "https://www.linkedin.com/in/cristina-garcía-aradas-074154135",
+        },
+      ],
+      isRevealed: true,
       flipImage: true,
     },
     {
