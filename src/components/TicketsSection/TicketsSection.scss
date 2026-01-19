@@ -218,7 +218,7 @@
 
     .buy-button {
       background-color: var(--primary);
-      color: var(--secondary);
+      color: var(--accent);
       border: 1px solid var(--secondary);
       padding: 0.5rem 0.8rem;
       font-family: var(--heading-font);
@@ -233,6 +233,7 @@
 
       &:hover {
         background-color: var(--accent);
+        color: var(--primary);
       }
 
       &:disabled {

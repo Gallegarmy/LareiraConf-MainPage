@@ -7,10 +7,16 @@ import "@styles/team.css";
 import TeamCopy from "./TeamCopy";
 import TeamMembers from "./TeamMembers";
 import TeamPagination from "./TeamPagination";
-import { teamMembers } from "./team-members";
+import { getTeamMembers } from "./team-members-i18n";
 import { useTeamCarousel } from "./hooks/useTeamCarousel";
 
-const TeamSection: React.FC = () => {
+interface TeamSectionProps {
+  lang: string;
+}
+
+const TeamSection: React.FC<TeamSectionProps> = ({ lang }) => {
+  const teamMembers = getTeamMembers(lang as "es" | "gl");
+
   const {
     activeMemberId,
     isMobileView,
@@ -44,7 +50,7 @@ const TeamSection: React.FC = () => {
       </div>
 
       <div className="team-content">
-        <TeamCopy />
+        <TeamCopy lang={lang} />
 
         <TeamMembers
           members={teamMembers}

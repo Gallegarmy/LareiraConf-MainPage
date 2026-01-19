@@ -1,7 +1,8 @@
 import React from "react";
 import ParallaxLayer from "@components/Parallax/ParallaxLayer";
 import FireParticles from "@components/Others/FireParticles";
-import EventContent from "./EventContent";
+import EventContent from "@components/Home/EventContent";
+import { useTranslations } from "@/i18n/utils";
 
 import mountainsImg from "@img/parallax/mountains.png";
 import treesImg from "@img/parallax/trees.png";
@@ -11,7 +12,13 @@ import groundImg from "@img/parallax/ground.png";
 
 import "@styles/home.css";
 
-const HomeSection = () => {
+interface HomeSectionProps {
+  lang: string;
+}
+
+const HomeSection: React.FC<HomeSectionProps> = ({ lang }) => {
+  const t = useTranslations(lang as "es" | "gl");
+
   return (
     <section id="intro" className="panel home-section">
       <div className="home-parallax" aria-hidden="true">
@@ -48,26 +55,13 @@ const HomeSection = () => {
 
       <div className="home-content">
         <div className="home-primary" aria-hidden="false">
-          <EventContent />
+          <EventContent lang={lang} />
         </div>
         <div className="home-secondary" aria-hidden="true">
-          <p className="home-secondary__eyebrow">
-            Charlas. Networking. Juegos. Show
-          </p>
-          <h2 className="home-secondary__title">
-            Una conferencia para vivirla en primera persona
-          </h2>
-          <p className="home-secondary__copy">
-            LareiraConf es una conferencia técnica en A Coruña pensada para
-            reunir a la comunidad, aprender, conectar y vivir una experiencia
-            distinta, con buen rollo y mucha energía.
-          </p>
-          <p className="home-secondary__copy">
-            Este año no vienes solo a escuchar: vienes a participar. Un único
-            track, con ponentes top. Pero también dinámicas, sorteos, comida,
-            show y muchos momentos diseñados para que conozcas gente, te
-            inspires y disfrutes del día.
-          </p>
+          <p className="home-secondary__eyebrow">{t("home.eyebrow")}</p>
+          <h2 className="home-secondary__title">{t("home.secondaryTitle")}</h2>
+          <p className="home-secondary__copy">{t("home.description1")}</p>
+          <p className="home-secondary__copy">{t("home.description2")}</p>
         </div>
       </div>
 
