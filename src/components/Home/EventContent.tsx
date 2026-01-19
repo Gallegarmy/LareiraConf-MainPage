@@ -3,6 +3,8 @@ import Calendar from "@img/icons/calendar.svg?react";
 import Location from "@img/icons/location.svg?react";
 import { useTranslations, getLangFromUrl } from "@/i18n/utils";
 
+import dinahostingLogo from "@img/sponsors/dinahosting-main.svg";
+
 interface EventContentProps {
   lang: string;
 }
@@ -23,8 +25,19 @@ const EventContent: React.FC<EventContentProps> = ({ lang }) => {
         </h2>
       </div>
       <h1 className="logo">{t("home.title")}</h1>
-      <div className="subtitle">
-        <p>{t("home.subtitle")}</p>
+
+      <div
+        className="home-sponsored"
+        aria-label={t("home.sponsoredBy") + " Dinahosting"}
+      >
+        <span className="home-sponsored__label">{t("home.sponsoredBy")}</span>
+        <img
+          className="home-sponsored__logo"
+          src={dinahostingLogo.src}
+          alt="Dinahosting"
+          decoding="async"
+          loading="eager"
+        />
       </div>
     </div>
   );
