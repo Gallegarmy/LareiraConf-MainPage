@@ -331,6 +331,11 @@
   opacity: 1;
 }
 
+/* Oficiales: sin efecto de luz naranja, solo brightness */
+.sponsor-card--oficial-artesano .sponsor-card__logo-container::before {
+  display: none;
+}
+
 .sponsor-card__logo {
   width: 100%;
   height: 100%;
@@ -408,64 +413,174 @@
 @media (max-width: 1024px) {
   .sponsors-section__sign-text {
     font-size: clamp(1.25rem, 2.5vw, 2rem);
-    padding: 0.875rem 2.5rem;
   }
 
   .sponsors-grid {
-    gap: 3rem;
+    min-height: 60vh;
+    gap: 1rem;
   }
 
-  .sponsors-grid__maestros {
-    grid-template-columns: repeat(3, 1fr);
+  .sponsors-grid__maestros-row {
+    gap: 4rem;
+  }
+
+  .sponsors-grid__foreground {
     gap: 2rem;
+    margin-top: -4rem;
   }
 
-  .sponsors-grid__oficiales .sponsor-card__tenderete {
-    max-width: 200px;
+  .sponsor-card--gran-maestro .sponsor-card__tenderete {
+    max-width: 380px;
+  }
+
+  .sponsor-card--maestro-artesano .sponsor-card__tenderete,
+  .sponsors-grid__maestros .sponsor-card .sponsor-card__tenderete,
+  .sponsors-grid__maestros-row .sponsor-card .sponsor-card__tenderete {
+    max-width: 220px;
+    min-width: 220px;
+    width: 220px;
   }
 }
 
 @media (max-width: 768px) {
+  .sponsors-section {
+    padding: 0 1rem;
+  }
+
   .sponsors-section__sign-text {
-    font-size: clamp(1rem, 2vw, 1.5rem);
-    padding: 0.75rem 2rem;
-    border-width: 3px;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+  }
+
+  .sponsors-section__description p {
+    font-size: clamp(0.85rem, 2vw, 1rem);
   }
 
   .sponsors-content {
     gap: 2rem;
-    padding: 3rem 1rem 2rem 1rem;
+    padding: 2rem 0;
   }
 
   .sponsors-grid {
-    gap: 2.5rem;
+    min-height: auto;
+    gap: 2rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Reordenar: gran maestro primero, maestros segundo, oficiales tercero */
+  .sponsors-grid__gran-maestro {
+    order: 1;
   }
 
   .sponsors-grid__maestros {
+    order: 2;
+  }
+
+  .sponsors-grid__oficial-left {
+    order: 3;
+  }
+
+  .sponsors-grid__oficial-right {
+    order: 4;
+  }
+
+  /* Maestros: grid de 2 columnas */
+  .sponsors-grid__maestros {
+    max-width: 500px;
+    gap: 1rem;
+  }
+
+  .sponsors-grid__maestros-row {
+    display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
+    width: 100%;
   }
 
-  .sponsors-grid__oficiales {
+  .sponsors-grid__maestros-row--2 {
+    margin-top: 1.5rem;
+  }
+
+  /* Foreground: columna vertical */
+  .sponsors-grid__foreground {
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2rem;
+    align-items: center;
+  }
+
+  .sponsors-grid__oficial-left,
+  .sponsors-grid__oficial-right {
+    flex-direction: row;
     gap: 1.5rem;
+    justify-content: center;
   }
 
-  .sponsors-grid__oficiales .sponsor-card__tenderete {
-    max-width: 160px;
+  /* Reset de márgenes de oficiales */
+  .sponsors-grid__oficial-left .sponsor-card:nth-child(1),
+  .sponsors-grid__oficial-left .sponsor-card:nth-child(2),
+  .sponsors-grid__oficial-right .sponsor-card:nth-child(1),
+  .sponsors-grid__oficial-right .sponsor-card:nth-child(2) {
+    margin-bottom: 0;
+  }
+
+  .sponsors-grid__oficial-right {
+    margin-bottom: 0;
+  }
+
+  /* Tamaños de tenderetes */
+  .sponsor-card--gran-maestro .sponsor-card__tenderete {
+    max-width: 320px;
   }
 
   .sponsor-card--maestro-artesano .sponsor-card__tenderete,
-  .sponsors-grid__maestros .sponsor-card__tenderete {
-    max-width: 200px;
+  .sponsors-grid__maestros .sponsor-card .sponsor-card__tenderete,
+  .sponsors-grid__maestros-row .sponsor-card .sponsor-card__tenderete {
+    max-width: 180px;
+    min-width: 180px;
+    width: 180px;
+  }
+
+  .sponsors-grid__oficial-left .sponsor-card__tenderete,
+  .sponsors-grid__oficial-right .sponsor-card__tenderete {
+    max-width: 160px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sponsors-section__sign-text {
+    font-size: clamp(1.25rem, 5vw, 1.75rem);
+  }
+
+  .sponsors-section__description p {
+    font-size: 0.9rem;
+    white-space: normal;
+  }
+
+  .sponsors-grid__maestros-row {
+    gap: 1rem;
+  }
+
+  .sponsors-grid__oficial-left,
+  .sponsors-grid__oficial-right {
+    gap: 1rem;
   }
 
   .sponsor-card--gran-maestro .sponsor-card__tenderete {
     max-width: 280px;
   }
-}
 
-@media (max-width: 480px) {
-  .sponsors-grid__maestros {
-    grid-template-columns: repeat(2, 1fr);
+  .sponsor-card--maestro-artesano .sponsor-card__tenderete,
+  .sponsors-grid__maestros .sponsor-card .sponsor-card__tenderete,
+  .sponsors-grid__maestros-row .sponsor-card .sponsor-card__tenderete {
+    max-width: 150px;
+    min-width: 150px;
+    width: 150px;
+  }
+
+  .sponsors-grid__oficial-left .sponsor-card__tenderete,
+  .sponsors-grid__oficial-right .sponsor-card__tenderete {
+    max-width: 140px;
   }
 }
+
