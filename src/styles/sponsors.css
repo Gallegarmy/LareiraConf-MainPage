@@ -34,7 +34,7 @@
 }
 
 .sponsors-backdrop-img {
-  filter: saturate(0.8) brightness(0.85);
+  filter: saturate(0.8) brightness(0.85) hue-rotate(-10deg);
 }
 
 .sponsors-gradient {
@@ -73,7 +73,7 @@
   flex-direction: column;
   justify-content: center;
   gap: 3rem;
-  padding: 4rem 0;
+  padding: 4rem 0 2rem 0;
 }
 
 .sponsors-header {
@@ -114,11 +114,20 @@
 /* Cartel Maestros da Lareira */
 .sponsors-section__sign {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0 0 2rem 0;
   position: relative;
-  z-index: 10;
+}
+
+.sponsors-section__sign-subtitle {
+  font-family: var(--heading-font), sans-serif;
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0.05em;
+  text-align: center;
+  margin: 0;
 }
 
 .sponsors-section__sign-text {
@@ -131,109 +140,111 @@
   text-shadow:
     3px 3px 0 #2b1c12,
     0 0 20px rgba(255, 150, 50, 0.4);
-  image-rendering: pixelated;
-  background: linear-gradient(
-    180deg,
-    rgba(43, 28, 18, 0.9) 0%,
-    rgba(94, 60, 40, 0.85) 50%,
-    rgba(43, 28, 18, 0.9) 100%
-  );
-  padding: 1rem 3rem;
-  border: 4px solid #3d2817;
-  box-shadow:
-    0 8px 20px rgba(0, 0, 0, 0.6),
-    inset 0 2px 4px rgba(255, 221, 181, 0.2),
-    inset 0 -2px 4px rgba(0, 0, 0, 0.4);
-  position: relative;
   margin: 0;
 }
 
-/* Grid Layout */
+.sponsors-section__description {
+  max-width: 100%;
+  text-align: center;
+}
+
+.sponsors-section__description p {
+  font-family: var(--body-font), sans-serif;
+  font-size: clamp(0.9rem, 1.8vw, 1.05rem);
+  line-height: 1.6;
+  color: var(--text-light);
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* Grid Layout - 3 Layers Depth Effect */
 .sponsors-grid {
-  display: grid;
-  grid-template-columns: 1fr 0.5fr 1.5fr 1fr 1.5fr 0.5fr 1fr;
-  grid-template-rows: auto auto;
-  gap: 0 1rem;
-  align-items: end;
-}
-
-/* Fila 1: Oficiales izquierda + Gran Maestro centro + Oficiales derecha */
-.sponsors-grid__oficial--left {
-  grid-column: 1;
-  grid-row: 1;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  z-index: 1;
-}
-
-.sponsors-grid__gran-maestro {
-  grid-column: 3 / 5;
-  grid-row: 1;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  z-index: 1;
-}
-
-.sponsors-grid__oficial--center {
-  grid-column: 4;
-  grid-row: 1;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  z-index: 1;
-  margin-left: 2rem;
-}
-
-.sponsors-grid__oficial--right {
-  grid-column: 7;
-  grid-row: 1;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-end;
-  z-index: 1;
-}
-
-/* Fila 2: Maestros Artesanos */
-.sponsors-grid__maestros {
-  grid-column: 1 / -1;
-  grid-row: 2;
   display: flex;
   flex-direction: column;
   gap: 0;
-  margin-top: -3rem;
-  z-index: 2;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  min-height: 70vh;
+}
+
+/* Maestros - Background layer (al fondo) */
+.sponsors-grid__maestros {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  position: relative;
+  z-index: 1;
 }
 
 .sponsors-grid__maestros-row {
-  display: grid;
-  grid-template-columns: 2fr 0.5fr 2fr 0.5fr 1fr 0.5fr 2fr 0.5fr 2fr;
-  gap: 0;
-  justify-items: center;
+  display: flex;
+  gap: 8rem;
+  justify-content: center;
+  align-items: center;
   width: 100%;
 }
 
-.sponsors-grid__maestros-row--2 {
-  margin-top: -3rem;
-  grid-template-columns: 0.5fr 2fr 0.5fr 2fr 0.5fr 2fr 0.5fr 2fr 0.5fr;
+.sponsors-grid__maestros-row--1 {
+  z-index: 1;
 }
 
-/* Z-index creciente para la segunda fila */
-.sponsors-grid__maestros-row--2 > div:nth-child(2) {
+.sponsors-grid__maestros-row--2 {
+  margin-top: -7.2rem;
+  z-index: 2;
+}
+
+/* Foreground layer - Oficiales + Gran Maestro */
+.sponsors-grid__foreground {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 4rem;
+  width: 100%;
+  margin-top: -5.6rem;
+  position: relative;
   z-index: 3;
 }
 
-.sponsors-grid__maestros-row--2 > div:nth-child(4) {
-  z-index: 4;
+.sponsors-grid__oficial-left,
+.sponsors-grid__oficial-right {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-end;
 }
 
-.sponsors-grid__maestros-row--2 > div:nth-child(6) {
-  z-index: 5;
+.sponsors-grid__oficial-left .sponsor-card:nth-child(1) {
+  margin-bottom: 3rem;
 }
 
-.sponsors-grid__maestros-row--2 > div:nth-child(8) {
-  z-index: 6;
+.sponsors-grid__oficial-left .sponsor-card:nth-child(2) {
+  margin-bottom: 2rem;
+}
+
+.sponsors-grid__oficial-right .sponsor-card:nth-child(1) {
+  margin-bottom: 2rem;
+}
+
+.sponsors-grid__oficial-right .sponsor-card:nth-child(2) {
+  margin-bottom: 3rem;
+}
+
+.sponsors-grid__oficial-right {
+  margin-bottom: 2rem;
+}
+
+.sponsors-grid__oficial-left .sponsor-card__tenderete,
+.sponsors-grid__oficial-right .sponsor-card__tenderete {
+  max-width: 220px;
+}
+
+/* Gran Maestro - Centered */
+.sponsors-grid__gran-maestro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Sponsor Cards - Medieval RPG Style - Character + Poster */
@@ -242,114 +253,82 @@
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  transition: transform 0.2s ease;
   position: relative;
+  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.6));
+  text-decoration: none;
+  color: inherit;
 }
 
-.sponsor-card:hover {
-  transform: translateY(-6px) scale(1.02);
-}
-
-/* Character/Avatar as background image - similar to tickets */
-.sponsor-card__character {
+/* Tenderete container */
+.sponsor-card__tenderete {
   position: relative;
   width: 100%;
   max-width: 280px;
-  aspect-ratio: 1;
+  margin: 0 auto;
+}
+
+.sponsor-card__tenderete-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.6)) brightness(0.55)
+    saturate(0.85) sepia(0.15);
+  position: relative;
+  z-index: 2;
+  opacity: 0.95;
+  transition: filter 0.4s ease;
+}
+
+/* Hover effect - ilumina el tenderete */
+.sponsor-card:hover .sponsor-card__tenderete-img {
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.6)) brightness(1)
+    saturate(0.85) sepia(0.15);
+}
+
+/* Logo container - positioned inside the tenderete "hole" */
+.sponsor-card__logo-container {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(calc(-50% + 4px));
+  width: 60%;
+  height: 35%;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1;
-  margin: 0 auto;
+  background-color: #f4d799;
+  border-radius: 4px;
+  transition: all 0.4s ease;
+  overflow: hidden;
 }
 
-.sponsor-card__character-img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  image-rendering: pixelated;
-  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.6));
-}
-
-.sponsor-card__character-placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 4rem;
-  font-weight: bold;
-  color: rgba(255, 221, 181, 0.3);
-  font-family: var(--heading-font), sans-serif;
-  text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.5);
-}
-
-/* Poster with logo in front of character - horizontal rectangle */
-.sponsor-card__poster {
-  background: linear-gradient(180deg, #8b5a2b 0%, #6a4423 100%);
-  padding: 3px;
-  box-shadow:
-    0 0 0 3px #2b1c12,
-    inset 0 0 0 2px #a87645,
-    0 6px 16px rgba(0, 0, 0, 0.7);
-  transition: all 0.3s ease;
+/* Capa de luz que cae desde arriba */
+.sponsor-card__logo-container::before {
+  content: "";
   position: absolute;
-  bottom: 8%;
+  top: -100%;
   left: 50%;
   transform: translateX(-50%);
-  width: 100%;
-  max-width: 280px;
-  z-index: 2;
-  image-rendering: pixelated;
-}
-
-.sponsor-card__poster::before {
-  content: "";
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  right: 2px;
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(210, 152, 84, 0.6) 20%,
-    rgba(210, 152, 84, 0.6) 80%,
-    transparent 100%
+  width: 120%;
+  height: 200%;
+  background: radial-gradient(
+    ellipse at top,
+    rgba(255, 200, 120, 0.8) 0%,
+    rgba(255, 180, 80, 0.6) 20%,
+    rgba(255, 150, 50, 0.3) 40%,
+    transparent 70%
   );
+  opacity: 0;
+  transition: all 0.6s ease;
   pointer-events: none;
+  z-index: 2;
 }
 
-.sponsor-card:hover .sponsor-card__poster {
-  box-shadow:
-    0 0 0 3px #2b1c12,
-    inset 0 0 0 2px #c9915a,
-    0 8px 20px rgba(0, 0, 0, 0.8);
-}
-
-.sponsor-card__poster-inner {
-  background: linear-gradient(180deg, #d4a574 0%, #c4936a 100%);
-  padding: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-.sponsor-card__poster-inner::after {
-  content: "";
-  position: absolute;
-  bottom: 2px;
-  left: 2px;
-  right: 2px;
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(94, 60, 40, 0.8) 50%,
-    transparent 100%
-  );
+/* Hover effect - enciende la luz desde arriba */
+.sponsor-card:hover .sponsor-card__logo-container::before {
+  top: -50%;
+  opacity: 1;
 }
 
 .sponsor-card__logo {
@@ -357,6 +336,8 @@
   height: 100%;
   object-fit: contain;
   filter: none;
+  position: relative;
+  z-index: 1;
 }
 
 .sponsor-card__logo-placeholder {
@@ -367,137 +348,59 @@
   text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
 }
 
-.sponsor-card__name {
-  font-size: 0.95rem;
-  font-weight: 600;
-  text-align: center;
-  margin: 0.5rem 0 0;
-  color: #ffddb5;
-  font-family: var(--heading-font), sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  text-shadow: 2px 2px 0 #2b1c12;
-  line-height: 1.3;
-  z-index: 3;
-  position: relative;
-}
-
 /* Tier Sizes - RPG Hierarchy */
 .sponsor-card--gran-maestro {
-  .sponsor-card__character {
-    max-width: 300px;
-    min-width: 240px;
+  .sponsor-card__tenderete {
+    max-width: 456px;
   }
 
-  .sponsor-card__character-placeholder {
-    font-size: 6rem;
-  }
-
-  .sponsor-card__poster {
-    max-width: 320px;
-    min-width: 272px;
-    width: 95%;
-  }
-
-  .sponsor-card__poster-inner {
-    padding: 0.5rem;
-  }
-
-  .sponsor-card__logo {
-    width: 100%;
-    height: 100%;
+  .sponsor-card__logo-container {
+    width: 72%;
+    height: 44%;
+    top: 24%;
+    transform: translateX(calc(-50% + 8px));
   }
 
   .sponsor-card__logo-placeholder {
     font-size: 3rem;
   }
-
-  .sponsor-card__name {
-    font-size: 1.35rem;
-  }
 }
 
-/* Efecto de brillo épico para Gran Maestro */
-.sponsor-card--gran-maestro .sponsor-card__character-img {
-  animation: epic-glow 3s ease-in-out infinite;
+.sponsor-card--maestro-artesano .sponsor-card__tenderete,
+.sponsors-grid__maestros .sponsor-card .sponsor-card__tenderete,
+.sponsors-grid__maestros-row .sponsor-card .sponsor-card__tenderete {
+  max-width: 260px;
+  min-width: 260px;
+  width: 260px;
 }
 
-@keyframes epic-glow {
-  0%,
-  100% {
-    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.6))
-      drop-shadow(0 0 20px rgba(210, 152, 84, 0.4));
-  }
-  50% {
-    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.6))
-      drop-shadow(0 0 40px rgba(255, 169, 64, 0.7))
-      drop-shadow(0 0 60px rgba(255, 137, 6, 0.4));
-  }
+.sponsor-card--maestro-artesano .sponsor-card__logo-container,
+.sponsors-grid__maestros .sponsor-card .sponsor-card__logo-container,
+.sponsors-grid__maestros-row .sponsor-card .sponsor-card__logo-container {
+  width: 60%;
+  height: 35%;
 }
 
-.sponsor-card--maestro-artesano,
-.sponsors-grid__maestros .sponsor-card,
-.sponsors-grid__maestros-row .sponsor-card {
-  .sponsor-card__character {
-    max-width: 200px;
-    min-width: 160px;
-  }
-
-  .sponsor-card__character-placeholder {
-    font-size: 4.5rem;
-  }
-
-  .sponsor-card__poster {
-    max-width: 210px;
-    min-width: 168px;
-    width: 95%;
-  }
-
-  .sponsor-card__logo {
-    width: 100%;
-    height: 100%;
-  }
-
-  .sponsor-card__poster-inner {
-    padding: 0.4rem;
-  }
-
-  .sponsor-card__logo-placeholder {
-    font-size: 2rem;
-  }
+.sponsor-card--maestro-artesano .sponsor-card__logo-placeholder,
+.sponsors-grid__maestros .sponsor-card .sponsor-card__logo-placeholder,
+.sponsors-grid__maestros-row .sponsor-card .sponsor-card__logo-placeholder {
+  font-size: 2rem;
 }
 
 .sponsor-card--oficial-artesano {
-  .sponsor-card__character {
-    max-width: 150px;
-    min-width: 120px;
+  .sponsor-card__tenderete {
+    max-width: 220px;
   }
 
-  .sponsor-card__character-placeholder {
-    font-size: 3.5rem;
-  }
-
-  .sponsor-card__poster {
-    max-width: 158px;
-    min-width: 127px;
-    width: 95%;
-  }
-
-  .sponsor-card__logo {
-    width: 100%;
-    height: 100%;
-  }
-
-  .sponsor-card__poster-inner {
-    padding: 0.3rem;
+  .sponsor-card__logo-container {
+    width: 66%;
+    height: 36%;
+    background-color: transparent;
+    z-index: 3;
   }
 
   .sponsor-card__logo-placeholder {
     font-size: 1.75rem;
-  }
-
-  .sponsor-card__name {
-    font-size: 0.9rem;
   }
 }
 
@@ -509,51 +412,16 @@
   }
 
   .sponsors-grid {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto auto;
+    gap: 3rem;
+  }
+
+  .sponsors-grid__maestros {
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
-    align-items: center;
   }
 
-  /* En mobile: Gran Maestro primero */
-  .sponsors-grid__gran-maestro {
-    grid-column: 1;
-    grid-row: 1;
-  }
-
-  /* Oficiales van al final en mobile */
-  .sponsors-grid__oficial--left,
-  .sponsors-grid__oficial--center,
-  .sponsors-grid__oficial--right {
-    grid-column: 1;
-    grid-row: 3;
-    justify-content: center;
-    margin-left: 0;
-  }
-
-  /* Maestros en row 2 */
-  .sponsors-grid__maestros {
-    grid-column: 1;
-    grid-row: 2;
-  }
-
-  .sponsors-grid__maestros {
-    margin-top: 0;
-  }
-
-  .sponsors-grid__maestros-row {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-  }
-
-  .sponsors-grid__maestros-row--2 {
-    margin-top: 0;
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  /* Ocultar divs vacíos en mobile */
-  .sponsors-grid__maestros-row > div:empty {
-    display: none;
+  .sponsors-grid__oficiales .sponsor-card__tenderete {
+    max-width: 200px;
   }
 }
 
@@ -566,87 +434,33 @@
 
   .sponsors-content {
     gap: 2rem;
-    padding: 3rem 1rem;
-  }
-
-  .sponsors-title {
-    font-size: 2.5rem;
-  }
-
-  .sponsors-subtitle {
-    font-size: 1rem;
+    padding: 3rem 1rem 2rem 1rem;
   }
 
   .sponsors-grid {
+    gap: 2.5rem;
+  }
+
+  .sponsors-grid__maestros {
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
   }
 
-  .sponsors-grid__maestros-row {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.25rem;
-  }
-
-  .sponsors-grid__maestros-row--2 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   .sponsors-grid__oficiales {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    grid-column: 1;
+    gap: 1.5rem;
   }
 
-  .sponsors-grid__oficial {
-    grid-column: auto;
-    grid-row: auto;
-  }
-
-  .sponsors-grid__oficial--1,
-  .sponsors-grid__oficial--2,
-  .sponsors-grid__oficial--3,
-  .sponsors-grid__oficial--4 {
-    justify-content: center;
-  }
-
-  /* Centrar el último oficial si queda solo */
-  .sponsors-grid__oficial:last-child:nth-child(3n + 1) {
-    grid-column: 2;
-  }
-
-  /* Reducir tamaños en mobile */
-  .sponsor-card--gran-maestro .sponsor-card__character {
-    max-width: 200px;
-    min-width: 180px;
-  }
-
-  .sponsor-card--gran-maestro .sponsor-card__poster {
-    max-width: 170px;
-    min-width: 153px;
-  }
-
-  .sponsor-card--maestro-artesano .sponsor-card__character,
-  .sponsors-grid__maestros .sponsor-card .sponsor-card__character,
-  .sponsors-grid__maestros-row .sponsor-card .sponsor-card__character {
+  .sponsors-grid__oficiales .sponsor-card__tenderete {
     max-width: 160px;
-    min-width: 140px;
   }
 
-  .sponsor-card--maestro-artesano .sponsor-card__poster,
-  .sponsors-grid__maestros .sponsor-card .sponsor-card__poster,
-  .sponsors-grid__maestros-row .sponsor-card .sponsor-card__poster {
-    max-width: 136px;
-    min-width: 119px;
+  .sponsor-card--maestro-artesano .sponsor-card__tenderete,
+  .sponsors-grid__maestros .sponsor-card__tenderete {
+    max-width: 200px;
   }
 
-  .sponsor-card--oficial-artesano .sponsor-card__character {
-    max-width: 120px;
-    min-width: 105px;
-  }
-
-  .sponsor-card--oficial-artesano .sponsor-card__poster {
-    max-width: 102px;
-    min-width: 89px;
+  .sponsor-card--gran-maestro .sponsor-card__tenderete {
+    max-width: 280px;
   }
 }
 

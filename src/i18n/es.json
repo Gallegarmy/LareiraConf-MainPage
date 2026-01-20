@@ -558,5 +558,9 @@
       "before": "Por correo:"
     },
     "lastUpdate": "Última actualización: 06/01/2026"
+  },
+  "sponsors": {
+    "title": "Patrocinadores",
+    "description": "Toda gran aventura necesita aliados que la hagan posible. Los Artesanos sostienen la Lareira y apoyan a los aventureros en cada misión."
   }
 }
