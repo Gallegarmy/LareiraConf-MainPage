@@ -67,24 +67,25 @@
         "summary": "Relator confirmado para Lareira Conf '26. Máis información próximamente."
       },
       "antonio-fernandes-pilar-vila": {
-        "talkTitle": "Ciberseguridade",
-        "talkDescription": "Máis información próximamente.",
+        "talkTitle": "####",
+        "talkDescription": "####",
         "role": "Por confirmar",
         "summary": "Charla conxunta sobre ciberseguridade.",
         "speakers": {
           "antonio": {
-            "role": "Por confirmar",
-            "summary": "Relator confirmado para Lareira Conf '26. Máis información próximamente."
+            "role": "Hacker and CISO",
+            "summary": "Experto en ciberseguridade con máis de 20 anos de experiencia, especializado en seguridade técnica, xestión do risco e estratexia. Detectou vulnerabilidades en organizacións como a NASA, Google ou o Departamento de Defensa dos EE. UU.\n\nColabora con institucións europeas, participa en asociacións internacionais do sector e é ponente habitual en eventos de referencia.\n\nRecibiu numerosos recoñecementos, entre eles ser elixido un dos 100 mellores ponentes de España en 2025 e o premio á contribución á comunidade por ISMS Forum.\n\nActualmente é CISO nunha multinacional industrial e fundador de CursoDeCiberseguridad.com."
           },
           "pilar": {
-            "role": "Por confirmar",
-            "summary": "Relator confirmado para Lareira Conf '26. Máis información próximamente."
+            "role": "CEO e cofundadora",
+            "company": "Forensic & Security",
+            "summary": "CEO e cofundadora de Forensic & Security, compañía centrada en servizos xestionados de ciberseguridade, con foco na prevención e a resposta ante incidentes.\n\nPerfil técnico de analista forense dixital e perito.\n\nPor outra banda, compaxina esta actividade coa divulgación: ponente habitual e docente de Informática Forense en distintos mestrados de Ciberseguridade en España. Autora e colaboradora en artigos para diferentes publicacións ou organizacións como a revista SIC ou o Centro de Ciberseguridade Industrial entre outros.\n\nAutora do libro da editorial 0xWord: \"Técnicas de Análise Forense Informático para Peritos Xudiciais Profesionais\", e conta con diversas certificacións, entre elas a CHFI (Certified Hacking Forensic Investigator) de EC-Council.\n\nCoorganizadora do evento anual Vicon.gal, dedicado a impulsar a cultura de ciberseguridade e o crecemento do ecosistema profesional galego."
           }
         }
       },
       "borja-perez": {
         "talkTitle": "Actividade",
-        "talkDescription": "Máis información próximamente.",
+        "talkDescription": "####",
         "role": "Community & Marketing Lead",
         "company": "Manfred",
         "summary": "Comunicación, recruiting e sobre todo, axudar á xente."
@@ -98,7 +99,7 @@
       },
       "speaker-4": {
         "talkTitle": "Actividade",
-        "talkDescription": "Máis información próximamente.",
+        "talkDescription": "####",
         "role": "Lead Level Designer",
         "company": "Merge Games",
         "summary": "Cristina G. Aradas, tamén coñecida como Mapache, naceu na Coruña, onde se formou e desenvolveu a maior parte da súa vida profesional. Os seus primeiros pasos laborais foron no mundo da animación aínda que desde hai máis de cinco anos está focalizada no desenvolvemento de videoxogos. Iniciou a súa carreira nos departamentos de Produción e Layout en empresas como Ficción Producciones ou Antaruxa, onde traballou para series de animación como Nivis, Amigos de outro mundo ou longametraxes como Valentina. En plena pandemia tivo a oportunidade de sumarse ao equipo de Gato Salvaje no desenvolvemento de The Waylanders, ocupando o posto de xefa de Deseño de Niveis. Desde 2022 traballa para Merge Games, desenvolvendo o videoxogo Smalland: Survive the Wilds, onde ocupa o cargo de Lead Level Designer e que lle permite seguir desenvolvendo o seu amor por crear mundos poñendo pedras con amor."
@@ -112,7 +113,7 @@
       },
       "eva-gonzalez-brais-calvo": {
         "talkTitle": "Actividade conxunta",
-        "talkDescription": "Máis información proximamente.",
+        "talkDescription": "####",
         "role": "Data Analyst · Cofundadores de nosDeu e Datola",
         "summary": "Actividade conxunta.",
         "speakers": {
