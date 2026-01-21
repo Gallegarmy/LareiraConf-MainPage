@@ -9,7 +9,9 @@ import AlmudenaRealImage from "@img/speakers/Almudena-real.png";
 import BorjaImage from "@img/speakers/Borja-x64.png";
 import BorjaRealImage from "@img/speakers/Borja-real.jpg";
 import AntonioImage from "@img/speakers/Antonio-x64.png";
+import AntonioRealImage from "@img/speakers/Antonio-real.jpg";
 import PilarImage from "@img/speakers/Pilar-x64.png";
+import PilarRealImage from "@img/speakers/Pilar-real.JPG";
 import CristinaImage from "@img/speakers/Cristina-x64.png";
 import CristinaRealImage from "@img/speakers/Cristina-real.jpeg";
 import DiegoImage from "@img/speakers/Diego-x64.png";
@@ -28,12 +30,13 @@ export function getSpeakersData(locale: Locale): Speaker[] {
   return [
     {
       id: "miguel-angel-duran",
-      name: "Miguel Ángel Durán (midudev)",
+      name: "Miguel Ángel Durán",
       talkTitle: speakersData["miguel-angel-duran"].talkTitle,
       talkDescription: speakersData["miguel-angel-duran"].talkDescription,
       talkFormat: "charla",
       tag: "Programación",
       role: speakersData["miguel-angel-duran"].role,
+      company: "midudev",
       summary: speakersData["miguel-angel-duran"].summary,
       image: { src: MiduImage.src, alt: "Retrato de Miguel Ángel Durán" },
       imageReal: {
@@ -71,7 +74,7 @@ export function getSpeakersData(locale: Locale): Speaker[] {
       summary: speakersData["antonio-fernandes-pilar-vila"].summary,
       image: { src: AntonioImage.src, alt: "Retrato de Antonio Fernandes" },
       socials: [],
-      isRevealed: false,
+      isRevealed: true,
       colSpan: 2,
       isMultiSpeaker: true,
       speakers: [
@@ -83,17 +86,38 @@ export function getSpeakersData(locale: Locale): Speaker[] {
             speakersData["antonio-fernandes-pilar-vila"].speakers.antonio
               .summary,
           image: { src: AntonioImage.src, alt: "Retrato de Antonio Fernandes" },
-          socials: [],
+          imageReal: {
+            src: AntonioRealImage.src,
+            alt: "Fotografía de Antonio Fernandes",
+          },
+          socials: [
+            {
+              label: "LinkedIn",
+              url: "https://www.linkedin.com/in/afernandesvigo/",
+            },
+            { label: "Web", url: "https://www.fernandes.es/" },
+          ],
           flipImage: true,
         },
         {
           name: "Pilar Vila",
           role: speakersData["antonio-fernandes-pilar-vila"].speakers.pilar
             .role,
+          company:
+            speakersData["antonio-fernandes-pilar-vila"].speakers.pilar.company,
           summary:
             speakersData["antonio-fernandes-pilar-vila"].speakers.pilar.summary,
           image: { src: PilarImage.src, alt: "Retrato de Pilar Vila" },
-          socials: [],
+          imageReal: {
+            src: PilarRealImage.src,
+            alt: "Fotografía de Pilar Vila",
+          },
+          socials: [
+            {
+              label: "LinkedIn",
+              url: "https://www.linkedin.com/in/pilar-vila-forensicsec/",
+            },
+          ],
         },
       ],
     },
