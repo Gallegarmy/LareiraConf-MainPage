@@ -31,7 +31,7 @@ const lang = getLangFromUrl(Astro.url);
   }
   .container {
     display: flex;
-    width: 500%;
+    width: 700%;
     height: 100vh;
     transition: width 0.3s ease;
   }
@@ -62,11 +62,10 @@ const lang = getLangFromUrl(Astro.url);
 
 <Layout title="Lareira Conf 2026">
   <HorizontalScroll client:load className="container">
-
     <HomeSection lang={lang} />
     <TicketsSection client:load lang={lang} />
     <SpeakersSection client:load lang={lang} />
-    <SponsorsSection client:load lang={lang}/>
+    <SponsorsSection client:load lang={lang} />
     <TeamSection client:load lang={lang} />
     {/* <CommunitiesSection client:load /> */}
     <FAQSection client:load lang={lang} />
