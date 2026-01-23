@@ -18,6 +18,7 @@ import DiegoImage from "@img/speakers/Diego-x64.png";
 import NachoImage from "@img/speakers/Nacho-x64.png";
 import NachoRealImage from "@img/speakers/Nacho-real.png";
 import NereaImage from "@img/speakers/Nerea-x64.png";
+import NereaRealImage from "@img/speakers/Nerea-real.jpg";
 import EvaImage from "@img/speakers/Eva-x64.png";
 import EvaRealImage from "@img/speakers/Eva-real.png";
 import BraisImage from "@img/speakers/Brais-x64.png";
@@ -51,16 +52,25 @@ export function getSpeakersData(locale: Locale): Speaker[] {
       isRevealed: true,
     },
     {
-      id: "speaker-7",
+      id: "nerea-luis",
       name: "Nerea Luis",
-      talkTitle: speakersData["speaker-7"].talkTitle,
-      talkDescription: speakersData["speaker-7"].talkDescription,
+      talkTitle: speakersData["nerea-luis"].talkTitle,
+      talkDescription: speakersData["nerea-luis"].talkDescription,
+      talkFormat: "charla",
       tag: "IA",
-      role: speakersData["speaker-7"].role,
-      summary: speakersData["speaker-7"].summary,
+      role: speakersData["nerea-luis"].role,
+      company: "Lumi Labs",
+      summary: speakersData["nerea-luis"].summary,
       image: { src: NereaImage.src, alt: "Retrato de Nerea Luis" },
-      socials: [],
-      isRevealed: false,
+      imageReal: {
+        src: NereaRealImage.src,
+        alt: "Fotografía de Nerea Luis",
+      },
+      socials: [
+        { label: "X", url: "https://x.com/sailormerqury" },
+        { label: "LinkedIn", url: "https://www.linkedin.com/in/nerealuis/" },
+      ],
+      isRevealed: true,
     },
     {
       id: "antonio-fernandes-pilar-vila",
