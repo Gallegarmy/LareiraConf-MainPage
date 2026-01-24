@@ -94,7 +94,7 @@
 }
 
 .speakers-copy__eyebrow {
-  font-size: 0.85rem;
+  font-size: 1.2rem;
   letter-spacing: var(--custom-letter-spacing);
   text-transform: uppercase;
   color: rgba(255, 231, 210, 0.7);
@@ -150,7 +150,7 @@
 
 @media (max-width: 540px) {
   .speakers-copy p {
-    font-size: 0.98rem;
+    font-size: 1.2rem;
   }
 
   .speakers-preview-embed {

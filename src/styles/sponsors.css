@@ -95,7 +95,7 @@
   font-family: var(--body-font), sans-serif;
   text-align: center;
   margin: 0 0 0.75rem;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   letter-spacing: var(--custom-letter-spacing);
   color: var(--text-light);
 }
@@ -118,7 +118,7 @@
 
 .sponsors-section__description p {
   text-align: center;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   letter-spacing: var(--custom-letter-spacing);
   color: var(--text-light);
 }
@@ -364,7 +364,7 @@
 
 /* Texto personalizado para sponsor call-to-action */
 .sponsor-card__custom-text {
-  font-size: 0.85rem;
+  font-size: 1.2rem;
   font-weight: 600;
   color: #ffddb5;
   font-family: var(--body-font), sans-serif;
@@ -523,7 +523,7 @@
   }
 
   .sponsors-section__description p {
-    font-size: clamp(0.85rem, 2vw, 1rem);
+    font-size: 1.2rem;
   }
 
   .sponsors-content {
@@ -617,7 +617,7 @@
   }
 
   .sponsor-card__cartel .sponsor-card__custom-text {
-    font-size: 2.2rem;
+    font-size: 1.4rem;
     padding-left: 3rem;
     padding-right: 3rem;
   }
@@ -695,7 +695,7 @@
   }
 
   .sponsors-section__description p {
-    font-size: 0.9rem;
+    font-size: 1.2rem;
     white-space: normal;
   }
 

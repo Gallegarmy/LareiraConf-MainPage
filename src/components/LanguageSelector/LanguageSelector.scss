@@ -18,7 +18,7 @@
   border: none;
   color: var(--text-light);
   font-family: var(--heading-font);
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   font-weight: bold;
   letter-spacing: 0.05em;
   cursor: pointer;
@@ -39,7 +39,7 @@
 .lang-separator {
   color: rgba(255, 231, 210, 0.3);
   font-family: var(--heading-font);
-  font-size: 0.9rem;
+  font-size: 1.2rem;
 }
 
 @media (max-width: 768px) {
@@ -50,7 +50,7 @@
   }
 
   .lang-button {
-    font-size: 0.85rem;
+    font-size: 1.2rem;
     padding: 0.2rem 0.4rem;
   }
 }

@@ -157,7 +157,8 @@
 .team-copy p {
   text-align: center;
   margin: 0 0 0.75rem;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  line-height: 1.2;
   letter-spacing: var(--custom-letter-spacing);
   color: var(--text-light);
 }
@@ -371,14 +372,14 @@
 }
 
 .character-tooltip p {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   letter-spacing: var(--custom-letter-spacing);
   line-height: 1.1rem;
 }
 
 .character-role {
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   letter-spacing: var(--custom-letter-spacing);
   text-transform: uppercase;
 }
@@ -394,7 +395,7 @@
   align-items: center;
   gap: 0.35rem;
   color: rgba(255, 231, 210, 0.95);
-  font-size: 0.95rem;
+  font-size: 1.2rem;
   letter-spacing: var(--custom-letter-spacing);
   text-transform: uppercase;
   text-decoration: none;
