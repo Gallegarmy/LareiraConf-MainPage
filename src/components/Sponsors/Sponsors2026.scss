@@ -1,0 +1,346 @@
+// Estilos para la sección de Patrocinadores 2026
+// Incluye avatares con carteles de logo y efectos de ambiente
+
+.sponsor-card-2026 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+
+// Avatar del patrocinador
+.sponsor-avatar-container {
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
+}
+
+.sponsor-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 4px solid #000;
+  image-rendering: pixelated;
+  background: #8b4513;
+
+  &.placeholder-avatar {
+    opacity: 0.7;
+  }
+}
+
+// Cartel con logo
+.sponsor-poster {
+  background: #f5deb3;
+  padding: 0.5rem;
+  transform: rotate(-2deg);
+  box-shadow:
+    4px 4px 0 rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(255, 150, 0, 0.2);
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: rotate(0deg);
+    box-shadow:
+      6px 6px 0 rgba(0, 0, 0, 0.4),
+      0 0 30px rgba(255, 150, 0, 0.4);
+  }
+}
+
+// Efecto de cinta adhesiva
+.poster-tape {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 20px;
+  background: rgba(255, 255, 200, 0.6);
+  border: 1px solid rgba(200, 200, 150, 0.8);
+  z-index: 3;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    background: rgba(200, 200, 150, 0.4);
+  }
+
+  &::before {
+    left: 30%;
+  }
+
+  &::after {
+    right: 30%;
+  }
+}
+
+.poster-border {
+  border: 3px solid #8b4513;
+  padding: 1rem;
+  background: #fff;
+  position: relative;
+}
+
+.poster-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.sponsor-logo {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+
+  &.placeholder-logo {
+    opacity: 0.5;
+    filter: grayscale(1);
+  }
+}
+
+.sponsor-name {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #000;
+  margin: 0;
+  font-family: "Press Start 2P", monospace;
+}
+
+.sponsor-description {
+  font-size: 0.875rem;
+  color: #333;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.sponsor-link {
+  font-size: 0.75rem;
+  color: #8b4513;
+  text-decoration: none;
+  border-bottom: 1px solid #8b4513;
+  padding: 0.25rem 0.5rem;
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: #654321;
+    background: rgba(139, 69, 19, 0.1);
+    border-bottom-width: 2px;
+  }
+}
+
+// Tamaños según tier - Gran Maestro
+.gran-maestro {
+  .sponsor-avatar {
+    width: 150px;
+    height: 150px;
+  }
+
+  .sponsor-poster {
+    width: 320px;
+    min-height: 280px;
+  }
+
+  .sponsor-logo {
+    max-height: 140px;
+  }
+
+  .sponsor-name {
+    font-size: 1.5rem;
+  }
+
+  .poster-tape {
+    width: 80px;
+    height: 25px;
+  }
+}
+
+// Maestro Artesano
+.maestro-artesano {
+  .sponsor-avatar {
+    width: 100px;
+    height: 100px;
+  }
+
+  .sponsor-poster {
+    width: 220px;
+    min-height: 200px;
+  }
+
+  .sponsor-logo {
+    max-height: 90px;
+  }
+
+  .sponsor-name {
+    font-size: 1rem;
+  }
+}
+
+// Oficial Artesano
+.oficial-artesano {
+  .sponsor-avatar {
+    width: 70px;
+    height: 70px;
+    border-width: 3px;
+  }
+
+  .sponsor-poster {
+    width: 160px;
+    min-height: 140px;
+    padding: 0.35rem;
+  }
+
+  .poster-border {
+    border-width: 2px;
+    padding: 0.75rem;
+  }
+
+  .sponsor-logo {
+    max-height: 60px;
+  }
+
+  .sponsor-name {
+    font-size: 0.875rem;
+  }
+
+  .sponsor-description {
+    font-size: 0.7rem;
+  }
+
+  .poster-tape {
+    width: 45px;
+    height: 15px;
+  }
+}
+
+// Animaciones y efectos especiales
+@keyframes glow {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 5px rgba(255, 150, 0, 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 15px rgba(255, 150, 0, 0.6));
+  }
+}
+
+.gran-maestro {
+  animation: glow 3s ease-in-out infinite;
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .gran-maestro {
+    .sponsor-avatar {
+      width: 120px;
+      height: 120px;
+    }
+
+    .sponsor-poster {
+      width: 280px;
+      min-height: 240px;
+    }
+
+    .sponsor-logo {
+      max-height: 110px;
+    }
+
+    .sponsor-name {
+      font-size: 1.25rem;
+    }
+  }
+
+  .maestro-artesano {
+    .sponsor-avatar {
+      width: 80px;
+      height: 80px;
+    }
+
+    .sponsor-poster {
+      width: 180px;
+      min-height: 160px;
+    }
+
+    .sponsor-logo {
+      max-height: 70px;
+    }
+  }
+
+  .oficial-artesano {
+    .sponsor-avatar {
+      width: 60px;
+      height: 60px;
+    }
+
+    .sponsor-poster {
+      width: 140px;
+      min-height: 120px;
+    }
+
+    .sponsor-logo {
+      max-height: 50px;
+    }
+
+    .sponsor-name {
+      font-size: 0.75rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .sponsor-card-2026 {
+    gap: 0.75rem;
+  }
+
+  .gran-maestro {
+    .sponsor-avatar {
+      width: 100px;
+      height: 100px;
+    }
+
+    .sponsor-poster {
+      width: 240px;
+      min-height: 200px;
+    }
+
+    .sponsor-logo {
+      max-height: 90px;
+    }
+
+    .sponsor-name {
+      font-size: 1rem;
+    }
+  }
+
+  .maestro-artesano {
+    .sponsor-avatar {
+      width: 70px;
+      height: 70px;
+    }
+
+    .sponsor-poster {
+      width: 160px;
+      min-height: 140px;
+    }
+
+    .sponsor-logo {
+      max-height: 60px;
+    }
+
+    .sponsor-name {
+      font-size: 0.875rem;
+    }
+  }
+}
