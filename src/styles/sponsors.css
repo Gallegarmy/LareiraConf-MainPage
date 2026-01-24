@@ -307,10 +307,11 @@
 }
 
 /* Oficiales: detrás del tenderete, centrados, más grandes */
-.sponsor-card--oficial-artesano .sponsor-card__character {
+.sponsor-card--oficial-artesano .sponsor-card__character,
+.sponsor-card__character--center {
   height: 240%;
   left: 50%;
-  transform: translateX(-50%);
+  transform-origin: center center;
   z-index: 0;
 }
 
@@ -344,17 +345,18 @@
 /* Logo container - positioned inside the tenderete "hole" */
 .sponsor-card__logo-container {
   position: absolute;
-  top: 30%;
+  top: 20%;
   left: 50%;
-  transform: translateX(calc(-50% + 4px));
+  transform: translateX(calc(-50% + 2px));
   width: 60%;
-  height: 35%;
+  height: 50%;
   display: flex;
+  padding: 0.5rem;
   align-items: center;
   justify-content: center;
   z-index: 1;
   background-color: #f4d799;
-  border-radius: 4px;
+  border-radius: 0px;
   transition: all 0.4s ease;
   overflow: hidden;
 }
@@ -517,13 +519,6 @@
   width: 247px;
 }
 
-.sponsor-card--maestro-artesano .sponsor-card__logo-container,
-.sponsors-grid__maestros .sponsor-card .sponsor-card__logo-container,
-.sponsors-grid__maestros-row .sponsor-card .sponsor-card__logo-container {
-  width: 60%;
-  height: 35%;
-}
-
 .sponsor-card--maestro-artesano .sponsor-card__logo-placeholder,
 .sponsors-grid__maestros .sponsor-card .sponsor-card__logo-placeholder,
 .sponsors-grid__maestros-row .sponsor-card .sponsor-card__logo-placeholder {
@@ -541,8 +536,6 @@
   }
 
   .sponsor-card__logo-container {
-    width: 66%;
-    height: 36%;
     background-color: transparent;
     z-index: 3;
   }
@@ -691,20 +684,49 @@
   }
 
   /* Mobile: personajes en extremos exteriores del grid de 2 columnas */
-  /* Columna IZQUIERDA (impares: 1,5,7,9) → personaje a la IZQUIERDA (exterior) */
-  .sponsors-grid__maestros .sponsor-card:nth-child(1) .sponsor-card__character,
-  .sponsors-grid__maestros .sponsor-card:nth-child(5) .sponsor-card__character,
-  .sponsors-grid__maestros .sponsor-card:nth-child(7) .sponsor-card__character,
-  .sponsors-grid__maestros .sponsor-card:nth-child(9) .sponsor-card__character {
+  /* En mobile, los sponsors inactivos se ocultan, así que los nth-child cambian */
+  /* Grid 2x3: columna izquierda (1,3,5) → personajes a la IZQUIERDA */
+  .sponsors-grid__maestros
+    .sponsor-card:nth-child(1):not(.sponsor-card--inactive)
+    .sponsor-card__character,
+  .sponsors-grid__maestros
+    .sponsor-card:nth-child(3):not(.sponsor-card--inactive)
+    .sponsor-card__character,
+  .sponsors-grid__maestros
+    .sponsor-card:nth-child(5):not(.sponsor-card--inactive)
+    .sponsor-card__character {
     left: -15% !important;
     right: auto !important;
+    transform-origin: left center;
   }
 
-  /* Columna DERECHA (pares: 6,8) → personaje a la DERECHA (exterior) */
-  .sponsors-grid__maestros .sponsor-card:nth-child(6) .sponsor-card__character,
-  .sponsors-grid__maestros .sponsor-card:nth-child(8) .sponsor-card__character {
+  /* Grid 2x3: columna derecha (2,4,6) → personajes a la DERECHA */
+  .sponsors-grid__maestros
+    .sponsor-card:nth-child(2):not(.sponsor-card--inactive)
+    .sponsor-card__character,
+  .sponsors-grid__maestros
+    .sponsor-card:nth-child(4):not(.sponsor-card--inactive)
+    .sponsor-card__character,
+  .sponsors-grid__maestros
+    .sponsor-card:nth-child(6):not(.sponsor-card--inactive)
+    .sponsor-card__character {
     left: auto !important;
     right: -15% !important;
+    transform-origin: right center;
+  }
+
+  /* Eliminar override específico de Denodo */
+
+  /* Mobile: brillo máximo en tenderetes (sin hover) */
+  .sponsor-card__tenderete-img {
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.6)) brightness(1)
+      saturate(0.85) sepia(0.15) !important;
+  }
+
+  /* Mobile: luz activa en logos */
+  .sponsor-card__logo-container::before {
+    top: -50% !important;
+    opacity: 1 !important;
   }
 
   /* Gran maestro: mostrar ambos personajes en mobile */
