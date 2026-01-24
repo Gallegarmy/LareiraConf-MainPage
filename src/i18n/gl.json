@@ -17,6 +17,7 @@
     "date": "20 e 21 de Marzo",
     "location": "A Coruña",
     "title": "Lareira Conf '26",
+    "sponsoredBy": "Powered by",
     "subtitle": "O encontro tech que acende ideas e conecta comunidades",
     "eyebrow": "Charlas. Networking. Xogos. Show",
     "secondaryTitle": "Unha conferencia para vivila en primeira persoa",
@@ -558,5 +559,9 @@
       "before": "Por correo:"
     },
     "lastUpdate": "Última actualización: 13/01/2026"
+  },
+  "sponsors": {
+    "title": "Patrocinadores",
+    "description": "Toda gran aventura precisa aliados que a fagan posible. Os Artesáns sosteñen a Lareira e apoian aos aventureiros en cada misión."
   }
 }

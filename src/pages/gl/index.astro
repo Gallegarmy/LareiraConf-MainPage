@@ -4,6 +4,7 @@ import HorizontalScroll from "@components/Parallax/HorizontalScroll";
 import HomeSection from "@components/Home/HomeSection";
 import TeamSection from "@components/Team/TeamSection";
 import TicketsSection from "@components/TicketsSection/TicketsSection";
+import SponsorsSection from "@components/Sponsors/SponsorsSection";
 import SpeakersSection from "@components/Speakers/SpeakersSection";
 import FAQSection from "@components/FAQ/FAQSection";
 import SocialSection from "@components/SocialSection/SocialSection";
@@ -29,7 +30,7 @@ const lang = getLangFromUrl(Astro.url);
   }
   .container {
     display: flex;
-    width: 500%;
+    width: 600%;
     height: 100vh;
     transition: width 0.3s ease;
   }
@@ -63,6 +64,7 @@ const lang = getLangFromUrl(Astro.url);
     <HomeSection lang={lang} />
     <TicketsSection client:load lang={lang} />
     <SpeakersSection client:load lang={lang} />
+    <SponsorsSection client:load lang={lang} />
     <TeamSection client:load lang={lang} />
     <FAQSection client:load lang={lang} />
     <SocialSection client:load lang={lang} />
