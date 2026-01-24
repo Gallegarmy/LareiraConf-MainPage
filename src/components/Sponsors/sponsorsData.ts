@@ -148,7 +148,7 @@ export const sponsorsConfig: SponsorConfig[] = [
     character: {
       type: "H",
       side: "left",
-      variation: { rotate: 3, scale: 1.0, flip: false },
+      variation: { rotate: 3, scale: 1.0, flip: true },
     },
   },
   {
@@ -184,7 +184,7 @@ export const sponsorsConfig: SponsorConfig[] = [
     character: {
       type: "H", // Intercambiado con Gradiant
       side: "right",
-      variation: { rotate: -2, scale: 1, flip: false },
+      variation: { rotate: -2, scale: 1, flip: true },
     },
   },
   {
@@ -196,7 +196,7 @@ export const sponsorsConfig: SponsorConfig[] = [
     character: {
       type: "M", // Intercambiado con Docuten
       side: "right",
-      variation: { rotate: 1, scale: 1, flip: false },
+      variation: { rotate: 1, scale: 1, flip: true },
     },
   },
 
@@ -222,7 +222,7 @@ export const sponsorsConfig: SponsorConfig[] = [
     character: {
       type: "M",
       side: "center",
-      variation: { rotate: 0, scale: 1, flip: false },
+      variation: { rotate: 0, scale: 1, flip: true },
     },
   },
   {

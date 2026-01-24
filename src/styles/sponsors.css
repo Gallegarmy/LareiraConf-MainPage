@@ -559,8 +559,8 @@
 
   /* Maestros: todos en un solo grid de 2 columnas */
   .sponsors-grid__maestros {
-    max-width: 500px;
-    gap: 0.5rem;
+    max-width: 350px;
+    gap: 0.5rem 0;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     margin-bottom: 4rem;
@@ -627,7 +627,6 @@
     .sponsor-card__character {
     left: -15% !important;
     right: auto !important;
-    transform-origin: left center;
   }
 
   .sponsors-grid__maestros
@@ -635,7 +634,29 @@
     .sponsor-card__character {
     left: auto !important;
     right: -15% !important;
-    transform-origin: right center;
+  }
+
+  /* Fix: WordPress (5th child) debe ir a la derecha porque es el 2do visible */
+  .sponsors-grid__maestros
+    .sponsor-card:nth-child(5):not(.sponsor-card--inactive)
+    .sponsor-card__character {
+    left: auto !important;
+    right: -15% !important;
+  }
+
+  /* Fix: Invertir flip en mobile para Denodo y Docuten */
+  @media (max-width: 768px) {
+    .sponsors-grid__maestros
+      .sponsor-card:nth-child(7)
+      .sponsor-card__character {
+      transform: rotate(2deg) scale(1) scaleX(-1) !important;
+    }
+
+    .sponsors-grid__maestros
+      .sponsor-card:nth-child(8)
+      .sponsor-card__character {
+      transform: rotate(-2deg) scale(1) scaleX(1) !important;
+    }
   }
 
   /* Mobile: brillo máximo en tenderetes (sin hover) */
