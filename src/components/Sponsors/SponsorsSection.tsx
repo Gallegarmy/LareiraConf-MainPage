@@ -4,8 +4,13 @@ import sponsorsBg from "@img/parallax/sponsors-bg.png";
 import { useTranslations, type Locale } from "@/i18n/utils";
 import "@styles/sponsors.css";
 
-// Importar avatar
-import aventureroAvatar from "@img/assets/aventurero.png";
+// Importar personajes
+import granMaestroH from "@img/sponsors/gran-maestro-h.png";
+import granMaestroM from "@img/sponsors/gran-maestro-m.png";
+import artesanoH from "@img/sponsors/artesano-h.png";
+import artesanoM from "@img/sponsors/artesano-m.png";
+import oficialH from "@img/sponsors/oficial-h.png";
+import oficialM from "@img/sponsors/oficial-m.png";
 
 // Importar logos
 import dinahostingLogo from "@img/sponsors/dinahosting.svg";
@@ -25,7 +30,8 @@ const sponsors = {
     name: "Dinahosting",
     tier: "gran-maestro",
     logo: dinahostingLogo.src,
-    avatar: aventureroAvatar.src,
+    avatarLeft: granMaestroM.src,
+    avatarRight: granMaestroH.src,
     url: "https://dinahosting.com",
   },
   maestrosArtesanos: [
@@ -33,63 +39,54 @@ const sponsors = {
       name: "NextDigital",
       tier: "maestro-artesano",
       logo: nextdigitalLogo.src,
-      avatar: aventureroAvatar.src,
       url: "https://nextdigital.es",
     },
     {
       name: "?",
       tier: "maestro-artesano",
       logo: null,
-      avatar: aventureroAvatar.src,
       url: undefined,
     },
     {
       name: "?",
       tier: "maestro-artesano",
       logo: null,
-      avatar: aventureroAvatar.src,
       url: undefined,
     },
     {
       name: "?",
       tier: "maestro-artesano",
       logo: null,
-      avatar: aventureroAvatar.src,
       url: undefined,
     },
     {
       name: "WordPress.com",
       tier: "maestro-artesano",
       logo: wordpressLogo.src,
-      avatar: aventureroAvatar.src,
       url: "https://wordpress.com/es/academia/",
     },
     {
       name: "Raiola",
       tier: "maestro-artesano",
       logo: raiolaLogo.src,
-      avatar: aventureroAvatar.src,
       url: "https://raiolanetworks.es",
     },
     {
       name: "Denodo",
       tier: "maestro-artesano",
       logo: denodoLogo.src,
-      avatar: aventureroAvatar.src,
       url: "https://www.denodo.com",
     },
     {
       name: "Docuten",
       tier: "maestro-artesano",
       logo: docutenLogo.src,
-      avatar: aventureroAvatar.src,
       url: "https://www.docuten.com",
     },
     {
       name: "Gradiant",
       tier: "maestro-artesano",
       logo: gradiantLogo.src,
-      avatar: aventureroAvatar.src,
       url: "https://www.gradiant.org",
     },
   ],
@@ -98,28 +95,24 @@ const sponsors = {
       name: "Captology",
       tier: "oficial-artesano",
       logo: captologyLogo.src,
-      avatar: aventureroAvatar.src,
       url: "https://captology.es",
     },
     {
       name: "Teimas",
       tier: "oficial-artesano",
       logo: teimasLogo.src,
-      avatar: aventureroAvatar.src,
       url: "https://www.teimas.com",
     },
     {
       name: "Kelea",
       tier: "oficial-artesano",
       logo: keleaLogo.src,
-      avatar: aventureroAvatar.src,
       url: "https://kelea.es",
     },
     {
       name: "?",
       tier: "oficial-artesano",
       logo: null,
-      avatar: aventureroAvatar.src,
       url: "https://lareiraconfsponsordeck.my.canva.site/",
       customText:
         "¿Quieres montar tu puesto? Consulta el dossier de patrocinio",
@@ -128,29 +121,92 @@ const sponsors = {
 };
 
 import tendretePeq from "@img/sponsors/tenderete-peq.png";
-import tendereteMid from "@img/sponsors/tenderete-mid.png";
-import tendereteGran from "@img/sponsors/tenderete-gran.png";
+import tendereteG from "@img/sponsors/tenderete-g.png";
+import tendereteM1 from "@img/sponsors/tenderete-m1.png";
+import tendereteM2 from "@img/sponsors/tenderete-m2.png";
+import tendereteM3 from "@img/sponsors/tenderete-m3.png";
+import tendereteM4 from "@img/sponsors/tenderete-m4.png";
+import tendereteM5 from "@img/sponsors/tenderete-m5.png";
+
+const tenderetesMaestros = [
+  tendereteM1.src,
+  tendereteM2.src,
+  tendereteM3.src,
+  tendereteM4.src,
+  tendereteM5.src,
+];
+
+// Mapa de índices a tenderetes específicos (para casos especiales)
+const tendereteOverrides: Record<number, string> = {
+  5: tendereteM3.src, // Raiola (índice 5) usa tenderete 3
+  6: tendereteM1.src, // Denodo (índice 6) usa tenderete 1
+};
+
+// Mapa de índices a lados específicos para maestros artesanos
+const characterSideOverrides: Record<number, "left" | "right"> = {
+  6: "left", // Denodo a la izquierda
+};
+
+// Mapa de índices a avatares específicos
+const characterAvatarOverrides: Record<number, string> = {
+  5: artesanoH.src, // Raiola (5) intercambio con Denodo
+  6: artesanoM.src, // Denodo (6) intercambio con Raiola
+  7: artesanoH.src, // Docuten (7) intercambio con Gradiant
+  8: artesanoM.src, // Gradiant (8) intercambio con Docuten
+};
+
+const getRandomArtesanoAvatar = (index: number) => {
+  return index % 2 === 0 ? artesanoH.src : artesanoM.src;
+};
+
+const getArtesanoVariations = (index: number) => {
+  // Generar variaciones basadas en el índice para que sean consistentes
+  const variations = [
+    { rotate: 2, scale: 1.0, flip: false },
+    { rotate: -3, scale: 1.05, flip: true },
+    { rotate: 1, scale: 0.98, flip: false },
+    { rotate: -2, scale: 1.02, flip: false },
+    { rotate: 3, scale: 1.0, flip: true },
+    { rotate: -1, scale: 1.03, flip: false },
+    { rotate: 2, scale: 0.99, flip: true }, // Denodo (índice 6) - sin voltear
+    { rotate: -2, scale: 1.01, flip: false },
+    { rotate: 1, scale: 1.04, flip: false },
+  ];
+  return variations[index % variations.length];
+};
+
+const getRandomTendereteMaestro = (index: number) => {
+  // Si hay un override para este índice, usarlo
+  if (tendereteOverrides[index]) {
+    return tendereteOverrides[index];
+  }
+  return tenderetesMaestros[index % tenderetesMaestros.length];
+};
 
 interface SponsorCardProps {
   name: string;
   tier: string;
   logo?: string | null;
   avatar?: string | null;
+  avatarLeft?: string | null;
+  avatarRight?: string | null;
   url?: string;
   index?: number;
   customText?: string;
 }
 
-const getTendereteImage = (tier: string) => {
+const getTendereteImage = (tier: string, index?: number) => {
   switch (tier) {
     case "gran-maestro":
-      return tendereteGran.src;
+      return tendereteG.src;
     case "oficial-artesano":
       return tendretePeq.src;
     case "maestro-artesano":
-      return tendereteMid.src;
+      return index !== undefined
+        ? getRandomTendereteMaestro(index)
+        : tendereteM1.src;
     default:
-      return tendereteMid.src;
+      return tendereteM1.src;
   }
 };
 
@@ -160,40 +216,73 @@ const SponsorCard: React.FC<SponsorCardProps> = ({
   logo,
   url,
   avatar,
+  avatarLeft,
+  avatarRight,
   index = 0,
   customText,
 }) => {
-  // Alternar lado del muñeco según el índice (para maestros y oficiales)
-  let characterSide =
-    tier !== "gran-maestro" && index % 2 === 0 ? "left" : "right";
+  // Determinar lado del muñeco según el tier
+  let characterSide = "left";
+  if (tier === "maestro-artesano") {
+    // Verificar si hay un override para este índice
+    if (characterSideOverrides[index]) {
+      characterSide = characterSideOverrides[index];
+    } else {
+      // En mobile: impares a la izquierda, pares a la derecha
+      characterSide = index % 2 === 0 ? "right" : "left";
+    }
+  } else if (tier === "oficial-artesano") {
+    characterSide = index % 2 === 0 ? "right" : "left";
+  }
+
+  // Determinar avatar según el tier
+  let characterAvatar = avatar;
+  let characterStyle: React.CSSProperties = {};
+
+  if (tier === "maestro-artesano" && logo) {
+    // Verificar si hay un override para el avatar
+    if (characterAvatarOverrides[index]) {
+      characterAvatar = characterAvatarOverrides[index];
+    } else {
+      characterAvatar = getRandomArtesanoAvatar(index);
+    }
+    const variations = getArtesanoVariations(index);
+    characterStyle = {
+      transform: `rotate(${variations.rotate}deg) scale(${variations.scale})${variations.flip ? " scaleX(-1)" : ""}`,
+    };
+  } else if (tier === "oficial-artesano" && logo) {
+    characterAvatar = index % 2 === 0 ? oficialH.src : oficialM.src;
+  }
 
   const isInactive = !logo && !customText;
   const cardClasses = `sponsor-card sponsor-card--${tier}${isInactive ? " sponsor-card--inactive" : ""}`;
 
   const content = (
     <div className="sponsor-card__content">
-      {avatar && logo && (
+      {logo && (
         <>
-          {tier === "gran-maestro" ? (
+          {tier === "gran-maestro" && avatarLeft && avatarRight ? (
             <>
               <img
-                src={avatar}
+                src={avatarLeft}
                 alt=""
                 className="sponsor-card__character sponsor-card__character--left"
               />
               <img
-                src={avatar}
+                src={avatarRight}
                 alt=""
                 className="sponsor-card__character sponsor-card__character--right"
+                style={{ transform: "scaleX(-1)" }}
               />
             </>
-          ) : (
+          ) : characterAvatar ? (
             <img
-              src={avatar}
+              src={characterAvatar}
               alt=""
               className={`sponsor-card__character sponsor-card__character--${characterSide}`}
+              style={characterStyle}
             />
-          )}
+          ) : null}
         </>
       )}
       {customText ? (
@@ -205,7 +294,7 @@ const SponsorCard: React.FC<SponsorCardProps> = ({
       ) : (
         <div className="sponsor-card__tenderete">
           <img
-            src={getTendereteImage(tier)}
+            src={getTendereteImage(tier, index)}
             alt=""
             className="sponsor-card__tenderete-img"
           />
