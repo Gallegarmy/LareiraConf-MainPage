@@ -27,6 +27,9 @@ import tendereteM3 from "@img/sponsors/tenderete-m3.png";
 import tendereteM4 from "@img/sponsors/tenderete-m4.png";
 import tendereteM5 from "@img/sponsors/tenderete-m5.png";
 
+// Importar cartel
+import cartelImage from "@img/sponsors/cartel.png";
+
 export type SponsorTier =
   | "gran-maestro"
   | "maestro-artesano"
@@ -46,6 +49,7 @@ export interface SponsorConfig {
   logo: string | null;
   url?: string;
   customText?: string;
+  customImage?: string;
 
   // Configuración de tenderete
   tenderete: string;
@@ -143,8 +147,8 @@ export const sponsorsConfig: SponsorConfig[] = [
     tenderete: tenderetes.maestro5,
     character: {
       type: "H",
-      side: "right",
-      variation: { rotate: 3, scale: 1.0, flip: true },
+      side: "left",
+      variation: { rotate: 3, scale: 1.0, flip: false },
     },
   },
   {
@@ -238,7 +242,8 @@ export const sponsorsConfig: SponsorConfig[] = [
     tier: "oficial-artesano",
     logo: null,
     url: "https://lareiraconfsponsordeck.my.canva.site/",
-    customText: "¿Quieres montar tu puesto? Consulta el dossier de patrocinio",
+    customText: "Monta tu puesto aquí",
+    customImage: cartelImage.src,
     tenderete: tenderetes.pequeno,
     character: null,
   },

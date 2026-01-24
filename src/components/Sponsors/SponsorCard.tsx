@@ -14,6 +14,7 @@ const SponsorCard: React.FC<SponsorCardProps> = ({ sponsor, index }) => {
     logo,
     url,
     customText,
+    customImage,
     tenderete,
     character,
     charactersGranMaestro,
@@ -23,30 +24,30 @@ const SponsorCard: React.FC<SponsorCardProps> = ({ sponsor, index }) => {
   let characterStyle: React.CSSProperties = {};
   if (character) {
     const { variation, side } = character;
-    
+
     // Construir transformación completa
     const transforms = [];
-    
+
     // Si está centrado, necesita translateX
     if (side === "center") {
       transforms.push("translateX(-50%)");
     }
-    
+
     // Añadir rotación si existe
     if (variation.rotate !== 0) {
       transforms.push(`rotate(${variation.rotate}deg)`);
     }
-    
+
     // Añadir escala si existe
     if (variation.scale !== 1) {
       transforms.push(`scale(${variation.scale})`);
     }
-    
+
     // Añadir flip si existe
     if (variation.flip) {
       transforms.push("scaleX(-1)");
     }
-    
+
     if (transforms.length > 0) {
       characterStyle = {
         transform: transforms.join(" "),
@@ -88,8 +89,15 @@ const SponsorCard: React.FC<SponsorCardProps> = ({ sponsor, index }) => {
       {customText ? (
         <div className="sponsor-card__cartel">
           <div className="sponsor-card__cartel-content">
-            <div className="sponsor-card__custom-text">{customText}</div>
+            {customImage && (
+              <img
+                src={customImage}
+                alt="Cartel de patrocinio"
+                className="sponsor-card__cartel-image"
+              />
+            )}
           </div>
+          <div className="sponsor-card__custom-text">{customText}</div>
         </div>
       ) : (
         <div className="sponsor-card__tenderete">
