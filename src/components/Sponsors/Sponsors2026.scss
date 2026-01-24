@@ -111,23 +111,15 @@
   }
 }
 
-.sponsor-name {
-  font-size: 1.25rem;
-  font-weight: bold;
-  color: #000;
-  margin: 0;
-  font-family: "Press Start 2P", monospace;
-}
-
 .sponsor-description {
-  font-size: 0.875rem;
+  font-size: 1.2rem;
   color: #333;
   margin: 0;
   line-height: 1.4;
 }
 
 .sponsor-link {
-  font-size: 0.75rem;
+  font-size: 1.2rem;
   color: #8b4513;
   text-decoration: none;
   border-bottom: 1px solid #8b4513;
@@ -157,10 +149,6 @@
     max-height: 140px;
   }
 
-  .sponsor-name {
-    font-size: 1.5rem;
-  }
-
   .poster-tape {
     width: 80px;
     height: 25px;
@@ -181,10 +169,6 @@
 
   .sponsor-logo {
     max-height: 90px;
-  }
-
-  .sponsor-name {
-    font-size: 1rem;
   }
 }
 
@@ -211,12 +195,8 @@
     max-height: 60px;
   }
 
-  .sponsor-name {
-    font-size: 0.875rem;
-  }
-
   .sponsor-description {
-    font-size: 0.7rem;
+    font-size: 0.875rem;
   }
 
   .poster-tape {
@@ -256,10 +236,6 @@
     .sponsor-logo {
       max-height: 110px;
     }
-
-    .sponsor-name {
-      font-size: 1.25rem;
-    }
   }
 
   .maestro-artesano {
@@ -292,10 +268,6 @@
     .sponsor-logo {
       max-height: 50px;
     }
-
-    .sponsor-name {
-      font-size: 0.75rem;
-    }
   }
 }
 
@@ -318,10 +290,6 @@
     .sponsor-logo {
       max-height: 90px;
     }
-
-    .sponsor-name {
-      font-size: 1rem;
-    }
   }
 
   .maestro-artesano {
@@ -337,10 +305,6 @@
 
     .sponsor-logo {
       max-height: 60px;
-    }
-
-    .sponsor-name {
-      font-size: 0.875rem;
     }
   }
 }

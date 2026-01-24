@@ -189,7 +189,7 @@
 
     &::before {
       content: "⚠️";
-      font-size: 12px;
+      font-size: 14px;
     }
   }
 
@@ -309,7 +309,11 @@
 }
 
 @keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
     transform: translateY(0);
   }
   40% {

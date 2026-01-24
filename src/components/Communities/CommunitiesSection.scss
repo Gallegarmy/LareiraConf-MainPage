@@ -9,7 +9,7 @@
   justify-content: center;
   color: var(--text-light);
   overflow: hidden;
-  font-size: 1rem;
+  font-size: 1.2rem;
   background: radial-gradient(ellipse at bottom, #35221b 0%, #0f0b09 100%);
 }
 
@@ -35,7 +35,7 @@
   object-fit: cover;
   object-position: center;
   filter: sepia(0.35) saturate(0.7) brightness(0.75) contrast(1.2)
-   hue-rotate(15deg);
+    hue-rotate(15deg);
 }
 
 .communities-section__particles {
@@ -200,7 +200,7 @@
   }
 
   .community-card__name {
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
 }
 
