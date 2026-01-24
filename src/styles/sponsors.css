@@ -617,69 +617,75 @@
   }
 
   .sponsor-card__cartel .sponsor-card__custom-text {
-    font-size: 1.8rem;
-    padding: 2rem 3rem;
+    font-size: 2.2rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
   }
 
   /* Mobile: personajes en extremos según su columna en el grid 2x2 */
-  .sponsors-grid__maestros
+  .sponsors-section
+    .sponsors-grid__maestros
     .sponsor-card:nth-child(odd):not(.sponsor-card--inactive)
     .sponsor-card__character {
-    left: -15% !important;
-    right: auto !important;
+    left: -15%;
+    right: auto;
   }
 
-  .sponsors-grid__maestros
+  .sponsors-section
+    .sponsors-grid__maestros
     .sponsor-card:nth-child(even):not(.sponsor-card--inactive)
     .sponsor-card__character {
-    left: auto !important;
-    right: -15% !important;
+    left: auto;
+    right: -15%;
   }
 
   /* Fix: WordPress (5th child) debe ir a la derecha porque es el 2do visible */
-  .sponsors-grid__maestros
+  .sponsors-section
+    .sponsors-grid__maestros
     .sponsor-card:nth-child(5):not(.sponsor-card--inactive)
     .sponsor-card__character {
-    left: auto !important;
-    right: -15% !important;
+    left: auto;
+    right: -15%;
   }
 
   /* Fix: Invertir flip en mobile para Denodo y Docuten */
-  @media (max-width: 768px) {
+  .sponsors-section
     .sponsors-grid__maestros
-      .sponsor-card:nth-child(7)
-      .sponsor-card__character {
-      transform: rotate(2deg) scale(1) scaleX(-1) !important;
-    }
+    .sponsor-card:nth-child(7):not(.sponsor-card--inactive)
+    .sponsor-card__character {
+    transform: rotate(2deg) scale(1) scaleX(-1);
+  }
 
+  .sponsors-section
     .sponsors-grid__maestros
-      .sponsor-card:nth-child(8)
-      .sponsor-card__character {
-      transform: rotate(-2deg) scale(1) scaleX(1) !important;
-    }
+    .sponsor-card:nth-child(8):not(.sponsor-card--inactive)
+    .sponsor-card__character {
+    transform: rotate(-2deg) scale(1) scaleX(1);
   }
 
   /* Mobile: brillo máximo en tenderetes (sin hover) */
-  .sponsor-card__tenderete-img {
+  .sponsors-section .sponsor-card .sponsor-card__tenderete-img {
     filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.6)) brightness(1)
-      saturate(0.85) sepia(0.15) !important;
+      saturate(0.85) sepia(0.15);
   }
 
   /* Mobile: luz activa en logos */
-  .sponsor-card__logo-container::before {
-    top: -50% !important;
-    opacity: 1 !important;
+  .sponsors-section .sponsor-card .sponsor-card__logo-container::before {
+    top: -50%;
+    opacity: 1;
   }
 
   /* Gran maestro: mostrar ambos personajes en mobile */
-  .sponsor-card--gran-maestro .sponsor-card__character--left {
-    left: -15% !important;
-    right: auto !important;
+  .sponsors-section .sponsor-card--gran-maestro .sponsor-card__character--left {
+    left: -15%;
+    right: auto;
   }
 
-  .sponsor-card--gran-maestro .sponsor-card__character--right {
-    left: auto !important;
-    right: -15% !important;
+  .sponsors-section
+    .sponsor-card--gran-maestro
+    .sponsor-card__character--right {
+    left: auto;
+    right: -15%;
   }
 }
 
