@@ -116,7 +116,7 @@
   font-family: var(--heading-font);
   text-transform: uppercase;
   letter-spacing: var(--custom-letter-spacing);
-  font-size: 0.875rem;
+  font-size: 1.2rem;
   cursor: pointer;
   padding: 0;
   transition: color 0.3s ease;
@@ -139,7 +139,7 @@
 }
 
 .lang-current {
-  font-size: 0.875rem;
+  font-size: 1.2rem;
   font-weight: 500;
   color: #ff8c00;
 }
@@ -180,7 +180,7 @@
   font-family: var(--heading-font);
   text-transform: uppercase;
   letter-spacing: var(--custom-letter-spacing);
-  font-size: 0.875rem;
+  font-size: 1.2rem;
   font-weight: 500;
   cursor: pointer;
   padding: 0;
@@ -298,7 +298,7 @@
   }
 
   .cta-button {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     padding: 0.5rem 1rem;
   }
 
@@ -308,7 +308,7 @@
   }
 
   .logo {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
   }
 
   .isotipo::after {

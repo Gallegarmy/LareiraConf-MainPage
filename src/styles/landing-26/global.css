@@ -20,7 +20,8 @@
   --heading-font: "Nine-By-Five", sans-serif;
   --custom-letter-spacing: 0.2rem;
 
-  --custom-scrollbar-background: linear-gradient(
+  --custom-scrollbar-background:
+    linear-gradient(
       45deg,
       var(--secondary) 25%,
       transparent 25%,
@@ -52,7 +53,8 @@
   --text-primary: #1e1e1e;
   --text-secondary: #e18b49;
 
-  --custom-scrollbar-background: linear-gradient(
+  --custom-scrollbar-background:
+    linear-gradient(
       45deg,
       var(--secondary) 25%,
       transparent 25%,
@@ -191,7 +193,7 @@ nav {
 }
 .main-btn::before {
   /* content: "Coming soon"; */
-  font-size: 0.7rem;
+  font-size: 0.875rem;
   letter-spacing: 0.1em;
   color: var(--text-primary);
   position: absolute;

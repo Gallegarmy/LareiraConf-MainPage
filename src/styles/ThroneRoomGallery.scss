@@ -220,7 +220,7 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-size: clamp(0.8125rem, 1.8vw, 0.9375rem);
+  font-size: clamp(1.2rem, 1.8vw, 1.4rem);
   color: var(--text-light);
   letter-spacing: 0.1rem;
   line-height: 1.2;
@@ -412,7 +412,7 @@
 }
 
 .speaker-modal__company {
-  font-size: clamp(0.875rem, 2vw, 1rem);
+  font-size: clamp(1.2rem, 2vw, 1.4rem);
   color: var(--text-secondary);
   margin: 0 0 1rem 0;
   font-style: italic;
@@ -553,7 +553,7 @@
   }
 
   .portrait-frame__role {
-    font-size: clamp(0.9375rem, 2vw, 1.0625rem);
+    font-size: clamp(1.2rem, 2vw, 1.4rem);
   }
 
   .portrait-frame__multi-images {
@@ -599,7 +599,7 @@
   }
 
   .portrait-frame__role {
-    font-size: clamp(1rem, 2.2vw, 1.125rem);
+    font-size: clamp(1.2rem, 2.2vw, 1.4rem);
   }
 
   .portrait-frame .corner-flourish {

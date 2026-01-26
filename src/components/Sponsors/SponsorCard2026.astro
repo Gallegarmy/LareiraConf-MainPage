@@ -38,31 +38,7 @@ const placeholderAvatar =
     <div class="poster-tape"></div>
     <div class="poster-border">
       <div class="poster-content">
-        {
-          logo ? (
-            <Image src={logo} alt={`Logo de ${name}`} class="sponsor-logo" />
-          ) : (
-            <Image
-              src={PlaceholderLogo}
-              alt={`Logo placeholder de ${name}`}
-              class="sponsor-logo placeholder-logo"
-            />
-          )
-        }
-        <h3 class="sponsor-name">{name}</h3>
-        {description && <p class="sponsor-description">{description}</p>}
-        {
-          web && (
-            <a
-              href={web}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="sponsor-link"
-            >
-              Visitar sitio →
-            </a>
-          )
-        }
+        <Image src={logo} alt={`Logo de ${name}`} class="sponsor-logo" />
       </div>
     </div>
   </div>

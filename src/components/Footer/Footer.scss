@@ -19,6 +19,7 @@
   }
 
   &__legal {
+    font-size: 1rem;
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
@@ -74,8 +75,9 @@
     }
 
     &__credits {
-      text-align: left;
-      font-size: 0.875rem;
+      text-align: right;
+      align-items: flex-end;
+      font-size: 1rem;
     }
   }
 }
