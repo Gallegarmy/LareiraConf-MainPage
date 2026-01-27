@@ -25,7 +25,7 @@ const FireParticles = React.memo(({ count = 50 }: FireParticlesProps) => {
 
       return <div key={i} className="particle" style={style} />;
     });
-    
+
     setParticles(newParticles);
   }, [count]);
 
