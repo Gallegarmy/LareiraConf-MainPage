@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import "@styles/fireflies.css";
 
 type FireflyParticlesProps = {
@@ -6,8 +6,10 @@ type FireflyParticlesProps = {
 };
 
 const FireflyParticles = React.memo(({ count = 50 }: FireflyParticlesProps) => {
-  const fireflies = useMemo(() => {
-    return Array.from({ length: count }).map((_, i) => {
+  const [fireflies, setFireflies] = useState<JSX.Element[]>([]);
+
+  useEffect(() => {
+    const newFireflies = Array.from({ length: count }).map((_, i) => {
       const size = `${Math.random() * 2 + 1}px`;
       const colors = ["#FFD700", "#FFA500", "#90EE90", "#ADFF2F"];
       const color = colors[Math.floor(Math.random() * colors.length)];
@@ -32,6 +34,8 @@ const FireflyParticles = React.memo(({ count = 50 }: FireflyParticlesProps) => {
 
       return <div key={i} className="firefly" style={style} />;
     });
+
+    setFireflies(newFireflies);
   }, [count]);
 
   return <div className="firefly-container">{fireflies}</div>;
