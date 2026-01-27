@@ -13,13 +13,17 @@ const ThroneRoomGallery: React.FC<ThroneRoomGalleryProps> = ({ lang }) => {
   const speakers = getSpeakersData(lang as "es" | "gl");
   const [selectedSpeaker, setSelectedSpeaker] = useState<Speaker | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [rotations, setRotations] = useState<number[]>([]);
   const galleryRef = useRef<HTMLDivElement>(null);
 
-  // Generar rotaciones aleatorias: 40% sin rotación, 60% con rotación leve (entre -2 y 2 grados)
-  const rotations = speakers.map(() => {
-    const shouldRotate = Math.random() > 0.4;
-    return shouldRotate ? Math.random() * 4 - 2 : 0;
-  });
+  // Generar rotaciones aleatorias solo en el cliente
+  useEffect(() => {
+    const newRotations = speakers.map(() => {
+      const shouldRotate = Math.random() > 0.4;
+      return shouldRotate ? Math.random() * 4 - 2 : 0;
+    });
+    setRotations(newRotations);
+  }, [speakers.length]);
 
   useEffect(() => {
     if (!galleryRef.current) return;
@@ -52,7 +56,7 @@ const ThroneRoomGallery: React.FC<ThroneRoomGalleryProps> = ({ lang }) => {
           <PortraitFrame
             key={speaker.id}
             speaker={speaker}
-            rotation={rotations[index]}
+            rotation={rotations[index] || 0}
             onClick={() => handleOpenModal(speaker)}
           />
         ))}

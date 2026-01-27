@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import "@styles/particles.css";
 
 type FireParticlesProps = {
@@ -6,8 +6,10 @@ type FireParticlesProps = {
 };
 
 const FireParticles = React.memo(({ count = 50 }: FireParticlesProps) => {
-  const particles = useMemo(() => {
-    return Array.from({ length: count }).map((_, i) => {
+  const [particles, setParticles] = useState<JSX.Element[]>([]);
+
+  useEffect(() => {
+    const newParticles = Array.from({ length: count }).map((_, i) => {
       const size = `${Math.random() * 5 + 2}px`;
       const colors = ["var(--accent)", "var(--color-5)"];
       const color = colors[Math.floor(Math.random() * colors.length)];
@@ -23,6 +25,8 @@ const FireParticles = React.memo(({ count = 50 }: FireParticlesProps) => {
 
       return <div key={i} className="particle" style={style} />;
     });
+    
+    setParticles(newParticles);
   }, [count]);
 
   return <div className="particle-container">{particles}</div>;
