@@ -15,6 +15,7 @@ import PilarRealImage from "@img/speakers/Pilar-real.JPG";
 import CristinaImage from "@img/speakers/Cristina-x64.png";
 import CristinaRealImage from "@img/speakers/Cristina-real.jpeg";
 import DiegoImage from "@img/speakers/Diego-x64.png";
+import DiegoRealImage from "@img/speakers/Diego-real.webp";
 import NachoImage from "@img/speakers/Nacho-x64.png";
 import NachoRealImage from "@img/speakers/Nacho-real.png";
 import NereaImage from "@img/speakers/Nerea-x64.png";
@@ -279,16 +280,24 @@ export function getSpeakersData(locale: Locale): Speaker[] {
       ],
     },
     {
-      id: "speaker-5",
+      id: "diego-marino",
       name: "Diego Mariño",
       talkTitle: speakersData["speaker-5"].talkTitle,
       talkDescription: speakersData["speaker-5"].talkDescription,
       tag: "Negocio",
       role: speakersData["speaker-5"].role,
+      company: speakersData["speaker-5"].company,
       summary: speakersData["speaker-5"].summary,
-      image: { src: DiegoImage.src, alt: "Retrato de Diego Rodríguez" },
-      socials: [],
-      isRevealed: false,
+      image: { src: DiegoImage.src, alt: "Retrato de Diego Mariño" },
+      imageReal: {
+        src: DiegoRealImage.src,
+        alt: "Fotografía de Diego Mariño",
+      },
+      socials: [
+        { label: "X", url: "https://x.com/diegomarino" },
+        { label: "LinkedIn", url: "https://www.linkedin.com/in/diegomarino" },
+      ],
+      isRevealed: true,
       flipImage: true,
     },
     {
