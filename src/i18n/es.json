@@ -131,10 +131,11 @@
         }
       },
       "speaker-5": {
-        "talkTitle": "Por confirmar",
-        "talkDescription": "Más información próximamente.",
-        "role": "Por confirmar",
-        "summary": "Ponente confirmado para Lareira Conf '26. Más información próximamente."
+        "talkTitle": "####",
+        "talkDescription": "####",
+        "role": "Partner",
+        "company": "petalo.xyz",
+        "summary": "Empecé como todos, dándole al QBasic. Pero luego la vida se te va complicando y pasas de programar código a ofrecer productos, a montar empresas para poder venderlos, a vender tu empresa, y a ayudar a otros a vender la suya. He estado entretenido sentándome en todos los lados de la mesa :)"
       },
       "samuel-jimenez": {
         "talkTitle": "25 años de MQTT. Homenaje [sin PowerPoint] al protocolo de la IoT",
