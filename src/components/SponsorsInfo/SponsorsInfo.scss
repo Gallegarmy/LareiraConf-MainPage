@@ -1,0 +1,308 @@
+.sponsors-info {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  color: #ffffff;
+  padding: 4rem 2rem;
+  font-family: var(--text-font), sans-serif;
+
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: 4rem;
+    padding: 2rem 0;
+    border-bottom: 2px solid rgba(255, 107, 53, 0.3);
+  }
+
+  &__title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    font-family: var(--heading-font), sans-serif;
+    background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-transform: uppercase;
+    letter-spacing: var(--custom-letter-spacing);
+
+    @media (max-width: 768px) {
+      font-size: 2rem;
+    }
+  }
+
+  &__subtitle {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-family: var(--heading-font), sans-serif;
+    text-transform: uppercase;
+    letter-spacing: var(--custom-letter-spacing);
+
+    @media (max-width: 768px) {
+      font-size: 1rem;
+    }
+  }
+  &__section {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2.5rem;
+    margin-bottom: 2.5rem;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 107, 53, 0.3);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(255, 107, 53, 0.1);
+    }
+
+    @media (max-width: 768px) {
+      padding: 1.5rem;
+    }
+
+    &--cta {
+      background: linear-gradient(
+        135deg,
+        rgba(255, 107, 53, 0.1) 0%,
+        rgba(247, 147, 30, 0.1) 100%
+      );
+      border-color: rgba(255, 107, 53, 0.3);
+    }
+
+    &--resources {
+      background: rgba(247, 147, 30, 0.05);
+    }
+  }
+
+  &__section-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+
+    h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 0;
+      color: #ffffff;
+
+      font-family: var(--heading-font), sans-serif;
+      text-transform: uppercase;
+      letter-spacing: var(--custom-letter-spacing);
+      @media (max-width: 768px) {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  &__icon {
+    font-size: 2.5rem;
+    filter: drop-shadow(0 4px 8px rgba(255, 107, 53, 0.3));
+
+    @media (max-width: 768px) {
+      font-size: 2rem;
+    }
+  }
+
+  &__description {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 1.5rem;
+
+    @media (max-width: 768px) {
+      font-size: 1rem;
+    }
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  &__detail-item {
+    display: flex;
+    gap: 1.25rem;
+    padding: 1.25rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-left: 4px solid #ff6b35;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.4);
+      transform: translateX(4px);
+    }
+
+    .detail-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    p {
+      margin: 0.5rem 0;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    strong {
+      color: #ff6b35;
+      font-weight: 600;
+    }
+
+    em {
+      color: #f7931e;
+    }
+  }
+
+  &__highlight {
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+
+    h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #ff6b35;
+      font-family: var(--heading-font), sans-serif;
+      text-transform: uppercase;
+      letter-spacing: var(--custom-letter-spacing) rem;
+      margin-bottom: 1rem;
+      color: #ff6b35;
+
+      @media (max-width: 768px) {
+        font-size: 1.25rem;
+      }
+    }
+
+    p {
+      margin-bottom: 1rem;
+      color: rgba(255, 255, 255, 0.9);
+    }
+  }
+
+  &__checklist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      padding: 0.5rem 0;
+      font-size: 1.125rem;
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.6;
+
+      @media (max-width: 768px) {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  &__link {
+    color: #f7931e;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: inline-block;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -2px;
+      left: 0;
+      background-color: #f7931e;
+      transition: width 0.3s ease;
+    }
+
+    &:hover {
+      color: #ff6b35;
+
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+
+  &__cta-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 1.5rem;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+
+  &__button {
+    display: inline-block;
+    padding: 0.5rem 0.8rem;
+    font-size: 1.2rem;
+    font-family: var(--heading-font), sans-serif;
+    text-transform: uppercase;
+    letter-spacing: var(--custom-letter-spacing);
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    border: 1px solid var(--secondary);
+
+    @media (max-width: 768px) {
+      padding: 0.5rem 0.8rem;
+      font-size: 1rem;
+    }
+
+    &--primary {
+      background-color: var(--primary);
+      color: var(--accent);
+
+      &:hover {
+        background-color: var(--accent);
+        color: var(--primary);
+      }
+
+      &:disabled {
+        background-color: var(--secondary);
+        color: var(--primary);
+        cursor: not-allowed;
+      }
+    }
+
+    &--secondary {
+      background-color: var(--primary);
+      color: var(--accent);
+
+      &:hover {
+        background-color: var(--accent);
+        color: var(--primary);
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+    }
+  }
+
+  &__footer {
+    text-align: center;
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+    p {
+      font-size: 1.125rem;
+      color: rgba(255, 255, 255, 0.7);
+
+      @media (max-width: 768px) {
+        font-size: 1rem;
+      }
+    }
+  }
+}
