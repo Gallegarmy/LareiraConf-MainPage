@@ -21,6 +21,7 @@ interface RaffleFormProps {
   isLoading?: boolean;
   onAnimationStart?: () => void;
   onSuccess?: () => void;
+  matchHeadColor?: string;
 }
 
 const RaffleForm: React.FC<RaffleFormProps> = ({
@@ -29,6 +30,7 @@ const RaffleForm: React.FC<RaffleFormProps> = ({
   isLoading = false,
   onAnimationStart,
   onSuccess,
+  matchHeadColor = "#ea3368",
 }) => {
   const [formData, setFormData] = useState<FormData>({
     name: "",
@@ -258,7 +260,7 @@ const RaffleForm: React.FC<RaffleFormProps> = ({
       </div>
 
       <div ref={matchRef} className="raffle-form__match-static">
-        <Match isLit={matchLit} headColor="#ea3368" />
+        <Match isLit={matchLit} headColor={matchHeadColor} />
       </div>
 
       {submitStatus !== "success" && (

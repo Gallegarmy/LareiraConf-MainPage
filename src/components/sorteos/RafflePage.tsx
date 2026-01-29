@@ -59,6 +59,7 @@ const RafflePage: React.FC = () => {
         <div className="raffle-page__container">
           <RaffleForm
             description={config.description}
+            matchHeadColor={config.matchHeadColor}
             onSubmit={async (data) => {
               const res = await fetch("/api/raffle", {
                 method: "POST",
