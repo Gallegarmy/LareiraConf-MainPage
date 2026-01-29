@@ -23,7 +23,7 @@ export const POST: APIRoute = async ({ request }) => {
       email,
       acceptTerms,
       timestamp,
-      sheetName: "nerdearla",
+      sheetName: "bilbostack",
     });
 
     return new Response(JSON.stringify({ ok: true }), {
