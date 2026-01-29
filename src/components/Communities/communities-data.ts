@@ -59,11 +59,11 @@ export const communities: Community[] = [
     alt: "Logo de WordPress Coruña",
   },
   {
-    id: "industriosa",
-    name: "Industriosa",
-    url: "https://industriosa.org/",
+    id: "enxeneria-sen-fronteiras",
+    name: "Enxeñería Sen Fronteiras",
+    url: "https://esf-galicia.org/",
     logo: placeholderLogo.src,
-    alt: "Logo de Industriosa",
+    alt: "Logo de Enxeñería Sen Fronteiras",
   },
   {
     id: "corunha-jug",

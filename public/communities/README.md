@@ -11,7 +11,7 @@ Este directorio contiene los logos de las comunidades colaboradoras de Lareira C
 5. **bricolabs.png** - Bricolabs
 6. **datola.png** - Datola
 7. **wordpress.png** - WordPress Coruña
-8. **industriosa.png** - Industriosa
+8. **enxeneria-sen-fronteiras.png** - Enxeñería Sen Fronteiras
 9. **corunha-jug.png** - CoruñaJUG
 10. **aquelarre-dixital.png** - Aquelarre Dixital
 
