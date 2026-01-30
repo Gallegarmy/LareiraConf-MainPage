@@ -1,0 +1,72 @@
+---
+import Layout from "src/layouts/Layout.astro";
+import HorizontalScroll from "@components/Parallax/HorizontalScroll";
+import HomeSection from "@components/Home/HomeSection";
+import TeamSection from "@components/Team/TeamSection";
+import TicketsSection from "@components/TicketsSection/TicketsSection";
+import SponsorsSection from "@components/Sponsors/SponsorsSection";
+import SpeakersSection from "@components/Speakers/SpeakersSection";
+import FAQSection from "@components/FAQ/FAQSection";
+import SocialSection from "@components/SocialSection/SocialSection";
+import { getLangFromUrl } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+---
+
+<style is:global>
+  body {
+    overflow-x: hidden;
+  }
+  .panel {
+    width: 100vw;
+    height: auto;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: visible;
+    flex-shrink: 0;
+  }
+  .container {
+    display: flex;
+    width: 600%;
+    height: 100vh;
+    transition: width 0.3s ease;
+  }
+
+  /* Mobile styles */
+  @media (max-width: 768px) {
+    .container {
+      width: 100%;
+      height: auto;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    .container .panel {
+      width: 100%;
+      height: auto;
+      min-height: 100vh;
+      flex-shrink: 1;
+      position: relative;
+    }
+
+    body {
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+  }
+</style>
+
+<Layout title="Lareira Conf 2026">
+  <HorizontalScroll client:load className="container">
+    <HomeSection lang={lang} />
+    <TicketsSection client:load lang={lang} />
+    <SpeakersSection client:load lang={lang} />
+    <SponsorsSection client:load lang={lang} />
+    <TeamSection client:load lang={lang} />
+    <FAQSection client:load lang={lang} />
+    <SocialSection client:load lang={lang} />
+  </HorizontalScroll>
+</Layout>

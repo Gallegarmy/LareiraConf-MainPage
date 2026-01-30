@@ -7,7 +7,8 @@
       "@styles/*": ["src/styles/*"],
       "@assets/*": ["src/img/assets/*"],
       "@img/*": ["src/img/*"],
-      "@public/*": ["public/*"]
+      "@public/*": ["public/*"],
+      "@/i18n/*": ["src/i18n/*"]
     }
   }
 }

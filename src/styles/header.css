@@ -98,6 +98,102 @@
   left: 8.6rem;
 }
 
+/* Language selector in header */
+.lang-selector-header {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.5rem;
+}
+
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-family: var(--heading-font);
+  text-transform: uppercase;
+  letter-spacing: var(--custom-letter-spacing);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.3s ease;
+}
+
+.lang-toggle:hover {
+  color: var(--accent);
+}
+
+.lang-icon {
+  width: 1.2rem;
+  height: 1.2rem;
+  display: inline-block;
+}
+
+.lang-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.lang-current {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #ff8c00;
+}
+
+.lang-dropdown {
+  position: absolute;
+  top: calc(100% + 0.25rem);
+  right: 0;
+  background: var(--bg-dark);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.25rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-0.5rem);
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    visibility 0.2s;
+  z-index: 10;
+  min-width: 3rem;
+}
+
+.lang-dropdown--open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.lang-option {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  width: 100%;
+  background: none;
+  border: none;
+  color: var(--text-light);
+  font-family: var(--heading-font);
+  text-transform: uppercase;
+  letter-spacing: var(--custom-letter-spacing);
+  font-size: 1.2rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.lang-option:hover {
+  color: var(--accent);
+  background: rgba(255, 255, 255, 0.05);
+}
+
 /* Hamburger menu */
 .hamburger {
   display: none;
@@ -108,7 +204,7 @@
   border: none;
   cursor: pointer;
   padding: 0;
-  z-index: 1001;
+  z-index: 11;
 }
 
 .hamburger__icon {
@@ -172,6 +268,13 @@
     display: flex;
   }
 
+  .lang-selector-header {
+    position: fixed;
+    top: 0.8rem;
+    left: 1rem;
+    z-index: 11;
+  }
+
   .main-nav {
     position: fixed;
     top: 0;
@@ -195,7 +298,7 @@
   }
 
   .cta-button {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     padding: 0.5rem 1rem;
   }
 
@@ -205,7 +308,7 @@
   }
 
   .logo {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
   }
 
   .isotipo::after {

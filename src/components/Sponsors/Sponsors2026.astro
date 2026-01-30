@@ -1,0 +1,259 @@
+---
+import Wrapper from "../../components-2025/Others/Wrapper.astro";
+import SponsorCard2026 from "./SponsorCard2026.astro";
+
+// Datos de ejemplo con placeholders
+const granMaestro = {
+  name: "Gran Maestro Artesano",
+  tier: "gran-maestro" as const,
+  description: "Patrocinador principal del evento",
+};
+
+const maestrosArtesanos = [
+  { name: "Maestro Artesano 1", tier: "maestro-artesano" as const },
+  { name: "Maestro Artesano 2", tier: "maestro-artesano" as const },
+  { name: "Maestro Artesano 3", tier: "maestro-artesano" as const },
+  { name: "Maestro Artesano 4", tier: "maestro-artesano" as const },
+  { name: "Maestro Artesano 5", tier: "maestro-artesano" as const },
+  { name: "Maestro Artesano 6", tier: "maestro-artesano" as const },
+  { name: "Maestro Artesano 7", tier: "maestro-artesano" as const },
+  { name: "Maestro Artesano 8", tier: "maestro-artesano" as const },
+];
+
+const oficialesArtesanos = [
+  { name: "Oficial Artesano 1", tier: "oficial-artesano" as const },
+  { name: "Oficial Artesano 2", tier: "oficial-artesano" as const },
+];
+---
+
+<section id="sponsors" class="sponsors-section">
+  <Wrapper>
+    <div class="sponsors-container">
+      <div class="sponsors-header">
+        <img
+          src="/src/img/icons/shopping.svg"
+          alt="Patrocinadores"
+          class="sponsors-icon"
+        />
+        <h2 class="sponsors-title">Patrocinadores</h2>
+      </div>
+
+      <div class="sponsors-grid">
+        <!-- Oficial Artesano - Esquina superior izquierda -->
+        <div class="corner-sponsor top-left">
+          <SponsorCard2026 {...oficialesArtesanos[0]} />
+        </div>
+
+        <!-- Gran Maestro - Centro superior -->
+        <div class="gran-maestro-container">
+          <SponsorCard2026 {...granMaestro} />
+        </div>
+
+        <!-- Oficial Artesano - Esquina superior derecha -->
+        <div class="corner-sponsor top-right">
+          <SponsorCard2026 {...oficialesArtesanos[1]} />
+        </div>
+
+        <!-- Maestros Artesanos - Distribuidos alrededor -->
+        <div class="maestros-grid">
+          {
+            maestrosArtesanos.map((maestro) => (
+              <div class="maestro-item">
+                <SponsorCard2026 {...maestro} />
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="sponsors-cta">
+        <p>¿Quieres ser patrocinador de LareiraConf 2026?</p>
+        <a href="#contact" class="btn-sponsor">Contáctanos</a>
+      </div>
+    </div>
+  </Wrapper>
+</section>
+
+<style>
+  .sponsors-section {
+    min-height: 100vh;
+    background: linear-gradient(180deg, #1a0f0a 0%, #2d1810 50%, #1a0f0a 100%);
+    position: relative;
+    overflow: hidden;
+    padding: 4rem 0;
+  }
+
+  /* Fondo de ambiente - fuego y partículas */
+  .sponsors-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+      radial-gradient(
+        circle at 20% 80%,
+        rgba(255, 100, 0, 0.1) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 80% 20%,
+        rgba(255, 150, 0, 0.08) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 50% 50%,
+        rgba(255, 200, 100, 0.05) 0%,
+        transparent 70%
+      );
+    pointer-events: none;
+    animation: flicker 4s ease-in-out infinite;
+  }
+
+  @keyframes flicker {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.8;
+    }
+  }
+
+  .sponsors-container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .sponsors-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 4rem;
+  }
+
+  .sponsors-icon {
+    width: 3rem;
+    height: 3rem;
+    filter: invert(1);
+  }
+
+  .sponsors-title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #f5deb3;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  .sponsors-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 2rem;
+    align-items: start;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .corner-sponsor {
+    display: flex;
+    justify-content: center;
+  }
+
+  .top-left {
+    align-self: start;
+  }
+
+  .top-right {
+    align-self: start;
+  }
+
+  .gran-maestro-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column: 2 / 3;
+  }
+
+  .maestros-grid {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+    justify-items: center;
+  }
+
+  .maestro-item {
+    display: flex;
+    justify-content: center;
+  }
+
+  .sponsors-cta {
+    text-align: center;
+    margin-top: 4rem;
+    padding: 2rem;
+    background: rgba(139, 69, 19, 0.2);
+    border: 2px solid #8b4513;
+    border-radius: 8px;
+  }
+
+  .sponsors-cta p {
+    font-size: 1.5rem;
+    color: #f5deb3;
+    margin-bottom: 1rem;
+  }
+
+  .btn-sponsor {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: #ff6600;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border: 2px solid #ff8833;
+  }
+
+  .btn-sponsor:hover {
+    background: #ff8833;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(255, 102, 0, 0.3);
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .sponsors-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .corner-sponsor,
+    .gran-maestro-container {
+      grid-column: 1 / -1;
+    }
+
+    .maestros-grid {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+  }
+
+  @media (max-width: 768px) {
+    .sponsors-title {
+      font-size: 2rem;
+    }
+
+    .sponsors-icon {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    .maestros-grid {
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1.5rem;
+    }
+  }
+</style>

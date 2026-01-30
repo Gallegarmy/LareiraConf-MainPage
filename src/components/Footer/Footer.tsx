@@ -2,32 +2,39 @@ import Modal from "./Modal";
 import CodeOfConduct from "./CodeOfConduct";
 import PrivacyPolicy from "./PrivacyPolicy";
 import "./Footer.scss";
+import { useTranslations } from "@/i18n/utils";
 
-export default function Footer() {
+interface FooterProps {
+  lang: string;
+}
+
+export default function Footer({ lang }: FooterProps) {
+  const t = useTranslations(lang as "es" | "gl");
+
   return (
     <footer className="footer">
       <div className="footer__container">
         <div className="footer__legal">
           <Modal
             id="code-of-conduct"
-            title="Código de conducta"
-            triggerText="Código de conducta"
+            title={t("footer.codeOfConduct")}
+            triggerText={t("footer.codeOfConduct")}
           >
-            <CodeOfConduct />
+            <CodeOfConduct lang={lang} />
           </Modal>
-          <p>Made with ♥ by LAREIRACONF CREW</p>
+          <p>{t("footer.madeWith")}</p>
         </div>
 
         <div className="footer__credits">
           <Modal
             id="privacy-policy"
-            title="Política de privacidad"
-            triggerText="Política de privacidad"
+            title={t("footer.privacyPolicy")}
+            triggerText={t("footer.privacyPolicy")}
           >
-            <PrivacyPolicy />
+            <PrivacyPolicy lang={lang} />
           </Modal>
           <p>
-            Hosted by{" "}
+            {t("footer.hostedBy")}{" "}
             <a
               href="https://raiolanetworks.com/"
               target="_blank"

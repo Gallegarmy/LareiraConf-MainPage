@@ -1,0 +1,45 @@
+---
+import Image from "astro/components/Image.astro";
+import PlaceholderLogo from "@public/lareira-isotipo.svg";
+import "./Sponsors2026.scss";
+
+interface Props {
+  name: string;
+  tier: "gran-maestro" | "maestro-artesano" | "oficial-artesano";
+  logo?: ImageMetadata;
+  avatar?: ImageMetadata;
+  web?: string;
+  description?: string;
+}
+
+const { name, tier, logo, avatar, web, description } = Astro.props;
+
+// Placeholder para avatares
+const placeholderAvatar =
+  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Crect fill='%238b4513' width='100' height='100'/%3E%3Ctext x='50%25' y='50%25' font-size='40' fill='white' text-anchor='middle' dominant-baseline='middle'%3E?%3C/text%3E%3C/svg%3E";
+---
+
+<div class={`sponsor-card-2026 ${tier}`}>
+  <div class="sponsor-avatar-container">
+    {
+      avatar ? (
+        <Image src={avatar} alt={`Avatar de ${name}`} class="sponsor-avatar" />
+      ) : (
+        <img
+          src={placeholderAvatar}
+          alt={`Avatar placeholder de ${name}`}
+          class="sponsor-avatar placeholder-avatar"
+        />
+      )
+    }
+  </div>
+
+  <div class="sponsor-poster">
+    <div class="poster-tape"></div>
+    <div class="poster-border">
+      <div class="poster-content">
+        <Image src={logo} alt={`Logo de ${name}`} class="sponsor-logo" />
+      </div>
+    </div>
+  </div>
+</div>

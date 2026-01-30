@@ -18,20 +18,20 @@ interface RaffleConfig {
 }
 
 const RAFFLE_CONFIGS: Record<string, RaffleConfig> = {
-  nerdearla: {
-    id: "nerdearla",
-    name: "Nerdearla — LareiraConf'26",
+  bilbostack: {
+    id: "bilbostack",
+    name: "Bilbostack — LareiraConf'26",
     description:
-      "Hola nerd 🖖. Si has llegado hasta aquí, es porque eres de los que no se pierden un buen evento. Así que te lanzamos una misión: enciende tu cerilla y entra en el sorteo para venir a la LareiraConf. No hay coches (aun), pero sí mar, buena compañía y comida gallega 😋🔥",
+      "Kaixo 🖖. Si has llegado hasta aquí, es porque eres de los que no se pierden un buen evento. Así que te lanzamos una misión: enciende tu cerilla y entra en el sorteo para venir a la LareiraConf. No hay aizkolaris (aun), pero sí mar, buena compañía y comida gallega 😋🔥",
     isActive: true,
-    drawDate: "15 de noviembre de 2026",
+    drawDate: "1 de febrero de 2026",
     prize: "1 entrada gratuita para LareiraConf'26",
-    matchHeadColor: "#ea3368",
+    matchHeadColor: "#9b59b6",
   },
 };
 
 const RafflePage: React.FC = () => {
-  const config = RAFFLE_CONFIGS.nerdearla;
+  const config = RAFFLE_CONFIGS.bilbostack;
 
   return (
     <div className="raffle-page" data-background="custom">
@@ -59,6 +59,7 @@ const RafflePage: React.FC = () => {
         <div className="raffle-page__container">
           <RaffleForm
             description={config.description}
+            matchHeadColor={config.matchHeadColor}
             onSubmit={async (data) => {
               const res = await fetch("/api/raffle", {
                 method: "POST",

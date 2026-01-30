@@ -2,9 +2,17 @@
 import "@styles/header.css";
 import TicketIcon from "@img/icons/ticket.svg?raw";
 import UsersIcon from "@img/icons/users.svg?raw";
+import SpeakerIcon from "@img/icons/speaker.svg?raw";
 import ShieldIcon from "@img/icons/shield.svg?raw";
+import ShoppingIcon from "@img/icons/shopping.svg?raw";
+import QuestionIcon from "@img/icons/question.svg?raw";
 import MenuIcon from "@img/icons/menu.svg?raw";
 import CloseIcon from "@img/icons/close.svg?raw";
+import MicPixel from "@img/icons/mic-pixel.svg?raw";
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <header class="main-header">
@@ -20,12 +28,51 @@ import CloseIcon from "@img/icons/close.svg?raw";
   <nav class="main-nav">
     <a href="#tickets" class="cta-button">
       <span class="cta-button__icon" aria-hidden="true" set:html={TicketIcon} />
-      <span>Entradas</span>
+      <span>{t("nav.tickets")}</span>
+    </a>
+    <a href="#speakers" class="cta-button">
+      <span
+        class="cta-button__icon"
+        aria-hidden="true"
+        set:html={SpeakerIcon}
+      />
+      <span>{t("nav.speakers")}</span>
+    </a>
+    <a href="#sponsors" class="cta-button">
+      <span
+        class="cta-button__icon"
+        aria-hidden="true"
+        set:html={ShoppingIcon}
+      />
+      <span>Patrocinadores</span>
     </a>
     <a href="#team" class="cta-button">
       <span class="cta-button__icon" aria-hidden="true" set:html={UsersIcon} />
-      <span>Equipo</span>
+      <span>{t("nav.team")}</span>
     </a>
+    <a href="#faq" class="cta-button">
+      <span
+        class="cta-button__icon"
+        aria-hidden="true"
+        set:html={QuestionIcon}
+      />
+      <span>{t("nav.faq")}</span>
+    </a>
+    <div class="lang-selector-header">
+      <button
+        class="lang-toggle"
+        aria-label="Cambiar idioma"
+        aria-expanded="false"
+      >
+        <span class="lang-icon" set:html={MicPixel} />
+        <span class="lang-current">{lang.toUpperCase()}</span>
+      </button>
+      <div class="lang-dropdown">
+        <button class="lang-option" data-lang={lang === "es" ? "gl" : "es"}>
+          <span>{lang === "es" ? "GL" : "ES"}</span>
+        </button>
+      </div>
+    </div>
     <!-- <a href="#comunidades" class="cta-button">
       <span class="cta-button__icon" aria-hidden="true" set:html={ShieldIcon} />
       <span>Comunidades</span>
@@ -34,6 +81,42 @@ import CloseIcon from "@img/icons/close.svg?raw";
 </header>
 
 <script>
+  // Language switcher
+  const langToggle = document.querySelector(".lang-toggle");
+  const langDropdown = document.querySelector(".lang-dropdown");
+  const langOptions = document.querySelectorAll(".lang-option");
+
+  langToggle?.addEventListener("click", () => {
+    const isOpen = langToggle.getAttribute("aria-expanded") === "true";
+    langToggle.setAttribute("aria-expanded", String(!isOpen));
+    langDropdown?.classList.toggle("lang-dropdown--open");
+  });
+
+  langOptions.forEach((button) => {
+    button.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const targetLang = button.getAttribute("data-lang");
+      const currentPath = window.location.pathname;
+      const pathWithoutLang = currentPath.replace(/^\/(es|gl)/, "");
+      const newPath =
+        targetLang === "es"
+          ? pathWithoutLang || "/"
+          : `/gl${pathWithoutLang || "/"}`;
+      window.location.href = newPath;
+    });
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener("click", (e) => {
+    if (
+      !langToggle?.contains(e.target as Node) &&
+      !langDropdown?.contains(e.target as Node)
+    ) {
+      langToggle?.setAttribute("aria-expanded", "false");
+      langDropdown?.classList.remove("lang-dropdown--open");
+    }
+  });
+
   // Hamburger menu
   const hamburger = document.querySelector(".hamburger");
   const mainNav = document.querySelector(".main-nav");

@@ -1,0 +1,725 @@
+/* Sponsors Section - LareiraConf 2026 - Medieval RPG Style */
+
+.sponsors-section {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  min-width: 100vw;
+  overflow: visible;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 2rem;
+  color: var(--text-light);
+  font-family: var(--heading-font), sans-serif;
+  background-color: #0a0608;
+}
+
+/* Parallax Background */
+.sponsors-parallax {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.sponsors-parallax-img {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: bottom center;
+  opacity: 1;
+}
+
+.sponsors-backdrop-img {
+  filter: saturate(0.8) brightness(0.85) hue-rotate(-10deg);
+  opacity: 1;
+}
+
+.sponsors-gradient {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(4, 2, 6, 0.9) 0%,
+      rgba(4, 2, 6, 0.4) 30%,
+      rgba(17, 10, 25, 0) 60%
+    ),
+    radial-gradient(
+      circle at bottom,
+      rgba(17, 10, 25, 0) 0%,
+      rgba(5, 2, 12, 0.95) 100%
+    );
+  pointer-events: none;
+}
+
+.sponsors-particles {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Content */
+.sponsors-content {
+  height: 100%;
+  position: relative;
+  z-index: 10;
+  width: min(1600px, 96%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3rem;
+  padding: 4rem 0 2rem 0;
+}
+
+/* Cartel Maestros da Lareira */
+.sponsors-section__sign {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: 0 auto;
+  padding: 1rem 0;
+  max-width: 950px;
+}
+
+.sponsors-section__sign-subtitle {
+  font-family: var(--body-font), sans-serif;
+  text-align: center;
+  margin: 0 0 0.75rem;
+  font-size: 1.2rem;
+  letter-spacing: var(--custom-letter-spacing);
+  color: var(--text-light);
+}
+
+.sponsors-section__sign-text {
+  font-family: var(--heading-font), sans-serif;
+  font-size: clamp(2.5rem, 4vw, 3.6rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: var(--custom-letter-spacing);
+  color: var(--accent);
+  text-shadow: none;
+  margin: 0 0 1rem;
+}
+
+.sponsors-section__description {
+  max-width: 100%;
+  text-align: center;
+}
+
+.sponsors-section__description p {
+  text-align: center;
+  font-size: 1.2rem;
+  letter-spacing: var(--custom-letter-spacing);
+  color: var(--text-light);
+}
+
+/* Grid Layout - 3 Layers Depth Effect */
+.sponsors-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  min-height: 70vh;
+}
+
+/* Maestros - Background layer (al fondo) */
+.sponsors-grid__maestros {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  position: relative;
+  z-index: 1;
+}
+
+.sponsors-grid__maestros-row {
+  display: flex;
+  gap: 2.4rem;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.sponsors-grid__maestros-row--1 {
+  z-index: 1;
+}
+
+.sponsors-grid__maestros-row--2 {
+  margin-top: -4rem;
+  z-index: 2;
+}
+
+/* Foreground layer - Oficiales + Gran Maestro */
+.sponsors-grid__foreground {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 4rem;
+  width: 100%;
+  margin-top: -5.6rem;
+  position: relative;
+  z-index: 3;
+}
+
+.sponsors-grid__oficial-left,
+.sponsors-grid__oficial-right {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-end;
+}
+
+.sponsors-grid__oficial-left .sponsor-card:nth-child(1) {
+  margin-bottom: 3rem;
+}
+
+.sponsors-grid__oficial-left .sponsor-card:nth-child(2) {
+  margin-bottom: 2rem;
+}
+
+.sponsors-grid__oficial-right .sponsor-card:nth-child(1) {
+  margin-bottom: 2rem;
+}
+
+.sponsors-grid__oficial-right .sponsor-card:nth-child(2) {
+  margin-bottom: 3rem;
+}
+
+.sponsors-grid__oficial-right {
+  margin-bottom: 2rem;
+}
+
+/* Gran Maestro - Centered */
+.sponsors-grid__gran-maestro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Sponsor Cards - Medieval RPG Style - Character + Poster */
+.sponsor-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.6));
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Content wrapper for character + tenderete */
+.sponsor-card__content {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+/* Characters/Avatars */
+.sponsor-card__character {
+  position: absolute;
+  bottom: 0;
+  height: 110%;
+  width: auto;
+  object-fit: contain;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.4));
+}
+
+/* Maestros y Gran Maestro: delante del tenderete, más pequeños */
+.sponsor-card--maestro-artesano .sponsor-card__character,
+.sponsor-card--gran-maestro .sponsor-card__character {
+  height: 70%;
+  z-index: 3;
+}
+
+.sponsor-card--maestro-artesano .sponsor-card__character--left,
+.sponsor-card--gran-maestro .sponsor-card__character--left {
+  left: -15%;
+}
+
+.sponsor-card--maestro-artesano .sponsor-card__character--right,
+.sponsor-card--gran-maestro .sponsor-card__character--right {
+  right: -15%;
+}
+
+/* Oficiales: detrás del tenderete, centrados, más grandes */
+.sponsor-card--oficial-artesano .sponsor-card__character,
+.sponsor-card__character--center {
+  height: 240%;
+  left: 50%;
+  transform-origin: center center;
+  z-index: 0;
+}
+
+/* Tenderete container */
+.sponsor-card__tenderete {
+  position: relative;
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
+  z-index: 1;
+}
+
+.sponsor-card__tenderete-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.6)) brightness(0.55)
+    saturate(0.85) sepia(0.15);
+  position: relative;
+  z-index: 2;
+  opacity: 0.95;
+  transition: filter 0.4s ease;
+}
+
+/* Hover effect - ilumina el tenderete */
+.sponsor-card:hover .sponsor-card__tenderete-img {
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.6)) brightness(1)
+    saturate(0.85) sepia(0.15);
+}
+
+/* Logo container - positioned inside the tenderete "hole" */
+.sponsor-card__logo-container {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(calc(-50% + 2px));
+  width: 60%;
+  height: 50%;
+  display: flex;
+  padding: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  background-color: #f4d799;
+  border-radius: 0px;
+  transition: all 0.4s ease;
+  overflow: hidden;
+}
+
+/* Capa de luz que cae desde arriba */
+.sponsor-card__logo-container::before {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120%;
+  height: 200%;
+  background: radial-gradient(
+    ellipse at top,
+    rgba(255, 200, 120, 0.8) 0%,
+    rgba(255, 180, 80, 0.6) 20%,
+    rgba(255, 150, 50, 0.3) 40%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: all 0.6s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Hover effect - enciende la luz desde arriba */
+.sponsor-card:hover .sponsor-card__logo-container::before {
+  top: -50%;
+  opacity: 1;
+}
+
+/* Oficiales: sin efecto de luz naranja, solo brightness */
+.sponsor-card--oficial-artesano .sponsor-card__logo-container::before {
+  display: none;
+}
+
+.sponsor-card__logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: none;
+  position: relative;
+  z-index: 1;
+}
+
+.sponsor-card__logo-placeholder {
+  font-size: 2rem;
+  font-weight: bold;
+  color: rgba(255, 221, 181, 0.15);
+  font-family: var(--heading-font), sans-serif;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* Texto personalizado para sponsor call-to-action */
+.sponsor-card__custom-text {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #ffddb5;
+  font-family: var(--body-font), sans-serif;
+  text-align: center;
+  line-height: 1.4;
+  padding: 0.5rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+  letter-spacing: 0.02em;
+}
+
+/* Cartel para sponsor con texto personalizado */
+.sponsor-card__cartel {
+  position: relative;
+  width: 100%;
+  max-width: 160px;
+  margin: 0 auto;
+  z-index: 1;
+}
+
+.sponsor-card__cartel-content {
+  position: relative;
+  width: 100%;
+}
+
+.sponsor-card__cartel-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px;
+}
+
+.sponsor-card__cartel .sponsor-card__custom-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  z-index: 2;
+  font-size: 1.4rem;
+  line-height: 1;
+  text-align: center;
+  width: 100%;
+  padding: 1rem 2.5rem;
+  text-transform: uppercase;
+  color: #343841;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Sponsors sin logo - apagados */
+.sponsor-card--inactive .sponsor-card__logo-container {
+  background-color: #1a1215;
+  opacity: 0.6;
+}
+
+/* Desactivar hover para sponsors sin logo */
+.sponsor-card--inactive:hover .sponsor-card__tenderete-img {
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.6)) brightness(0.55)
+    saturate(0.85) sepia(0.15);
+}
+
+.sponsor-card--inactive:hover .sponsor-card__logo-container::before {
+  opacity: 0;
+  top: -100%;
+}
+
+.sponsor-card--inactive .sponsor-card__logo-container {
+  transition: none;
+}
+
+/* Tier Sizes - RPG Hierarchy */
+.sponsor-card--gran-maestro .sponsor-card__tenderete {
+  max-width: 456px;
+}
+
+.sponsor-card--gran-maestro .sponsor-card__logo-container {
+  width: 72%;
+  height: 44%;
+  top: 24%;
+  transform: translateX(calc(-50% + 8px));
+}
+
+.sponsor-card--gran-maestro .sponsor-card__logo-placeholder {
+  font-size: 3rem;
+}
+
+.sponsor-card--maestro-artesano .sponsor-card__tenderete {
+  max-width: 247px;
+  min-width: 247px;
+  width: 247px;
+}
+
+.sponsor-card--maestro-artesano .sponsor-card__logo-placeholder {
+  font-size: 2rem;
+}
+
+.sponsor-card--oficial-artesano .sponsor-card__tenderete {
+  max-width: 220px;
+}
+
+.sponsor-card--oficial-artesano .sponsor-card__tenderete-img {
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.6)) brightness(0.75)
+    saturate(0.85) sepia(0.15);
+}
+
+.sponsor-card--oficial-artesano .sponsor-card__logo-container {
+  background-color: transparent;
+  z-index: 3;
+  width: 80%;
+  height: 60%;
+}
+
+.sponsor-card--oficial-artesano .sponsor-card__logo-placeholder {
+  font-size: 1.75rem;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .sponsors-section__sign-text {
+    font-size: clamp(1.25rem, 2.5vw, 2rem);
+  }
+
+  .sponsors-grid {
+    min-height: 60vh;
+    gap: 1rem;
+  }
+
+  .sponsors-grid__maestros-row {
+    gap: 4rem;
+  }
+
+  .sponsors-grid__foreground {
+    gap: 2rem;
+    margin-top: -4rem;
+  }
+
+  .sponsor-card--gran-maestro .sponsor-card__tenderete {
+    max-width: 380px;
+  }
+
+  .sponsor-card--maestro-artesano .sponsor-card__tenderete {
+    max-width: 220px;
+    min-width: 220px;
+    width: 220px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sponsors-section {
+    padding: 0 1rem;
+  }
+
+  .sponsors-section__sign-text {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+  }
+
+  .sponsors-section__description p {
+    font-size: 1.2rem;
+  }
+
+  .sponsors-content {
+    gap: 2rem;
+    padding: 2rem 0;
+  }
+
+  .sponsors-grid {
+    min-height: auto;
+    gap: 2rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Hacer que foreground no sea un contenedor real, solo lógico */
+  .sponsors-grid__foreground {
+    display: contents;
+  }
+
+  /* Reordenar para mobile: gran maestro primero, maestros segundo, oficiales tercero */
+  .sponsors-grid__gran-maestro {
+    order: 1;
+  }
+
+  .sponsors-grid__maestros {
+    order: 2;
+  }
+
+  .sponsors-grid__oficial-left,
+  .sponsors-grid__oficial-right {
+    order: 3;
+  }
+
+  /* Maestros: todos en un solo grid de 2 columnas */
+  .sponsors-grid__maestros {
+    max-width: 350px;
+    gap: 0.5rem 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-bottom: 4rem;
+  }
+
+  .sponsors-grid__maestros-row {
+    display: contents;
+  }
+
+  .sponsors-grid__maestros-row--2 {
+    margin-top: 0;
+  }
+
+  /* Oficiales en mobile: cada grupo es una fila */
+  .sponsors-grid__oficial-left,
+  .sponsors-grid__oficial-right {
+    flex-direction: row;
+    gap: 5rem;
+    justify-content: center;
+    width: 100%;
+  }
+
+  /* Reset de márgenes de oficiales */
+  .sponsors-grid__oficial-left .sponsor-card:nth-child(1),
+  .sponsors-grid__oficial-left .sponsor-card:nth-child(2),
+  .sponsors-grid__oficial-right .sponsor-card:nth-child(1),
+  .sponsors-grid__oficial-right .sponsor-card:nth-child(2) {
+    margin-bottom: 0;
+  }
+
+  .sponsors-grid__oficial-right {
+    margin-bottom: 0;
+  }
+
+  /* Ocultar sponsors sin logo en mobile */
+  .sponsor-card--inactive {
+    display: none;
+  }
+
+  /* Tamaños de tenderetes en mobile */
+  .sponsor-card--gran-maestro .sponsor-card__tenderete {
+    max-width: 320px;
+  }
+
+  .sponsor-card--maestro-artesano .sponsor-card__tenderete {
+    max-width: 180px;
+    min-width: 180px;
+    width: 180px;
+  }
+
+  .sponsors-grid__oficial-left .sponsor-card__tenderete,
+  .sponsors-grid__oficial-right .sponsor-card__tenderete {
+    max-width: 160px;
+  }
+
+  .sponsor-card__cartel .sponsor-card__custom-text {
+    font-size: 1.4rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  /* Mobile: personajes en extremos según su columna en el grid 2x2 */
+  .sponsors-section
+    .sponsors-grid__maestros
+    .sponsor-card:nth-child(odd):not(.sponsor-card--inactive)
+    .sponsor-card__character {
+    left: -15%;
+    right: auto;
+  }
+
+  .sponsors-section
+    .sponsors-grid__maestros
+    .sponsor-card:nth-child(even):not(.sponsor-card--inactive)
+    .sponsor-card__character {
+    left: auto;
+    right: -15%;
+  }
+
+  /* Fix: WordPress (5th child) debe ir a la derecha porque es el 2do visible */
+  .sponsors-section
+    .sponsors-grid__maestros
+    .sponsor-card:nth-child(5):not(.sponsor-card--inactive)
+    .sponsor-card__character {
+    left: auto;
+    right: -15%;
+  }
+
+  /* Fix: Invertir flip en mobile para Denodo y Docuten */
+  .sponsors-section
+    .sponsors-grid__maestros
+    .sponsor-card:nth-child(7):not(.sponsor-card--inactive)
+    .sponsor-card__character {
+    transform: rotate(2deg) scale(1) scaleX(-1);
+  }
+
+  .sponsors-section
+    .sponsors-grid__maestros
+    .sponsor-card:nth-child(8):not(.sponsor-card--inactive)
+    .sponsor-card__character {
+    transform: rotate(-2deg) scale(1) scaleX(1);
+  }
+
+  /* Mobile: brillo máximo en tenderetes (sin hover) */
+  .sponsors-section .sponsor-card .sponsor-card__tenderete-img {
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.6)) brightness(1)
+      saturate(0.85) sepia(0.15);
+  }
+
+  /* Mobile: luz activa en logos */
+  .sponsors-section .sponsor-card .sponsor-card__logo-container::before {
+    top: -50%;
+    opacity: 1;
+  }
+
+  /* Gran maestro: mostrar ambos personajes en mobile */
+  .sponsors-section .sponsor-card--gran-maestro .sponsor-card__character--left {
+    left: -15%;
+    right: auto;
+  }
+
+  .sponsors-section
+    .sponsor-card--gran-maestro
+    .sponsor-card__character--right {
+    left: auto;
+    right: -15%;
+  }
+}
+
+@media (max-width: 480px) {
+  .sponsors-section__sign-text {
+    font-size: clamp(1.25rem, 5vw, 1.75rem);
+  }
+
+  .sponsors-section__description p {
+    font-size: 1.2rem;
+    white-space: normal;
+  }
+
+  .sponsors-grid__maestros-row {
+    gap: 1rem;
+  }
+
+  .sponsors-grid__oficial-left,
+  .sponsors-grid__oficial-right {
+    gap: 1rem;
+  }
+
+  .sponsor-card--gran-maestro .sponsor-card__tenderete {
+    max-width: 280px;
+  }
+
+  .sponsor-card--maestro-artesano .sponsor-card__tenderete {
+    max-width: 150px;
+    min-width: 150px;
+    width: 150px;
+  }
+
+  .sponsors-grid__oficial-left .sponsor-card__tenderete,
+  .sponsors-grid__oficial-right .sponsor-card__tenderete {
+    max-width: 140px;
+  }
+}

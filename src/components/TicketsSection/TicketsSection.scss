@@ -52,7 +52,7 @@
 
   .tickets-note {
     margin: 0;
-    font-size: 0.75rem;
+    font-size: 1.2rem;
     letter-spacing: var(--custom-letter-spacing);
     text-transform: uppercase;
     color: rgba(255, 247, 236, 0.65);
@@ -133,7 +133,7 @@
 
   .ticket-content {
     .ticket-description {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       letter-spacing: var(--custom-letter-spacing);
       line-height: 1.1rem;
       color: var(--text-light);
@@ -150,7 +150,7 @@
       letter-spacing: var(--custom-letter-spacing);
       line-height: 1rem;
       text-transform: uppercase;
-      font-size: 0.95rem;
+      font-size: 1.2rem;
 
       li {
         display: flex;
@@ -218,7 +218,7 @@
 
     .buy-button {
       background-color: var(--primary);
-      color: var(--secondary);
+      color: var(--accent);
       border: 1px solid var(--secondary);
       padding: 0.5rem 0.8rem;
       font-family: var(--heading-font);
@@ -233,6 +233,7 @@
 
       &:hover {
         background-color: var(--accent);
+        color: var(--primary);
       }
 
       &:disabled {
@@ -266,7 +267,7 @@
 
     .section-description {
       padding: 1.5rem 2rem;
-      font-size: 0.9rem;
+      font-size: 1.2rem;
       .torch-container {
         display: none;
       }
@@ -278,7 +279,7 @@
     }
 
     .tickets-note {
-      font-size: 0.75rem;
+      font-size: 1.2rem;
     }
   }
 

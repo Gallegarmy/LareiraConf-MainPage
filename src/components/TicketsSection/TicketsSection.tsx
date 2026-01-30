@@ -2,10 +2,17 @@ import React from "react";
 import tickets from "../../data/tickets.json";
 import TicketCard from "./TicketCard";
 import "./TicketsSection.scss";
+import { useTranslations } from "@/i18n/utils";
 
 import Torch from "@components/Torch/Torch";
 
-const TicketsSection = () => {
+interface TicketsSectionProps {
+  lang: string;
+}
+
+const TicketsSection: React.FC<TicketsSectionProps> = ({ lang }) => {
+  const t = useTranslations(lang as "es" | "gl");
+
   return (
     <section id="tickets" className="tickets-section panel">
       <div className="tickets-background" />
@@ -13,19 +20,12 @@ const TicketsSection = () => {
         <div className="section-description">
           <Torch position="left" size={100} />
           <Torch position="right" size={100} />
-          <p>
-            Alguien robó el fuego de la Lareira, y solo Lumi sobrevive entre las
-            sombras.
-          </p>
-          <p>
-            Elige tu personaje y preparate para formar tu equipo, ganar
-            conocimientos, resolver acertijos y vivir la aventura de reavivar la
-            Lareira.
-          </p>
+          <p>{t("tickets.description.intro")}</p>
+          <p>{t("tickets.description.cta")}</p>
         </div>
         <div className="tickets-container">
           {tickets.map((ticket) => (
-            <TicketCard key={ticket.id} ticket={ticket} />
+            <TicketCard key={ticket.id} ticket={ticket} lang={lang} />
           ))}
         </div>
       </div>

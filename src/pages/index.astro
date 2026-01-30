@@ -4,8 +4,14 @@ import HorizontalScroll from "@components/Parallax/HorizontalScroll";
 import HomeSection from "@components/Home/HomeSection";
 import TeamSection from "@components/Team/TeamSection";
 import TicketsSection from "@components/TicketsSection/TicketsSection";
+import SponsorsSection from "@components/Sponsors/SponsorsSection";
+import SpeakersSection from "@components/Speakers/SpeakersSection";
+import FAQSection from "@components/FAQ/FAQSection";
 import CommunitiesSection from "@components/Communities/CommunitiesSection";
 import SocialSection from "@components/SocialSection/SocialSection";
+import { getLangFromUrl } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
 ---
 
 <style is:global>
@@ -14,17 +20,18 @@ import SocialSection from "@components/SocialSection/SocialSection";
   }
   .panel {
     width: 100vw;
-    height: 100vh;
+    height: auto;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     flex-shrink: 0;
   }
   .container {
     display: flex;
-    width: 400%; /* 4 panels */
+    width: 800%; /* 8 panels */
     height: 100vh;
     transition: width 0.3s ease;
   }
@@ -55,10 +62,16 @@ import SocialSection from "@components/SocialSection/SocialSection";
 
 <Layout title="Lareira Conf 2026">
   <HorizontalScroll client:load className="container">
-    <HomeSection />
-    <TicketsSection client:load />
-    <TeamSection client:load />
+    <HomeSection lang={lang} />
+    <TicketsSection client:load lang={lang} />
+    <SpeakersSection client:load lang={lang} />
+    <SponsorsSection client:load lang={lang} />
+    <TeamSection client:load lang={lang} />
     <CommunitiesSection client:load />
-    <SocialSection client:load />
+    <FAQSection client:load lang={lang} />
+    <SocialSection client:load lang={lang} />
+    {/* <CommunitiesSection client:load /> */}
+    <FAQSection client:load lang={lang} />
+    <SocialSection client:load lang={lang} />
   </HorizontalScroll>
 </Layout>
