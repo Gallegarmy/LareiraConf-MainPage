@@ -56,7 +56,11 @@ const SponsorCard: React.FC<SponsorCardProps> = ({ sponsor, index }) => {
   }
 
   const isInactive = !logo && !customText;
-  const cardClasses = `sponsor-card sponsor-card--${tier}${isInactive ? " sponsor-card--inactive" : ""}`;
+
+  // Para maestros artesanos, agregar clase con posición (1-9)
+  const positionClass =
+    tier === "maestro-artesano" ? ` sponsor-card--pos-${index + 1}` : "";
+  const cardClasses = `sponsor-card sponsor-card--${tier}${positionClass}${isInactive ? " sponsor-card--inactive" : ""}`;
 
   const content = (
     <div className="sponsor-card__content">

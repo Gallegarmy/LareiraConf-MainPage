@@ -245,16 +245,17 @@
 .sponsor-card--gran-maestro .sponsor-card__character {
   height: 70%;
   z-index: 3;
+  left: -15%;
 }
 
-.sponsor-card--maestro-artesano .sponsor-card__character--left,
+/* Gran Maestro: personajes en ambos lados */
 .sponsor-card--gran-maestro .sponsor-card__character--left {
   left: -15%;
 }
 
-.sponsor-card--maestro-artesano .sponsor-card__character--right,
 .sponsor-card--gran-maestro .sponsor-card__character--right {
   right: -15%;
+  left: auto;
 }
 
 /* Oficiales: detrás del tenderete, centrados, más grandes */
@@ -622,45 +623,24 @@
     padding-right: 3rem;
   }
 
-  /* Mobile: personajes en extremos según su columna en el grid 2x2 */
-  .sponsors-section
-    .sponsors-grid__maestros
-    .sponsor-card:nth-child(odd):not(.sponsor-card--inactive)
-    .sponsor-card__character {
+  /* Mobile: personajes posicionados por índice */
+  /* Impares (1,3,5,7,9): izquierda */
+  .sponsor-card--maestro-artesano.sponsor-card--pos-1 .sponsor-card__character,
+  .sponsor-card--maestro-artesano.sponsor-card--pos-3 .sponsor-card__character,
+  .sponsor-card--maestro-artesano.sponsor-card--pos-5 .sponsor-card__character,
+  .sponsor-card--maestro-artesano.sponsor-card--pos-7 .sponsor-card__character,
+  .sponsor-card--maestro-artesano.sponsor-card--pos-9 .sponsor-card__character {
     left: -15%;
     right: auto;
   }
 
-  .sponsors-section
-    .sponsors-grid__maestros
-    .sponsor-card:nth-child(even):not(.sponsor-card--inactive)
-    .sponsor-card__character {
+  /* Pares (2,4,6,8): derecha */
+  .sponsor-card--maestro-artesano.sponsor-card--pos-2 .sponsor-card__character,
+  .sponsor-card--maestro-artesano.sponsor-card--pos-4 .sponsor-card__character,
+  .sponsor-card--maestro-artesano.sponsor-card--pos-6 .sponsor-card__character,
+  .sponsor-card--maestro-artesano.sponsor-card--pos-8 .sponsor-card__character {
     left: auto;
     right: -15%;
-  }
-
-  /* Fix: WordPress (5th child) debe ir a la derecha porque es el 2do visible */
-  .sponsors-section
-    .sponsors-grid__maestros
-    .sponsor-card:nth-child(5):not(.sponsor-card--inactive)
-    .sponsor-card__character {
-    left: auto;
-    right: -15%;
-  }
-
-  /* Fix: Invertir flip en mobile para Denodo y Docuten */
-  .sponsors-section
-    .sponsors-grid__maestros
-    .sponsor-card:nth-child(7):not(.sponsor-card--inactive)
-    .sponsor-card__character {
-    transform: rotate(2deg) scale(1) scaleX(-1);
-  }
-
-  .sponsors-section
-    .sponsors-grid__maestros
-    .sponsor-card:nth-child(8):not(.sponsor-card--inactive)
-    .sponsor-card__character {
-    transform: rotate(-2deg) scale(1) scaleX(1);
   }
 
   /* Mobile: brillo máximo en tenderetes (sin hover) */
@@ -675,18 +655,7 @@
     opacity: 1;
   }
 
-  /* Gran maestro: mostrar ambos personajes en mobile */
-  .sponsors-section .sponsor-card--gran-maestro .sponsor-card__character--left {
-    left: -15%;
-    right: auto;
-  }
-
-  .sponsors-section
-    .sponsor-card--gran-maestro
-    .sponsor-card__character--right {
-    left: auto;
-    right: -15%;
-  }
+  /* Gran maestro ya tiene las reglas base */
 }
 
 @media (max-width: 480px) {
