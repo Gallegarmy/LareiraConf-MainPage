@@ -385,6 +385,12 @@
   z-index: 1;
 }
 
+/* Cartel para maestros artesanos: más grande */
+.sponsor-card--maestro-artesano .sponsor-card__cartel {
+  max-width: 200px;
+  min-width: 200px;
+}
+
 .sponsor-card__cartel-content {
   position: relative;
   width: 100%;
@@ -601,6 +607,16 @@
     display: none;
   }
 
+  /* Mostrar tenderete de Accenture (pos-4) aunque esté inactive */
+  .sponsor-card--maestro-artesano.sponsor-card--pos-4 {
+    display: block;
+  }
+
+  /* Ocultar cartel "Monta tu puesto" (pos-3) en mobile */
+  .sponsor-card--maestro-artesano.sponsor-card--pos-3 {
+    display: none;
+  }
+
   /* Tamaños de tenderetes en mobile */
   .sponsor-card--gran-maestro .sponsor-card__tenderete {
     max-width: 320px;
@@ -623,22 +639,21 @@
     padding-right: 3rem;
   }
 
-  /* Mobile: personajes posicionados por índice */
-  /* Impares (1,3,5,7,9): izquierda */
+  /* Mobile: personajes posicionados por índice (excluyendo pos-3 que está oculto) */
+  /* Izquierda: pos-1 (1er), pos-4 (3er), pos-6 (5to), pos-8 (7mo) */
   .sponsor-card--maestro-artesano.sponsor-card--pos-1 .sponsor-card__character,
-  .sponsor-card--maestro-artesano.sponsor-card--pos-3 .sponsor-card__character,
-  .sponsor-card--maestro-artesano.sponsor-card--pos-5 .sponsor-card__character,
-  .sponsor-card--maestro-artesano.sponsor-card--pos-7 .sponsor-card__character,
-  .sponsor-card--maestro-artesano.sponsor-card--pos-9 .sponsor-card__character {
+  .sponsor-card--maestro-artesano.sponsor-card--pos-4 .sponsor-card__character,
+  .sponsor-card--maestro-artesano.sponsor-card--pos-6 .sponsor-card__character,
+  .sponsor-card--maestro-artesano.sponsor-card--pos-8 .sponsor-card__character {
     left: -15%;
     right: auto;
   }
 
-  /* Pares (2,4,6,8): derecha */
+  /* Derecha: pos-2 (2do), pos-5 (4to), pos-7 (6to), pos-9 (8vo) */
   .sponsor-card--maestro-artesano.sponsor-card--pos-2 .sponsor-card__character,
-  .sponsor-card--maestro-artesano.sponsor-card--pos-4 .sponsor-card__character,
-  .sponsor-card--maestro-artesano.sponsor-card--pos-6 .sponsor-card__character,
-  .sponsor-card--maestro-artesano.sponsor-card--pos-8 .sponsor-card__character {
+  .sponsor-card--maestro-artesano.sponsor-card--pos-5 .sponsor-card__character,
+  .sponsor-card--maestro-artesano.sponsor-card--pos-7 .sponsor-card__character,
+  .sponsor-card--maestro-artesano.sponsor-card--pos-9 .sponsor-card__character {
     left: auto;
     right: -15%;
   }

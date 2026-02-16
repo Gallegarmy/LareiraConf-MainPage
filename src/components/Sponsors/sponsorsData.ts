@@ -132,19 +132,17 @@ export const sponsorsConfig: SponsorConfig[] = [
     },
   },
   {
-    name: "Accenture",
+    name: "?",
     tier: "maestro-artesano",
     logo: null,
-    url: "#",
+    url: "https://lareiraconfsponsordeck.my.canva.site/",
+    customText: "Monta tu puesto aquí",
+    customImage: cartelImage.src,
     tenderete: tenderetes.maestro3,
-    character: {
-      type: "M",
-      side: "left",
-      variation: { rotate: 1, scale: 1.0, flip: false },
-    },
+    character: null,
   },
   {
-    name: "Pétalo",
+    name: "Accenture",
     tier: "maestro-artesano",
     logo: null,
     url: "#",
@@ -152,7 +150,7 @@ export const sponsorsConfig: SponsorConfig[] = [
     character: {
       type: "H",
       side: "left",
-      variation: { rotate: -2, scale: 1.0, flip: true },
+      variation: { rotate: -1, scale: 1.0, flip: false },
     },
   },
   {
@@ -164,7 +162,7 @@ export const sponsorsConfig: SponsorConfig[] = [
     character: {
       type: "H",
       side: "left",
-      variation: { rotate: 3, scale: 1.0, flip: false },
+      variation: { rotate: 3, scale: 1.0, flip: true },
     },
   },
   {
@@ -176,7 +174,7 @@ export const sponsorsConfig: SponsorConfig[] = [
     character: {
       type: "H",
       side: "left",
-      variation: { rotate: -1, scale: 1, flip: true },
+      variation: { rotate: -1, scale: 1, flip: false },
     },
   },
   {
@@ -188,7 +186,7 @@ export const sponsorsConfig: SponsorConfig[] = [
     character: {
       type: "M",
       side: "left",
-      variation: { rotate: 2, scale: 1, flip: false },
+      variation: { rotate: 2, scale: 1, flip: true },
     },
   },
   {
@@ -200,7 +198,7 @@ export const sponsorsConfig: SponsorConfig[] = [
     character: {
       type: "H",
       side: "left",
-      variation: { rotate: -2, scale: 1, flip: true },
+      variation: { rotate: -2, scale: 1, flip: false },
     },
   },
   {
@@ -212,7 +210,7 @@ export const sponsorsConfig: SponsorConfig[] = [
     character: {
       type: "M",
       side: "left",
-      variation: { rotate: 1, scale: 1, flip: false },
+      variation: { rotate: 1, scale: 1, flip: true },
     },
   },
   // Oficiales Artesanos
@@ -253,14 +251,16 @@ export const sponsorsConfig: SponsorConfig[] = [
     },
   },
   {
-    name: "?",
+    name: "Pétalo",
     tier: "oficial-artesano",
     logo: null,
-    url: "https://lareiraconfsponsordeck.my.canva.site/",
-    customText: "Monta tu puesto aquí",
-    customImage: cartelImage.src,
+    url: "#",
     tenderete: tenderetes.pequeno,
-    character: null,
+    character: {
+      type: "H",
+      side: "center",
+      variation: { rotate: 0, scale: 1, flip: false },
+    },
   },
 ];
 
