@@ -10,6 +10,7 @@ import teimasLogo from "@img/sponsors/teimas.svg";
 import captologyLogo from "@img/sponsors/captology.svg";
 import keleaLogo from "@img/sponsors/kelea.svg";
 import nttdataLogo from "@img/sponsors/nttdata.svg";
+import accentureLogo from "@img/sponsors/accenture.svg";
 
 // Importar personajes
 import granMaestroH from "@img/sponsors/gran-maestro-h.png";
@@ -144,11 +145,11 @@ export const sponsorsConfig: SponsorConfig[] = [
   {
     name: "Accenture",
     tier: "maestro-artesano",
-    logo: null,
-    url: "#",
+    logo: accentureLogo.src,
+    url: "https://www.accenture.com",
     tenderete: tenderetes.maestro4,
     character: {
-      type: "H",
+      type: "M",
       side: "left",
       variation: { rotate: -1, scale: 1.0, flip: false },
     },

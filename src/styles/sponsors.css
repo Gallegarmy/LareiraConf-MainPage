@@ -607,11 +607,6 @@
     display: none;
   }
 
-  /* Mostrar tenderete de Accenture (pos-4) aunque esté inactive */
-  .sponsor-card--maestro-artesano.sponsor-card--pos-4 {
-    display: block;
-  }
-
   /* Ocultar cartel "Monta tu puesto" (pos-3) en mobile */
   .sponsor-card--maestro-artesano.sponsor-card--pos-3 {
     display: none;
