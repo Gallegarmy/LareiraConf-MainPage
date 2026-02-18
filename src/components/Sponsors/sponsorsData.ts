@@ -9,6 +9,8 @@ import gradiantLogo from "@img/sponsors/gradiant.svg";
 import teimasLogo from "@img/sponsors/teimas.svg";
 import captologyLogo from "@img/sponsors/captology.svg";
 import keleaLogo from "@img/sponsors/kelea.svg";
+import nttdataLogo from "@img/sponsors/nttdata.svg";
+import accentureLogo from "@img/sponsors/accenture.svg";
 
 // Importar personajes
 import granMaestroH from "@img/sponsors/gran-maestro-h.png";
@@ -119,25 +121,38 @@ export const sponsorsConfig: SponsorConfig[] = [
     },
   },
   {
-    name: "?",
+    name: "NTT DATA",
     tier: "maestro-artesano",
-    logo: null,
+    logo: nttdataLogo.src,
+    url: "https://es.nttdata.com/",
     tenderete: tenderetes.maestro2,
-    character: null,
+    character: {
+      type: "M",
+      side: "left",
+      variation: { rotate: -1, scale: 1.0, flip: true },
+    },
   },
   {
     name: "?",
     tier: "maestro-artesano",
     logo: null,
+    url: "https://lareiraconfsponsordeck.my.canva.site/",
+    customText: "Monta tu puesto aquí",
+    customImage: cartelImage.src,
     tenderete: tenderetes.maestro3,
     character: null,
   },
   {
-    name: "?",
+    name: "Accenture",
     tier: "maestro-artesano",
-    logo: null,
+    logo: accentureLogo.src,
+    url: "https://www.accenture.com",
     tenderete: tenderetes.maestro4,
-    character: null,
+    character: {
+      type: "M",
+      side: "left",
+      variation: { rotate: -1, scale: 1.0, flip: false },
+    },
   },
   {
     name: "WordPress.com",
@@ -158,7 +173,7 @@ export const sponsorsConfig: SponsorConfig[] = [
     url: "https://raiolanetworks.es",
     tenderete: tenderetes.maestro3, // Override: usa tenderete 3
     character: {
-      type: "H", // Intercambiado con Denodo
+      type: "H",
       side: "left",
       variation: { rotate: -1, scale: 1, flip: false },
     },
@@ -170,9 +185,9 @@ export const sponsorsConfig: SponsorConfig[] = [
     url: "https://www.denodo.com",
     tenderete: tenderetes.maestro1, // Override: usa tenderete 1
     character: {
-      type: "M", // Intercambiado con Raiola
+      type: "M",
       side: "left",
-      variation: { rotate: 2, scale: 1, flip: false },
+      variation: { rotate: 2, scale: 1, flip: true },
     },
   },
   {
@@ -182,9 +197,9 @@ export const sponsorsConfig: SponsorConfig[] = [
     url: "https://www.docuten.com",
     tenderete: tenderetes.maestro2,
     character: {
-      type: "H", // Intercambiado con Gradiant
-      side: "right",
-      variation: { rotate: -2, scale: 1, flip: true },
+      type: "H",
+      side: "left",
+      variation: { rotate: -2, scale: 1, flip: false },
     },
   },
   {
@@ -194,12 +209,11 @@ export const sponsorsConfig: SponsorConfig[] = [
     url: "https://www.gradiant.org",
     tenderete: tenderetes.maestro4,
     character: {
-      type: "M", // Intercambiado con Docuten
-      side: "right",
+      type: "M",
+      side: "left",
       variation: { rotate: 1, scale: 1, flip: true },
     },
   },
-
   // Oficiales Artesanos
   {
     name: "Captology",
@@ -238,14 +252,16 @@ export const sponsorsConfig: SponsorConfig[] = [
     },
   },
   {
-    name: "?",
+    name: "Pétalo",
     tier: "oficial-artesano",
     logo: null,
-    url: "https://lareiraconfsponsordeck.my.canva.site/",
-    customText: "Monta tu puesto aquí",
-    customImage: cartelImage.src,
+    url: "#",
     tenderete: tenderetes.pequeno,
-    character: null,
+    character: {
+      type: "H",
+      side: "center",
+      variation: { rotate: 0, scale: 1, flip: false },
+    },
   },
 ];
 
