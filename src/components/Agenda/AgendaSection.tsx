@@ -95,7 +95,7 @@ const AgendaSection: React.FC<Props> = ({ lang }) => {
       setTimeout(() => {
         setOpenDay(null);
         setClosingDay(null);
-      }, 650);
+      }, 550);
     } else {
       setClosingDay(null);
       setOpenDay(day);
@@ -202,16 +202,13 @@ const AgendaSection: React.FC<Props> = ({ lang }) => {
                 <span className="agenda-day__subtitle">{t.fridaySubtitle}</span>
               </div>
             </button>
-            <div className="agenda-day__body">
+            <div className="agenda-day__body" style={{ backgroundImage: `url(${papiroSinFondo.src})` }}>
               <div className="agenda-papyrus">
-                <img
-                  src={papiroSinFondo.src}
-                  alt=""
-                  className="agenda-papyrus__img"
-                  aria-hidden="true"
-                />
                 <ul className="agenda-slots">{previaSlots.map(renderSlot)}</ul>
               </div>
+            </div>
+            <div className="agenda-day__footer" aria-hidden="true">
+              <img src={papiroHorizontal.src} alt="" className="agenda-day__footer-img" />
             </div>
           </div>
 
@@ -237,16 +234,13 @@ const AgendaSection: React.FC<Props> = ({ lang }) => {
                 <span className="agenda-day__subtitle">{t.saturdaySubtitle}</span>
               </div>
             </button>
-            <div className="agenda-day__body">
+            <div className="agenda-day__body" style={{ backgroundImage: `url(${papiroSinFondo.src})` }}>
               <div className="agenda-papyrus">
-                <img
-                  src={papiroSinFondo.src}
-                  alt=""
-                  className="agenda-papyrus__img"
-                  aria-hidden="true"
-                />
                 <ul className="agenda-slots">{eventoSlots.map(renderSlot)}</ul>
               </div>
+            </div>
+            <div className="agenda-day__footer" aria-hidden="true">
+              <img src={papiroHorizontal.src} alt="" className="agenda-day__footer-img" />
             </div>
           </div>
 
