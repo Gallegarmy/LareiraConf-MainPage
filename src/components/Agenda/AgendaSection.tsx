@@ -28,6 +28,7 @@ const SLOT_SPEAKER_IDS: Record<string, string> = {
   "charla-4": "diego-marino",
   borja: "borja-perez",
   cristina: "speaker-4",
+  datola: "eva-gonzalez-brais-calvo",
 };
 
 const UI_LABELS = {
@@ -114,40 +115,57 @@ const AgendaSection: React.FC<Props> = ({ lang }) => {
     const speakerId = SLOT_SPEAKER_IDS[slot.id];
     const speaker = speakerId ? speakerMap.get(speakerId) : undefined;
 
-    const displayName = speaker?.isMultiSpeaker
-      ? (speaker.speakers?.map((s: { name: string }) => s.name).join(" & ") ??
-        speaker.name)
-      : speaker?.name;
-
-    const company =
-      speaker?.company ??
-      (speaker?.isMultiSpeaker ? speaker.speakers?.[0]?.company : undefined);
-
     const hasMainContent = SPEAKER_SLOT_CATEGORIES.has(slot.category);
 
     return (
-      <li key={slot.id} className={`agenda-slot agenda-slot--${slot.category}`}>
+      <li key={slot.id} className={`agenda-slot agenda-slot--${slot.category}${speaker?.isMultiSpeaker ? " agenda-slot--multi" : ""}`}>
         <span className="agenda-slot__time">{minutesToTime(slot.start)}</span>
 
         {speaker ? (
-          <>
-            <div className="agenda-slot__avatar">
-              <img
-                src={speaker.image.src}
-                alt={speaker.image.alt}
-                loading="lazy"
-              />
-            </div>
-            <div className="agenda-slot__main">
-              <p className="agenda-slot__title">{speaker.talkTitle}</p>
-              <div className="agenda-slot__speaker-info">
-                <span className="agenda-slot__speaker-name">{displayName}</span>
-                {company && (
-                  <span className="agenda-slot__company">{company}</span>
-                )}
+          speaker.isMultiSpeaker && speaker.speakers ? (
+            // Multi-ponente: título + lista de ponentes individuales
+            <>
+              <span className="agenda-slot__no-avatar" />
+              <div className="agenda-slot__main">
+                <p className="agenda-slot__title">{speaker.talkTitle}</p>
+                <div className="agenda-slot__speakers-list">
+                  {speaker.speakers.map((s, i) => (
+                    <div key={i} className="agenda-slot__speaker-row">
+                      <div className="agenda-slot__avatar agenda-slot__avatar--small">
+                        <img src={s.image.src} alt={s.image.alt} loading="lazy" />
+                      </div>
+                      <div className="agenda-slot__speaker-info">
+                        <span className="agenda-slot__speaker-name">{s.name}</span>
+                        {s.company && (
+                          <span className="agenda-slot__company">{s.company}</span>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-          </>
+            </>
+          ) : (
+            // Ponente único
+            <>
+              <div className="agenda-slot__avatar">
+                <img
+                  src={speaker.image.src}
+                  alt={speaker.image.alt}
+                  loading="lazy"
+                />
+              </div>
+              <div className="agenda-slot__main">
+                <p className="agenda-slot__title">{speaker.talkTitle}</p>
+                <div className="agenda-slot__speaker-info">
+                  <span className="agenda-slot__speaker-name">{speaker.name}</span>
+                  {speaker.company && (
+                    <span className="agenda-slot__company">{speaker.company}</span>
+                  )}
+                </div>
+              </div>
+            </>
+          )
         ) : hasMainContent ? (
           <>
             <span className="agenda-slot__no-avatar" />

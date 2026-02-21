@@ -25,12 +25,19 @@
 ────────────────────────────────────────────── */
 
 .agenda-scroll {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 1.25rem;
   width: 100%;
-  max-width: 860px;
+  max-width: 1400px;
   margin: 0 auto;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .agenda-scroll {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ──────────────────────────────────────────────
@@ -57,7 +64,7 @@
     max-height: 62vh;
     overflow-y: auto;
     overflow-x: hidden;
-    padding: 0.5rem 2.25rem 1.5rem;
+    padding: 1rem 3rem 0 5rem;
     box-sizing: border-box;
   }
 
@@ -191,9 +198,12 @@
 
 .agenda-slot {
   display: grid;
-  grid-template-columns: 4.2rem 3rem 1fr;
-  gap: 0.5rem 1rem;
-  align-items: center;
+  grid-template-columns: 3rem 1fr;
+  grid-template-areas:
+    "time   time"
+    "title  title"
+    "avatar info";
+  gap: 0.25rem 0.75rem;
   padding: 0.8rem 0.4rem;
   border-bottom: 1px solid rgba(107, 76, 53, 0.2);
   border-radius: 3px;
@@ -205,6 +215,20 @@
 
   &:hover {
     background: rgba(107, 76, 53, 0.07);
+  }
+
+  // Fila sin ponente: hora + texto en una línea
+  &--break,
+  &--registration,
+  &--announcement,
+  &--show,
+  &--party {
+    grid-template-areas: "time title";
+    align-items: center;
+
+    .agenda-slot__main {
+      grid-area: title;
+    }
   }
 
   // Fila sin ponente: atenuada
@@ -240,17 +264,17 @@
     }
   }
 
-  /* Columna 1 – hora */
+  /* Hora */
   &__time {
     font-family: var(--heading-font), sans-serif;
-    font-size: 1.1rem;
+    font-size: 1.6rem;
     color: var(--color-brown-dark);
     white-space: nowrap;
     line-height: 1;
-    grid-column: 1;
+    grid-area: time;
   }
 
-  /* Columna 2 – avatar */
+  /* Avatar */
   &__avatar {
     width: 44px;
     height: 44px;
@@ -259,42 +283,60 @@
     border: 2px solid rgba(233, 92, 60, 0.7);
     flex-shrink: 0;
     background: var(--color-brown-dark);
-    grid-column: 2;
+    grid-area: avatar;
     align-self: center;
 
     img {
       width: 100%;
+      height: 100%;
       object-fit: cover;
       display: block;
     }
   }
 
-  /* Placeholder de avatar para slots sin ponente */
+  /* Avatar pequeño para multi-speaker */
+  &__avatar--small {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid rgba(233, 92, 60, 0.7);
+    background: var(--color-brown-dark);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  }
+
+  /* Placeholder oculto */
   &__no-avatar {
-    grid-column: 2;
+    display: none;
   }
 
-  /* Columna 3 – contenido principal: título arriba, nombre+empresa abajo */
+  /* Contenido principal: display:contents para participar en el grid */
   &__main {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-    min-width: 0;
-    grid-column: 3;
+    display: contents;
   }
 
+  /* Título */
   &__title {
     font-family: var(--heading-font), sans-serif;
-    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    font-size: clamp(1.2rem, 1.8vw, 1.5rem);
     color: var(--color-brown-dark);
     letter-spacing: 0.04rem;
     text-transform: uppercase;
     margin: 0;
     line-height: 1.25;
+    grid-area: title;
 
     &--no-speaker {
+      grid-area: title;
       font-family: var(--body-font);
-      font-size: 1rem;
+      font-size: 1.2rem;
       text-transform: none;
       color: #7a5535;
       font-style: italic;
@@ -303,36 +345,65 @@
     }
   }
 
+  /* Info ponente */
   &__speaker-info {
     display: flex;
-    align-items: baseline;
-    gap: 0.4rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.1rem;
     min-width: 0;
+    grid-area: info;
+    align-self: center;
   }
 
   &__speaker-name {
     font-family: var(--body-font);
-    font-size: 1.05rem;
+    font-size: 1.25rem;
     color: #5a3a20;
     font-weight: 700;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
     line-height: 1.2;
   }
 
   &__company {
     font-family: var(--body-font);
-    font-size: 0.95rem;
+    font-size: 1.1rem;
     color: #7a5535;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  }
 
-    &::before {
-      content: "·";
-      margin-right: 0.4rem;
-      opacity: 0.5;
+  /* Lista de ponentes multi-speaker */
+  &__speakers-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
+    grid-area: info;
+    align-self: start;
+  }
+
+  &__speaker-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
+  }
+
+  /* Multi-ponente: sin avatar individual en la primera columna */
+  &--multi {
+    grid-template-areas:
+      "time  time"
+      "title title"
+      "list  list";
+
+    .agenda-slot__main {
+      display: contents;
+    }
+
+    .agenda-slot__title {
+      grid-area: title;
+    }
+
+    .agenda-slot__speakers-list {
+      grid-area: list;
     }
   }
 }
@@ -348,15 +419,5 @@
 
   .agenda-day__header-img {
     width: 100%;
-  }
-}
-
-@media (max-width: 600px) {
-  .agenda-slot {
-    grid-template-columns: 3.2rem 2.4rem 1fr;
-
-    &__main {
-      grid-column: 3;
-    }
   }
 }
