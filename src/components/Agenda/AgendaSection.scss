@@ -1,0 +1,428 @@
+/* ──────────────────────────────────────────────
+   Agenda – contenedor de sección
+────────────────────────────────────────────── */
+
+.agenda-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1.5rem, 3vw, 3rem);
+  overflow: hidden;
+
+  .speakers-title {
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* ──────────────────────────────────────────────
+   Papiro: el "scroll" de pergamino
+────────────────────────────────────────────── */
+
+.agenda-scroll {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+  max-width: 860px;
+}
+
+/* ──────────────────────────────────────────────
+   Contenedor de día: pergamino cerrado / abierto
+────────────────────────────────────────────── */
+
+.agenda-scroll-day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ──────────────────────────────────────────────
+   Animación de desenrollado
+────────────────────────────────────────────── */
+
+@keyframes papyrus-unroll {
+  0% {
+    clip-path: inset(0 4% 98% 4% round 0 0 60% 60%);
+    transform: perspective(600px) rotateX(-12deg);
+    opacity: 0.4;
+  }
+  40% {
+    clip-path: inset(0 1% 40% 1% round 0 0 30% 30%);
+    transform: perspective(600px) rotateX(-4deg);
+    opacity: 1;
+  }
+  80% {
+    clip-path: inset(0 0% 5% 0% round 0 0 8% 8%);
+    transform: perspective(600px) rotateX(-1deg);
+  }
+  100% {
+    clip-path: inset(0 0% 0% 0% round 0);
+    transform: perspective(600px) rotateX(0deg);
+  }
+}
+
+@keyframes papyrus-rollup {
+  0% {
+    clip-path: inset(0 0% 0% 0% round 0);
+    transform: perspective(600px) rotateX(0deg);
+    opacity: 1;
+  }
+  40% {
+    clip-path: inset(0 1% 40% 1% round 0 0 30% 30%);
+    transform: perspective(600px) rotateX(-4deg);
+    opacity: 1;
+  }
+  80% {
+    clip-path: inset(0 3% 90% 3% round 0 0 50% 50%);
+    transform: perspective(600px) rotateX(-10deg);
+    opacity: 0.6;
+  }
+  100% {
+    clip-path: inset(0 4% 98% 4% round 0 0 60% 60%);
+    transform: perspective(600px) rotateX(-12deg);
+    opacity: 0;
+  }
+}
+
+/* ──────────────────────────────────────────────
+   Papiro: zona de scroll de los slots
+────────────────────────────────────────────── */
+
+.agenda-papyrus {
+  overflow-y: hidden;
+  overflow-x: hidden;
+  padding: 0.5rem 2.25rem 1.5rem;
+  position: relative;
+  max-height: 65vh;
+
+  &__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0s;
+  }
+
+  .agenda-slots {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Scrollbar estilizada al tono */
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-track {
+    background: rgba(120, 80, 40, 0.15);
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(107, 76, 53, 0.55);
+    border-radius: 3px;
+  }
+}
+
+/* ──────────────────────────────────────────────
+   Cabecera de día – banner horizontal sobre el pergamino
+────────────────────────────────────────────── */
+
+.agenda-day {
+  &__header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    width: 100%;
+    transition: transform 0.2s ease, filter 0.2s ease;
+
+    &:hover {
+      transform: scale(1.02);
+      filter: brightness(1.08);
+    }
+  }
+
+  &__header-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: fill;
+    pointer-events: none;
+  }
+
+  &__header-content {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    text-align: center;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  &__date,
+  &__subtitle {
+    font-family: var(--heading-font), sans-serif;
+    font-size: clamp(1.2rem, 2vw, 1.6rem);
+    color: var(--accent);
+    letter-spacing: var(--custom-letter-spacing);
+    text-transform: uppercase;
+    line-height: 1;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.12);
+    font-weight: 700;
+  }
+
+  /* Zona colapsable con animacion grid */
+  &__body {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 100%;
+    transform-origin: top center;
+
+    > * {
+      overflow: hidden;
+    }
+  }
+}
+
+/* Estado abierto */
+.agenda-scroll-day--open {
+  .agenda-day__body {
+    grid-template-rows: 1fr;
+  }
+
+  .agenda-papyrus {
+    overflow-y: auto;
+    animation: papyrus-unroll 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+
+    &__img {
+      opacity: 1;
+      transition: none;
+    }
+  }
+}
+
+/* Estado cerrando */
+.agenda-scroll-day--closing {
+  .agenda-day__body {
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .agenda-papyrus {
+    animation: papyrus-rollup 0.65s cubic-bezier(0.55, 0, 0.75, 0.06) forwards;
+    overflow-y: hidden;
+
+    &__img {
+      opacity: 1;
+      transition: none;
+    }
+  }
+}
+
+/* ──────────────────────────────────────────────
+   Lista de slots
+────────────────────────────────────────────── */
+
+.agenda-slots {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ──────────────────────────────────────────────
+   Fila de slot – layout horizontal
+   columnas: [hora] [avatar] [persona] [título] [tags]
+────────────────────────────────────────────── */
+
+.agenda-slot {
+  display: grid;
+  grid-template-columns: 4.2rem 3rem 1fr;
+  gap: 0.5rem 1rem;
+  align-items: center;
+  padding: 0.8rem 0.4rem;
+  border-bottom: 1px solid rgba(107, 76, 53, 0.2);
+  border-radius: 3px;
+  transition: background 0.15s;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background: rgba(107, 76, 53, 0.07);
+  }
+
+  // Fila sin ponente: atenuada
+  &--break,
+  &--registration {
+    opacity: 0.55;
+
+    .agenda-slot__time {
+      color: var(--color-brown);
+    }
+  }
+
+  &--announcement {
+    .agenda-slot__time {
+      color: var(--color-brown-dark);
+    }
+  }
+
+  // Fila con contenido principal
+  &--talk,
+  &--interview,
+  &--taller {
+    .agenda-slot__time {
+      color: var(--accent);
+      font-weight: 700;
+    }
+  }
+
+  &--show,
+  &--party {
+    .agenda-slot__time {
+      color: #b07030;
+    }
+  }
+
+  /* Columna 1 – hora */
+  &__time {
+    font-family: var(--heading-font), sans-serif;
+    font-size: 1.1rem;
+    color: var(--color-brown-dark);
+    white-space: nowrap;
+    line-height: 1;
+    grid-column: 1;
+  }
+
+  /* Columna 2 – avatar */
+  &__avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid rgba(233, 92, 60, 0.7);
+    flex-shrink: 0;
+    background: var(--color-brown-dark);
+    grid-column: 2;
+    align-self: center;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  }
+
+  /* Placeholder de avatar para slots sin ponente */
+  &__no-avatar {
+    grid-column: 2;
+  }
+
+  /* Columna 3 – contenido principal: título arriba, nombre+empresa abajo */
+  &__main {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    min-width: 0;
+    grid-column: 3;
+  }
+
+  &__title {
+    font-family: var(--heading-font), sans-serif;
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    color: var(--color-brown-dark);
+    letter-spacing: 0.04rem;
+    text-transform: uppercase;
+    margin: 0;
+    line-height: 1.25;
+
+    &--no-speaker {
+      font-family: var(--body-font);
+      font-size: 1rem;
+      text-transform: none;
+      color: #7a5535;
+      font-style: italic;
+      letter-spacing: 0;
+      font-weight: normal;
+    }
+  }
+
+  &__speaker-info {
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
+    min-width: 0;
+  }
+
+  &__speaker-name {
+    font-family: var(--body-font);
+    font-size: 1.05rem;
+    color: #5a3a20;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.2;
+  }
+
+  &__company {
+    font-family: var(--body-font);
+    font-size: 0.95rem;
+    color: #7a5535;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &::before {
+      content: "·";
+      margin-right: 0.4rem;
+      opacity: 0.5;
+    }
+  }
+}
+
+/* ──────────────────────────────────────────────
+   Responsive – tablet / móvil
+────────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  .agenda-scroll {
+    gap: 1rem;
+  }
+
+  .agenda-day__header-img {
+    width: 90%;
+  }
+}
+
+@media (max-width: 600px) {
+  .agenda-slot {
+    grid-template-columns: 3.2rem 2.4rem 1fr;
+
+    &__main {
+      grid-column: 3;
+    }
+  }
+}

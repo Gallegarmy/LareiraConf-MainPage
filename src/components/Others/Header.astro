@@ -4,6 +4,7 @@ import TicketIcon from "@img/icons/ticket.svg?raw";
 import UsersIcon from "@img/icons/users.svg?raw";
 import SpeakerIcon from "@img/icons/speaker.svg?raw";
 import ShieldIcon from "@img/icons/shield.svg?raw";
+import ScriptIcon from "@img/icons/script.svg?raw";
 import ShoppingIcon from "@img/icons/shopping.svg?raw";
 import QuestionIcon from "@img/icons/question.svg?raw";
 import MenuIcon from "@img/icons/menu.svg?raw";
@@ -37,6 +38,10 @@ const t = useTranslations(lang);
         set:html={SpeakerIcon}
       />
       <span>{t("nav.speakers")}</span>
+    </a>
+    <a href="#agenda" class="cta-button">
+      <span class="cta-button__icon" aria-hidden="true" set:html={ScriptIcon} />
+      <span>Agenda</span>
     </a>
     <a href="#sponsors" class="cta-button">
       <span

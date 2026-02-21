@@ -6,6 +6,7 @@ import TeamSection from "@components/Team/TeamSection";
 import TicketsSection from "@components/TicketsSection/TicketsSection";
 import SponsorsSection from "@components/Sponsors/SponsorsSection";
 import SpeakersSection from "@components/Speakers/SpeakersSection";
+import AgendaSection from "@components/Agenda/AgendaSection";
 import FAQSection from "@components/FAQ/FAQSection";
 import SocialSection from "@components/SocialSection/SocialSection";
 import { getLangFromUrl } from "@/i18n/utils";
@@ -30,7 +31,7 @@ const lang = getLangFromUrl(Astro.url);
   }
   .container {
     display: flex;
-    width: 600%;
+    width: 700%;
     height: 100vh;
     transition: width 0.3s ease;
   }
@@ -64,6 +65,7 @@ const lang = getLangFromUrl(Astro.url);
     <HomeSection lang={lang} />
     <TicketsSection client:load lang={lang} />
     <SpeakersSection client:load lang={lang} />
+    <AgendaSection client:only="react" lang={lang} />
     <SponsorsSection client:load lang={lang} />
     <TeamSection client:load lang={lang} />
     <FAQSection client:load lang={lang} />

@@ -1,0 +1,113 @@
+{
+  "generatedAt": "2026-02-19T19:33:41.586Z",
+  "dayStartMinutes": 540,
+  "dayEndMinutes": 1440,
+  "stepMinutes": 5,
+  "tracks": [
+    {
+      "id": "auditorium",
+      "label": "Auditorio",
+      "slots": [
+        {
+          "id": "bienvenida",
+          "title": "Benvida",
+          "category": "announcement",
+          "start": 45,
+          "duration": 25
+        },
+        {
+          "id": "charla-1",
+          "title": "Charla Midu",
+          "category": "talk",
+          "start": 70,
+          "duration": 45
+        },
+        {
+          "id": "entrevista-1",
+          "title": "Entrevista Almu",
+          "category": "interview",
+          "start": 120,
+          "duration": 30
+        },
+        {
+          "id": "entrevista-2",
+          "title": "Entrevista Nacho",
+          "category": "interview",
+          "start": 210,
+          "duration": 30
+        },
+        {
+          "id": "charla-2",
+          "title": "Charla Samuel",
+          "category": "talk",
+          "start": 250,
+          "duration": 30
+        },
+        {
+          "id": "actuacion",
+          "title": "Actuación sorpresa",
+          "category": "show",
+          "start": 325,
+          "duration": 60
+        },
+        {
+          "id": "charla-3",
+          "title": "Charla Pilar & Antonio",
+          "category": "talk",
+          "start": 430,
+          "duration": 45
+        },
+        {
+          "id": "entrevista-3",
+          "title": "Entrevista Nerea",
+          "category": "interview",
+          "start": 480,
+          "duration": 30
+        },
+        {
+          "id": "charla-4",
+          "title": "Charla Diego",
+          "category": "talk",
+          "start": 580,
+          "duration": 30
+        },
+        {
+          "id": "entrega-premios",
+          "title": "Entrega de premios",
+          "category": "announcement",
+          "start": 615,
+          "duration": 50
+        },
+        {
+          "id": "cierre",
+          "title": "Peche do día",
+          "category": "announcement",
+          "start": 665,
+          "duration": 25
+        }
+      ]
+    },
+    {
+      "id": "exterior",
+      "label": "Exterior",
+      "slots": [
+        { "id": "registro", "title": "Rexistro", "category": "registration", "start": 0, "duration": 45 },
+        { "id": "coffee-break", "title": "Coffee break", "category": "break", "start": 150, "duration": 60 },
+        { "id": "comida", "title": "Comida", "category": "break", "start": 280, "duration": 150 },
+        { "id": "break-tarde", "title": "Break", "category": "break", "start": 510, "duration": 70 },
+        { "id": "cena", "title": "Cea", "category": "break", "start": 780, "duration": 120 }
+      ]
+    },
+    {
+      "id": "previa",
+      "label": "Previa",
+      "slots": [
+        { "id": "inicio-previa", "title": "Inicio", "category": "registration", "start": 570, "duration": 30 },
+        { "id": "borja", "title": "Borja", "category": "party", "start": 600, "duration": 60 },
+        { "id": "cristina", "title": "Cristina", "category": "party", "start": 660, "duration": 60 },
+        { "id": "datola", "title": "Datola", "category": "party", "start": 720, "duration": 60 },
+        { "id": "vin", "title": "Vin", "category": "party", "start": 810, "duration": 90 }
+      ]
+    }
+  ]
+}
