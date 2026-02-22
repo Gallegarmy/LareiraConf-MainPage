@@ -126,11 +126,10 @@
 
   &:hover,
   &:focus-visible {
-    transform: translateY(-6px);
     outline: none;
 
     .community-card__logo {
-      transform: scale(1.08);
+      animation: clothSway 3.5s ease-in-out infinite;
     }
   }
 
@@ -143,36 +142,35 @@
   width: 100%;
   height: auto;
   object-fit: contain;
-  transition: transform 0.3s ease;
+  transform-origin: top center;
   filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
 }
 
-.community-card__name {
-  font-size: clamp(0.7rem, 1.2vw, 0.9rem);
-  font-weight: 600;
-  margin: 0;
-  text-transform: uppercase;
-  letter-spacing: var(--custom-letter-spacing);
-  color: var(--accent);
-  line-height: 1.2;
-  text-align: center;
-  word-break: break-word;
-  hyphens: auto;
+@keyframes clothSway {
+  0%    { transform: rotate(0deg)    skewX(0deg); }
+  15%   { transform: rotate(3deg)    skewX(1.5deg); }
+  35%   { transform: rotate(-2.5deg) skewX(-1deg); }
+  55%   { transform: rotate(2deg)    skewX(0.8deg); }
+  75%   { transform: rotate(-1.5deg) skewX(-0.5deg); }
+  90%   { transform: rotate(0.8deg)  skewX(0.3deg); }
+  100%  { transform: rotate(0deg)    skewX(0deg); }
 }
 
 @media (max-width: 768px) {
   .communities-section__grid {
-    justify-content: flex-start;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
     padding: 0.5rem 1rem;
-    gap: 1rem;
+    gap: 1.5rem;
   }
 
   .community-card {
-    width: clamp(100px, 28vw, 150px);
+    width: clamp(100px, 35vw, 160px);
   }
 
-  .community-card__name {
-    font-size: 1rem;
+  .community-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
   }
 }
 

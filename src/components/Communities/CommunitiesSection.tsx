@@ -52,7 +52,6 @@ const CommunitiesSection: React.FC<CommunitiesSectionProps> = ({ lang = "es" }) 
                   className="community-card__logo"
                   loading="lazy"
                 />
-              <h3 className="community-card__name">{community.name}</h3>
             </a>
           ))}
         </div>

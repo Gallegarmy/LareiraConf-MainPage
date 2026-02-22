@@ -69,13 +69,6 @@ export const communities: Community[] = [
     alt: "Logo de WordPress Coruña",
   },
   {
-    id: "enxeneria-sen-fronteiras",
-    name: "Enxeñería Sen Fronteiras",
-    url: "https://esf-galicia.org/",
-    logo: exfLogo.src,
-    alt: "Logo de Enxeñería Sen Fronteiras",
-  },
-  {
     id: "corunha-jug",
     name: "CoruñaJUG",
     url: "https://www.meetup.com/coruna-jug/",
@@ -95,5 +88,12 @@ export const communities: Community[] = [
     url: "https://gdg.community/gdg-coruna/",
     logo: gdgLogo.src,
     alt: "Logo de GDG Coruña",
+  },
+  {
+    id: "enxeneria-sen-fronteiras",
+    name: "Enxeñería Sen Fronteiras",
+    url: "https://esf-galicia.org/",
+    logo: exfLogo.src,
+    alt: "Logo de Enxeñería Sen Fronteiras",
   },
 ];
