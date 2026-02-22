@@ -96,9 +96,9 @@
       "label": "Previa",
       "slots": [
         { "id": "inicio-previa", "title": "Inicio", "category": "registration", "start": 570, "duration": 30 },
-        { "id": "borja", "title": "* O teu CV mola, pero aínda pode molar máis", "category": "taller", "start": 600, "duration": 60 },
-        { "id": "cristina", "title": "Deseño de niveis, poendo pedras con amor", "category": "taller", "start": 660, "duration": 60 },
-        { "id": "datola", "title": "Datos útiles na práctica", "category": "taller", "start": 720, "duration": 90 },
+        { "id": "borja", "title": "Empregabilidade", "category": "taller", "start": 600, "duration": 60 },
+        { "id": "cristina", "title": "Videoxogos", "category": "taller", "start": 660, "duration": 60 },
+        { "id": "datola", "title": "Analítica e datos", "category": "taller", "start": 720, "duration": 90 },
         { "id": "cierre-previa", "title": "Peche", "category": "announcement", "start": 810, "duration": 15 }
       ]
     }

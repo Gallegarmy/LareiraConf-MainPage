@@ -87,12 +87,12 @@ const CATEGORY_LABELS: Record<string, Record<string, string>> = {
   es: {
     talk: "Charla",
     interview: "Entrevista",
-    taller: "Taller",
+    taller: "Actividad",
   },
   gl: {
     talk: "Charla",
     interview: "Entrevista",
-    taller: "Obradoiro",
+    taller: "Actividade",
   },
 };
 

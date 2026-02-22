@@ -36,9 +36,9 @@
       "label": "Previa",
       "slots": [
         { "id": "inicio-previa", "title": "Inicio", "category": "registration", "start": 570, "duration": 30 },
-        { "id": "borja", "title": "* Tu CV mola, pero aún puede molar más", "category": "taller", "start": 600, "duration": 60 },
-        { "id": "cristina", "title": "Diseño de niveles, poniendo rocas con amor", "category": "taller", "start": 660, "duration": 60 },
-        { "id": "datola", "title": "Datos útiles en la práctica", "category": "taller", "start": 720, "duration": 90 },
+        { "id": "borja", "title": "Empleabilidad", "category": "taller", "start": 600, "duration": 60 },
+        { "id": "cristina", "title": "Videojuegos", "category": "taller", "start": 660, "duration": 60 },
+        { "id": "datola", "title": "Analítica y datos", "category": "taller", "start": 720, "duration": 90 },
         { "id": "cierre-previa", "title": "Cierre", "category": "announcement", "start": 810, "duration": 15 }
       ]
     }
