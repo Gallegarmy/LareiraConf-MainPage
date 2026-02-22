@@ -98,21 +98,13 @@
 
 .communities-section__grid {
   display: flex;
-  flex-wrap: nowrap;
-  gap: clamp(0.75rem, 1.5vw, 1.25rem);
+  flex-wrap: wrap;
+  gap: clamp(0.75rem, 2vw, 1.5rem);
   width: 100%;
   margin-top: 1rem;
-  overflow-x: auto;
   padding: 0.5rem 0;
   justify-content: center;
-
-  /* Hide scrollbar but keep functionality */
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
-
-  &::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
-  }
+  align-items: flex-start;
 }
 
 .community-card {
@@ -121,29 +113,24 @@
   flex-direction: column;
   align-items: center;
   gap: 0.75rem;
-  padding: clamp(0.75rem, 1.5vw, 1.25rem);
-  background: rgba(17, 10, 7, 0.86);
-  border: 3px solid var(--color-brown-dark);
-  box-shadow: var(--box-shadow-border);
+  padding: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
   text-decoration: none;
   color: var(--text-light);
   transition: all 0.3s ease;
   cursor: pointer;
   flex-shrink: 0;
-  min-width: clamp(90px, 8vw, 140px);
-  max-width: clamp(90px, 8vw, 140px);
+  width: clamp(100px, 9vw, 150px);
 
   &:hover,
   &:focus-visible {
-    transform: translateY(-5px);
-    box-shadow:
-      var(--box-shadow-border),
-      0 8px 24px rgba(0, 0, 0, 0.4);
-    border-color: var(--accent);
+    transform: translateY(-6px);
     outline: none;
 
     .community-card__logo {
-      transform: scale(1.05);
+      transform: scale(1.08);
     }
   }
 
@@ -152,25 +139,12 @@
   }
 }
 
-.community-card__logo-wrapper {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 8px;
-  padding: 0.75rem;
-  overflow: hidden;
-}
-
 .community-card__logo {
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
+  width: 100%;
   height: auto;
   object-fit: contain;
   transition: transform 0.3s ease;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
 }
 
 .community-card__name {
@@ -194,9 +168,7 @@
   }
 
   .community-card {
-    min-width: 140px;
-    max-width: 140px;
-    padding: 1.25rem;
+    width: clamp(100px, 28vw, 150px);
   }
 
   .community-card__name {
