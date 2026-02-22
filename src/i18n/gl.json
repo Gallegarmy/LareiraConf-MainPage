@@ -62,13 +62,13 @@
         "summary": "Miguel Ángel Durán, coñecido como midudev, é desenvolvedor de software e divulgador con máis de 17 anos de experiencia. Creador de contido sobre programación, JavaScript e intelixencia artificial, organiza conferencias e proxectos educativos para miles de desenvolvedores en lingua hispana."
       },
       "nerea-luis": {
-        "talkTitle": "####",
+        "talkTitle": "* Éa IA converterá nunha commodity?",
         "talkDescription": "####",
         "role": "Doutora en IA e cofundadora de Lumi Labs",
         "summary": "Nerea Luis é consultora, asesora e divulgadora especializada en Intelixencia Artificial, e cofundadora de Lumi Labs, onde acompaña a empresas e institucións na adopción estratéxica, responsable e práctica da IA. Doutora en Ciencias da Computación, conta con máis de dez anos de experiencia no deseño e liderado de proxectos de Intelixencia Artificial, especialmente en Procesamento da Linguaxe Natural e Visión Artificial. É ademais cofundadora do festival tecnolóxico T3chFest. Recentemente publicou dous libros infantis divulgativos —Mi primer libro sobre Inteligencia Artificial e La asombrosa era digital— coa editorial Anaya, achegando a tecnoloxía e a IA ás novas xeracións."
       },
       "antonio-fernandes-pilar-vila": {
-        "talkTitle": "####",
+        "talkTitle": "* Atacar e defender: ciberseguridade no mundo real",
         "talkDescription": "####",
         "role": "Por confirmar",
         "summary": "Charla conxunta sobre ciberseguridade.",
@@ -85,35 +85,35 @@
         }
       },
       "borja-perez": {
-        "talkTitle": "Actividade",
+        "talkTitle": "* O teu CV mola, pero aínda pode molar máis",
         "talkDescription": "####",
         "role": "Community & Marketing Lead",
         "company": "Manfred",
         "summary": "Comunicación, recruiting e sobre todo, axudar á xente."
       },
       "almudena-barreiro": {
-        "talkTitle": "####",
+        "talkTitle": "* Datos con propósito: cando os algoritmos deben ser xustos",
         "talkDescription": "####",
         "role": "Científica de datos",
         "company": "Next Digital e Data for Good Madrid",
         "summary": "Almudena Barreiro é cofundadora de Data for Good Madrid e consultora/científica de datos en Next Digital, onde lidera proxectos de calidade do dato, analítica preditiva e IA responsable. Combina formación en matemáticas e estatística cun forte enfoque ético (equidade, transparencia e dignidade humana) e colabora en Sesgo404 (Sirviendo Código) divulgando sobre o impacto social da IA."
       },
       "speaker-4": {
-        "talkTitle": "Actividade",
+        "talkTitle": "Deseño de niveis, poendo pedras con amor",
         "talkDescription": "####",
         "role": "Lead Level Designer",
         "company": "Merge Games",
         "summary": "Cristina G. Aradas, tamén coñecida como Mapache, naceu na Coruña, onde se formou e desenvolveu a maior parte da súa vida profesional. Os seus primeiros pasos laborais foron no mundo da animación aínda que desde hai máis de cinco anos está focalizada no desenvolvemento de videoxogos. Iniciou a súa carreira nos departamentos de Produción e Layout en empresas como Ficción Producciones ou Antaruxa, onde traballou para series de animación como Nivis, Amigos de outro mundo ou longametraxes como Valentina. En plena pandemia tivo a oportunidade de sumarse ao equipo de Gato Salvaje no desenvolvemento de The Waylanders, ocupando o posto de xefa de Deseño de Niveis. Desde 2022 traballa para Merge Games, desenvolvendo o videoxogo Smalland: Survive the Wilds, onde ocupa o cargo de Lead Level Designer e que lle permite seguir desenvolvendo o seu amor por crear mundos poñendo pedras con amor."
       },
       "nacho-marquez": {
-        "talkTitle": "####",
+        "talkTitle": "* Hackear o campo: tecnoloxía contra o despoboamento",
         "talkDescription": "####",
         "role": "Co-fundador",
         "company": "Rural Hackers",
         "summary": "Ola! Son Nacho, cofundador de Rural Hackers: desde unha aldea galega de 97 habitantes convertimos o espírito hacker en impacto real, xuntamos talento, comunidade local e internacional con tecnoloxía para loitar contra a despoboación rural. Anímaste a vir a un dos nosos proxectos?"
       },
       "eva-gonzalez-brais-calvo": {
-        "talkTitle": "Actividade conxunta",
+        "talkTitle": "Datos útiles na práctica",
         "talkDescription": "####",
         "role": "Data Analyst · Cofundadores de nosDeu e Datola",
         "summary": "Actividade conxunta.",
@@ -131,8 +131,8 @@
         }
       },
       "speaker-5": {
-        "talkTitle": "####",
-        "talkDescription": "####",
+        "talkTitle": "Pon un prezo que non faga vomitar a unha cabra",
+        "talkDescription": "Poñer prezo é unha das decisións máis importantes —e a miúdo peor tomadas— en calquera negocio. Repasaremos os modelos de pricing máis habituais, desmontaremos o mito de que 'se cobro pouco, será máis fácil vender' e veremos por que un prezo baixo non só destrúe as túas marxes, senón que manda unha mensaxe equivocada.",
         "role": "Partner",
         "company": "petalo.xyz",
         "summary": "Comecei como todos, dándolle ao QBasic. Pero logo a vida complícasete e pasas de programar código a ofrecer produtos, a montar empresas para poder vendelos, a vender a túa empresa, e a axudar a outros a vender a súa. Estiven entretido sentándome en todos os lados da mesa :)"

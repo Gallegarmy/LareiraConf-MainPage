@@ -48,6 +48,7 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  gap: 0;
 }
 
 /* ──────────────────────────────────────────────
@@ -55,27 +56,26 @@
 ────────────────────────────────────────────── */
 
 .agenda-papyrus {
-  overflow: hidden;
   position: relative;
+  max-height: 62vh;
+  overflow-y: auto;
+  overflow-x: hidden;
 
   .agenda-slots {
     position: relative;
     z-index: 1;
-    max-height: 62vh;
-    overflow-y: auto;
-    overflow-x: hidden;
-    padding: 1rem 3rem 0 5rem;
+    padding: 1rem 5rem 1.5rem 5rem;
     box-sizing: border-box;
   }
 
   /* Scrollbar estilizada al tono */
-  .agenda-slots::-webkit-scrollbar {
+  &::-webkit-scrollbar {
     width: 6px;
   }
-  .agenda-slots::-webkit-scrollbar-track {
+  &::-webkit-scrollbar-track {
     background: rgba(120, 80, 40, 0.15);
   }
-  .agenda-slots::-webkit-scrollbar-thumb {
+  &::-webkit-scrollbar-thumb {
     background: rgba(107, 76, 53, 0.55);
     border-radius: 3px;
   }
@@ -156,11 +156,10 @@
     width: 100%;
     overflow: hidden;
     position: relative;
-    background-size: 100%;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
 
     > * {
-      overflow: hidden;
       min-height: 0;
     }
   }
@@ -200,21 +199,60 @@
   display: grid;
   grid-template-columns: 3rem 1fr;
   grid-template-areas:
-    "time   time"
-    "title  title"
+    "time  tag"
+    "title title"
     "avatar info";
   gap: 0.25rem 0.75rem;
   padding: 0.8rem 0.4rem;
-  border-bottom: 1px solid rgba(107, 76, 53, 0.2);
+  position: relative;
   border-radius: 3px;
   transition: background 0.15s;
 
-  &:last-child {
-    border-bottom: none;
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 35%;
+    height: 2px;
+    background: rgba(107, 76, 53, 0.2);
+    border-radius: 1px;
   }
 
-  &:hover {
-    background: rgba(107, 76, 53, 0.07);
+  &::before {
+    content: "✶";
+    position: absolute;
+    bottom: -0.55em;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.65rem;
+    color: rgba(107, 76, 53, 0.35);
+    line-height: 1;
+    background: transparent;
+    padding: 0 0.3rem;
+  }
+
+  &:last-child::after,
+  &:last-child::before {
+    display: none;
+  }
+
+  &--clickable {
+    cursor: pointer;
+
+    &:hover {
+      background: rgba(107, 76, 53, 0.1);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-brown);
+      outline-offset: 2px;
+    }
+  }
+
+  &:not(&--clickable):hover {
+    background: transparent;
   }
 
   // Fila sin ponente: hora + texto en una línea
@@ -228,39 +266,17 @@
 
     .agenda-slot__main {
       grid-area: title;
-    }
-  }
 
-  // Fila sin ponente: atenuada
-  &--break,
-  &--registration {
-    opacity: 0.55;
-
-    .agenda-slot__time {
-      color: var(--color-brown);
-    }
-  }
-
-  &--announcement {
-    .agenda-slot__time {
-      color: var(--color-brown-dark);
-    }
-  }
-
-  // Fila con contenido principal
-  &--talk,
-  &--interview,
-  &--taller {
-    .agenda-slot__time {
-      color: var(--accent);
-      font-weight: 700;
-    }
-  }
-
-  &--show,
-  &--party {
-    .agenda-slot__time {
-      color: #b07030;
+      p {
+        font-family: var(--heading-font);
+        font-size: 1.2rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: var(--color-brown);
+        font-style: normal;
+        margin: 0;
+      }
     }
   }
 
@@ -268,21 +284,36 @@
   &__time {
     font-family: var(--heading-font), sans-serif;
     font-size: 1.6rem;
-    color: var(--color-brown-dark);
+    color: var(--accent);
     white-space: nowrap;
     line-height: 1;
     grid-area: time;
+    align-self: center;
+  }
+
+  /* Tag de temática */
+  &__tag {
+    grid-area: tag;
+    align-self: center;
+    justify-self: end;
+    font-family: var(--body-font);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-brown);
+    white-space: nowrap;
   }
 
   /* Avatar */
   &__avatar {
-    width: 44px;
-    height: 44px;
+    width: 56px;
+    height: 74px;
     border-radius: 50%;
     overflow: hidden;
-    border: 2px solid rgba(233, 92, 60, 0.7);
+    border: 2px solid var(--color-brown);
     flex-shrink: 0;
-    background: var(--color-brown-dark);
+    background: #c8956c;
     grid-area: avatar;
     align-self: center;
 
@@ -290,24 +321,30 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center 10%;
+      transform: scale(1.5);
+      transform-origin: center 15%;
       display: block;
     }
   }
 
   /* Avatar pequeño para multi-speaker */
   &__avatar--small {
-    width: 36px;
-    height: 36px;
+    width: 56px;
+    height: 74px;
     flex-shrink: 0;
     border-radius: 50%;
     overflow: hidden;
-    border: 2px solid rgba(233, 92, 60, 0.7);
-    background: var(--color-brown-dark);
+    border: 2px solid var(--color-brown);
+    background: #c8956c;
 
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center 10%;
+      transform: scale(1.5);
+      transform-origin: center 15%;
       display: block;
     }
   }
@@ -325,8 +362,8 @@
   /* Título */
   &__title {
     font-family: var(--heading-font), sans-serif;
-    font-size: clamp(1.2rem, 1.8vw, 1.5rem);
-    color: var(--color-brown-dark);
+    font-size: 1.2rem;
+    color: var(--color-brown);
     letter-spacing: 0.04rem;
     text-transform: uppercase;
     margin: 0;
@@ -335,13 +372,13 @@
 
     &--no-speaker {
       grid-area: title;
-      font-family: var(--body-font);
+      font-family: var(--heading-font);
       font-size: 1.2rem;
-      text-transform: none;
-      color: #7a5535;
-      font-style: italic;
-      letter-spacing: 0;
-      font-weight: normal;
+      text-transform: uppercase;
+      color: var(--color-brown);
+      font-style: normal;
+      letter-spacing: 0.04em;
+      font-weight: 700;
     }
   }
 
@@ -390,7 +427,7 @@
   /* Multi-ponente: sin avatar individual en la primera columna */
   &--multi {
     grid-template-areas:
-      "time  time"
+      "time  tag"
       "title title"
       "list  list";
 
@@ -419,5 +456,15 @@
 
   .agenda-day__header-img {
     width: 100%;
+  }
+
+  .agenda-slot__avatar,
+  .agenda-slot__avatar--small {
+    width: 34px;
+    height: 44px;
+  }
+
+  .agenda-papyrus .agenda-slots {
+    padding: 1rem 3.5rem;
   }
 }

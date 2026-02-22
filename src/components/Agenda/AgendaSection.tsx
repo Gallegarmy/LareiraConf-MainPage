@@ -9,6 +9,7 @@ import agendaGl from "../../i18n/agenda-config.gl.json";
 import { getSpeakersData } from "../Speakers/speakers-data-i18n";
 import type { Speaker } from "../Speakers/speakers-types";
 import type { Locale } from "../../i18n/utils";
+import SpeakerModal from "../Speakers/SpeakerModal";
 
 type AgendaConfig = typeof agendaEs;
 
@@ -82,26 +83,50 @@ const SPEAKER_SLOT_CATEGORIES = new Set([
   "party",
 ]);
 
+const CATEGORY_LABELS: Record<string, Record<string, string>> = {
+  es: {
+    talk: "Charla",
+    interview: "Entrevista",
+    taller: "Taller",
+  },
+  gl: {
+    talk: "Charla",
+    interview: "Entrevista",
+    taller: "Obradoiro",
+  },
+};
+
 const AgendaSection: React.FC<Props> = ({ lang }) => {
   const config = agendaConfigs[lang] ?? agendaConfigs["es"];
   const t = UI_LABELS[lang] ?? UI_LABELS["es"];
 
-  const [openDay, setOpenDay] = useState<"friday" | "saturday" | null>(null);
-  const [closingDay, setClosingDay] = useState<"friday" | "saturday" | null>(null);
+  const [openFriday, setOpenFriday] = useState(true);
+  const [openSaturday, setOpenSaturday] = useState(false);
+  const [closingFriday, setClosingFriday] = useState(false);
+  const [closingSaturday, setClosingSaturday] = useState(false);
+  const [modalSpeaker, setModalSpeaker] = useState<Speaker | null>(null);
 
   const toggle = (day: "friday" | "saturday") => {
-    if (openDay === day) {
-      // Iniciar animación de cierre y luego colapsar
-      setClosingDay(day);
+    const isOpen = day === "friday" ? openFriday : openSaturday;
+    const setOpen = day === "friday" ? setOpenFriday : setOpenSaturday;
+    const setClosing = day === "friday" ? setClosingFriday : setClosingSaturday;
+
+    if (isOpen) {
+      setClosing(true);
       setTimeout(() => {
-        setOpenDay(null);
-        setClosingDay(null);
+        setOpen(false);
+        setClosing(false);
       }, 550);
     } else {
-      setClosingDay(null);
-      setOpenDay(day);
+      setOpen(true);
     }
   };
+
+  const isDayOpen = (day: "friday" | "saturday") =>
+    day === "friday" ? openFriday : openSaturday;
+
+  const isDayClosing = (day: "friday" | "saturday") =>
+    day === "friday" ? closingFriday : closingSaturday;
 
   const speakers = getSpeakersData(lang as Locale);
   const speakerMap = new Map<string, Speaker>(
@@ -117,9 +142,23 @@ const AgendaSection: React.FC<Props> = ({ lang }) => {
 
     const hasMainContent = SPEAKER_SLOT_CATEGORIES.has(slot.category);
 
+    const isClickable = !!speaker;
+
     return (
-      <li key={slot.id} className={`agenda-slot agenda-slot--${slot.category}${speaker?.isMultiSpeaker ? " agenda-slot--multi" : ""}`}>
+      <li
+        key={slot.id}
+        className={`agenda-slot agenda-slot--${slot.category}${speaker?.isMultiSpeaker ? " agenda-slot--multi" : ""}${isClickable ? " agenda-slot--clickable" : ""}`}
+        onClick={isClickable ? () => setModalSpeaker(speaker) : undefined}
+        role={isClickable ? "button" : undefined}
+        tabIndex={isClickable ? 0 : undefined}
+        onKeyDown={isClickable ? (e) => e.key === "Enter" && setModalSpeaker(speaker) : undefined}
+      >
         <span className="agenda-slot__time">{minutesToTime(slot.start)}</span>
+        {CATEGORY_LABELS[lang]?.[slot.category] && (
+          <span className={`agenda-slot__tag agenda-slot__tag--${slot.category}`}>
+            {CATEGORY_LABELS[lang][slot.category]}
+          </span>
+        )}
 
         {speaker ? (
           speaker.isMultiSpeaker && speaker.speakers ? (
@@ -195,19 +234,18 @@ const AgendaSection: React.FC<Props> = ({ lang }) => {
       </div>
 
       <div className="agenda-content speakers-content">
-        <h2 className="speakers-title">{t.title}</h2>
         <div className="agenda-scroll">
 
           {/* ── Viernes ── */}
           <div className={[
             "agenda-scroll-day",
-            openDay === "friday" ? "agenda-scroll-day--open" : "",
-            closingDay === "friday" ? "agenda-scroll-day--closing" : "",
+            isDayOpen("friday") ? "agenda-scroll-day--open" : "",
+            isDayClosing("friday") ? "agenda-scroll-day--closing" : "",
           ].filter(Boolean).join(" ")}>
             <button
               className="agenda-day__header"
               onClick={() => toggle("friday")}
-              aria-expanded={openDay === "friday"}
+              aria-expanded={isDayOpen("friday")}
             >
               <img
                 src={papiroHorizontal.src}
@@ -233,13 +271,13 @@ const AgendaSection: React.FC<Props> = ({ lang }) => {
           {/* ── Sábado ── */}
           <div className={[
             "agenda-scroll-day",
-            openDay === "saturday" ? "agenda-scroll-day--open" : "",
-            closingDay === "saturday" ? "agenda-scroll-day--closing" : "",
+            isDayOpen("saturday") ? "agenda-scroll-day--open" : "",
+            isDayClosing("saturday") ? "agenda-scroll-day--closing" : "",
           ].filter(Boolean).join(" ")}>
             <button
               className="agenda-day__header"
               onClick={() => toggle("saturday")}
-              aria-expanded={openDay === "saturday"}
+              aria-expanded={isDayOpen("saturday")}
             >
               <img
                 src={papiroHorizontal.src}
@@ -264,6 +302,11 @@ const AgendaSection: React.FC<Props> = ({ lang }) => {
 
         </div>
       </div>
+      <SpeakerModal
+        speaker={modalSpeaker}
+        isOpen={!!modalSpeaker}
+        onClose={() => setModalSpeaker(null)}
+      />
     </section>
   );
 };
