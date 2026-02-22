@@ -64,7 +64,7 @@
   .agenda-slots {
     position: relative;
     z-index: 1;
-    padding: 1rem 5rem 1.5rem 5rem;
+    padding: 1rem 6rem 1.5rem;
     box-sizing: border-box;
   }
 
@@ -307,8 +307,8 @@
 
   /* Avatar */
   &__avatar {
-    width: 56px;
-    height: 74px;
+    width: 42px;
+    height: 56px;
     border-radius: 50%;
     overflow: hidden;
     border: 2px solid var(--color-brown);
@@ -330,8 +330,8 @@
 
   /* Avatar pequeño para multi-speaker */
   &__avatar--small {
-    width: 56px;
-    height: 74px;
+    width: 42px;
+    height: 56px;
     flex-shrink: 0;
     border-radius: 50%;
     overflow: hidden;
