@@ -32,5 +32,8 @@ export default defineConfig({
         "@/i18n": fileURLToPath(new URL("./src/i18n", import.meta.url)),
       },
     },
+    ssr: {
+      noExternal: ["gsap"],
+    },
   },
 });

@@ -1,0 +1,174 @@
+{
+  "generatedAt": "2026-02-19T19:33:41.586Z",
+  "dayStartMinutes": 540,
+  "dayEndMinutes": 1440,
+  "stepMinutes": 5,
+  "tracks": [
+    {
+      "id": "auditorium",
+      "label": "Auditorio",
+      "slots": [
+        {
+          "id": "bienvenida",
+          "title": "Bienvenida y presentación",
+          "category": "announcement",
+          "start": 45,
+          "duration": 25
+        },
+        {
+          "id": "charla-1",
+          "title": "Charla Midu",
+          "topic": "Programación",
+          "category": "talk",
+          "start": 60,
+          "duration": 45
+        },
+        {
+          "id": "entrevista-1",
+          "title": "Charlando con Almudena sobre datos con propósito",
+          "topic": "Datos",
+          "category": "interview",
+          "start": 120,
+          "duration": 30
+        },
+        {
+          "id": "entrevista-2",
+          "title": "Charlando con Nacho sobre Open Source y el rural",
+          "topic": "OSS",
+          "category": "interview",
+          "start": 210,
+          "duration": 30
+        },
+        {
+          "id": "charla-2",
+          "title": "Charla Samuel",
+          "topic": "IoT",
+          "category": "talk",
+          "start": 240,
+          "duration": 30
+        },
+        {
+          "id": "entrevista-4",
+          "title": "Atacar y defender: cómo combatir la ciberdelincuencia",
+          "topic": "Ciberseguridad",
+          "category": "interview",
+          "start": 435,
+          "duration": 45
+        },
+        {
+          "id": "charla-4",
+          "title": "Pon un precio que no haga vomitar a una cabra",
+          "topic": "Negocio",
+          "category": "talk",
+          "start": 480,
+          "duration": 30
+        },
+        {
+          "id": "entrevista-3",
+          "title": "Charlando con Nerea sobre la IA como commodity",
+          "topic": "IA",
+          "category": "interview",
+          "start": 585,
+          "duration": 30
+        },
+        {
+          "id": "entrega-premios",
+          "title": "Premios LareiraConf",
+          "category": "announcement",
+          "start": 615,
+          "duration": 50
+        },
+        {
+          "id": "cierre",
+          "title": "Cierre del día",
+          "category": "announcement",
+          "start": 665,
+          "duration": 25
+        }
+      ]
+    },
+    {
+      "id": "exterior",
+      "label": "Exterior",
+      "slots": [
+        {
+          "id": "registro",
+          "title": "Apertura puertas y registro",
+          "category": "registration",
+          "start": 0,
+          "duration": 45
+        },
+        {
+          "id": "coffee-break",
+          "title": "Coffee break",
+          "category": "break",
+          "start": 150,
+          "duration": 60
+        },
+        {
+          "id": "comida",
+          "title": "Comida y sorpresas",
+          "category": "break",
+          "start": 270,
+          "duration": 150
+        },
+        {
+          "id": "break-tarde",
+          "title": "Coffee break",
+          "category": "break",
+          "start": 510,
+          "duration": 70
+        },
+        {
+          "id": "cena",
+          "title": "After event: cena y fiesta hasta que el cuerpo aguante",
+          "category": "party",
+          "start": 690,
+          "duration": 120
+        }
+      ]
+    },
+    {
+      "id": "previa",
+      "label": "Previa",
+      "slots": [
+        {
+          "id": "inicio-previa",
+          "title": "Inicio",
+          "category": "registration",
+          "start": 570,
+          "duration": 30
+        },
+        {
+          "id": "borja",
+          "title": "Empleabilidad",
+          "category": "taller",
+          "start": 600,
+          "duration": 60
+        },
+        {
+          "id": "cristina",
+          "title": "Construir un mundo con bloques",
+          "topic": "Videojuegos",
+          "category": "taller",
+          "start": 660,
+          "duration": 60
+        },
+        {
+          "id": "datola",
+          "title": "Analítica y datos",
+          "category": "taller",
+          "start": 720,
+          "duration": 90
+        },
+        {
+          "id": "cierre-previa",
+          "title": "Cierre",
+          "category": "announcement",
+          "start": 810,
+          "duration": 15
+        }
+      ]
+    }
+  ]
+}
