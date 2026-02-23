@@ -3,8 +3,15 @@ import "./CommunitiesSection.scss";
 import { communities } from "./communities-data";
 import FireParticles from "@components/Others/FireParticles";
 import communitiesCamp from "@img/parallax/communities-camp.png";
+import { useTranslations } from "@/i18n/utils";
+import type { Locale } from "@/i18n/utils";
 
-const CommunitiesSection: React.FC = () => {
+interface CommunitiesSectionProps {
+  lang?: Locale;
+}
+
+const CommunitiesSection: React.FC<CommunitiesSectionProps> = ({ lang = "es" }) => {
+  const t = useTranslations(lang);
   return (
     <section className="panel communities-section" id="comunidades">
       <div className="communities-section__background">
@@ -23,14 +30,10 @@ const CommunitiesSection: React.FC = () => {
       <div className="communities-section__overlay"></div>
 
       <div className="communities-section__content">
-        <h2 className="communities-section__title">Comunidades</h2>
+        <h2 className="communities-section__title">{t("communities.title")}</h2>
 
         <div className="communities-section__intro">
-          <p>
-            Lareira Conf es posible gracias a la colaboración de las comunidades
-            tecnológicas de Galicia. Juntas, compartimos el fuego del
-            conocimiento y la pasión por la tecnología.
-          </p>
+          <p>{t("communities.description")}</p>
         </div>
 
         <div className="communities-section__grid">
@@ -41,17 +44,14 @@ const CommunitiesSection: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="community-card"
-              aria-label={`Visitar ${community.name}`}
+              aria-label={`${t("communities.visitLabel")} ${community.name}`}
             >
-              <div className="community-card__logo-wrapper">
-                <img
+              <img
                   src={community.logo}
                   alt={community.alt}
                   className="community-card__logo"
                   loading="lazy"
                 />
-              </div>
-              <h3 className="community-card__name">{community.name}</h3>
             </a>
           ))}
         </div>

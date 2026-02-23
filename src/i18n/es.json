@@ -10,6 +10,7 @@
     "tickets": "Entradas",
     "speakers": "Ponentes",
     "team": "Equipo",
+    "communities": "Comunidades",
     "faq": "FAQ",
     "social": "Social"
   },
@@ -23,6 +24,11 @@
     "secondaryTitle": "Una conferencia para vivirla en primera persona",
     "description1": "LareiraConf es una conferencia técnica en A Coruña pensada para reunir a la comunidad, aprender, conectar y vivir una experiencia distinta, con buen rollo y mucha energía.",
     "description2": "Este año no vienes solo a escuchar: vienes a participar. Un único track, con ponentes top. Pero también dinámicas, sorteos, comida, show y muchos momentos diseñados para que conozcas gente, te inspires y disfrutes del día."
+  },
+  "communities": {
+    "title": "Comunidades",
+    "description": "Lareira Conf es posible gracias a la colaboración de las comunidades tecnológicas de Galicia. Juntas, compartimos el fuego del conocimiento y la pasión por la tecnología.",
+    "visitLabel": "Visitar"
   },
   "tickets": {
     "description": {
