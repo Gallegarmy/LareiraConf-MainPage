@@ -24,9 +24,9 @@ const SLOT_SPEAKER_IDS: Record<string, string> = {
   "entrevista-1": "almudena-barreiro",
   "entrevista-2": "nacho-marquez",
   "charla-2": "samuel-jimenez",
-  "charla-3": "antonio-fernandes-pilar-vila",
-  "entrevista-3": "nerea-luis",
+  "entrevista-4": "antonio-fernandes-pilar-vila",
   "charla-4": "diego-marino",
+  "entrevista-3": "nerea-luis",
   borja: "borja-perez",
   cristina: "speaker-4",
   datola: "eva-gonzalez-brais-calvo",
@@ -39,6 +39,7 @@ const UI_LABELS = {
     fridaySubtitle: "La Previa",
     saturday: "Sábado 21",
     saturdaySubtitle: "LareiraConf",
+    disclaimer: "Los horarios son orientativos y pueden variar.",
   },
   gl: {
     title: "Axenda",
@@ -46,12 +47,14 @@ const UI_LABELS = {
     fridaySubtitle: "A Previa",
     saturday: "Sábado 21",
     saturdaySubtitle: "LareiraConf",
+    disclaimer: "Os horarios son orientativos e poden variar.",
   },
 };
 
 type Slot = {
   id: string;
   title: string;
+  topic?: string;
   category: string;
   start: number;
   duration: number;
@@ -101,7 +104,7 @@ const AgendaSection: React.FC<Props> = ({ lang }) => {
   const t = UI_LABELS[lang] ?? UI_LABELS["es"];
 
   const [openFriday, setOpenFriday] = useState(true);
-  const [openSaturday, setOpenSaturday] = useState(false);
+  const [openSaturday, setOpenSaturday] = useState(true);
   const [closingFriday, setClosingFriday] = useState(false);
   const [closingSaturday, setClosingSaturday] = useState(false);
   const [modalSpeaker, setModalSpeaker] = useState<Speaker | null>(null);
@@ -147,16 +150,36 @@ const AgendaSection: React.FC<Props> = ({ lang }) => {
     return (
       <li
         key={slot.id}
-        className={`agenda-slot agenda-slot--${slot.category}${speaker?.isMultiSpeaker ? " agenda-slot--multi" : ""}${isClickable ? " agenda-slot--clickable" : ""}`}
+        className={`agenda-slot agenda-slot--${slot.category}${speaker?.isMultiSpeaker ? "agenda-slot--multi" : ""}${isClickable ? "agenda-slot--clickable" : ""}`}
         onClick={isClickable ? () => setModalSpeaker(speaker) : undefined}
         role={isClickable ? "button" : undefined}
         tabIndex={isClickable ? 0 : undefined}
-        onKeyDown={isClickable ? (e) => e.key === "Enter" && setModalSpeaker(speaker) : undefined}
+        onKeyDown={
+          isClickable
+            ? (e) => e.key === "Enter" && setModalSpeaker(speaker)
+            : undefined
+        }
       >
         <span className="agenda-slot__time">{minutesToTime(slot.start)}</span>
         {CATEGORY_LABELS[lang]?.[slot.category] && (
-          <span className={`agenda-slot__tag agenda-slot__tag--${slot.category}`}>
+          <span
+            className={`agenda-slot__tag agenda-slot__tag--${slot.category}`}
+          >
             {CATEGORY_LABELS[lang][slot.category]}
+            {(slot.category === "taller" ||
+              slot.category === "talk" ||
+              slot.category === "interview") &&
+              (slot.category === "taller"
+                ? (slot.topic ?? slot.title)
+                : slot.topic) && (
+                <span className="agenda-slot__tag-topic">
+                  {" "}
+                  ·{" "}
+                  {slot.category === "taller"
+                    ? (slot.topic ?? slot.title)
+                    : slot.topic}
+                </span>
+              )}
           </span>
         )}
 
@@ -171,12 +194,20 @@ const AgendaSection: React.FC<Props> = ({ lang }) => {
                   {speaker.speakers.map((s, i) => (
                     <div key={i} className="agenda-slot__speaker-row">
                       <div className="agenda-slot__avatar agenda-slot__avatar--small">
-                        <img src={s.image.src} alt={s.image.alt} loading="lazy" />
+                        <img
+                          src={s.image.src}
+                          alt={s.image.alt}
+                          loading="lazy"
+                        />
                       </div>
                       <div className="agenda-slot__speaker-info">
-                        <span className="agenda-slot__speaker-name">{s.name}</span>
-                        {s.company && (
-                          <span className="agenda-slot__company">{s.company}</span>
+                        <span className="agenda-slot__speaker-name">
+                          {s.name}
+                        </span>
+                        {(s.role || s.company) && (
+                          <span className="agenda-slot__company">
+                            {[s.role, s.company].filter(Boolean).join(" · ")}
+                          </span>
                         )}
                       </div>
                     </div>
@@ -197,9 +228,15 @@ const AgendaSection: React.FC<Props> = ({ lang }) => {
               <div className="agenda-slot__main">
                 <p className="agenda-slot__title">{speaker.talkTitle}</p>
                 <div className="agenda-slot__speaker-info">
-                  <span className="agenda-slot__speaker-name">{speaker.name}</span>
-                  {speaker.company && (
-                    <span className="agenda-slot__company">{speaker.company}</span>
+                  <span className="agenda-slot__speaker-name">
+                    {speaker.name}
+                  </span>
+                  {(speaker.role || speaker.company) && (
+                    <span className="agenda-slot__company">
+                      {[speaker.role, speaker.company]
+                        .filter(Boolean)
+                        .join(" · ")}
+                    </span>
                   )}
                 </div>
               </div>
@@ -235,13 +272,16 @@ const AgendaSection: React.FC<Props> = ({ lang }) => {
 
       <div className="agenda-content speakers-content">
         <div className="agenda-scroll">
-
           {/* ── Viernes ── */}
-          <div className={[
-            "agenda-scroll-day",
-            isDayOpen("friday") ? "agenda-scroll-day--open" : "",
-            isDayClosing("friday") ? "agenda-scroll-day--closing" : "",
-          ].filter(Boolean).join(" ")}>
+          <div
+            className={[
+              "agenda-scroll-day",
+              isDayOpen("friday") ? "agenda-scroll-day--open" : "",
+              isDayClosing("friday") ? "agenda-scroll-day--closing" : "",
+            ]
+              .filter(Boolean)
+              .join(" ")}
+          >
             <button
               className="agenda-day__header"
               onClick={() => toggle("friday")}
@@ -258,22 +298,33 @@ const AgendaSection: React.FC<Props> = ({ lang }) => {
                 <span className="agenda-day__subtitle">{t.fridaySubtitle}</span>
               </div>
             </button>
-            <div className="agenda-day__body" style={{ backgroundImage: `url(${papiroSinFondo.src})` }}>
+            <div
+              className="agenda-day__body"
+              style={{ backgroundImage: `url(${papiroSinFondo.src})` }}
+            >
               <div className="agenda-papyrus">
                 <ul className="agenda-slots">{previaSlots.map(renderSlot)}</ul>
               </div>
             </div>
             <div className="agenda-day__footer" aria-hidden="true">
-              <img src={papiroHorizontal.src} alt="" className="agenda-day__footer-img" />
+              <img
+                src={papiroHorizontal.src}
+                alt=""
+                className="agenda-day__footer-img"
+              />
             </div>
           </div>
 
           {/* ── Sábado ── */}
-          <div className={[
-            "agenda-scroll-day",
-            isDayOpen("saturday") ? "agenda-scroll-day--open" : "",
-            isDayClosing("saturday") ? "agenda-scroll-day--closing" : "",
-          ].filter(Boolean).join(" ")}>
+          <div
+            className={[
+              "agenda-scroll-day",
+              isDayOpen("saturday") ? "agenda-scroll-day--open" : "",
+              isDayClosing("saturday") ? "agenda-scroll-day--closing" : "",
+            ]
+              .filter(Boolean)
+              .join(" ")}
+          >
             <button
               className="agenda-day__header"
               onClick={() => toggle("saturday")}
@@ -287,20 +338,29 @@ const AgendaSection: React.FC<Props> = ({ lang }) => {
               />
               <div className="agenda-day__header-content">
                 <span className="agenda-day__date">{t.saturday}</span>
-                <span className="agenda-day__subtitle">{t.saturdaySubtitle}</span>
+                <span className="agenda-day__subtitle">
+                  {t.saturdaySubtitle}
+                </span>
               </div>
             </button>
-            <div className="agenda-day__body" style={{ backgroundImage: `url(${papiroSinFondo.src})` }}>
+            <div
+              className="agenda-day__body"
+              style={{ backgroundImage: `url(${papiroSinFondo.src})` }}
+            >
               <div className="agenda-papyrus">
                 <ul className="agenda-slots">{eventoSlots.map(renderSlot)}</ul>
               </div>
             </div>
             <div className="agenda-day__footer" aria-hidden="true">
-              <img src={papiroHorizontal.src} alt="" className="agenda-day__footer-img" />
+              <img
+                src={papiroHorizontal.src}
+                alt=""
+                className="agenda-day__footer-img"
+              />
             </div>
           </div>
-
         </div>
+        <p className="agenda-disclaimer">{t.disclaimer}</p>
       </div>
       <SpeakerModal
         speaker={modalSpeaker}

@@ -24,6 +24,17 @@
    Papiro: el "scroll" de pergamino
 ────────────────────────────────────────────── */
 
+.agenda-disclaimer {
+  margin-top: 0.75rem;
+  font-family: var(--body-font);
+  font-size: 0.78rem;
+  color: var(--color-brown);
+  opacity: 0.55;
+  font-style: italic;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
 .agenda-scroll {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -303,6 +314,13 @@
     letter-spacing: 0.06em;
     color: var(--color-brown);
     white-space: nowrap;
+
+    &-topic {
+      font-weight: 400;
+      opacity: 0.7;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
   }
 
   /* Avatar */

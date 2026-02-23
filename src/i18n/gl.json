@@ -62,19 +62,19 @@
         "summary": "Miguel Ángel Durán, coñecido como midudev, é desenvolvedor de software e divulgador con máis de 17 anos de experiencia. Creador de contido sobre programación, JavaScript e intelixencia artificial, organiza conferencias e proxectos educativos para miles de desenvolvedores en lingua hispana."
       },
       "nerea-luis": {
-        "talkTitle": "* Éa IA converterá nunha commodity?",
+        "talkTitle": "Falando con Nerea sobre a IA como commodity",
         "talkDescription": "####",
-        "role": "Doutora en IA e cofundadora de Lumi Labs",
+        "role": "Doutora en IA",
         "summary": "Nerea Luis é consultora, asesora e divulgadora especializada en Intelixencia Artificial, e cofundadora de Lumi Labs, onde acompaña a empresas e institucións na adopción estratéxica, responsable e práctica da IA. Doutora en Ciencias da Computación, conta con máis de dez anos de experiencia no deseño e liderado de proxectos de Intelixencia Artificial, especialmente en Procesamento da Linguaxe Natural e Visión Artificial. É ademais cofundadora do festival tecnolóxico T3chFest. Recentemente publicou dous libros infantis divulgativos —Mi primer libro sobre Inteligencia Artificial e La asombrosa era digital— coa editorial Anaya, achegando a tecnoloxía e a IA ás novas xeracións."
       },
       "antonio-fernandes-pilar-vila": {
-        "talkTitle": "* Atacar e defender: ciberseguridade no mundo real",
-        "talkDescription": "####",
+        "talkTitle": "Atacar e defender: como combater a ciberdelincuencia",
+        "talkDescription": "A ciberdelincuencia non entende de tamaños nin sectores: calquera empresa, institución ou persoa pode ser un obxectivo. Nesta entrevista, Antonio e Pilar amósannos as dúas caras do taboleiro: como pensan e actúan os atacantes, e que estratexias reais existen para detectalos, frealosen e responder. Unha conversa directa sobre o estado actual da ciberseguridade e as leccions aprendidas en primeira liña.",
         "role": "Por confirmar",
         "summary": "Charla conxunta sobre ciberseguridade.",
         "speakers": {
           "antonio": {
-            "role": "Hacker and CISO",
+            "role": "CISO",
             "summary": "Experto en ciberseguridade con máis de 20 anos de experiencia, especializado en seguridade técnica, xestión do risco e estratexia. Detectou vulnerabilidades en organizacións como a NASA, Google ou o Departamento de Defensa dos EE. UU.\n\nColabora con institucións europeas, participa en asociacións internacionais do sector e é ponente habitual en eventos de referencia.\n\nRecibiu numerosos recoñecementos, entre eles ser elixido un dos 100 mellores ponentes de España en 2025 e o premio á contribución á comunidade por ISMS Forum.\n\nActualmente é CISO nunha multinacional industrial e fundador de CursoDeCiberseguridad.com."
           },
           "pilar": {
@@ -92,21 +92,21 @@
         "summary": "Comunicación, recruiting e sobre todo, axudar á xente."
       },
       "almudena-barreiro": {
-        "talkTitle": "* Datos con propósito: cando os algoritmos deben ser xustos",
+        "talkTitle": "Falando con Almudena sobre datos con propósito",
         "talkDescription": "####",
         "role": "Científica de datos",
         "company": "Next Digital e Data for Good Madrid",
         "summary": "Almudena Barreiro é cofundadora de Data for Good Madrid e consultora/científica de datos en Next Digital, onde lidera proxectos de calidade do dato, analítica preditiva e IA responsable. Combina formación en matemáticas e estatística cun forte enfoque ético (equidade, transparencia e dignidade humana) e colabora en Sesgo404 (Sirviendo Código) divulgando sobre o impacto social da IA."
       },
       "speaker-4": {
-        "talkTitle": "Videoxogos",
-        "talkDescription": "####",
+        "talkTitle": "Construír un mundo con bloques",
+        "talkDescription": "Obradoiro de creación de videoxogos.",
         "role": "Lead Level Designer",
         "company": "Merge Games",
         "summary": "Cristina G. Aradas, tamén coñecida como Mapache, naceu na Coruña, onde se formou e desenvolveu a maior parte da súa vida profesional. Os seus primeiros pasos laborais foron no mundo da animación aínda que desde hai máis de cinco anos está focalizada no desenvolvemento de videoxogos. Iniciou a súa carreira nos departamentos de Produción e Layout en empresas como Ficción Producciones ou Antaruxa, onde traballou para series de animación como Nivis, Amigos de outro mundo ou longametraxes como Valentina. En plena pandemia tivo a oportunidade de sumarse ao equipo de Gato Salvaje no desenvolvemento de The Waylanders, ocupando o posto de xefa de Deseño de Niveis. Desde 2022 traballa para Merge Games, desenvolvendo o videoxogo Smalland: Survive the Wilds, onde ocupa o cargo de Lead Level Designer e que lle permite seguir desenvolvendo o seu amor por crear mundos poñendo pedras con amor."
       },
       "nacho-marquez": {
-        "talkTitle": "* Hackear o campo: tecnoloxía contra o despoboamento",
+        "talkTitle": "Falando con Nacho sobre Open Source e o rural",
         "talkDescription": "####",
         "role": "Co-fundador",
         "company": "Rural Hackers",
