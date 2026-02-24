@@ -125,13 +125,13 @@
         "summary": "Actividad conjunta.",
         "speakers": {
           "eva": {
-            "role": "Data Analyst · Cofundadora de nosDeu y Datola",
-            "company": "nosDeu",
+            "role": "Data Analyst y cofundadora",
+            "company": "nosDeu y Datola",
             "summary": "Muchos años dedicados a los datos, que se han convertido en mi pasión. Me encanta aprender cada día en nosDeu, la cooperativa del dato. También compartir todo lo que sé (y lo que no sé) con los demás en Datola."
           },
           "brais": {
-            "role": "Data Analyst · Cofundador de nosDeu y Datola",
-            "company": "nosDeu",
+            "role": "Data Analyst y cofundador",
+            "company": "nosDeu y Datola",
             "summary": "Trabajo para que los datos sean fiables y útiles a través de la unificación, la automatización y el cuidado de la calidad. Construyo comunidad en Datola y soy cofundador de nosDeu, la cooperativa del dato."
           }
         }
