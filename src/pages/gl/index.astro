@@ -32,7 +32,7 @@ const lang = getLangFromUrl(Astro.url);
   }
   .container {
     display: flex;
-    width: 700%;
+    width: 900%; /* 9 panels */
     height: 100vh;
     transition: width 0.3s ease;
   }
@@ -66,7 +66,7 @@ const lang = getLangFromUrl(Astro.url);
     <HomeSection lang={lang} />
     <TicketsSection client:load lang={lang} />
     <SpeakersSection client:load lang={lang} />
-    <AgendaSection client:only="react" lang={lang} />
+    <AgendaSection client:load lang={lang} />
     <SponsorsSection client:load lang={lang} />
     <TeamSection client:load lang={lang} />
     <CommunitiesSection client:load lang={lang} />

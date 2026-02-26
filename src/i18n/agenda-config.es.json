@@ -33,7 +33,7 @@
         },
         {
           "id": "entrevista-2",
-          "title": "Charlando con Nacho sobre Open Source y el rural",
+          "title": "Hackear la despoblación: tecnología con raíces",
           "topic": "OSS",
           "category": "interview",
           "start": 210,
@@ -141,7 +141,8 @@
         },
         {
           "id": "borja",
-          "title": "Empleabilidad",
+          "title": "Desahogatech: consultorio sincero sobre buscar empleo en tecnología",
+          "topic": "Empleabilidad",
           "category": "taller",
           "start": 600,
           "duration": 60
