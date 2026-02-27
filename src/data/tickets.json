@@ -33,7 +33,7 @@
       { "name": "Sorteos especiales", "included": false },
       { "name": "Avatar personalizado y merchan exclusivo", "included": false }
     ],
-    "available": true
+    "available": false
   },
   {
     "id": "paladin",
@@ -51,6 +51,6 @@
       { "name": "Sorteos especiales", "included": true },
       { "name": "Avatar personalizado y merchan exclusivo", "included": true }
     ],
-    "available": true
+    "available": false
   }
 ]
