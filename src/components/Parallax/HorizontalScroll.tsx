@@ -101,6 +101,32 @@ const HorizontalScroll: React.FC<HorizontalScrollProps> = ({
             }
           : null;
 
+        // Sponsors panel elements for internal animation
+        const sponsorsIndex = 4; // SponsorsSection es el panel 4 (0-indexed)
+        const sponsorsPanel = panels[sponsorsIndex] ?? null;
+        const sponsorsElements = sponsorsPanel
+          ? {
+              sign: sponsorsPanel.querySelector<HTMLElement>(
+                ".sponsors-section__sign",
+              ),
+              maestros: sponsorsPanel.querySelector<HTMLElement>(
+                ".sponsors-grid__maestros",
+              ),
+              foreground: sponsorsPanel.querySelector<HTMLElement>(
+                ".sponsors-grid__foreground",
+              ),
+              scrollTrack: sponsorsPanel.querySelector<HTMLElement>(
+                ".sponsors-scroll-track",
+              ),
+              parallax: sponsorsPanel.querySelector<HTMLElement>(
+                ".sponsors-parallax",
+              ),
+              collabContent: sponsorsPanel.querySelector<HTMLElement>(
+                ".collab-content",
+              ),
+            }
+          : null;
+
         gsap.set(slider.current, { x: 0 });
 
         const step = 1 / (panels.length - 1);
@@ -108,26 +134,54 @@ const HorizontalScroll: React.FC<HorizontalScrollProps> = ({
         const clamp01 = gsap.utils.clamp(0, 1);
         const heroSegment = clamp01(Math.min(step * 1.7, 0.6));
 
+        // ── Sponsors hold segment ──────────────────────────────────────────
+        const sponsorsSliderProgress = sponsorsIndex * step; // 0.5 con 9 paneles
+        const sponsorsHoldDuration = clamp01(step * 1.5); // tiempo de pausa
+        // Calcula cuándo el slider alcanza el panel de sponsors tras el hero hold
+        const availableSlider = 1 - heroSegment - sponsorsHoldDuration;
+        const sponsorsScrollStart = clamp01(
+          heroSegment + availableSlider * sponsorsSliderProgress,
+        );
+        const sponsorsScrollEnd = clamp01(
+          sponsorsScrollStart + sponsorsHoldDuration,
+        );
+        // ──────────────────────────────────────────────────────────────────
+
         const mapScrollToSliderProgress = (progress: number) => {
-          if (progress <= heroSegment) {
-            return 0;
+          // Fase 1: hero hold — slider en 0
+          if (progress <= heroSegment) return 0;
+
+          // Fase 2: slider avanza de 0 → sponsorsSliderProgress
+          if (progress <= sponsorsScrollStart) {
+            const t =
+              (progress - heroSegment) / (sponsorsScrollStart - heroSegment);
+            return clamp01(t * sponsorsSliderProgress);
           }
 
-          const remaining = 1 - heroSegment;
-          if (remaining <= 0) {
-            return 1;
-          }
+          // Fase 3: sponsors hold — slider se queda en sponsorsSliderProgress
+          if (progress <= sponsorsScrollEnd) return sponsorsSliderProgress;
 
-          return clamp01((progress - heroSegment) / remaining);
+          // Fase 4: slider avanza de sponsorsSliderProgress → 1
+          const t = (progress - sponsorsScrollEnd) / (1 - sponsorsScrollEnd);
+          return clamp01(
+            sponsorsSliderProgress + t * (1 - sponsorsSliderProgress),
+          );
         };
 
         const mapSliderToScrollProgress = (sliderProgress: number) => {
-          if (sliderProgress <= 0) {
-            return 0;
+          if (sliderProgress <= 0) return 0;
+          const clamped = clamp01(sliderProgress);
+
+          if (clamped <= sponsorsSliderProgress) {
+            const t = clamped / sponsorsSliderProgress;
+            return clamp01(
+              heroSegment + t * (sponsorsScrollStart - heroSegment),
+            );
           }
 
-          const clampedSlider = clamp01(sliderProgress);
-          return clamp01(heroSegment + (1 - heroSegment) * clampedSlider);
+          const t =
+            (clamped - sponsorsSliderProgress) / (1 - sponsorsSliderProgress);
+          return clamp01(sponsorsScrollEnd + t * (1 - sponsorsScrollEnd));
         };
 
         const getMaxTranslate = () => {
@@ -195,6 +249,59 @@ const HorizontalScroll: React.FC<HorizontalScrollProps> = ({
           }
         };
 
+        // ── Sponsors internal animation ────────────────────────────────────
+        const sponsorsEase = gsap.parseEase("power2.out");
+        const scrollEase = gsap.parseEase("power2.inOut");
+        const animateSponsors = (overallProgress: number) => {
+          if (!sponsorsElements) return;
+
+          // p: 0→1 durante el hold del panel de sponsors
+          const raw =
+            (overallProgress - sponsorsScrollStart) / sponsorsHoldDuration;
+          const p = clamp01(raw);
+
+          // ─ Patrocinadores visibles desde el inicio, todo el hold = transición a colaboradores ─
+          if (sponsorsElements.scrollTrack) {
+            const sp = scrollEase(p);
+            gsap.set(sponsorsElements.scrollTrack, {
+              y: gsap.utils.interpolate(0, -window.innerHeight, sp),
+            });
+          }
+
+          // El fondo sube al 40% de velocidad → efecto parallax
+          if (sponsorsElements.parallax) {
+            const sp = scrollEase(p);
+            gsap.set(sponsorsElements.parallax, {
+              y: gsap.utils.interpolate(0, -window.innerHeight * 0.4, sp),
+            });
+          }
+
+          if (sponsorsElements.collabContent) {
+            const cp = sponsorsEase(clamp01((p - 0.4) / 0.6));
+            gsap.set(sponsorsElements.collabContent, {
+              y: gsap.utils.interpolate(40, 0, cp),
+              autoAlpha: cp,
+            });
+          }
+        };
+
+        // Estado inicial de sponsors: patrocinadores visibles, colaboradores ocultos
+        if (sponsorsElements) {
+          if (sponsorsElements.sign)
+            gsap.set(sponsorsElements.sign, { y: 0, autoAlpha: 1 });
+          if (sponsorsElements.maestros)
+            gsap.set(sponsorsElements.maestros, { y: 0, autoAlpha: 1 });
+          if (sponsorsElements.foreground)
+            gsap.set(sponsorsElements.foreground, { y: 0, autoAlpha: 1 });
+          if (sponsorsElements.scrollTrack)
+            gsap.set(sponsorsElements.scrollTrack, { y: 0 });
+          if (sponsorsElements.parallax)
+            gsap.set(sponsorsElements.parallax, { y: 0 });
+          if (sponsorsElements.collabContent)
+            gsap.set(sponsorsElements.collabContent, { y: 40, autoAlpha: 0 });
+        }
+        // ──────────────────────────────────────────────────────────────────
+
         const refreshParallax = (sliderProgress: number) => {
           parallaxSets.forEach(({ layers }) => {
             layers.forEach((layer) => {
@@ -228,8 +335,11 @@ const HorizontalScroll: React.FC<HorizontalScrollProps> = ({
         };
 
         const heroSnapThreshold = Math.max(heroSegment - 0.02, 0);
+        const sponsorsSnapStart = Math.max(sponsorsScrollStart - 0.02, 0);
+        const sponsorsSnapEnd = Math.min(sponsorsScrollEnd + 0.02, 1);
 
         animateHero(0);
+        animateSponsors(0);
 
         const trigger = ScrollTrigger.create({
           trigger: slider.current,
@@ -238,8 +348,12 @@ const HorizontalScroll: React.FC<HorizontalScrollProps> = ({
           scrub: 1,
           end: () => "+=" + getMaxTranslate(),
           snap: {
-            snapTo: (value) =>
-              value < heroSnapThreshold ? value : snapToPanel(value),
+            snapTo: (value) => {
+              if (value < heroSnapThreshold) return value;
+              if (value > sponsorsSnapStart && value < sponsorsSnapEnd)
+                return value;
+              return snapToPanel(value);
+            },
             duration: { min: 0.3, max: 0.6 },
             delay: 0.05,
             ease: "power1.inOut",
@@ -250,6 +364,7 @@ const HorizontalScroll: React.FC<HorizontalScrollProps> = ({
             horizontalTween.progress(sliderProgress);
             refreshParallax(sliderProgress);
             animateHero(self.progress);
+            animateSponsors(self.progress);
           },
         });
 
@@ -259,6 +374,7 @@ const HorizontalScroll: React.FC<HorizontalScrollProps> = ({
         horizontalTween.progress(initialSliderProgress);
         refreshParallax(initialSliderProgress);
         animateHero(trigger.progress);
+        animateSponsors(trigger.progress);
 
         const goToPanel = (panelTarget: number | string) => {
           if (!slider.current) return;
@@ -295,6 +411,7 @@ const HorizontalScroll: React.FC<HorizontalScrollProps> = ({
           horizontalTween.progress(sliderProgress);
           refreshParallax(sliderProgress);
           animateHero(trigger.progress);
+          animateSponsors(trigger.progress);
         };
 
         ScrollTrigger.addEventListener("refresh", handleRefresh);

@@ -5,7 +5,7 @@
   height: 100vh;
   width: 100%;
   min-width: 100vw;
-  overflow: visible;
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,10 +18,14 @@
 /* Parallax Background */
 .sponsors-parallax {
   position: absolute;
-  inset: 0;
+  top: -20vh;
+  left: 0;
+  right: 0;
+  bottom: -50vh;
   overflow: hidden;
   pointer-events: none;
   z-index: 1;
+  will-change: transform;
 }
 
 .sponsors-parallax-img {
@@ -66,6 +70,69 @@
   pointer-events: none;
 }
 
+/* ── Scroll track (dos páginas) ─────────────────────────────────────────── */
+.sponsors-scroll-track {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  will-change: transform;
+  z-index: 5;
+}
+
+.sponsors-page {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Página 2: Colaboradores ─────────────────────────────────────────────── */
+.sponsors-page--collab {
+  position: relative;
+}
+
+.collab-content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+  padding: 3rem 0;
+}
+
+.collab-content__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: center;
+}
+
+.collab-content__title {
+  font-family: var(--heading-font), sans-serif;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: var(--custom-letter-spacing);
+  color: var(--accent);
+  margin: 0;
+}
+
+.collab-content__description {
+  font-family: var(--body-font), sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: var(--custom-letter-spacing);
+  color: var(--text-light);
+  margin: 0;
+  max-width: 600px;
+  text-align: center;
+}
+/* ─────────────────────────────────────────────────────────────────────────── */
+
 /* Content */
 .sponsors-content {
   height: 100%;
@@ -75,8 +142,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 3rem;
-  padding: 4rem 0 2rem 0;
+  align-items: center;
+  gap: 2rem;
+  padding: 3rem 0;
 }
 
 /* Cartel Maestros da Lareira */
@@ -108,7 +176,7 @@
   letter-spacing: var(--custom-letter-spacing);
   color: var(--accent);
   text-shadow: none;
-  margin: 0 0 1rem;
+  margin: 0;
 }
 
 .sponsors-section__description {
@@ -123,7 +191,7 @@
   color: var(--text-light);
 }
 
-/* Grid Layout - 3 Layers Depth Effect */
+/* Grid Layout */
 .sponsors-grid {
   display: flex;
   flex-direction: column;
@@ -198,7 +266,7 @@
 }
 
 .sponsors-grid__oficial-right {
-  margin-bottom: 2rem;
+  margin-bottom: 0;
 }
 
 /* Gran Maestro - Centered */

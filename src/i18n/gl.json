@@ -570,5 +570,11 @@
   "sponsors": {
     "title": "Patrocinadores",
     "description": "Toda gran aventura precisa aliados que a fagan posible. Os Artesáns sosteñen a Lareira e apoian aos aventureiros en cada misión."
+  },
+  "collaborators": {
+    "title": "Colaboradores",
+    "description": "Entidades e persoas que fan posible a Lareira co seu apoio e compromiso coa comunidade.",
+    "visitLabel": "Visitar",
+    "comingSoon": "Proximamente..."
   }
 }
