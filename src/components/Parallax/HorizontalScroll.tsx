@@ -118,12 +118,10 @@ const HorizontalScroll: React.FC<HorizontalScrollProps> = ({
               scrollTrack: sponsorsPanel.querySelector<HTMLElement>(
                 ".sponsors-scroll-track",
               ),
-              parallax: sponsorsPanel.querySelector<HTMLElement>(
-                ".sponsors-parallax",
-              ),
-              collabContent: sponsorsPanel.querySelector<HTMLElement>(
-                ".collab-content",
-              ),
+              parallax:
+                sponsorsPanel.querySelector<HTMLElement>(".sponsors-parallax"),
+              collabContent:
+                sponsorsPanel.querySelector<HTMLElement>(".collab-content"),
             }
           : null;
 
