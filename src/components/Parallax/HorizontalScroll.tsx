@@ -102,7 +102,7 @@ const HorizontalScroll: React.FC<HorizontalScrollProps> = ({
           : null;
 
         // Sponsors panel elements for internal animation
-        const sponsorsIndex = 4; // SponsorsSection es el panel 4 (0-indexed)
+        const sponsorsIndex = 3; // SponsorsSection es el panel 3 (0-indexed)
         const sponsorsPanel = panels[sponsorsIndex] ?? null;
         const sponsorsElements = sponsorsPanel
           ? {
@@ -115,13 +115,8 @@ const HorizontalScroll: React.FC<HorizontalScrollProps> = ({
               foreground: sponsorsPanel.querySelector<HTMLElement>(
                 ".sponsors-grid__foreground",
               ),
-              scrollTrack: sponsorsPanel.querySelector<HTMLElement>(
-                ".sponsors-scroll-track",
-              ),
               parallax:
                 sponsorsPanel.querySelector<HTMLElement>(".sponsors-parallax"),
-              collabContent:
-                sponsorsPanel.querySelector<HTMLElement>(".collab-content"),
             }
           : null;
 
@@ -133,8 +128,8 @@ const HorizontalScroll: React.FC<HorizontalScrollProps> = ({
         const heroSegment = clamp01(Math.min(step * 1.7, 0.6));
 
         // ── Sponsors hold segment ──────────────────────────────────────────
-        const sponsorsSliderProgress = sponsorsIndex * step; // 0.5 con 9 paneles
-        const sponsorsHoldDuration = clamp01(step * 1.5); // tiempo de pausa
+        const sponsorsSliderProgress = sponsorsIndex * step;
+        const sponsorsHoldDuration = 0; // sin hold interno (colaboradores es panel separado)
         // Calcula cuándo el slider alcanza el panel de sponsors tras el hero hold
         const availableSlider = 1 - heroSegment - sponsorsHoldDuration;
         const sponsorsScrollStart = clamp01(
@@ -248,42 +243,11 @@ const HorizontalScroll: React.FC<HorizontalScrollProps> = ({
         };
 
         // ── Sponsors internal animation ────────────────────────────────────
-        const sponsorsEase = gsap.parseEase("power2.out");
-        const scrollEase = gsap.parseEase("power2.inOut");
-        const animateSponsors = (overallProgress: number) => {
-          if (!sponsorsElements) return;
-
-          // p: 0→1 durante el hold del panel de sponsors
-          const raw =
-            (overallProgress - sponsorsScrollStart) / sponsorsHoldDuration;
-          const p = clamp01(raw);
-
-          // ─ Patrocinadores visibles desde el inicio, todo el hold = transición a colaboradores ─
-          if (sponsorsElements.scrollTrack) {
-            const sp = scrollEase(p);
-            gsap.set(sponsorsElements.scrollTrack, {
-              y: gsap.utils.interpolate(0, -window.innerHeight, sp),
-            });
-          }
-
-          // El fondo sube al 40% de velocidad → efecto parallax
-          if (sponsorsElements.parallax) {
-            const sp = scrollEase(p);
-            gsap.set(sponsorsElements.parallax, {
-              y: gsap.utils.interpolate(0, -window.innerHeight * 0.4, sp),
-            });
-          }
-
-          if (sponsorsElements.collabContent) {
-            const cp = sponsorsEase(clamp01((p - 0.4) / 0.6));
-            gsap.set(sponsorsElements.collabContent, {
-              y: gsap.utils.interpolate(40, 0, cp),
-              autoAlpha: cp,
-            });
-          }
+        const animateSponsors = (_overallProgress: number) => {
+          // Sin animación interna: colaboradores es ahora un panel separado
         };
 
-        // Estado inicial de sponsors: patrocinadores visibles, colaboradores ocultos
+        // Estado inicial de sponsors
         if (sponsorsElements) {
           if (sponsorsElements.sign)
             gsap.set(sponsorsElements.sign, { y: 0, autoAlpha: 1 });
@@ -291,12 +255,8 @@ const HorizontalScroll: React.FC<HorizontalScrollProps> = ({
             gsap.set(sponsorsElements.maestros, { y: 0, autoAlpha: 1 });
           if (sponsorsElements.foreground)
             gsap.set(sponsorsElements.foreground, { y: 0, autoAlpha: 1 });
-          if (sponsorsElements.scrollTrack)
-            gsap.set(sponsorsElements.scrollTrack, { y: 0 });
           if (sponsorsElements.parallax)
             gsap.set(sponsorsElements.parallax, { y: 0 });
-          if (sponsorsElements.collabContent)
-            gsap.set(sponsorsElements.collabContent, { y: 40, autoAlpha: 0 });
         }
         // ──────────────────────────────────────────────────────────────────
 

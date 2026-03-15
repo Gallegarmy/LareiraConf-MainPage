@@ -3,7 +3,7 @@ import "@styles/header.css";
 import TicketIcon from "@img/icons/ticket.svg?raw";
 import UsersIcon from "@img/icons/users.svg?raw";
 import SpeakerIcon from "@img/icons/speaker.svg?raw";
-import ShieldIcon from "@img/icons/shield.svg?raw";
+import PennantIcon from "@img/icons/pennant.svg?raw";
 import ScriptIcon from "@img/icons/script.svg?raw";
 import ShoppingIcon from "@img/icons/shopping.svg?raw";
 import QuestionIcon from "@img/icons/question.svg?raw";
@@ -28,9 +28,9 @@ const t = useTranslations(lang);
   </button>
 
   <nav class="main-nav">
-    <a href="#tickets" class="cta-button">
-      <span class="cta-button__icon" aria-hidden="true" set:html={TicketIcon} />
-      <span>{t("nav.tickets")}</span>
+    <a href="#agenda" class="cta-button">
+      <span class="cta-button__icon" aria-hidden="true" set:html={ScriptIcon} />
+      <span>{t("nav.agenda")}</span>
     </a>
     <a href="#speakers" class="cta-button">
       <span
@@ -40,17 +40,17 @@ const t = useTranslations(lang);
       />
       <span>{t("nav.speakers")}</span>
     </a>
-    <a href="#agenda" class="cta-button">
-      <span class="cta-button__icon" aria-hidden="true" set:html={ScriptIcon} />
-      <span>Agenda</span>
-    </a>
     <a href="#sponsors" class="cta-button">
       <span
         class="cta-button__icon"
         aria-hidden="true"
         set:html={ShoppingIcon}
       />
-      <span>Patrocinadores</span>
+      <span>{t("nav.sponsors")}</span>
+    </a>
+    <a href="#colaboradores" class="cta-button">
+      <span class="cta-button__icon" aria-hidden="true" set:html={PennantIcon} />
+      <span>{t("nav.collaborators")}</span>
     </a>
     <a href="#team" class="cta-button">
       <span class="cta-button__icon" aria-hidden="true" set:html={UsersIcon} />
@@ -67,6 +67,10 @@ const t = useTranslations(lang);
         set:html={QuestionIcon}
       />
       <span>{t("nav.faq")}</span>
+    </a>
+    <a href="#tickets" class="cta-button">
+      <span class="cta-button__icon" aria-hidden="true" set:html={TicketIcon} />
+      <span>{t("nav.tickets")}</span>
     </a>
     <div class="lang-selector-header">
       <button

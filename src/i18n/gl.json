@@ -7,8 +7,11 @@
   },
   "nav": {
     "home": "Inicio",
+    "agenda": "Axenda",
     "tickets": "Entradas",
     "speakers": "Relatores",
+    "sponsors": "Patrocinadores",
+    "collaborators": "Colaboradores",
     "team": "Equipo",
     "communities": "Comunidades",
     "faq": "FAQ",

@@ -5,7 +5,6 @@ import { useTranslations, type Locale } from "@/i18n/utils";
 import "@styles/sponsors.css";
 import SponsorCard from "./SponsorCard";
 import { sponsorsByTier } from "./sponsorsData";
-import CollaboratorsBunting from "@components/Collaborators/CollaboratorsBunting";
 
 const SponsorsSection: React.FC<{ lang: string }> = ({ lang }) => {
   const t = useTranslations(lang as Locale);
@@ -29,7 +28,6 @@ const SponsorsSection: React.FC<{ lang: string }> = ({ lang }) => {
       </div>
 
       <div className="sponsors-scroll-track">
-        {/* ── Página 1: Patrocinadores ── */}
         <div className="sponsors-page">
           <div className="sponsors-content">
             <div className="sponsors-section__sign">
@@ -91,21 +89,6 @@ const SponsorsSection: React.FC<{ lang: string }> = ({ lang }) => {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* ── Página 2: Colaboradores ── */}
-        <div className="sponsors-page sponsors-page--collab">
-          <div className="collab-content">
-            <div className="collab-content__header">
-              <h2 className="collab-content__title">
-                {t("collaborators.title")}
-              </h2>
-              <p className="collab-content__description">
-                {t("collaborators.description")}
-              </p>
-            </div>
-            <CollaboratorsBunting />
           </div>
         </div>
       </div>
