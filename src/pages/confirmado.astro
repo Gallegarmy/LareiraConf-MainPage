@@ -1,0 +1,65 @@
+---
+export const prerender = false;
+
+import "../styles/confirmado.css";
+
+const status = Astro.url.searchParams.get("status") ?? "ok";
+const reason = Astro.url.searchParams.get("reason") ?? "";
+
+type StatusConfig = {
+  icon: string;
+  title: string;
+  subtitle: string;
+  cssClass: string;
+};
+
+const configs: Record<string, StatusConfig> = {
+  ok: {
+    icon: "🔥",
+    title: "¡Asistencia confirmada!",
+    subtitle: "Te esperamos en la Previa de la LareiraConf'26",
+    cssClass: "status-ok",
+  },
+  ya_confirmado: {
+    icon: "✓",
+    title: "Ya estás apuntado",
+    subtitle: "Tu asistencia ya fue registrada anteriormente. ¡Nos vemos en la previa!",
+    cssClass: "status-dup",
+  },
+  error: {
+    icon: "✕",
+    title: "Algo salió mal",
+    subtitle:
+      reason === "missing_params"
+        ? "El enlace de confirmación no contiene los datos necesarios. Revisa el email original."
+        : "No se pudo registrar tu confirmación. Si el problema persiste, escríbenos directamente a info@lareiraconf.es",
+    cssClass: "status-error",
+  },
+};
+
+const cfg = configs[status] ?? configs["ok"];
+---
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Confirmación de asistencia — LareiraConf'26</title>
+  </head>
+  <body>
+    <div class={`confirmado-card ${cfg.cssClass}`}>
+      <span class="confirmado-icon" role="img" aria-label={cfg.title}>
+        {cfg.icon}
+      </span>
+
+      <span class="confirmado-tag">LareiraConf · 2026 · A Coruña</span>
+
+      <h1 class="confirmado-title">{cfg.title}</h1>
+      <hr class="confirmado-divider" />
+      <p class="confirmado-subtitle">{cfg.subtitle}</p>
+
+      <a href="/" class="confirmado-link">← Volver a la web</a>
+    </div>
+  </body>
+</html>
