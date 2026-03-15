@@ -92,7 +92,11 @@ const BuntingRow: React.FC<{ row: PennantItem[] }> = ({ row }) => (
                 alt={p.collaborator.alt}
                 className="pennant__logo"
                 loading="lazy"
-                style={p.collaborator.logoScale !== undefined ? { transform: `scale(${p.collaborator.logoScale})` } : undefined}
+                style={
+                  p.collaborator.logoScale !== undefined
+                    ? { transform: `scale(${p.collaborator.logoScale})` }
+                    : undefined
+                }
               />
             </a>
           )}

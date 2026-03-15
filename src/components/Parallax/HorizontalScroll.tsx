@@ -371,7 +371,8 @@ const HorizontalScroll: React.FC<HorizontalScrollProps> = ({
             const cleanId = panelTarget.replace(/^#/, "");
             const foundIndex = panels.findIndex((panel) => {
               if (panel.id === cleanId) return true;
-              const aliases = panel.getAttribute("data-nav-ids")?.split(" ") ?? [];
+              const aliases =
+                panel.getAttribute("data-nav-ids")?.split(" ") ?? [];
               return aliases.includes(cleanId);
             });
             if (foundIndex !== -1) {
@@ -398,7 +399,10 @@ const HorizontalScroll: React.FC<HorizontalScrollProps> = ({
             targetProgress = mapSliderToScrollProgress(sliderTarget);
           }
 
-          window.scrollTo({ top: trigger.start + targetProgress * distance, behavior: "smooth" });
+          window.scrollTo({
+            top: trigger.start + targetProgress * distance,
+            behavior: "smooth",
+          });
         };
 
         window.horizontalPanelNav = { goToPanel };

@@ -251,7 +251,6 @@
   padding-top: 18%;
   position: relative;
   text-decoration: none;
-
 }
 
 /* Estado hover para banderines con enlace */
@@ -262,8 +261,7 @@
 /* Resplandor naranja en hover — filter en el padre para que siga el clip-path */
 .pennant:has(.pennant__fabric--linked:hover),
 .pennant:has(.pennant__fabric--linked:focus-visible) {
-  filter:
-    drop-shadow(0 0 6px rgba(255, 110, 20, 0.95))
+  filter: drop-shadow(0 0 6px rgba(255, 110, 20, 0.95))
     drop-shadow(0 0 14px rgba(255, 70, 0, 0.55));
   transition: filter 0.3s ease;
 }
