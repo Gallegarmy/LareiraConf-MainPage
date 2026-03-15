@@ -1,4 +1,4 @@
-import integraLogo from "@img/collaborators/integra.svg";
+import integraLogo from "@img/collaborators/integra-iria.png";
 import adanLogo from "@img/collaborators/adan.svg";
 import malteLogo from "@img/collaborators/malte.svg";
 import udcLogo from "@img/collaborators/udc.svg";
@@ -6,6 +6,7 @@ import grupoBillinghamLogo from "@img/collaborators/grupo-billingham.svg";
 import freakGzmLogo from "@img/collaborators/freak-gzm.svg";
 import nessLogo from "@img/collaborators/ness.svg";
 import sirviendoCodigoLogo from "@img/collaborators/sirviendo-codigo.svg";
+import weartocodeLogo from "@img/collaborators/weartocode.svg";
 
 export interface Collaborator {
   id: string;
@@ -13,6 +14,7 @@ export interface Collaborator {
   url: string;
   logo: string;
   alt: string;
+  logoScale?: number;
 }
 
 // Para sustituir un logo placeholder por el real:
@@ -61,6 +63,7 @@ export const collaborators: Collaborator[] = [
     url: "https://freakgzm.com",
     logo: freakGzmLogo.src,
     alt: "Logo de Freak GZM",
+    logoScale: 0.85,
   },
   {
     id: "ness",
@@ -75,5 +78,14 @@ export const collaborators: Collaborator[] = [
     url: "https://sirviendocodigo.com",
     logo: sirviendoCodigoLogo.src,
     alt: "Logo de Sirviendo código",
+    logoScale: 1.2,
+  },
+  {
+    id: "weartocode",
+    name: "WearToCode",
+    url: "https://weartocode.com",
+    logo: weartocodeLogo.src,
+    alt: "Logo de WearToCode",
+    logoScale: 1.4,
   },
 ];

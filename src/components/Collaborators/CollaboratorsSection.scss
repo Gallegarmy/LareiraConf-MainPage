@@ -163,7 +163,7 @@
   position: relative;
   width: 100%;
   /* 5px margen superior + clip (10px) + banderín (aspect 3/4 del width máx) + holgura */
-  height: calc(50px + clamp(73px, 9.5vw, 135px));
+  height: calc(50px + clamp(160px, 22vw, 280px));
   gap: 0;
 }
 
@@ -197,7 +197,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: clamp(55px, 7vw, 100px);
+  width: clamp(120px, 16vw, 210px);
   transform: translateX(-50%);
   transform-origin: top center;
   animation: pennantSway 3.5s ease-in-out infinite alternate;
@@ -248,94 +248,46 @@
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding-top: 20%;
+  padding-top: 18%;
   position: relative;
   text-decoration: none;
-  transition:
-    filter 0.3s ease,
-    transform 0.2s ease;
 
-  /* Textura de tela — líneas sutiles */
-  background-image: repeating-linear-gradient(
-    90deg,
-    transparent 0px,
-    transparent 6px,
-    rgba(0, 0, 0, 0.08) 6px,
-    rgba(0, 0, 0, 0.08) 7px
-  );
-  background-blend-mode: multiply;
-
-  /* Costura perimetral */
-  &::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 68%, 0 100%);
-    border: 2px solid rgba(255, 255, 255, 0.12);
-    pointer-events: none;
-  }
-
-  /* Brillo superior */
-  &::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 35%;
-    background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.14) 0%,
-      transparent 100%
-    );
-    pointer-events: none;
-  }
 }
 
 /* Estado hover para banderines con enlace */
 .pennant__fabric--linked {
   cursor: pointer;
+}
 
-  &:hover,
-  &:focus-visible {
-    outline: none;
-    filter: brightness(1.12) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
-    transform: scaleY(1.04);
-
-    .pennant__logo {
-      transform: scale(1.07);
-    }
-  }
+/* Resplandor naranja en hover — filter en el padre para que siga el clip-path */
+.pennant:has(.pennant__fabric--linked:hover),
+.pennant:has(.pennant__fabric--linked:focus-visible) {
+  filter:
+    drop-shadow(0 0 6px rgba(255, 110, 20, 0.95))
+    drop-shadow(0 0 14px rgba(255, 70, 0, 0.55));
+  transition: filter 0.3s ease;
 }
 
 /* Banderines placeholder (decorativos) */
 .pennant__fabric--placeholder {
-  background-image:
-    repeating-linear-gradient(
-      45deg,
-      rgba(255, 255, 255, 0.05) 0px,
-      rgba(255, 255, 255, 0.05) 4px,
-      transparent 4px,
-      transparent 10px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      transparent 0px,
-      transparent 6px,
-      rgba(0, 0, 0, 0.08) 6px,
-      rgba(0, 0, 0, 0.08) 7px
-    );
+  opacity: 0.5;
+}
+
+/* Cenefa SVG — traza el contorno completo incluyendo los piquitos */
+.pennant__trim {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
 }
 
 /* Logo dentro del banderín */
 .pennant__logo {
-  width: 65%;
-  max-height: 45%;
+  width: 85%;
+  max-height: 60%;
   object-fit: contain;
-  filter: none;
-  transition:
-    filter 0.3s ease,
-    transform 0.3s ease;
   pointer-events: none;
 }
 
@@ -345,11 +297,11 @@
 
 @media (max-width: 768px) {
   .bunting {
-    height: calc(50px + clamp(65px, 24vw, 110px));
+    height: calc(50px + clamp(140px, 36vw, 210px));
   }
 
   .pennant {
-    width: clamp(50px, 16vw, 75px);
+    width: clamp(100px, 28vw, 160px);
   }
 
   .bunting__rope-svg {
@@ -375,10 +327,10 @@
 
 @media (max-width: 480px) {
   .bunting {
-    height: calc(50px + clamp(60px, 14vw, 80px));
+    height: calc(50px + clamp(120px, 32vw, 170px));
   }
 
   .pennant {
-    width: clamp(45px, 14vw, 65px);
+    width: clamp(85px, 26vw, 130px);
   }
 }

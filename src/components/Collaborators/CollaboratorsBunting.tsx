@@ -13,6 +13,23 @@ type PennantItem =
       collaborator: (typeof collaborators)[number];
     };
 
+const PennantTrim: React.FC = () => (
+  <svg
+    className="pennant__trim"
+    viewBox="0 0 100 100"
+    preserveAspectRatio="none"
+    aria-hidden="true"
+  >
+    <polygon
+      points="4,3 96,3 96,94 50,64 4,94"
+      fill="none"
+      stroke="rgba(139,89,20,0.5)"
+      strokeWidth="3"
+      vectorEffect="non-scaling-stroke"
+    />
+  </svg>
+);
+
 // Calcula la y exacta de la Bézier cuadrática M0,10 Q250,50 500,10 Q750,50 1000,10
 const ropeY = (x: number): number => {
   const t = x <= 500 ? x / 500 : (x - 500) / 500;
@@ -58,7 +75,9 @@ const BuntingRow: React.FC<{ row: PennantItem[] }> = ({ row }) => (
         >
           <div className="pennant__clip" aria-hidden="true" />
           {p.placeholder === true ? (
-            <div className="pennant__fabric pennant__fabric--placeholder" />
+            <div className="pennant__fabric pennant__fabric--placeholder">
+              <PennantTrim />
+            </div>
           ) : (
             <a
               href={p.collaborator.url}
@@ -67,11 +86,13 @@ const BuntingRow: React.FC<{ row: PennantItem[] }> = ({ row }) => (
               className="pennant__fabric pennant__fabric--linked"
               aria-label={`Visitar ${p.collaborator.name}`}
             >
+              <PennantTrim />
               <img
                 src={p.collaborator.logo}
                 alt={p.collaborator.alt}
                 className="pennant__logo"
                 loading="lazy"
+                style={p.collaborator.logoScale !== undefined ? { transform: `scale(${p.collaborator.logoScale})` } : undefined}
               />
             </a>
           )}
