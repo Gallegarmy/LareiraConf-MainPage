@@ -101,8 +101,8 @@ const HorizontalScroll: React.FC<HorizontalScrollProps> = ({
             }
           : null;
 
-        // Sponsors panel elements for internal animation
-        const sponsorsIndex = 3; // SponsorsSection es el panel 3 (0-indexed)
+        // Panel combinado colaboradores+patrocinadores (índice 3, 0-indexed)
+        const sponsorsIndex = 3;
         const sponsorsPanel = panels[sponsorsIndex] ?? null;
         const sponsorsElements = sponsorsPanel
           ? {
@@ -114,6 +114,9 @@ const HorizontalScroll: React.FC<HorizontalScrollProps> = ({
               ),
               foreground: sponsorsPanel.querySelector<HTMLElement>(
                 ".sponsors-grid__foreground",
+              ),
+              scrollTrack: sponsorsPanel.querySelector<HTMLElement>(
+                ".sponsors-scroll-track",
               ),
               parallax:
                 sponsorsPanel.querySelector<HTMLElement>(".sponsors-parallax"),
@@ -127,9 +130,9 @@ const HorizontalScroll: React.FC<HorizontalScrollProps> = ({
         const clamp01 = gsap.utils.clamp(0, 1);
         const heroSegment = clamp01(Math.min(step * 1.7, 0.6));
 
-        // ── Sponsors hold segment ──────────────────────────────────────────
+        // ── Hold del panel colaboradores+patrocinadores ────────────────────
         const sponsorsSliderProgress = sponsorsIndex * step;
-        const sponsorsHoldDuration = 0; // sin hold interno (colaboradores es panel separado)
+        const sponsorsHoldDuration = clamp01(step * 1.5);
         // Calcula cuándo el slider alcanza el panel de sponsors tras el hero hold
         const availableSlider = 1 - heroSegment - sponsorsHoldDuration;
         const sponsorsScrollStart = clamp01(
@@ -242,12 +245,33 @@ const HorizontalScroll: React.FC<HorizontalScrollProps> = ({
           }
         };
 
-        // ── Sponsors internal animation ────────────────────────────────────
-        const animateSponsors = (_overallProgress: number) => {
-          // Sin animación interna: colaboradores es ahora un panel separado
+        // ── Animación interna: scroll vertical colaboradores → patrocinadores
+        const scrollEase = gsap.parseEase("power2.inOut");
+        const animateSponsors = (overallProgress: number) => {
+          if (!sponsorsElements || sponsorsHoldDuration <= 0) return;
+
+          const raw =
+            (overallProgress - sponsorsScrollStart) / sponsorsHoldDuration;
+          const p = clamp01(raw);
+
+          // Track sube: muestra colaboradores (p=0) → patrocinadores (p=1)
+          if (sponsorsElements.scrollTrack) {
+            const sp = scrollEase(p);
+            gsap.set(sponsorsElements.scrollTrack, {
+              y: gsap.utils.interpolate(0, -window.innerHeight, sp),
+            });
+          }
+
+          // Fondo sube más despacio → efecto parallax
+          if (sponsorsElements.parallax) {
+            const sp = scrollEase(p);
+            gsap.set(sponsorsElements.parallax, {
+              y: gsap.utils.interpolate(0, -window.innerHeight * 0.35, sp),
+            });
+          }
         };
 
-        // Estado inicial de sponsors
+        // Estado inicial: colaboradores visibles (track en y=0)
         if (sponsorsElements) {
           if (sponsorsElements.sign)
             gsap.set(sponsorsElements.sign, { y: 0, autoAlpha: 1 });
@@ -255,6 +279,8 @@ const HorizontalScroll: React.FC<HorizontalScrollProps> = ({
             gsap.set(sponsorsElements.maestros, { y: 0, autoAlpha: 1 });
           if (sponsorsElements.foreground)
             gsap.set(sponsorsElements.foreground, { y: 0, autoAlpha: 1 });
+          if (sponsorsElements.scrollTrack)
+            gsap.set(sponsorsElements.scrollTrack, { y: 0 });
           if (sponsorsElements.parallax)
             gsap.set(sponsorsElements.parallax, { y: 0 });
         }
@@ -343,9 +369,11 @@ const HorizontalScroll: React.FC<HorizontalScrollProps> = ({
             desiredIndex = clampIndex(panelTarget);
           } else {
             const cleanId = panelTarget.replace(/^#/, "");
-            const foundIndex = panels.findIndex(
-              (panel) => panel.id === cleanId,
-            );
+            const foundIndex = panels.findIndex((panel) => {
+              if (panel.id === cleanId) return true;
+              const aliases = panel.getAttribute("data-nav-ids")?.split(" ") ?? [];
+              return aliases.includes(cleanId);
+            });
             if (foundIndex !== -1) {
               desiredIndex = clampIndex(foundIndex);
             }
@@ -353,13 +381,24 @@ const HorizontalScroll: React.FC<HorizontalScrollProps> = ({
 
           if (desiredIndex === null) return;
 
-          const sliderTarget = desiredIndex * step;
-          const targetProgress = mapSliderToScrollProgress(sliderTarget);
           const distance = trigger.end - trigger.start;
           if (distance <= 0) return;
-          const targetScroll = trigger.start + targetProgress * distance;
 
-          window.scrollTo({ top: targetScroll, behavior: "smooth" });
+          // Si el destino es un alias del panel de sponsors (no su id primario),
+          // navegar al final del hold para mostrar la página de patrocinadores
+          let targetProgress: number;
+          if (
+            typeof panelTarget === "string" &&
+            desiredIndex === sponsorsIndex &&
+            panels[desiredIndex].id !== panelTarget.replace(/^#/, "")
+          ) {
+            targetProgress = sponsorsScrollEnd;
+          } else {
+            const sliderTarget = desiredIndex * step;
+            targetProgress = mapSliderToScrollProgress(sliderTarget);
+          }
+
+          window.scrollTo({ top: trigger.start + targetProgress * distance, behavior: "smooth" });
         };
 
         window.horizontalPanelNav = { goToPanel };

@@ -91,6 +91,7 @@
 /* ── Página 2: Colaboradores ─────────────────────────────────────────────── */
 .sponsors-page--collab {
   position: relative;
+  padding-top: 65px; /* deja espacio al header fijo */
 }
 
 .collab-content {
@@ -591,6 +592,26 @@
 @media (max-width: 768px) {
   .sponsors-section {
     padding: 0 1rem;
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+  }
+
+  .sponsors-parallax {
+    top: 0;
+    bottom: 0;
+  }
+
+  .sponsors-scroll-track {
+    position: relative;
+    top: auto;
+    left: auto;
+  }
+
+  .sponsors-page {
+    height: auto;
+    min-height: 100vh;
+    padding: 2rem 0;
   }
 
   .sponsors-section__sign-text {

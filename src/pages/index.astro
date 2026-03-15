@@ -5,7 +5,6 @@ import HomeSection from "@components/Home/HomeSection";
 import TeamSection from "@components/Team/TeamSection";
 import TicketsSection from "@components/TicketsSection/TicketsSection";
 import SponsorsSection from "@components/Sponsors/SponsorsSection";
-import CollaboratorsSection from "@components/Collaborators/CollaboratorsSection";
 import SpeakersSection from "@components/Speakers/SpeakersSection";
 import AgendaSection from "@components/Agenda/AgendaSection";
 import FAQSection from "@components/FAQ/FAQSection";
@@ -33,7 +32,7 @@ const lang = getLangFromUrl(Astro.url);
   }
   .container {
     display: flex;
-    width: 1000%; /* 10 panels */
+    width: 900%; /* 9 panels */
     height: 100vh;
     transition: width 0.3s ease;
   }
@@ -68,7 +67,6 @@ const lang = getLangFromUrl(Astro.url);
     <AgendaSection client:load lang={lang} />
     <SpeakersSection client:load lang={lang} />
     <SponsorsSection client:load lang={lang} />
-    <CollaboratorsSection client:load lang={lang} />
     <TeamSection client:load lang={lang} />
     <CommunitiesSection client:load lang={lang} />
     <FAQSection client:load lang={lang} />

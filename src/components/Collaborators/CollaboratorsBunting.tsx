@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./CollaboratorsSection.scss";
 import { collaborators } from "./collaborators-data";
 
@@ -104,6 +104,15 @@ const BuntingRow: React.FC<{ row: PennantItem[] }> = ({ row }) => (
 
 const CollaboratorsBunting: React.FC = () => {
   const isEmpty = collaborators.length === 0;
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 768px)");
+    setIsMobile(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
 
   const allPennants: PennantItem[] = isEmpty
     ? Array.from({ length: PLACEHOLDER_COUNT }, (_, i) => ({
@@ -118,15 +127,19 @@ const CollaboratorsBunting: React.FC = () => {
         collaborator: c,
       }));
 
-  const mid = Math.ceil(allPennants.length / 2);
-  const row1 = allPennants.slice(0, mid);
-  const row2 = allPennants.slice(mid);
+  // Desktop: 2 filas (ceil(n/2) por fila). Mobile: filas de 3
+  const chunkSize = isMobile ? 3 : Math.ceil(allPennants.length / 2);
+  const rows: PennantItem[][] = [];
+  for (let i = 0; i < allPennants.length; i += chunkSize) {
+    rows.push(allPennants.slice(i, i + chunkSize));
+  }
 
   return (
     <div className="collaborators-bunting-block">
       <div className="bunting-rows">
-        <BuntingRow row={row1} />
-        <BuntingRow row={row2} />
+        {rows.map((row, i) => (
+          <BuntingRow key={i} row={row} />
+        ))}
       </div>
     </div>
   );

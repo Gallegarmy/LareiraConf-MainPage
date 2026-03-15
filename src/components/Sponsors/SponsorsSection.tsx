@@ -5,15 +5,17 @@ import { useTranslations, type Locale } from "@/i18n/utils";
 import "@styles/sponsors.css";
 import SponsorCard from "./SponsorCard";
 import { sponsorsByTier } from "./sponsorsData";
+import CollaboratorsBunting from "@components/Collaborators/CollaboratorsBunting";
 
 const SponsorsSection: React.FC<{ lang: string }> = ({ lang }) => {
   const t = useTranslations(lang as Locale);
 
   return (
     <section
-      id="sponsors"
+      id="colaboradores"
       className="panel sponsors-section"
       data-section="sponsors"
+      data-nav-ids="colaboradores patrocinadores"
     >
       <div className="sponsors-parallax" aria-hidden="true">
         <img
@@ -28,7 +30,23 @@ const SponsorsSection: React.FC<{ lang: string }> = ({ lang }) => {
       </div>
 
       <div className="sponsors-scroll-track">
-        <div className="sponsors-page">
+        {/* ── Página 1: Colaboradores ── */}
+        <div className="sponsors-page sponsors-page--collab">
+          <div className="collab-content">
+            <div className="collab-content__header">
+              <h2 className="collab-content__title">
+                {t("collaborators.title")}
+              </h2>
+              <p className="collab-content__description">
+                {t("collaborators.description")}
+              </p>
+            </div>
+            <CollaboratorsBunting />
+          </div>
+        </div>
+
+        {/* ── Página 2: Patrocinadores ── */}
+        <div id="patrocinadores" className="sponsors-page">
           <div className="sponsors-content">
             <div className="sponsors-section__sign">
               <h2 className="sponsors-section__sign-text">
@@ -40,7 +58,6 @@ const SponsorsSection: React.FC<{ lang: string }> = ({ lang }) => {
             </div>
 
             <div className="sponsors-grid">
-              {/* Maestros Artesanos - Al fondo */}
               <div className="sponsors-grid__maestros">
                 <div className="sponsors-grid__maestros-row sponsors-grid__maestros-row--1">
                   {sponsorsByTier.maestrosArtesanos
@@ -62,7 +79,6 @@ const SponsorsSection: React.FC<{ lang: string }> = ({ lang }) => {
                 </div>
               </div>
 
-              {/* Oficiales + Gran Maestro - Primer plano */}
               <div className="sponsors-grid__foreground">
                 <div className="sponsors-grid__oficial-left">
                   {sponsorsByTier.oficialesArtesanos

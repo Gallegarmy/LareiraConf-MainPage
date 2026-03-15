@@ -163,7 +163,7 @@
   position: relative;
   width: 100%;
   /* 5px margen superior + clip (10px) + banderín (aspect 3/4 del width máx) + holgura */
-  height: calc(50px + clamp(160px, 22vw, 280px));
+  height: calc(50px + clamp(110px, 15vw, 210px));
   gap: 0;
 }
 
@@ -197,7 +197,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: clamp(120px, 16vw, 210px);
+  width: clamp(100px, 11vw, 155px);
   transform: translateX(-50%);
   transform-origin: top center;
   animation: pennantSway 3.5s ease-in-out infinite alternate;
@@ -301,27 +301,7 @@
   }
 
   .pennant {
-    width: clamp(100px, 28vw, 160px);
-  }
-
-  .bunting__rope-svg {
-    display: none;
-  }
-
-  .bunting::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 2%;
-    right: 2%;
-    height: 2px;
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      #8b6914 10%,
-      #8b6914 90%,
-      transparent 100%
-    );
+    width: clamp(90px, 30vw, 140px);
   }
 }
 
