@@ -1,0 +1,58 @@
+---
+import "../styles/global.css";
+import "../styles/header.css";
+import CursorFollower from "@components/CursorFollower/CursorFollower.tsx";
+
+const { title } = Astro.props;
+---
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      property="og:title"
+      content="LareiraConf. El encuentro tech que enciende ideas y conecta comunidades"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="images/1500x500.jpg" />
+    <meta property="og:url" content="https://x.com/LareiraConf" />
+    <meta
+      property="og:description"
+      content="El evento tech en A Coruña donde la comunidad se reúne para aprender, inspirarse y conectar. ¡Forma parte de esta experiencia!"
+    />
+    <meta property="og:site_name" content="LareiraConf" />
+    <title>{title}</title>
+  </head>
+  <body class="dark font-mono" data-theme="dark">
+    <CursorFollower client:only="react" />
+    <header class="main-header">
+      <div class="logo">
+        <a href="/" class="logo isotipo">LAREIRA CONF</a>
+      </div>
+      <a href="/" class="minimal-back-link" aria-label="Volver al inicio">✕</a>
+    </header>
+    <main>
+      <slot />
+    </main>
+  </body>
+</html>
+
+<style>
+  .minimal-back-link {
+    font-size: 1.4rem;
+    line-height: 1;
+    text-decoration: none;
+    color: var(--text-secondary);
+    transition: color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .minimal-back-link:hover {
+    color: var(--accent);
+  }
+</style>
