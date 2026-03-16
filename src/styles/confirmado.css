@@ -1,0 +1,136 @@
+/* ── Confirmado page ─────────────────────────────────────────────────────── */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --conf-bg:        #0b0b0b;
+  --conf-surface:   #161614;
+  --conf-border:    #2a2520;
+  --conf-text:      #f0ebe3;
+  --conf-muted:     #8c7f72;
+  --conf-accent:    #e95c3c;
+  --conf-accent-2:  #ff8906;
+  --conf-success:   #4caf7d;
+  --conf-warning:   #f0a500;
+  --conf-error:     #e95c3c;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background-color: var(--conf-bg);
+  color: var(--conf-text);
+  font-family: "system-ui", -apple-system, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 1.5rem;
+}
+
+/* ── Card ──────────────────────────────────────────────────────────────────── */
+
+.confirmado-card {
+  background: var(--conf-surface);
+  border: 1px solid var(--conf-border);
+  border-radius: 2px;
+  padding: 3rem 2.5rem;
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+  box-shadow:
+    8px 8px 0 0 var(--conf-border),
+    0 0 60px rgba(233, 92, 60, 0.06);
+  animation: card-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes card-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Icon ──────────────────────────────────────────────────────────────────── */
+
+.confirmado-icon {
+  font-size: 3rem;
+  line-height: 1;
+  margin-bottom: 1.5rem;
+  display: block;
+  animation: icon-pop 0.5s 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes icon-pop {
+  from { opacity: 0; transform: scale(0.5); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ── Typography ────────────────────────────────────────────────────────────── */
+
+.confirmado-title {
+  font-family: "Nine-By-Five", "system-ui", sans-serif;
+  font-size: clamp(1.4rem, 4vw, 1.9rem);
+  letter-spacing: 1px;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  color: var(--conf-text);
+}
+
+.confirmado-subtitle {
+  font-size: 0.95rem;
+  color: var(--conf-muted);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+/* ── Divider ───────────────────────────────────────────────────────────────── */
+
+.confirmado-divider {
+  width: 40px;
+  height: 2px;
+  background: var(--conf-accent);
+  margin: 0 auto 2rem;
+  border: none;
+}
+
+/* ── Status variants ───────────────────────────────────────────────────────── */
+
+.status-ok    .confirmado-divider { background: var(--conf-success); }
+.status-dup   .confirmado-divider { background: var(--conf-warning); }
+.status-error .confirmado-divider { background: var(--conf-error); }
+
+/* ── Back link ─────────────────────────────────────────────────────────────── */
+
+.confirmado-link {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--conf-muted);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.confirmado-link:hover {
+  color: var(--conf-accent-2);
+  border-color: var(--conf-accent-2);
+}
+
+/* ── Detail tag (event info) ───────────────────────────────────────────────── */
+
+.confirmado-tag {
+  display: inline-block;
+  background: var(--conf-border);
+  color: var(--conf-muted);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.75rem;
+  border-radius: 2px;
+  margin-bottom: 1.75rem;
+}

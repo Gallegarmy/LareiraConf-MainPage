@@ -1,0 +1,365 @@
+.job-offers-page {
+  position: relative;
+  min-height: 100vh;
+  padding: 2rem 1.5rem 4rem;
+
+  &__header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-top: 6rem;
+  }
+
+  &__title {
+    font-family: var(--heading-font), sans-serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    letter-spacing: var(--custom-letter-spacing);
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin: 0 0 0.75rem;
+    line-height: 1.1;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(520px, 1fr));
+    gap: 2.5rem;
+    max-width: 1300px;
+    margin-inline: auto;
+  }
+}
+
+.job-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: rgba(17, 10, 7, 0.86);
+  border: 3px solid var(--color-brown-dark);
+  box-shadow: var(--box-shadow-border);
+  padding: 2.5rem 1.75rem 1.75rem;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.15s ease;
+
+  // Chinchetas esquinas
+  &::before {
+    content: "■";
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    font-size: 0.85rem;
+    color: #c9a840;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+    z-index: 2;
+  }
+
+  &::after {
+    content: "■";
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    font-size: 0.85rem;
+    color: #c9a840;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+    z-index: 2;
+  }
+
+  &__pin {
+    position: absolute;
+    font-size: 0.85rem;
+    color: #c9a840;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+    z-index: 2;
+    line-height: 1;
+
+    &::before {
+      content: "■";
+    }
+
+    &--bl {
+      bottom: 8px;
+      left: 10px;
+    }
+
+    &--br {
+      bottom: 8px;
+      right: 10px;
+    }
+  }
+
+  &:hover {
+    border-color: var(--accent);
+    box-shadow:
+      0 0 0 3px var(--color-brown-dark),
+      0 0 20px rgba(233, 92, 60, 0.4),
+      0 0 40px rgba(233, 92, 60, 0.15);
+    transform: translateY(-2px);
+  }
+
+  &__toggle {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: url("/src/img/assets/cursor-pointer.svg") 16 0, pointer;
+    text-align: left;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  &__header-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  &__header-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.3rem;
+    flex-shrink: 0;
+  }
+
+  &__chevron {
+    color: var(--text-secondary);
+    opacity: 0.5;
+    display: none;
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  &__body {
+    display: contents;
+  }
+
+  &__logo {
+    height: 36px;
+    width: auto;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    opacity: 0.85;
+  }
+
+  &__modality-badge {
+    font-family: var(--heading-font), sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: var(--custom-letter-spacing);
+    text-transform: uppercase;
+    padding: 0.25rem 0.6rem;
+    border: 1.5px solid;
+
+    &--remoto {
+      border-color: var(--text-secondary);
+      color: var(--text-secondary);
+    }
+
+    &--presencial {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    &--híbrido {
+      border-color: var(--text-light);
+      color: var(--text-light);
+    }
+  }
+
+  &__title {
+    font-family: var(--heading-font), sans-serif;
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    letter-spacing: var(--custom-letter-spacing);
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin: 0;
+    padding: 0;
+    line-height: 1.2;
+  }
+
+  &__location {
+    font-family: var(--heading-font), sans-serif;
+    font-size: 1rem;
+    letter-spacing: var(--custom-letter-spacing);
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    opacity: 0.7;
+    margin: 0;
+  }
+
+  &__description {
+    font-family: var(--heading-font), sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.4;
+    color: var(--text-secondary);
+    margin: 0 0 1.25rem;
+    opacity: 0.85;
+    letter-spacing: 0.08em;
+  }
+
+  &__requirements {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+  }
+
+  &__requirement {
+    font-family: var(--heading-font), sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.35;
+    letter-spacing: 0.08em;
+    color: var(--text-secondary);
+    padding-left: 1rem;
+    position: relative;
+    opacity: 0.8;
+
+    &::before {
+      content: "■";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 0.5rem;
+      top: 0.35rem;
+    }
+  }
+
+  &__benefits {
+    margin-bottom: 1.75rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--color-brown-dark);
+  }
+
+  &__benefits-title {
+    font-family: var(--heading-font), sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: var(--custom-letter-spacing);
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 0.75rem;
+  }
+
+  &__benefits-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+
+  &__benefit {
+    font-family: var(--heading-font), sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.35;
+    letter-spacing: 0.08em;
+    color: var(--text-secondary);
+    padding-left: 1rem;
+    position: relative;
+    opacity: 0.75;
+
+    &::before {
+      content: "■";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 0.5rem;
+      top: 0.35rem;
+    }
+  }
+
+  &__apply {
+    display: block;
+    text-align: center;
+    font-family: var(--heading-font), sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: var(--custom-letter-spacing);
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--text-light);
+    border: 2px solid var(--color-brown);
+    padding: 0.65rem 1.25rem;
+    transition:
+      border-color 0.2s ease,
+      color 0.2s ease,
+      box-shadow 0.2s ease;
+    box-shadow: 3px 3px 0 0 var(--color-brown-dark);
+
+    &:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+      box-shadow: 3px 3px 0 0 var(--accent);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .job-offers-page {
+    padding: 1.5rem 1rem 3rem;
+
+    &__header {
+      padding-top: 5rem;
+      margin-bottom: 2rem;
+    }
+
+    &__grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+
+  .job-card {
+    &__chevron {
+      display: block;
+    }
+
+    &__header {
+      margin-bottom: 0;
+    }
+
+    &__body {
+      display: none;
+      margin-top: 1.5rem;
+    }
+
+    &--expanded &__body {
+      display: contents;
+    }
+
+    &__description {
+      font-size: 1.4rem;
+      line-height: 1.45;
+    }
+
+    &__requirement {
+      font-size: 1.3rem;
+      line-height: 1.4;
+    }
+
+    &__benefit {
+      font-size: 1.3rem;
+      line-height: 1.4;
+    }
+
+    &__location {
+      font-size: 1.1rem;
+    }
+
+    &__title {
+      font-size: 1.4rem;
+    }
+
+    &__apply {
+      font-size: 1.1rem;
+      padding: 0.75rem 1.5rem;
+    }
+  }
+}
