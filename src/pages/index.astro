@@ -64,13 +64,13 @@ const lang = getLangFromUrl(Astro.url);
 <Layout title="Lareira Conf 2026">
   <HorizontalScroll client:load className="container">
     <HomeSection lang={lang} />
-    <TicketsSection client:load lang={lang} />
-    <SpeakersSection client:load lang={lang} />
     <AgendaSection client:load lang={lang} />
+    <SpeakersSection client:load lang={lang} />
     <SponsorsSection client:load lang={lang} />
     <TeamSection client:load lang={lang} />
     <CommunitiesSection client:load lang={lang} />
     <FAQSection client:load lang={lang} />
+    <TicketsSection client:load lang={lang} />
     <SocialSection client:load lang={lang} />
   </HorizontalScroll>
 </Layout>

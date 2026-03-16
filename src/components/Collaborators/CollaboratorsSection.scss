@@ -1,0 +1,314 @@
+/* =========================================
+   Collaborators Section — Banderines medievales
+   ========================================= */
+
+.collaborators-section {
+  font-family: var(--heading-font);
+  letter-spacing: var(--custom-letter-spacing);
+  position: relative;
+  min-height: 100vh;
+  padding: clamp(4rem, 7vw, 6.5rem) 1.75rem clamp(4rem, 8vw, 7rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-light);
+  overflow: hidden;
+  background: radial-gradient(ellipse at bottom, #1c1008 0%, #0a0604 100%);
+}
+
+/* Fondo */
+.collaborators-section__background {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.collaborators-section__bg-layer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 0;
+}
+
+.collaborators-section__backdrop-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  filter: sepia(0.4) saturate(0.7) brightness(0.55) contrast(1.1);
+}
+
+.collaborators-section__particles {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.collaborators-section__overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(4, 2, 6, 0.8) 0%,
+      rgba(4, 2, 6, 0.3) 35%,
+      rgba(10, 5, 3, 0) 65%
+    ),
+    radial-gradient(
+      circle at bottom,
+      rgba(10, 5, 3, 0) 0%,
+      rgba(5, 2, 2, 0.9) 100%
+    );
+}
+
+/* Contenido principal */
+.collaborators-section__content {
+  position: relative;
+  z-index: 3;
+  width: min(1200px, 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  text-align: center;
+}
+
+.collaborators-section__title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: var(--text-light);
+  margin: 0;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: var(--custom-letter-spacing);
+}
+
+.collaborators-section__intro {
+  max-width: 700px;
+
+  p {
+    font-size: clamp(1rem, 2.2vw, 1.3rem);
+    line-height: 1.6;
+    color: var(--text-light);
+    margin: 0;
+    opacity: 0.85;
+  }
+}
+
+.collaborators-section__coming-soon {
+  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+  opacity: 0.45;
+  font-style: italic;
+  margin-top: -1rem;
+}
+
+/* =========================================
+   Bunting embebido (bloque dentro de sponsors)
+   ========================================= */
+
+.collaborators-bunting-block {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.collaborators-bunting-block__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.collaborators-bunting-block__title {
+  font-family: var(--heading-font);
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: var(--custom-letter-spacing);
+  margin: 0;
+  opacity: 0.9;
+}
+
+.collaborators-bunting-block__description {
+  font-family: var(--heading-font);
+  font-size: clamp(0.85rem, 1.6vw, 1.05rem);
+  color: var(--text-light);
+  opacity: 0.65;
+  margin: 0;
+  max-width: 600px;
+}
+
+/* =========================================
+   Bunting — tira de banderines
+   ========================================= */
+
+.bunting-rows {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.bunting {
+  position: relative;
+  width: 100%;
+  /* 5px margen superior + clip (10px) + banderín (aspect 3/4 del width máx) + holgura */
+  height: calc(50px + clamp(110px, 15vw, 210px));
+  gap: 0;
+}
+
+/* SVG de la cuerda */
+.bunting__rope-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  overflow: visible;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+/* Fila de banderines */
+.bunting__pennants {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  padding: 0 clamp(1rem, 3vw, 2rem);
+  margin-top: -9px; /* Pega los clips a la cuerda SVG */
+}
+
+/* =========================================
+   Pennant — banderín individual
+   ========================================= */
+
+.pennant {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: clamp(100px, 11vw, 155px);
+  transform: translateX(-50%);
+  transform-origin: top center;
+  animation: pennantSway 3.5s ease-in-out infinite alternate;
+  animation-delay: var(--sway-delay, 0s);
+}
+
+@keyframes pennantSway {
+  0% {
+    transform: translateX(-50%) rotate(calc(var(--sway-dir, 1) * -2deg));
+  }
+  100% {
+    transform: translateX(-50%) rotate(calc(var(--sway-dir, 1) * 2deg));
+  }
+}
+
+/* Pinza / clip de anclaje a la cuerda */
+.pennant__clip {
+  width: 14px;
+  height: 10px;
+  background: #6b4f10;
+  border-radius: 3px 3px 0 0;
+  box-shadow:
+    inset 0 -2px 4px rgba(0, 0, 0, 0.5),
+    0 1px 3px rgba(0, 0, 0, 0.6);
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    background: #8b6914;
+    border-radius: 50%;
+  }
+}
+
+/* Tela del banderín — rectángulo con muesca en V en la parte inferior */
+.pennant__fabric {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background-color: #f4d799;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 68%, 0 100%);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 18%;
+  position: relative;
+  text-decoration: none;
+}
+
+/* Estado hover para banderines con enlace */
+.pennant__fabric--linked {
+  cursor: pointer;
+}
+
+/* Resplandor naranja en hover — filter en el padre para que siga el clip-path */
+.pennant:has(.pennant__fabric--linked:hover),
+.pennant:has(.pennant__fabric--linked:focus-visible) {
+  filter: drop-shadow(0 0 6px rgba(255, 110, 20, 0.95))
+    drop-shadow(0 0 14px rgba(255, 70, 0, 0.55));
+  transition: filter 0.3s ease;
+}
+
+/* Banderines placeholder (decorativos) */
+.pennant__fabric--placeholder {
+  opacity: 0.5;
+}
+
+/* Cenefa SVG — traza el contorno completo incluyendo los piquitos */
+.pennant__trim {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+}
+
+/* Logo dentro del banderín */
+.pennant__logo {
+  width: 85%;
+  max-height: 60%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+/* =========================================
+   Responsive
+   ========================================= */
+
+@media (max-width: 768px) {
+  .bunting {
+    height: calc(50px + clamp(140px, 36vw, 210px));
+  }
+
+  .pennant {
+    width: clamp(90px, 30vw, 140px);
+  }
+}
+
+@media (max-width: 480px) {
+  .bunting {
+    height: calc(50px + clamp(120px, 32vw, 170px));
+  }
+
+  .pennant {
+    width: clamp(85px, 26vw, 130px);
+  }
+}
