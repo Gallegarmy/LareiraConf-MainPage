@@ -81,8 +81,7 @@ const BuntingRow: React.FC<{ row: PennantItem[] }> = ({ row }) => (
           ) : (
             <a
               href={p.collaborator.url}
-              target="_blank"
-              rel="noopener noreferrer"
+              {...(p.collaborator.url.startsWith("mailto:") ? {} : { target: "_blank", rel: "noopener noreferrer" })}
               className="pennant__fabric pennant__fabric--linked"
               aria-label={`Visitar ${p.collaborator.name}`}
             >

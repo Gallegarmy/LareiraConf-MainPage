@@ -4,9 +4,11 @@ import malteLogo from "@img/collaborators/malte.svg";
 import udcLogo from "@img/collaborators/udc.svg";
 import grupoBillinghamLogo from "@img/collaborators/grupo-billingham.svg";
 import freakGzmLogo from "@img/collaborators/freak-gzm.svg";
-import nessLogo from "@img/collaborators/ness.svg";
+import nessLogo from "@img/collaborators/ness.png";
+import adrianLogo from "@img/collaborators/adrian.png";
 import sirviendoCodigoLogo from "@img/collaborators/sirviendo-codigo.svg";
 import weartocodeLogo from "@img/collaborators/weartocode.svg";
+import didixitalLogo from "@img/collaborators/didixital.png";
 
 export interface Collaborator {
   id: string;
@@ -25,21 +27,21 @@ export const collaborators: Collaborator[] = [
   {
     id: "integra",
     name: "Integra",
-    url: "https://integra.es",
+    url: "https://integrairiacasteleiro.es/",
     logo: integraLogo.src,
     alt: "Logo de Integra",
   },
   {
     id: "adan",
     name: "Adan",
-    url: "https://adan.es",
+    url: "mailto:javiayude@gmail.com",
     logo: adanLogo.src,
     alt: "Logo de Adan",
   },
   {
     id: "malte",
     name: "Malte",
-    url: "https://malte.es",
+    url: "https://www.somosmalte.com/",
     logo: malteLogo.src,
     alt: "Logo de Malte",
   },
@@ -68,9 +70,16 @@ export const collaborators: Collaborator[] = [
   {
     id: "ness",
     name: "Ness",
-    url: "https://ness.com",
+    url: "https://nessyanez.com/",
     logo: nessLogo.src,
     alt: "Logo de Ness",
+  },
+  {
+    id: "adrian",
+    name: "Adrián Lado",
+    url: "https://adrianlado.es/",
+    logo: adrianLogo.src,
+    alt: "Logo de Adrián Lado",
   },
   {
     id: "sirviendo-codigo",
@@ -83,9 +92,17 @@ export const collaborators: Collaborator[] = [
   {
     id: "weartocode",
     name: "WearToCode",
-    url: "https://weartocode.com",
+    url: "https://weartocode.myspreadshop.es/",
     logo: weartocodeLogo.src,
     alt: "Logo de WearToCode",
     logoScale: 1.4,
+  },
+  {
+    id: "didixital",
+    name: "Didixital",
+    url: "https://www.impresiondidixital.es/",
+    logo: didixitalLogo.src,
+    alt: "Logo de Didixital",
+    logoScale: 0.8,
   },
 ];
