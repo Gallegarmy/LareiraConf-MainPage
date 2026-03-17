@@ -62,7 +62,7 @@ export const collaborators: Collaborator[] = [
   {
     id: "freak-gzm",
     name: "Freak GZM",
-    url: "https://freakgzm.com",
+    url: "https://www.instagram.com/freak_gzm/",
     logo: freakGzmLogo.src,
     alt: "Logo de Freak GZM",
     logoScale: 0.85,

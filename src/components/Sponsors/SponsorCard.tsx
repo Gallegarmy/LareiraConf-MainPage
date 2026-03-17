@@ -18,6 +18,7 @@ const SponsorCard: React.FC<SponsorCardProps> = ({ sponsor, index }) => {
     tenderete,
     character,
     charactersGranMaestro,
+    logoScale,
   } = sponsor;
 
   // Determinar estilo del personaje
@@ -108,7 +109,12 @@ const SponsorCard: React.FC<SponsorCardProps> = ({ sponsor, index }) => {
           <img src={tenderete} alt="" className="sponsor-card__tenderete-img" />
           <div className="sponsor-card__logo-container">
             {logo ? (
-              <img src={logo} alt={name} className="sponsor-card__logo" />
+              <img
+                src={logo}
+                alt={name}
+                className="sponsor-card__logo"
+                style={logoScale ? { transform: `scale(${logoScale})` } : undefined}
+              />
             ) : (
               <div className="sponsor-card__logo-placeholder"></div>
             )}

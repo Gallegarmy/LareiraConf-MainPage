@@ -679,6 +679,11 @@
     width: 100%;
   }
 
+  /* Separación extra entre las dos filas de oficiales */
+  .sponsors-grid__oficial-left {
+    margin-bottom: 3rem;
+  }
+
   /* Reset de márgenes de oficiales */
   .sponsors-grid__oficial-left .sponsor-card:nth-child(1),
   .sponsors-grid__oficial-left .sponsor-card:nth-child(2),

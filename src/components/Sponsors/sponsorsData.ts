@@ -11,6 +11,7 @@ import captologyLogo from "@img/sponsors/captology.svg";
 import keleaLogo from "@img/sponsors/kelea.svg";
 import nttdataLogo from "@img/sponsors/nttdata.svg";
 import accentureLogo from "@img/sponsors/accenture.svg";
+import rowslifeLogo from "@img/sponsors/rowslife.png";
 
 // Importar personajes
 import granMaestroH from "@img/sponsors/gran-maestro-h.png";
@@ -52,6 +53,7 @@ export interface SponsorConfig {
   url?: string;
   customText?: string;
   customImage?: string;
+  logoScale?: number;
 
   // Configuración de tenderete
   tenderete: string;
@@ -246,16 +248,17 @@ export const sponsorsConfig: SponsorConfig[] = [
     url: "https://kelea.es",
     tenderete: tenderetes.pequeno,
     character: {
-      type: "H",
+      type: "M",
       side: "center",
       variation: { rotate: 0, scale: 1, flip: false },
     },
   },
   {
-    name: "Pétalo",
+    name: "Rowslife",
     tier: "oficial-artesano",
-    logo: null,
-    url: "#",
+    logo: rowslifeLogo.src,
+    url: "https://rows.life/",
+    logoScale: 1.4,
     tenderete: tenderetes.pequeno,
     character: {
       type: "H",
