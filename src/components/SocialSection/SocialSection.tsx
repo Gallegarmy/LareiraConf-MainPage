@@ -5,7 +5,7 @@ import FireParticles from "@components/Others/FireParticles";
 import Footer from "@components/Footer/Footer";
 import { useTranslations, type Locale } from "@/i18n/utils";
 
-import socialBackground from "@img/parallax/social-background.png";
+import socialBackground from "@img/parallax/social-background.avif";
 
 import "./SocialSection.scss";
 
