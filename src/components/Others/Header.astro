@@ -17,6 +17,18 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
+<div class="venue-bar">
+  <a href="https://maps.app.goo.gl/TAULK6oQmctfbirW6" target="_blank" rel="noopener" class="venue-bar__item">
+    <span class="venue-bar__day">{t("nav.venue.previa.day")}</span>
+    <span class="venue-bar__name">{t("nav.venue.previa.name")}</span>
+  </a>
+  <span class="venue-bar__sep">·</span>
+  <a href="https://maps.google.com/?q=Rectorado+UDC+A+Coruña" target="_blank" rel="noopener" class="venue-bar__item">
+    <span class="venue-bar__day">{t("nav.venue.event.day")}</span>
+    <span class="venue-bar__name">{t("nav.venue.event.name")}</span>
+  </a>
+</div>
+
 <header class="main-header">
   <div class="logo">
     <a href="#intro" class="logo isotipo">LAREIRA CONF</a>
@@ -90,6 +102,16 @@ const t = useTranslations(lang);
           <span>{lang === "es" ? "GL" : "ES"}</span>
         </button>
       </div>
+    </div>
+    <div class="nav-venues">
+      <a href="https://maps.app.goo.gl/TAULK6oQmctfbirW6" target="_blank" rel="noopener" class="nav-venue__item">
+        <span class="nav-venue__day">{t("nav.venue.previa.day")}</span>
+        <span class="nav-venue__name">{t("nav.venue.previa.name")}</span>
+      </a>
+      <a href="https://maps.google.com/?q=Rectorado+UDC+A+Coruña" target="_blank" rel="noopener" class="nav-venue__item">
+        <span class="nav-venue__day">{t("nav.venue.event.day")}</span>
+        <span class="nav-venue__name">{t("nav.venue.event.name")}</span>
+      </a>
     </div>
   </nav>
 </header>

@@ -1,0 +1,796 @@
+---
+import Layout from "src/layouts/LayoutMinimal.astro";
+import switchImg from "@img/grimorio/switch.png";
+import keychronImg from "@img/grimorio/keychron.png";
+---
+
+<Layout title="El Grimorio de Lumi — LareiraConf'26">
+  <div class="grimorio-page">
+
+    <!-- ── INTRO ── -->
+    <section class="intro-section">
+      <div class="intro-text">
+        <h1 class="grimorio-title">El Grimorio de Lumi</h1>
+        <p class="grimorio-subtitle">La guía oficial para equiparte en la Lareira</p>
+        <p class="intro-desc">
+          Visita a los Maestros Artesanos, consigue sus herramientas
+          y equípate para combatir el Apagón. Los elixires del Gremio
+          de Comunidades multiplican lo que ya tienes.
+        </p>
+        <p class="intro-closing">
+          No te quedes quieto. Acércate. Pregunta. Charla. Diviértete.
+          Yo estaré esperando al final del camino.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── CTA REGISTRO ── -->
+    <section class="register-section">
+      <div class="register-card">
+        <p class="register-label">Antes de empezar</p>
+        <h2 class="register-title">Crea tu cuenta en Badges Galicia</h2>
+        <p class="register-desc">
+          Necesitas una cuenta para escanear los QR de cada puesto y guardar tus badges digitales. Sin cuenta no podrás acumular artefactos ni participar en el sorteo.
+        </p>
+        <a href="https://badges.galicia.dev/login" target="_blank" rel="noopener" class="register-btn">
+          Crear cuenta / Iniciar sesión
+        </a>
+      </div>
+    </section>
+
+    <!-- ── REGLAS ── -->
+    <section class="rules-section">
+      <h2 class="section-title">Cómo funciona</h2>
+
+      <div class="rules-grid">
+        <!-- Regla 1 -->
+        <div class="rule-card rule-card--required">
+          <div class="rule-number">01</div>
+          <div class="rule-badge">Escanea</div>
+          <h3 class="rule-title">Visita cada puesto y escanea el QR</h3>
+          <p class="rule-desc">
+            Cada Maestro Artesano y comunidad colaboradora tiene un
+            <strong>código QR exclusivo</strong> en su puesto.
+            Escanéalo para desbloquear su artefacto o poción.
+          </p>
+          <div class="rule-note">
+            Sin los artefactos de los Maestros Artesanos no participas en el sorteo.
+          </div>
+        </div>
+
+        <!-- Regla 2 -->
+        <div class="rule-card rule-card--bonus">
+          <div class="rule-number">02</div>
+          <div class="rule-badge rule-badge--bonus">Colecciona</div>
+          <h3 class="rule-title">Recibe tu pegatina coleccionable</h3>
+          <p class="rule-desc">
+            Al escanear el QR, recibirás una <strong>pegatina física</strong>
+            para tu grimorio y un <strong>badge digital</strong> que queda
+            registrado en tu colección.
+          </p>
+          <div class="rule-note">
+            La pegatina es tuya para guardar. El badge digital es tu ticket.
+          </div>
+        </div>
+
+        <!-- Regla 3 -->
+        <div class="rule-card rule-card--action">
+          <div class="rule-number">03</div>
+          <div class="rule-badge rule-badge--action">Sorteo</div>
+          <h3 class="rule-title">Participación automática en el sorteo</h3>
+          <p class="rule-desc">
+            En cuanto completes todos los artefactos obligatorios,
+            <strong>quedas inscrito automáticamente</strong> en el gran sorteo.
+            Cada elixir de comunidad suma más participaciones.
+          </p>
+          <div class="rule-note">
+            ¡No hay que registrarse por separado!
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── PREMIOS ── -->
+    <section class="prizes-section">
+      <h2 class="section-title">Los premios</h2>
+      <p class="section-desc">
+        Cuanto más te equipes, más participaciones en el sorteo.
+      </p>
+      <div class="prizes-grid">
+        <div class="prize-card prize-card--main">
+          <div class="prize-tier">Grimorio completo</div>
+          <div class="prize-req">Todos los artefactos de Maestros Artesanos</div>
+          <div class="prize-frame">
+            <div class="prize-frame__inner">
+              <img src={switchImg.src} alt="Nintendo Switch 2" />
+            </div>
+          </div>
+          <h3 class="prize-name">Nintendo Switch 2</h3>
+          <p class="prize-desc">
+            Con Mario Kart World. Completa todos los artefactos obligatorios
+            y entrarás automáticamente en el sorteo.
+          </p>
+        </div>
+        <div class="prize-card prize-card--bonus">
+          <div class="prize-tier">Grimorio legendario</div>
+          <div class="prize-req">Artefactos + todas las pociones de comunidades</div>
+          <div class="prize-frame">
+            <div class="prize-frame__inner">
+              <img src={keychronImg.src} alt="Keychron" />
+            </div>
+          </div>
+          <h3 class="prize-name">Keychron</h3>
+          <p class="prize-desc">
+            Consigue también todas las pociones de las comunidades y entrarás
+            además en el sorteo de un teclado mecánico.
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+  </div>
+</Layout>
+
+<style>
+  /* ── PAGE ── */
+  .grimorio-page {
+    min-height: 100vh;
+    background: var(--primary);
+    color: var(--text-light);
+    padding: 5rem 1.5rem 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+  }
+
+  /* ── INTRO ── */
+  .intro-section {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    width: 100%;
+    max-width: 860px;
+    flex-wrap: wrap;
+  }
+
+  .portada-wrap {
+    flex-shrink: 0;
+  }
+
+  .portada-img {
+    width: 200px;
+    image-rendering: pixelated;
+    filter: drop-shadow(0 0 20px rgba(233, 92, 60, 0.4));
+  }
+
+  .intro-text {
+    flex: 1;
+    min-width: 260px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .eyebrow {
+    font-family: var(--heading-font), sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.3rem;
+    text-transform: uppercase;
+    color: var(--color-text-body-light);
+    margin: 0;
+    opacity: 0.6;
+  }
+
+  .grimorio-title {
+    font-family: var(--heading-font), sans-serif;
+    font-size: clamp(2.8rem, 10vw, 4.5rem);
+    letter-spacing: 0.35rem;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin: 0;
+    text-shadow: 0 0 20px rgba(233, 92, 60, 0.4);
+  }
+
+  .grimorio-subtitle {
+    font-family: var(--heading-font), sans-serif;
+    font-size: clamp(1.4rem, 4vw, 1.8rem);
+    letter-spacing: 0.25rem;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 0.5rem;
+  }
+
+  .intro-desc {
+    font-family: var(--heading-font), sans-serif;
+    font-size: clamp(1.3rem, 3.8vw, 1.7rem);
+    letter-spacing: 0.08rem;
+    text-transform: uppercase;
+    color: var(--color-text-body-light);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .intro-closing {
+    font-family: var(--heading-font), sans-serif;
+    font-size: clamp(1.3rem, 3.8vw, 1.7rem);
+    letter-spacing: 0.08rem;
+    text-transform: uppercase;
+    color: var(--text-light);
+    line-height: 1.6;
+    margin: 0;
+    border-top: 1px solid var(--color-brown-dark);
+    padding-top: 0.75rem;
+  }
+
+  /* ── SECTION TITLE ── */
+  .section-title {
+    font-family: var(--heading-font), sans-serif;
+    font-size: clamp(1.8rem, 6vw, 2.8rem);
+    letter-spacing: var(--custom-letter-spacing);
+    text-transform: uppercase;
+    color: var(--text-light);
+    text-align: center;
+    margin: 0 0 0.5rem;
+  }
+
+  .section-desc {
+    font-family: var(--heading-font), sans-serif;
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    letter-spacing: 0.12rem;
+    text-transform: uppercase;
+    color: var(--color-text-body-light);
+    text-align: center;
+    margin: 0 0 2rem;
+    opacity: 0.85;
+  }
+
+  /* ── RULES ── */
+  /* ── REGISTER CTA ── */
+  .register-section {
+    width: 100%;
+    max-width: 760px;
+  }
+
+  .register-card {
+    background: var(--accent);
+    border: 3px solid var(--color-brown-dark);
+    box-shadow: var(--box-shadow-border);
+    padding: 2rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    text-align: center;
+  }
+
+  .register-label {
+    font-family: var(--heading-font), sans-serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+    letter-spacing: 0.28rem;
+    text-transform: uppercase;
+    color: var(--text-light);
+    opacity: 0.75;
+    margin: 0;
+  }
+
+  .register-title {
+    font-family: var(--heading-font), sans-serif;
+    font-size: clamp(1.6rem, 5vw, 2.2rem);
+    letter-spacing: 0.2rem;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin: 0;
+  }
+
+  .register-desc {
+    font-family: var(--heading-font), sans-serif;
+    font-size: clamp(1.3rem, 3.5vw, 1.5rem);
+    letter-spacing: 0.07rem;
+    text-transform: uppercase;
+    color: var(--text-light);
+    opacity: 0.85;
+    line-height: 1.6;
+    margin: 0;
+    max-width: 560px;
+  }
+
+  .register-btn {
+    display: inline-block;
+    font-family: var(--heading-font), sans-serif;
+    font-size: clamp(1.2rem, 3vw, 1.4rem);
+    letter-spacing: 0.18rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: var(--text-light);
+    color: var(--accent);
+    border: 3px solid var(--color-brown-dark);
+    box-shadow: 4px 4px 0 var(--color-brown-dark);
+    padding: 0.75rem 2rem;
+    margin-top: 0.5rem;
+    transition: transform 0.1s, box-shadow 0.1s;
+  }
+
+  .register-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--color-brown-dark);
+  }
+
+  .register-btn:active {
+    transform: translate(0, 0);
+    box-shadow: 2px 2px 0 var(--color-brown-dark);
+  }
+
+  .rules-section {
+    width: 100%;
+    max-width: 960px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .rules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+  }
+
+  .rule-card {
+    background: var(--color-brown);
+    border: 3px solid var(--color-brown-dark);
+    box-shadow: var(--box-shadow-border);
+    padding: 2rem 1.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.6rem;
+    position: relative;
+  }
+
+  .rule-number {
+    font-family: var(--heading-font), sans-serif;
+    font-size: 2.5rem;
+    color: var(--color-brown-dark);
+    line-height: 1;
+    position: absolute;
+    top: 0.75rem;
+    left: 1rem;
+    opacity: 0.3;
+  }
+
+  .rule-badge {
+    font-family: var(--heading-font), sans-serif;
+    font-size: clamp(1rem, 2.5vw, 1.1rem);
+    letter-spacing: 0.18rem;
+    text-transform: uppercase;
+    background: var(--accent);
+    color: var(--text-light);
+    padding: 0.3rem 0.8rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .rule-badge--bonus {
+    background: var(--light-orange);
+  }
+
+  .rule-badge--action {
+    background: #3b8a5a;
+  }
+
+  .rule-title {
+    font-family: var(--heading-font), sans-serif;
+    font-size: clamp(1.4rem, 4.5vw, 1.8rem);
+    letter-spacing: 0.12rem;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin: 0.2rem 0 0;
+  }
+
+  .rule-desc {
+    font-family: var(--heading-font), sans-serif;
+    font-size: clamp(1.3rem, 3.5vw, 1.5rem);
+    letter-spacing: 0.07rem;
+    text-transform: uppercase;
+    color: var(--color-text-body-light);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .rule-desc strong {
+    color: var(--text-light);
+  }
+
+  .rule-note {
+    font-family: var(--heading-font), sans-serif;
+    font-size: clamp(1.2rem, 3vw, 1.4rem);
+    letter-spacing: 0.07rem;
+    text-transform: uppercase;
+    color: var(--color-text-body-light);
+    border-top: 1px solid var(--color-brown-dark);
+    padding-top: 0.75rem;
+    margin-top: 0.5rem;
+    opacity: 0.8;
+    width: 100%;
+  }
+
+  /* ── COLLECTORS (menor importancia visual) ── */
+  .collectors-section {
+    width: 100%;
+    max-width: 960px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.75;
+  }
+
+  .collectors-section .section-title {
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+    opacity: 0.8;
+  }
+
+  .collectors-section .section-desc {
+    font-size: clamp(0.6rem, 1.5vw, 0.72rem);
+  }
+
+  /* Maestros grid */
+  .maestros-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 0.75rem;
+    width: 100%;
+  }
+
+  .maestro-card {
+    background: var(--color-brown-dark);
+    border: 2px solid rgba(43, 28, 18, 0.6);
+    padding: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    position: relative;
+  }
+
+  .maestro-logo-wrap {
+    width: 64px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .maestro-logo {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    opacity: 0.6;
+  }
+
+  .maestro-check {
+    position: absolute;
+    top: 0.3rem;
+    right: 0.4rem;
+  }
+
+  .community-check {
+    position: absolute;
+    top: 0.3rem;
+    right: 0.4rem;
+  }
+
+  .check-icon {
+    font-size: 0.85rem;
+    color: var(--color-text-body-light);
+    opacity: 0.4;
+  }
+
+  .maestro-name {
+    font-family: var(--heading-font), sans-serif;
+    font-size: 0.5rem;
+    letter-spacing: 0.08rem;
+    text-transform: uppercase;
+    color: var(--color-text-body-light);
+    text-align: center;
+    opacity: 0.7;
+  }
+
+  /* Communities grid */
+  .communities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 0.75rem;
+    width: 100%;
+  }
+
+  .community-card {
+    background: var(--color-brown-dark);
+    border: 2px solid rgba(43, 28, 18, 0.6);
+    padding: 0.75rem 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    position: relative;
+  }
+
+  .community-flag-wrap {
+    width: 44px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .community-flag {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    image-rendering: pixelated;
+    opacity: 0.7;
+  }
+
+  .community-name {
+    font-family: var(--heading-font), sans-serif;
+    font-size: 0.45rem;
+    letter-spacing: 0.06rem;
+    text-transform: uppercase;
+    color: var(--color-text-body-light);
+    text-align: center;
+    opacity: 0.7;
+  }
+
+  /* ── PRIZES ── */
+  .prizes-section {
+    width: 100%;
+    max-width: 960px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .prizes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+  }
+
+  .prize-card {
+    background: var(--color-brown);
+    border: 3px solid var(--color-brown-dark);
+    box-shadow: var(--box-shadow-border);
+    padding: 2rem 1.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+    position: relative;
+  }
+
+  .prize-card--bonus {
+    border-color: var(--light-orange);
+    box-shadow: 0 0 0 3px var(--color-brown-dark), inset 0 0 0 3px #6a4a35;
+  }
+
+  .prize-tier {
+    font-family: var(--heading-font), sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.15rem;
+    text-transform: uppercase;
+    background: var(--accent);
+    color: var(--text-light);
+    padding: 0.3rem 0.9rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .prize-card--bonus .prize-tier {
+    background: var(--light-orange);
+  }
+
+  .prize-req {
+    font-family: var(--heading-font), sans-serif;
+    font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+    letter-spacing: 0.08rem;
+    text-transform: uppercase;
+    color: var(--color-text-body-light);
+    opacity: 0.75;
+    margin-bottom: 0.5rem;
+  }
+
+  .prize-name {
+    font-family: var(--heading-font), sans-serif;
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    letter-spacing: var(--custom-letter-spacing);
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin: 0.2rem 0 0;
+  }
+
+  .prize-desc {
+    font-family: var(--heading-font), sans-serif;
+    font-size: clamp(1.15rem, 3vw, 1.35rem);
+    letter-spacing: 0.05rem;
+    text-transform: uppercase;
+    color: var(--color-text-body-light);
+    line-height: 1.7;
+    margin: 0.25rem 0 0;
+  }
+
+  /* ── PRIZE FRAME ── */
+  .prize-frame {
+    position: relative;
+    background: #e8820c;
+    border: 3px solid var(--color-brown);
+    box-shadow:
+      var(--box-shadow-border),
+      0 12px 24px rgba(12, 6, 2, 0.45);
+    padding: 0.75rem;
+    width: 100%;
+    max-width: 260px;
+    aspect-ratio: 4 / 3;
+    margin: 0.75rem 0;
+  }
+
+  .prize-frame::before {
+    content: "";
+    position: absolute;
+    inset: 6px;
+    border: 2px solid rgba(210, 152, 84, 0.6);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .prize-frame__inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .prize-frame__inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .prize-frame__placeholder {
+    font-family: var(--heading-font), sans-serif;
+    font-size: clamp(0.7rem, 2vw, 0.85rem);
+    letter-spacing: 0.15rem;
+    text-transform: uppercase;
+    color: var(--color-brown);
+    opacity: 0.5;
+  }
+
+  /* ── CTA ── */
+  .cta-section {
+    width: 100%;
+    max-width: 600px;
+  }
+
+  .cta-card {
+    background: var(--color-brown);
+    border: 3px solid var(--color-brown-dark);
+    box-shadow: var(--box-shadow-border);
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .cta-label {
+    font-family: var(--heading-font), sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.15rem;
+    text-transform: uppercase;
+    color: var(--color-text-body-light);
+    opacity: 0.7;
+    margin: 0;
+  }
+
+  .cta-title {
+    font-family: var(--heading-font), sans-serif;
+    font-size: clamp(1.1rem, 3.5vw, 1.6rem);
+    letter-spacing: var(--custom-letter-spacing);
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin: 0;
+  }
+
+  .cta-desc {
+    font-family: var(--heading-font), sans-serif;
+    font-size: clamp(0.58rem, 1.5vw, 0.72rem);
+    letter-spacing: 0.06rem;
+    text-transform: uppercase;
+    color: var(--color-text-body-light);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--accent);
+    color: var(--text-light);
+    font-family: var(--heading-font), sans-serif;
+    font-size: clamp(0.65rem, 1.8vw, 0.8rem);
+    letter-spacing: 0.15rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.75rem 1.8rem;
+    border: 3px solid var(--color-brown-dark);
+    box-shadow: 4px 4px 0 var(--color-brown-dark);
+    transition: transform 0.1s, box-shadow 0.1s;
+    margin-top: 0.5rem;
+  }
+
+  .cta-button:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--color-brown-dark);
+  }
+
+  .cta-button:active {
+    transform: translate(0, 0);
+    box-shadow: 2px 2px 0 var(--color-brown-dark);
+  }
+
+  .cta-button-icon {
+    font-size: 1.1rem;
+  }
+
+  .cta-url {
+    font-family: monospace;
+    font-size: 0.7rem;
+    color: var(--light-orange);
+    letter-spacing: 0.05rem;
+    margin: 0;
+    opacity: 0.75;
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 640px) {
+    .grimorio-page {
+      padding-top: 6rem;
+      gap: 3rem;
+    }
+
+    .grimorio-title {
+      font-size: clamp(2.2rem, 11vw, 3rem);
+    }
+
+    .intro-section {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .portada-img {
+      width: 160px;
+    }
+
+    .intro-text {
+      min-width: unset;
+      width: 100%;
+    }
+
+    .rules-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .prizes-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
