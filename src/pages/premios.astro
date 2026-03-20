@@ -1,0 +1,485 @@
+---
+import Layout from "src/layouts/LayoutMinimal.astro";
+import { communities } from "@components/Communities/communities-data";
+import { sponsorsConfig } from "@components/Sponsors/sponsorsData";
+import VotingForm from "@components/Voting/VotingForm";
+import lumiImg from "@img/assets/lumi26.png";
+import cafeteraImg from "@img/awards/cafetera.png";
+import altavozImg from "@img/awards/altavoz.png";
+
+// Speaker pixel-art images
+import MiduImg from "@img/speakers/Midu-x64.png";
+import NereaImg from "@img/speakers/Nerea-x64.png";
+import AntonioImg from "@img/speakers/Antonio-x64.png";
+import PilarImg from "@img/speakers/Pilar-x64.png";
+import BorjaImg from "@img/speakers/Borja-x64.png";
+import AlmudenaImg from "@img/speakers/Almudena-x64.png";
+import CristinaImg from "@img/speakers/Cristina-x64.png";
+import NachoImg from "@img/speakers/Nacho-x64.png";
+import EvaImg from "@img/speakers/Eva-x64.png";
+import BraisImg from "@img/speakers/Brais-x64.png";
+import DiegoImg from "@img/speakers/Diego-x64.png";
+import SamuelImg from "@img/speakers/Samuel-x64.png";
+
+const gremioCandidates = communities.map((c) => ({
+  id: c.id,
+  name: c.name,
+  logo: c.logo,
+}));
+
+const EXCLUDED_ARTESANOS = new Set(["NTT DATA", "NextDigital", "?"]);
+const artesanoCandidates = sponsorsConfig
+  .filter(
+    (s) =>
+      (s.tier === "gran-maestro" || s.tier === "maestro-artesano") &&
+      !EXCLUDED_ARTESANOS.has(s.name) &&
+      s.logo !== null,
+  )
+  .map((s) => ({
+    id: s.name.toLowerCase().replace(/[\s.]+/g, "-"),
+    name: s.name,
+    logo: s.logo as string,
+  }));
+
+const portadorCandidates = [
+  { id: "miguel-angel-duran", name: "Miguel Ángel Durán", photo: MiduImg.src },
+  { id: "nerea-luis", name: "Nerea Luis", photo: NereaImg.src },
+  {
+    id: "antonio-pilar",
+    name: "Antonio Fernandes & Pilar Vila",
+    photo: AntonioImg.src,
+    photo2: PilarImg.src,
+  },
+  { id: "borja-perez", name: "Borja Pérez", photo: BorjaImg.src },
+  {
+    id: "almudena-barreiro",
+    name: "Almudena Barreiro",
+    photo: AlmudenaImg.src,
+  },
+  {
+    id: "cristina-g-aradas",
+    name: "Cristina G. Aradas",
+    photo: CristinaImg.src,
+  },
+  { id: "nacho-marquez", name: "Nacho Márquez", photo: NachoImg.src },
+  {
+    id: "brais-eva",
+    name: "Brais Calvo & Eva González",
+    photo: BraisImg.src,
+    photo2: EvaImg.src,
+  },
+  { id: "diego-marino", name: "Diego Mariño", photo: DiegoImg.src },
+  { id: "samuel-jimenez", name: "Samuel Jiménez", photo: SamuelImg.src },
+];
+---
+
+<Layout title="Los Premios de la Lareira — LareiraConf'26">
+  <div class="premios-page">
+    <!-- ── INTRO ── -->
+    <section class="intro-section">
+      <div class="intro-text">
+        <h1 class="premios-title">Los Premios de la LareiraConf'26</h1>
+        <p class="premios-subtitle">Honores para los más valientes</p>
+      </div>
+    </section>
+
+    <!-- ── PREMIOS JURADO ── -->
+    <section class="awards-section">
+      <div class="awards-grid">
+        <div class="award-card">
+          <div class="award-meta">
+            <span class="award-tag award-tag--jury">Jurado</span>
+          </div>
+          <p class="award-category">Mejor foto del espejo mágico</p>
+          <p class="award-name">La foto más épica del fotomatón</p>
+          <p class="award-note">
+            Desata toda tu creatividad y saca la mejor foto. Un jurado de
+            expertos elegirá la ganadora. Compartir en redes con <strong
+              >#Lareiraconf26</strong
+            > no es obligatorio pero sí recomendable para inspirar a los demás asistentes.
+          </p>
+          <div class="prize-frame">
+            <div class="prize-frame__inner">
+              <img src={cafeteraImg.src} alt="Cafetera CREATE THERA RETRO" />
+            </div>
+          </div>
+          <p class="award-prize-name">Cafetera Express Semiautomática</p>
+          <p class="award-prize-brand">CREATE · THERA RETRO</p>
+          <p class="award-prize-desc">
+            Blanco mate y madera · 20 bares · brazo doble salida · depósito
+            1,25L · café molido y monodosis ESE 55mm · vaporizador · 1100W
+          </p>
+        </div>
+
+        <div class="award-card">
+          <div class="award-meta">
+            <span class="award-tag award-tag--jury">Jurado</span>
+          </div>
+          <p class="award-category">Participación en redes</p>
+          <p class="award-name">El mejor post de la jornada</p>
+          <p class="award-note">
+            Síguenos en X o Instagram y publica con <strong
+              >#Lareiraconf26</strong
+            > y etiquétanos<strong>*</strong>. El jurado elegirá el tweet o
+            story favorito.
+          </p>
+          <p class="award-note award-note--fine">
+            * tienes que cumplir los 3 pasos.
+          </p>
+          <div class="prize-frame">
+            <div class="prize-frame__inner">
+              <img src={altavozImg.src} alt="Divoom Ditoo" />
+            </div>
+          </div>
+          <p class="award-prize-name">Divoom Ditoo</p>
+          <p class="award-prize-brand">
+            Altavoz Bluetooth · Pantalla de píxeles retro
+          </p>
+          <p class="award-prize-desc">
+            Control por app · Teclado mecánico con retroiluminación RGB · Blanco
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── VOTACIÓN ── -->
+    <section class="voting-section">
+      <div class="voting-wrapper">
+        <VotingForm
+          gremioCandidates={gremioCandidates}
+          artesanoCandidates={artesanoCandidates}
+          portadorCandidates={portadorCandidates}
+          lumiSrc={lumiImg.src}
+          client:only="react"
+        />
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  /* ── PAGE ── */
+  .premios-page {
+    min-height: 100vh;
+    background: var(--primary);
+    color: var(--text-light);
+    padding: 5rem 1.5rem 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+  }
+
+  /* ── INTRO ── */
+  .intro-section {
+    width: 100%;
+    max-width: 760px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .intro-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .premios-title {
+    font-family: var(--heading-font), sans-serif;
+    line-height: 1.1;
+    font-size: clamp(3rem, 12vw, 5.5rem);
+    letter-spacing: 0.35rem;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin: 0;
+    text-shadow: 0 0 20px rgba(233, 92, 60, 0.4);
+  }
+
+  .premios-subtitle {
+    font-family: var(--heading-font), sans-serif;
+    font-size: clamp(1.4rem, 4vw, 2rem);
+    letter-spacing: 0.25rem;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0;
+  }
+
+  .intro-desc {
+    font-family: var(--heading-font), sans-serif;
+    font-size: clamp(1.3rem, 3.5vw, 1.7rem);
+    letter-spacing: 0.08rem;
+    text-transform: uppercase;
+    color: var(--color-text-body-light);
+    line-height: 1.6;
+    margin: 0.5rem 0 0;
+    opacity: 0.85;
+  }
+
+  /* ── SECTION TITLE ── */
+  .section-title {
+    font-family: var(--heading-font), sans-serif;
+    font-size: clamp(2.2rem, 7vw, 3.5rem);
+    letter-spacing: var(--custom-letter-spacing);
+    text-transform: uppercase;
+    color: var(--text-light);
+    text-align: center;
+    margin: 0 0 0.5rem;
+  }
+
+  .section-desc {
+    font-family: var(--heading-font), sans-serif;
+    font-size: clamp(1.2rem, 3.2vw, 1.5rem);
+    letter-spacing: 0.12rem;
+    text-transform: uppercase;
+    color: var(--color-text-body-light);
+    text-align: center;
+    margin: 0 0 2rem;
+    opacity: 0.8;
+  }
+
+  /* ── VOTING ── */
+  .voting-section {
+    width: 100%;
+    max-width: 960px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .voting-wrapper {
+    width: 100%;
+    background: var(--color-brown);
+    border: 3px solid var(--color-brown-dark);
+    box-shadow: var(--box-shadow-border);
+    padding: 2rem 1.5rem 2.5rem;
+  }
+
+  /* ── AWARDS ── */
+  .awards-section {
+    width: 100%;
+    max-width: 960px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .awards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.25rem;
+    width: 100%;
+  }
+
+  .award-card {
+    background: var(--color-brown);
+    border: 3px solid var(--color-brown-dark);
+    box-shadow: var(--box-shadow-border);
+    padding: 1.5rem 1.25rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .award-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .award-tag {
+    font-family: var(--heading-font), sans-serif;
+    font-size: clamp(0.9rem, 2.2vw, 1.1rem);
+    letter-spacing: 0.15rem;
+    text-transform: uppercase;
+    padding: 0.3rem 0.8rem;
+    color: var(--text-light);
+  }
+
+  .award-tag--vote {
+    background: var(--accent);
+  }
+  .award-tag--jury {
+    background: var(--secondary);
+  }
+
+  .award-when {
+    font-family: var(--heading-font), sans-serif;
+    font-size: clamp(0.85rem, 2vw, 1rem);
+    letter-spacing: 0.08rem;
+    text-transform: uppercase;
+    color: var(--color-text-body-light);
+    opacity: 0.7;
+  }
+
+  .award-category {
+    font-family: var(--heading-font), sans-serif;
+    font-size: clamp(1.3rem, 3.5vw, 1.6rem);
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    color: var(--color-text-body-light);
+    margin: 0;
+    opacity: 0.8;
+  }
+
+  .award-name {
+    font-family: var(--heading-font), sans-serif;
+    font-size: clamp(2rem, 5.5vw, 2.8rem);
+    letter-spacing: 0.15rem;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .award-note {
+    font-family: var(--heading-font), sans-serif;
+    font-size: clamp(1.3rem, 3.5vw, 1.6rem);
+    letter-spacing: 0.06rem;
+    text-transform: uppercase;
+    color: var(--color-text-body-light);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .award-note--fine {
+    font-size: clamp(1.1rem, 2.8vw, 1.3rem);
+    opacity: 0.6;
+    margin-top: 0.25rem;
+  }
+
+  .award-note strong {
+    color: var(--accent);
+  }
+
+  .award-prize {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    margin-top: auto;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .award-prize__label {
+    font-family: var(--heading-font), sans-serif;
+    font-size: clamp(0.85rem, 2vw, 1rem);
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    color: var(--color-text-body-light);
+    opacity: 0.6;
+  }
+
+  .award-prize__value {
+    font-family: var(--heading-font), sans-serif;
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    color: var(--light-orange);
+  }
+
+  /* ── PRIZE FRAME (grimorio style) ── */
+  .prize-frame {
+    position: relative;
+    background: #e8820c;
+    border: 3px solid var(--color-brown);
+    box-shadow:
+      var(--box-shadow-border),
+      0 12px 24px rgba(12, 6, 2, 0.45);
+    padding: 0.75rem;
+    width: 100%;
+    max-width: 260px;
+    aspect-ratio: 4 / 3;
+    margin: 0.75rem auto;
+  }
+
+  .prize-frame::before {
+    content: "";
+    position: absolute;
+    inset: 6px;
+    border: 2px solid rgba(210, 152, 84, 0.6);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .prize-frame__inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .prize-frame__inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .prize-frame__placeholder {
+    font-family: var(--heading-font), sans-serif;
+    font-size: clamp(0.8rem, 2vw, 1rem);
+    letter-spacing: 0.15rem;
+    text-transform: uppercase;
+    color: var(--color-brown);
+    opacity: 0.6;
+  }
+
+  .award-prize-name {
+    font-family: var(--heading-font), sans-serif;
+    font-size: clamp(1.5rem, 4.5vw, 2rem);
+    letter-spacing: 0.15rem;
+    text-transform: uppercase;
+    color: var(--light-orange);
+    margin: 0;
+    text-align: center;
+  }
+
+  .award-prize-brand {
+    font-family: var(--heading-font), sans-serif;
+    font-size: clamp(1.1rem, 3vw, 1.3rem);
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    color: var(--color-text-body-light);
+    margin: 0;
+    text-align: center;
+    opacity: 0.75;
+  }
+
+  .award-prize-desc {
+    font-family: var(--heading-font), sans-serif;
+    font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+    letter-spacing: 0.05rem;
+    text-transform: uppercase;
+    color: var(--color-text-body-light);
+    margin: 0.25rem 0 0;
+    text-align: center;
+    opacity: 0.55;
+    line-height: 1.6;
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 640px) {
+    .premios-page {
+      padding-top: 6rem;
+      gap: 3rem;
+    }
+
+    .premios-title {
+      font-size: clamp(2rem, 11vw, 2.8rem);
+    }
+
+    .voting-wrapper {
+      padding: 1.5rem 1rem 2rem;
+    }
+
+    .awards-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

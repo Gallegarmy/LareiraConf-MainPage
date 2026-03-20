@@ -28,6 +28,20 @@ import keychronImg from "@img/grimorio/keychron.png";
       </div>
     </section>
 
+    <!-- ── CTA REGISTRO ── -->
+    <section class="register-section">
+      <div class="register-card">
+        <p class="register-label">Antes de empezar</p>
+        <h2 class="register-title">Crea tu cuenta en Badges Galicia</h2>
+        <p class="register-desc">
+          Necesitas una cuenta para escanear los QR de cada puesto y guardar tus badges digitales. Sin cuenta no podrás acumular artefactos ni participar en el sorteo.
+        </p>
+        <a href="https://badges.galicia.dev/login" target="_blank" rel="noopener" class="register-btn">
+          Crear cuenta / Iniciar sesión
+        </a>
+      </div>
+    </section>
+
     <!-- ── REGLAS ── -->
     <section class="rules-section">
       <h2 class="section-title">Cómo funciona</h2>
@@ -98,8 +112,8 @@ import keychronImg from "@img/grimorio/keychron.png";
           </div>
           <h3 class="prize-name">Nintendo Switch 2</h3>
           <p class="prize-desc">
-            Completa todos los artefactos obligatorios y entrarás
-            automáticamente en el sorteo.
+            Con Mario Kart World. Completa todos los artefactos obligatorios
+            y entrarás automáticamente en el sorteo.
           </p>
         </div>
         <div class="prize-card prize-card--bonus">
@@ -238,6 +252,81 @@ import keychronImg from "@img/grimorio/keychron.png";
   }
 
   /* ── RULES ── */
+  /* ── REGISTER CTA ── */
+  .register-section {
+    width: 100%;
+    max-width: 760px;
+  }
+
+  .register-card {
+    background: var(--accent);
+    border: 3px solid var(--color-brown-dark);
+    box-shadow: var(--box-shadow-border);
+    padding: 2rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    text-align: center;
+  }
+
+  .register-label {
+    font-family: var(--heading-font), sans-serif;
+    font-size: clamp(0.85rem, 2vw, 1rem);
+    letter-spacing: 0.25rem;
+    text-transform: uppercase;
+    color: var(--text-light);
+    opacity: 0.75;
+    margin: 0;
+  }
+
+  .register-title {
+    font-family: var(--heading-font), sans-serif;
+    font-size: clamp(1.6rem, 5vw, 2.2rem);
+    letter-spacing: 0.2rem;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin: 0;
+  }
+
+  .register-desc {
+    font-family: var(--heading-font), sans-serif;
+    font-size: clamp(1.1rem, 3vw, 1.3rem);
+    letter-spacing: 0.05rem;
+    text-transform: uppercase;
+    color: var(--text-light);
+    opacity: 0.85;
+    line-height: 1.6;
+    margin: 0;
+    max-width: 560px;
+  }
+
+  .register-btn {
+    display: inline-block;
+    font-family: var(--heading-font), sans-serif;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    letter-spacing: 0.15rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: var(--text-light);
+    color: var(--accent);
+    border: 3px solid var(--color-brown-dark);
+    box-shadow: 4px 4px 0 var(--color-brown-dark);
+    padding: 0.75rem 2rem;
+    margin-top: 0.5rem;
+    transition: transform 0.1s, box-shadow 0.1s;
+  }
+
+  .register-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--color-brown-dark);
+  }
+
+  .register-btn:active {
+    transform: translate(0, 0);
+    box-shadow: 2px 2px 0 var(--color-brown-dark);
+  }
+
   .rules-section {
     width: 100%;
     max-width: 960px;
