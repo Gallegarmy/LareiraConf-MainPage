@@ -9,8 +9,8 @@
 
 .voting-step__hint {
   font-family: var(--heading-font), sans-serif;
-  font-size: clamp(1rem, 2.5vw, 1.2rem);
-  letter-spacing: 0.08rem;
+  font-size: clamp(1.3rem, 3vw, 1.6rem);
+  letter-spacing: 0.1rem;
   text-transform: uppercase;
   color: var(--color-text-body-light);
   margin: 0;
@@ -19,8 +19,8 @@
 
 .voting-step__help {
   font-family: var(--heading-font), sans-serif;
-  font-size: clamp(0.85rem, 2vw, 1rem);
-  letter-spacing: 0.05rem;
+  font-size: clamp(1.1rem, 2.8vw, 1.3rem);
+  letter-spacing: 0.08rem;
   text-transform: uppercase;
   color: var(--color-text-body-light);
   margin: 0;
@@ -37,8 +37,8 @@
 /* Inputs */
 .vf-input {
   font-family: var(--heading-font), sans-serif;
-  font-size: clamp(1rem, 2.5vw, 1.15rem);
-  letter-spacing: 0.06rem;
+  font-size: clamp(1.2rem, 3vw, 1.4rem);
+  letter-spacing: 0.08rem;
   text-transform: uppercase;
   background: var(--color-brown-dark);
   border: 3px solid var(--color-brown);
@@ -66,8 +66,8 @@
 /* Buttons */
 .vf-btn-primary {
   font-family: var(--heading-font), sans-serif;
-  font-size: clamp(1rem, 2.5vw, 1.1rem);
-  letter-spacing: 0.15rem;
+  font-size: clamp(1.2rem, 3vw, 1.4rem);
+  letter-spacing: 0.18rem;
   text-transform: uppercase;
   background: var(--accent);
   color: var(--text-light);
@@ -97,15 +97,15 @@
 .vf-btn-primary--large {
   width: 100%;
   padding: 1rem 2rem;
-  font-size: clamp(1.1rem, 3vw, 1.3rem);
+  font-size: clamp(1.3rem, 3.5vw, 1.6rem);
   margin-top: 1rem;
 }
 
 /* Error */
 .voting-error {
   font-family: var(--heading-font), sans-serif;
-  font-size: clamp(1rem, 2.5vw, 1.1rem);
-  letter-spacing: 0.06rem;
+  font-size: clamp(1.2rem, 3vw, 1.4rem);
+  letter-spacing: 0.08rem;
   text-transform: uppercase;
   color: var(--accent);
   margin: 0.5rem 0 0;
@@ -125,8 +125,8 @@
 
 .voter-session__email {
   font-family: var(--heading-font), sans-serif;
-  font-size: clamp(1rem, 2.5vw, 1.15rem);
-  letter-spacing: 0.06rem;
+  font-size: clamp(1.2rem, 3vw, 1.4rem);
+  letter-spacing: 0.08rem;
   color: var(--color-text-body-light);
   overflow: hidden;
   text-overflow: ellipsis;
@@ -135,8 +135,8 @@
 
 .voter-session__logout {
   font-family: var(--heading-font), sans-serif;
-  font-size: clamp(1rem, 2.5vw, 1.1rem);
-  letter-spacing: 0.1rem;
+  font-size: clamp(1.2rem, 3vw, 1.4rem);
+  letter-spacing: 0.12rem;
   text-transform: uppercase;
   background: none;
   border: none;
@@ -153,8 +153,8 @@
 /* Secondary button */
 .vf-btn-secondary {
   font-family: var(--heading-font), sans-serif;
-  font-size: clamp(1rem, 2.5vw, 1.1rem);
-  letter-spacing: 0.15rem;
+  font-size: clamp(1.2rem, 3vw, 1.4rem);
+  letter-spacing: 0.18rem;
   text-transform: uppercase;
   background: transparent;
   color: var(--text-light);
@@ -320,8 +320,8 @@
 
 .candidate-card__name {
   font-family: var(--heading-font), sans-serif;
-  font-size: clamp(1.1rem, 2.8vw, 1.25rem);
-  letter-spacing: 0.08rem;
+  font-size: clamp(1.2rem, 3vw, 1.4rem);
+  letter-spacing: 0.1rem;
   text-transform: uppercase;
   color: var(--text-light);
   line-height: 1.3;
@@ -329,7 +329,7 @@
 }
 
 .candidate-card--speaker .candidate-card__name {
-  font-size: clamp(1.25rem, 3.2vw, 1.5rem);
+  font-size: clamp(1.3rem, 3.5vw, 1.6rem);
 }
 
 /* Success state */
@@ -359,8 +359,8 @@
 
 .voting-success__desc {
   font-family: var(--heading-font), sans-serif;
-  font-size: clamp(1rem, 2.5vw, 1.2rem);
-  letter-spacing: 0.06rem;
+  font-size: clamp(1.3rem, 3vw, 1.5rem);
+  letter-spacing: 0.08rem;
   text-transform: uppercase;
   color: var(--color-text-body-light);
   margin: 0;
@@ -392,7 +392,7 @@
 
 .recap-label {
   font-family: var(--heading-font), sans-serif;
-  font-size: clamp(0.9rem, 2.2vw, 1rem);
+  font-size: clamp(1.1rem, 2.8vw, 1.3rem);
   letter-spacing: 0.2rem;
   text-transform: uppercase;
   color: var(--accent);

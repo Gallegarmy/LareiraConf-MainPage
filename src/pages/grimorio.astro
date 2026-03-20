@@ -1,6 +1,5 @@
 ---
 import Layout from "src/layouts/LayoutMinimal.astro";
-import portadaImg from "@img/grimorio/portada.png";
 import switchImg from "@img/grimorio/switch.png";
 import keychronImg from "@img/grimorio/keychron.png";
 ---
@@ -10,9 +9,6 @@ import keychronImg from "@img/grimorio/keychron.png";
 
     <!-- ── INTRO ── -->
     <section class="intro-section">
-      <div class="portada-wrap">
-        <img src={portadaImg.src} alt="Portada del Grimorio de Lumi" class="portada-img" />
-      </div>
       <div class="intro-text">
         <h1 class="grimorio-title">El Grimorio de Lumi</h1>
         <p class="grimorio-subtitle">La guía oficial para equiparte en la Lareira</p>
@@ -58,7 +54,7 @@ import keychronImg from "@img/grimorio/keychron.png";
             Escanéalo para desbloquear su artefacto o poción.
           </p>
           <div class="rule-note">
-            Sin escanear todos los artefactos no participas en el sorteo.
+            Sin los artefactos de los Maestros Artesanos no participas en el sorteo.
           </div>
         </div>
 
@@ -200,8 +196,8 @@ import keychronImg from "@img/grimorio/keychron.png";
 
   .grimorio-subtitle {
     font-family: var(--heading-font), sans-serif;
-    font-size: clamp(1.1rem, 3.5vw, 1.5rem);
-    letter-spacing: 0.2rem;
+    font-size: clamp(1.4rem, 4vw, 1.8rem);
+    letter-spacing: 0.25rem;
     text-transform: uppercase;
     color: var(--accent);
     margin: 0 0 0.5rem;
@@ -209,8 +205,8 @@ import keychronImg from "@img/grimorio/keychron.png";
 
   .intro-desc {
     font-family: var(--heading-font), sans-serif;
-    font-size: clamp(1.2rem, 3.5vw, 1.5rem);
-    letter-spacing: 0.06rem;
+    font-size: clamp(1.3rem, 3.8vw, 1.7rem);
+    letter-spacing: 0.08rem;
     text-transform: uppercase;
     color: var(--color-text-body-light);
     line-height: 1.6;
@@ -219,8 +215,8 @@ import keychronImg from "@img/grimorio/keychron.png";
 
   .intro-closing {
     font-family: var(--heading-font), sans-serif;
-    font-size: clamp(1.2rem, 3.5vw, 1.5rem);
-    letter-spacing: 0.06rem;
+    font-size: clamp(1.3rem, 3.8vw, 1.7rem);
+    letter-spacing: 0.08rem;
     text-transform: uppercase;
     color: var(--text-light);
     line-height: 1.6;
@@ -242,8 +238,8 @@ import keychronImg from "@img/grimorio/keychron.png";
 
   .section-desc {
     font-family: var(--heading-font), sans-serif;
-    font-size: clamp(1rem, 2.8vw, 1.25rem);
-    letter-spacing: 0.1rem;
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    letter-spacing: 0.12rem;
     text-transform: uppercase;
     color: var(--color-text-body-light);
     text-align: center;
@@ -272,8 +268,8 @@ import keychronImg from "@img/grimorio/keychron.png";
 
   .register-label {
     font-family: var(--heading-font), sans-serif;
-    font-size: clamp(0.85rem, 2vw, 1rem);
-    letter-spacing: 0.25rem;
+    font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+    letter-spacing: 0.28rem;
     text-transform: uppercase;
     color: var(--text-light);
     opacity: 0.75;
@@ -291,8 +287,8 @@ import keychronImg from "@img/grimorio/keychron.png";
 
   .register-desc {
     font-family: var(--heading-font), sans-serif;
-    font-size: clamp(1.1rem, 3vw, 1.3rem);
-    letter-spacing: 0.05rem;
+    font-size: clamp(1.3rem, 3.5vw, 1.5rem);
+    letter-spacing: 0.07rem;
     text-transform: uppercase;
     color: var(--text-light);
     opacity: 0.85;
@@ -304,8 +300,8 @@ import keychronImg from "@img/grimorio/keychron.png";
   .register-btn {
     display: inline-block;
     font-family: var(--heading-font), sans-serif;
-    font-size: clamp(1rem, 2.5vw, 1.2rem);
-    letter-spacing: 0.15rem;
+    font-size: clamp(1.2rem, 3vw, 1.4rem);
+    letter-spacing: 0.18rem;
     text-transform: uppercase;
     text-decoration: none;
     background: var(--text-light);
@@ -368,8 +364,8 @@ import keychronImg from "@img/grimorio/keychron.png";
 
   .rule-badge {
     font-family: var(--heading-font), sans-serif;
-    font-size: 0.85rem;
-    letter-spacing: 0.15rem;
+    font-size: clamp(1rem, 2.5vw, 1.1rem);
+    letter-spacing: 0.18rem;
     text-transform: uppercase;
     background: var(--accent);
     color: var(--text-light);
@@ -387,8 +383,8 @@ import keychronImg from "@img/grimorio/keychron.png";
 
   .rule-title {
     font-family: var(--heading-font), sans-serif;
-    font-size: clamp(1.2rem, 4vw, 1.5rem);
-    letter-spacing: 0.1rem;
+    font-size: clamp(1.4rem, 4.5vw, 1.8rem);
+    letter-spacing: 0.12rem;
     text-transform: uppercase;
     color: var(--text-light);
     margin: 0.2rem 0 0;
@@ -396,8 +392,8 @@ import keychronImg from "@img/grimorio/keychron.png";
 
   .rule-desc {
     font-family: var(--heading-font), sans-serif;
-    font-size: clamp(1.15rem, 3vw, 1.35rem);
-    letter-spacing: 0.05rem;
+    font-size: clamp(1.3rem, 3.5vw, 1.5rem);
+    letter-spacing: 0.07rem;
     text-transform: uppercase;
     color: var(--color-text-body-light);
     line-height: 1.7;
@@ -410,8 +406,8 @@ import keychronImg from "@img/grimorio/keychron.png";
 
   .rule-note {
     font-family: var(--heading-font), sans-serif;
-    font-size: clamp(1rem, 2.5vw, 1.2rem);
-    letter-spacing: 0.05rem;
+    font-size: clamp(1.2rem, 3vw, 1.4rem);
+    letter-spacing: 0.07rem;
     text-transform: uppercase;
     color: var(--color-text-body-light);
     border-top: 1px solid var(--color-brown-dark);
