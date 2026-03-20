@@ -15,7 +15,11 @@
     "team": "Equipo",
     "communities": "Comunidades",
     "faq": "FAQ",
-    "social": "Social"
+    "social": "Social",
+    "venue": {
+      "previa": { "day": "Ven 20 · 18:30 · A Previa", "name": "Bellini" },
+      "event": { "day": "Sáb 21 · 9:00 · O Evento", "name": "Reitorado UDC" }
+    }
   },
   "home": {
     "date": "20 e 21 de Marzo",

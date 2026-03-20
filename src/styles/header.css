@@ -1,6 +1,64 @@
-.main-header {
+/* ── VENUE BAR ── */
+.venue-bar {
   position: fixed;
   top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1001;
+  background: var(--color-brown-dark);
+  border-bottom: 1px solid var(--color-brown);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0.45rem 1.5rem;
+  flex-wrap: wrap;
+}
+
+.venue-bar__item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+
+.venue-bar__item:hover {
+  opacity: 0.75;
+}
+
+.venue-bar__day {
+  font-family: var(--heading-font), sans-serif;
+  font-size: clamp(0.85rem, 2vw, 0.95rem);
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  color: var(--color-text-body-light);
+  opacity: 0.65;
+}
+
+.venue-bar__name {
+  font-family: var(--heading-font), sans-serif;
+  font-size: clamp(0.95rem, 2.2vw, 1.05rem);
+  letter-spacing: 0.08rem;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.venue-bar__sep {
+  font-family: var(--heading-font), sans-serif;
+  font-size: 1rem;
+  color: var(--color-text-body-light);
+  opacity: 0.3;
+}
+
+/* Venue info inside sidebar — hidden on desktop */
+.nav-venues {
+  display: none;
+}
+
+.main-header {
+  position: fixed;
+  top: 1.8rem; /* espacio para la venue-bar */
   left: 0;
   width: 100%;
   padding: 1rem 2rem;
@@ -260,8 +318,52 @@
 
 /* Small devices (phones, 768px and down) */
 @media (max-width: 768px) {
+  .venue-bar {
+    display: none;
+  }
+
   .main-header {
     padding: 0.8rem 1rem;
+    top: 0;
+  }
+
+  .nav-venues {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-brown);
+    margin-top: 0.5rem;
+  }
+
+  .nav-venue__item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    text-decoration: none;
+    transition: opacity 0.15s;
+  }
+
+  .nav-venue__item:hover {
+    opacity: 0.75;
+  }
+
+  .nav-venue__day {
+    font-family: var(--heading-font), sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    color: var(--color-text-body-light);
+    opacity: 0.65;
+  }
+
+  .nav-venue__name {
+    font-family: var(--heading-font), sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.08rem;
+    text-transform: uppercase;
+    color: var(--accent);
   }
 
   .hamburger {
@@ -270,7 +372,7 @@
 
   .lang-selector-header {
     position: fixed;
-    top: 0.8rem;
+    top: 0.6rem;
     left: 1rem;
     z-index: 11;
   }
@@ -312,7 +414,7 @@
   }
 
   .isotipo::after {
-    left: 6.3rem;
+    left: 6.9rem;
     top: 0.25rem;
     background-size: 0.85rem 0.85rem;
     width: 0.85rem;
