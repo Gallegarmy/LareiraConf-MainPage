@@ -3,7 +3,7 @@
     "id": "anventurero",
     "name": "Aventureiro/a",
     "description": "Llegas sin armas ni armaduras, solo con ganas de aprender y explorar.",
-    "image": "/images/tickets/aventureros.png",
+    "image": "/images/tickets/aventureros.avif",
     "price": {
       "original": 30,
       "discounted": null
@@ -21,7 +21,7 @@
     "id": "guerrero",
     "name": "Guerreiro/a",
     "description": "Sabes que las mejores historias se viven. Tu objetivo es generar alianzas hasta el amanecer.",
-    "image": "/images/tickets/guerreros.png",
+    "image": "/images/tickets/guerreros.avif",
     "price": {
       "original": 65,
       "discounted": null
@@ -39,7 +39,7 @@
     "id": "paladin",
     "name": "Paladín/a",
     "description": "Tu fuego no es solo tuyo. Lo compartes con quienes aún buscan el suyo.",
-    "image": "/images/tickets/paladines.png",
+    "image": "/images/tickets/paladines.avif",
     "price": {
       "original": 99,
       "discounted": null

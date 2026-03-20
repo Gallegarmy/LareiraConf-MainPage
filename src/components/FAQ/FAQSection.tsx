@@ -4,9 +4,9 @@ import FireParticles from "@components/Others/FireParticles";
 import { getFAQData, type FAQTextSegment } from "./faqDatai18n";
 import { useTranslations } from "@/i18n/utils";
 
-import faqBackground from "@img/parallax/tabern.png";
-import adventurerSprite from "@img/assets/aventurero.png";
-import lumiSprite from "@img/assets/lumi26.png";
+import faqBackground from "@img/parallax/tabern.avif";
+import adventurerSprite from "@img/assets/aventurero.avif";
+import lumiSprite from "@img/assets/lumi26.avif";
 import "./FAQSection.scss";
 
 interface FAQSectionProps {

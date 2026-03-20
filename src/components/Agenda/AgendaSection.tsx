@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import libraryBackdrop from "@img/parallax/library.png";
+import libraryBackdrop from "@img/parallax/library.avif";
 import "@styles/speakers.css";
 import "./AgendaSection.scss";
 import { getSpeakersData } from "../Speakers/speakers-data-i18n";

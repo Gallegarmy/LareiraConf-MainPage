@@ -4,11 +4,11 @@ import FireParticles from "@components/Others/FireParticles";
 import EventContent from "@components/Home/EventContent";
 import { useTranslations } from "@/i18n/utils";
 
-import mountainsImg from "@img/parallax/mountains.png";
-import treesImg from "@img/parallax/trees.png";
-import evilCharacterImg from "@img/parallax/evil-character.png";
-import lareiraImg from "@img/parallax/lareira.png";
-import groundImg from "@img/parallax/ground.png";
+import mountainsImg from "@img/parallax/mountains.avif";
+import treesImg from "@img/parallax/trees.avif";
+import evilCharacterImg from "@img/parallax/evil-character.avif";
+import lareiraImg from "@img/parallax/lareira.avif";
+import groundImg from "@img/parallax/ground.avif";
 
 import "@styles/home.css";
 

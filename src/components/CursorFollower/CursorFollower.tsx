@@ -26,7 +26,7 @@ const CursorFollower: React.FC = () => {
 
   return (
     <div ref={followerRef} className="cursor-follower">
-      <img src="/assets/lumi.png" alt="Cursor" />
+      <img src="/assets/lumi.avif" alt="Cursor" />
     </div>
   );
 };
