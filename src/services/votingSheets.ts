@@ -1,7 +1,7 @@
 /**
  * Voting service — Google Sheets via OAuth
  * Uses same OAuth credentials as confirmationSheets.ts
- * Reads/writes to GOOGLE_CONFIRMATION_SHEET_ID spreadsheet:
+ * Reads/writes to GOOGLE_VOTING_SHEET_ID spreadsheet:
  *   - "Confirmaciones" tab: validate voter is a registered attendee
  *   - "Votos" tab: check/store votes (must be created manually in the sheet)
  *     Headers: Timestamp | Email | Gremio | Artesano | Portador
@@ -125,12 +125,12 @@ export async function checkVoterEligibility(email: string): Promise<EligibilityR
   const accessToken = await getAccessToken();
   const normalized = email.toLowerCase().trim();
 
-  // Confirmaciones: column index 0 = email  (Email)
+  // Confirmaciones: column index 0 = email
   const confirmRows = await readSheet(accessToken, spreadsheetId, CONFIRMATIONS_SHEET);
   const isRegistered = confirmRows.some((row) => row[0]?.toLowerCase().trim() === normalized);
   if (!isRegistered) return { eligible: false, reason: "not_registered" };
 
-  // Votos: column index 1 = email  (Timestamp | Email | Gremio | Artesano | Portador)
+  // Votos: Timestamp | Email | Gremio | Artesano | Portador
   const voteRows = await readSheet(accessToken, spreadsheetId, VOTES_SHEET);
   const existingRow = voteRows.find((row) => row[1]?.toLowerCase().trim() === normalized);
 
@@ -171,6 +171,8 @@ export async function submitVote(data: VoteData): Promise<VoteResult> {
 
   try {
     const accessToken = await getAccessToken();
+    const normalized = data.email.toLowerCase().trim();
+
     const normalized = data.email.toLowerCase().trim();
 
     // Re-validate before writing (server-side double check)
