@@ -16,6 +16,9 @@
     "communities": "Comunidades",
     "faq": "FAQ",
     "social": "Social",
+    "premios": "Premios",
+    "grimorio": "Grimorio",
+    "ofertas": "Ofertas",
     "venue": {
       "previa": { "day": "Ven 20 · 18:30 · A Previa", "name": "Bellini" },
       "event": { "day": "Sáb 21 · 9:00 · O Evento", "name": "Reitorado UDC" }

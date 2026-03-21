@@ -1,5 +1,6 @@
 import nextdigitalLogo from "@img/sponsors/nextdigital.svg";
 import accentureLogo from "@img/sponsors/accenture.svg";
+import nttdataLogo from "@img/sponsors/nttdata.svg";
 
 export interface JobOffer {
   id: string;
@@ -10,18 +11,10 @@ export interface JobOffer {
   modality: "remoto" | "presencial" | "híbrido";
   description: string;
   requirements: string[];
+  benefits?: string[];
   applyUrl: string;
   applyLabel: string;
 }
-
-export const sponsorBenefits: string[] = [
-  "Flexibilidad horaria: trabajo 100% en remoto con horario ajustable. Jornada intensiva en julio, agosto y viernes.",
-  "Aprende cada día: meetups, certificaciones pagadas, asistencia a eventos de programación y clases de inglés para todos los niveles.",
-  "Retribución flexible: tarjeta restaurante, transporte, cheque guardería, seguro médico e internet.",
-  "Wellhub o seguro médico como beneficio extra para cuidar cuerpo y mente.",
-  "23 días de vacaciones, festivos regionales y una semana libre en Navidad. Un día adicional por cada dos años en Next.",
-  "Eventos informales y Team Building para conocernos mejor y divertirnos.",
-];
 
 export const jobOffers: JobOffer[] = [
   {
@@ -39,6 +32,14 @@ export const jobOffers: JobOffer[] = [
       "Tu visión cloud. Especialmente con AWS o Azure, para que puedas acompañar la evolución del stack.",
       "Curiosidad y ganas de aprender. Si eres de quienes siempre está probando herramientas nuevas, encajarás perfectamente.",
       "Responsabilidad y autonomía. Nos gusta confiar y que cada persona lidere su trabajo.",
+    ],
+    benefits: [
+      "Flexibilidad horaria: trabajo 100% en remoto con horario ajustable. Jornada intensiva en julio, agosto y viernes.",
+      "Aprende cada día: meetups, certificaciones pagadas, asistencia a eventos de programación y clases de inglés para todos los niveles.",
+      "Retribución flexible: tarjeta restaurante, transporte, cheque guardería, seguro médico e internet.",
+      "Wellhub o seguro médico como beneficio extra para cuidar cuerpo y mente.",
+      "23 días de vacaciones, festivos regionales y una semana libre en Navidad. Un día adicional por cada dos años en Next.",
+      "Eventos informales y Team Building para conocernos mejor y divertirnos.",
     ],
     applyUrl: "https://www.linkedin.com/jobs/view/4362030720",
     applyLabel: "Aplicar",
@@ -60,8 +61,33 @@ export const jobOffers: JobOffer[] = [
       "Familiaridad con metodologías ágiles y herramientas de control de versiones como Git.",
       "Conocimientos de buenas prácticas, testing, metodología TDD y patrones de diseño como arquitectura hexagonal.",
     ],
+    benefits: [
+      "Flexibilidad horaria: trabajo 100% en remoto con horario ajustable. Jornada intensiva en julio, agosto y viernes.",
+      "Aprende cada día: meetups, certificaciones pagadas, asistencia a eventos de programación y clases de inglés para todos los niveles.",
+      "Retribución flexible: tarjeta restaurante, transporte, cheque guardería, seguro médico e internet.",
+      "Wellhub o seguro médico como beneficio extra para cuidar cuerpo y mente.",
+      "23 días de vacaciones, festivos regionales y una semana libre en Navidad. Un día adicional por cada dos años en Next.",
+      "Eventos informales y Team Building para conocernos mejor y divertirnos.",
+    ],
     applyUrl: "mailto:talento@nextdigital.es?subject=CV Fullstack developer - LareiraConf",
     applyLabel: "Aplicar",
+  },
+  {
+    id: "nttdata-lareira",
+    company: "NTT DATA",
+    logo: nttdataLogo.src,
+    title: "¡Queremos contar contigo!",
+    location: "A Coruña",
+    modality: "presencial",
+    description:
+      "Estamos en el Lareira Conf el viernes y sábado 20 y 21 de marzo. Un evento tech diseñado para apasionados de la tecnología, comunidades técnicas, estudiantes, desarrolladores y profesionales del sector IT. Un espacio para aprender, compartir y conectar. En NTT DATA apostamos por personas con motivación y ganas de crecimiento profesional.",
+    requirements: [
+      "Motivación y ganas de crecer profesionalmente en el sector IT.",
+      "Interés por la tecnología, la innovación y el trabajo en equipo.",
+      "Estudiantes, junior o perfiles con experiencia: todos son bienvenidos.",
+    ],
+    applyUrl: "https://careers.emeal.nttdata.com/s/evento/a06KA000002Xd0bYAC/lareira-conf?language=es",
+    applyLabel: "Registrarme en el portal",
   },
   {
     id: "accenture-data-ai",

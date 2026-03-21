@@ -152,6 +152,33 @@
   display: block;
 }
 
+.home-quick-links {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.home-quick-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  font-family: var(--heading-font), sans-serif;
+  font-size: clamp(1rem, 2.5vw, 1.15rem);
+  letter-spacing: 0.18rem;
+  text-transform: uppercase;
+  color: var(--text-light);
+  background: rgba(233, 92, 60, 0.12);
+  border: 2px solid var(--accent);
+  padding: 0.5rem 1.2rem;
+  transition: background 0.15s, color 0.15s;
+}
+
+.home-quick-link:hover {
+  background: var(--accent);
+}
+
 .home-section .home-info {
   display: flex;
   justify-content: center;

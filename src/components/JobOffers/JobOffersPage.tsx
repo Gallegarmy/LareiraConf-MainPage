@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { jobOffers, sponsorBenefits, type JobOffer } from "./job-offers-data";
+import { jobOffers, type JobOffer } from "./job-offers-data";
 import FireParticles from "@components/Others/FireParticles";
 import "./JobOffersPage.scss";
 
@@ -57,16 +57,18 @@ function JobCard({ offer }: { offer: JobOffer }) {
           ))}
         </ul>
 
-        <div className="job-card__benefits">
-          <h3 className="job-card__benefits-title">¿Qué te ofrecemos?</h3>
-          <ul className="job-card__benefits-list">
-            {sponsorBenefits.map((benefit, i) => (
-              <li key={i} className="job-card__benefit">
-                {benefit}
-              </li>
-            ))}
-          </ul>
-        </div>
+        {offer.benefits && offer.benefits.length > 0 && (
+          <div className="job-card__benefits">
+            <h3 className="job-card__benefits-title">¿Qué te ofrecemos?</h3>
+            <ul className="job-card__benefits-list">
+              {offer.benefits.map((benefit, i) => (
+                <li key={i} className="job-card__benefit">
+                  {benefit}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
 
         <a
           href={offer.applyUrl}

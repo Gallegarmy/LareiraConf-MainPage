@@ -144,6 +144,12 @@ const portadorCandidates = [
 
     <!-- ── VOTACIÓN ── -->
     <section class="voting-section">
+      <div class="voting-header">
+        <h2 class="section-title">Votación del público</h2>
+        <p class="section-desc">
+          Elige a tus favoritos. Los ganadores se anuncian al final del evento.
+        </p>
+      </div>
       <div class="voting-wrapper">
         <VotingForm
           gremioCandidates={gremioCandidates}
@@ -240,6 +246,12 @@ const portadorCandidates = [
   }
 
   /* ── VOTING ── */
+  .voting-header {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
   .voting-section {
     width: 100%;
     max-width: 960px;
@@ -267,7 +279,7 @@ const portadorCandidates = [
 
   .awards-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.25rem;
     width: 100%;
   }
