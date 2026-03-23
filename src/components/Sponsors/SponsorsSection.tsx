@@ -1,6 +1,6 @@
 import React from "react";
 import FireflyParticles from "@components/Others/FireflyParticles";
-import sponsorsBg from "@img/parallax/sponsors-bg.png";
+import sponsorsBg from "@img/parallax/sponsors-bg.avif";
 import { useTranslations, type Locale } from "@/i18n/utils";
 import "@styles/sponsors.css";
 import SponsorCard from "./SponsorCard";

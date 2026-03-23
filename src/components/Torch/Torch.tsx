@@ -14,7 +14,7 @@ const Torch: React.FC<TorchProps> = ({ size = 150, position }) => {
 
   return (
     <div className={`torch-container ${position}`} style={style}>
-      <img src="/assets/torch.png" alt="Antorcha" className="torch" />
+      <img src="/assets/torch.avif" alt="Antorcha" className="torch" />
       <div className="halo" />
     </div>
   );

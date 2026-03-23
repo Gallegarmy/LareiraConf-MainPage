@@ -1,14 +1,14 @@
-import integraLogo from "@img/collaborators/integra-iria.png";
+import integraLogo from "@img/collaborators/integra-iria.avif";
 import adanLogo from "@img/collaborators/adan.svg";
 import malteLogo from "@img/collaborators/malte.svg";
 import udcLogo from "@img/collaborators/udc.svg";
 import grupoBillinghamLogo from "@img/collaborators/grupo-billingham.svg";
 import freakGzmLogo from "@img/collaborators/freak-gzm.svg";
-import nessLogo from "@img/collaborators/ness.png";
-import adrianLogo from "@img/collaborators/adrian.png";
+import nessLogo from "@img/collaborators/ness.avif";
+import adrianLogo from "@img/collaborators/adrian.avif";
 import sirviendoCodigoLogo from "@img/collaborators/sirviendo-codigo.svg";
 import weartocodeLogo from "@img/collaborators/weartocode.svg";
-import didixitalLogo from "@img/collaborators/didixital.png";
+import didixitalLogo from "@img/collaborators/didixital.avif";
 
 export interface Collaborator {
   id: string;

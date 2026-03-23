@@ -1,7 +1,7 @@
 import React from "react";
 import RaffleForm from "./RaffleForm";
 import "./RafflePage.scss";
-import torchImg from "../../img/assets/torch.png";
+import torchImg from "../../img/assets/torch.avif";
 
 /**
  * Configuración de sorteos (estática).

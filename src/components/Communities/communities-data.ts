@@ -1,14 +1,14 @@
-import wtfLogo from "@img/communities/all_flag-wtf.png";
-import sysarmyLogo from "@img/communities/all_flag-sysarmy.png";
-import pythonLogo from "@img/communities/all_flag-python.png";
-import gpulLogo from "@img/communities/all_flag-gpul.png";
-import bricolabsLogo from "@img/communities/all_flag-bricolabs.png";
-import datolaLogo from "@img/communities/all_flag-datola.png";
-import wpLogo from "@img/communities/all_flag-wp.png";
-import exfLogo from "@img/communities/all_flag-exf.png";
-import jugLogo from "@img/communities/all_flag-jug.png";
-import aquelarreLogo from "@img/communities/all_flag-aquelarre.png";
-import gdgLogo from "@img/communities/all_flag-gdg.png";
+import wtfLogo from "@img/communities/all_flag-wtf.avif";
+import sysarmyLogo from "@img/communities/all_flag-sysarmy.avif";
+import pythonLogo from "@img/communities/all_flag-python.avif";
+import gpulLogo from "@img/communities/all_flag-gpul.avif";
+import bricolabsLogo from "@img/communities/all_flag-bricolabs.avif";
+import datolaLogo from "@img/communities/all_flag-datola.avif";
+import wpLogo from "@img/communities/all_flag-wp.avif";
+import exfLogo from "@img/communities/all_flag-exf.avif";
+import jugLogo from "@img/communities/all_flag-jug.avif";
+import aquelarreLogo from "@img/communities/all_flag-aquelarre.avif";
+import gdgLogo from "@img/communities/all_flag-gdg.avif";
 
 export interface Community {
   id: string;

@@ -11,27 +11,27 @@ import captologyLogo from "@img/sponsors/captology.svg";
 import keleaLogo from "@img/sponsors/kelea.svg";
 import nttdataLogo from "@img/sponsors/nttdata.svg";
 import accentureLogo from "@img/sponsors/accenture.svg";
-import rowslifeLogo from "@img/sponsors/rowslife.png";
+import rowslifeLogo from "@img/sponsors/rowslife.avif";
 
 // Importar personajes
-import granMaestroH from "@img/sponsors/gran-maestro-h.png";
-import granMaestroM from "@img/sponsors/gran-maestro-m.png";
-import artesanoH from "@img/sponsors/artesano-h.png";
-import artesanoM from "@img/sponsors/artesano-m.png";
-import oficialH from "@img/sponsors/oficial-h.png";
-import oficialM from "@img/sponsors/oficial-m.png";
+import granMaestroH from "@img/sponsors/gran-maestro-h.avif";
+import granMaestroM from "@img/sponsors/gran-maestro-m.avif";
+import artesanoH from "@img/sponsors/artesano-h.avif";
+import artesanoM from "@img/sponsors/artesano-m.avif";
+import oficialH from "@img/sponsors/oficial-h.avif";
+import oficialM from "@img/sponsors/oficial-m.avif";
 
 // Importar tenderetes
-import tendretePeq from "@img/sponsors/tenderete-peq.png";
-import tendereteG from "@img/sponsors/tenderete-g.png";
-import tendereteM1 from "@img/sponsors/tenderete-m1.png";
-import tendereteM2 from "@img/sponsors/tenderete-m2.png";
-import tendereteM3 from "@img/sponsors/tenderete-m3.png";
-import tendereteM4 from "@img/sponsors/tenderete-m4.png";
-import tendereteM5 from "@img/sponsors/tenderete-m5.png";
+import tendretePeq from "@img/sponsors/tenderete-peq.avif";
+import tendereteG from "@img/sponsors/tenderete-g.avif";
+import tendereteM1 from "@img/sponsors/tenderete-m1.avif";
+import tendereteM2 from "@img/sponsors/tenderete-m2.avif";
+import tendereteM3 from "@img/sponsors/tenderete-m3.avif";
+import tendereteM4 from "@img/sponsors/tenderete-m4.avif";
+import tendereteM5 from "@img/sponsors/tenderete-m5.avif";
 
 // Importar cartel
-import cartelImage from "@img/sponsors/cartel.png";
+import cartelImage from "@img/sponsors/cartel.avif";
 
 export type SponsorTier =
   | "gran-maestro"

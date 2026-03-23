@@ -1,6 +1,6 @@
 import React from "react";
-import papiroHorizontal from "@img/assets/pergamino_horizontal.png";
-import papiroSinFondo from "@img/assets/pergamino.png";
+import papiroHorizontal from "@img/assets/pergamino_horizontal.avif";
+import papiroSinFondo from "@img/assets/pergamino.avif";
 
 interface AgendaDayProps {
   date: string;

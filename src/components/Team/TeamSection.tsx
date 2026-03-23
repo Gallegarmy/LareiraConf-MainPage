@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import FireParticles from "@components/Others/FireParticles";
 
-import campBackdrop from "@img/parallax/team-camp.png";
+import campBackdrop from "@img/parallax/team-camp.avif";
 import "@styles/team.css";
 
 import TeamCopy from "./TeamCopy";

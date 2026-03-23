@@ -1,7 +1,7 @@
 import React from "react";
 import "@styles/speakers.css";
 import "@styles/ThroneRoomGallery.scss";
-import libraryBackdrop from "@img/parallax/library.png";
+import libraryBackdrop from "@img/parallax/library.avif";
 import ThroneRoomGallery from "./ThroneRoomGallery";
 import { useTranslations } from "@/i18n/utils";
 

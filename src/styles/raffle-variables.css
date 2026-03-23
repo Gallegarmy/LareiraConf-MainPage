@@ -37,7 +37,7 @@
   --dur-medium: 0.5s;
   --dur-long: 1s;
 
-  --custom-background-image: url("/src/img/assets/raffle-bg.png");
+  --custom-background-image: url("/src/img/assets/raffle-bg.avif");
 
   /* Tipografía (referencias; las fuentes ya están declaradas en fonts.css global del proyecto) */
   --font-family-display: var(--heading-font);

@@ -1,7 +1,7 @@
-import nachoImg from "@img/crew/Nacho.png";
-import jesusImg from "@img/crew/Yisus.png";
-import andreaImg from "@img/crew/Andrea.png";
-import tiziImg from "@img/crew/Tizi.png";
+import nachoImg from "@img/crew/Nacho.avif";
+import jesusImg from "@img/crew/Yisus.avif";
+import andreaImg from "@img/crew/Andrea.avif";
+import tiziImg from "@img/crew/Tizi.avif";
 import type { TeamMember } from "./team-types";
 
 export const teamMembers: TeamMember[] = [

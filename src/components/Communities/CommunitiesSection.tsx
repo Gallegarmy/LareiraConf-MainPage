@@ -2,7 +2,7 @@ import React from "react";
 import "./CommunitiesSection.scss";
 import { communities } from "./communities-data";
 import FireParticles from "@components/Others/FireParticles";
-import communitiesCamp from "@img/parallax/communities-camp.png";
+import communitiesCamp from "@img/parallax/communities-camp.avif";
 import { useTranslations } from "@/i18n/utils";
 import type { Locale } from "@/i18n/utils";
 
