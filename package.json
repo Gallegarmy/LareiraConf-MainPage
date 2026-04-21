@@ -16,7 +16,7 @@
     "@astrojs/tailwind": "^6.0.0",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
-    "astro": "^5.4.2",
+    "astro": "^6.1.6",
     "astro-compress": "^2.3.5",
     "gsap": "^3.13.0",
     "prismjs": "^1.29.0",
